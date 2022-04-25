@@ -10,7 +10,7 @@ const Home: NextPage = () => {
           <h1>FANTASY SOCCER TO PLAY <br />WITH PLEASURE</h1>
         </div>
         <div>
-          <Image src="/soccer.png" width="600" height="350" />
+          <Image src="/soccer.png" width="600" height="350" alt="Soccer Banner" />
         </div>
       </div>
     </GuestLayout>

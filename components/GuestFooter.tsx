@@ -12,20 +12,23 @@ export default function GuestFooter() {
             src: "/facebook.png",
             width: "18",
             height: "16",
+            alt: "Facebook Logo"
           },
           {
             src: "/twitter.png",
             width: "18",
             height: "16",
+            alt: "Twitter Logo"
           },
           {
             src: "/instagram.png",
             width: "18",
             height: "16",
+            alt: "Instagram Icon"
           },
         ].map((item) => (
           <div className="mr-4">
-            <Image src={item.src} width={item.width} height={item.height} />
+            <Image src={item.src} width={item.width} height={item.height} alt={item.alt} />
           </div>
         ))}
       </div>
