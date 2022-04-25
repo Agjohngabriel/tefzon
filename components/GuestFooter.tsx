@@ -27,7 +27,7 @@ export default function GuestFooter() {
             alt: "Instagram Icon"
           },
         ].map((item) => (
-          <div className="mr-4">
+          <div className="mr-4" key={item.src}>
             <Image src={item.src} width={item.width} height={item.height} alt={item.alt} />
           </div>
         ))}

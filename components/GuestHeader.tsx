@@ -4,7 +4,7 @@ function GuestHeader() {
   return (
     <div className="flex flex-row py-5 px-10 text-right bg-white w-full">
       <div className="">
-        <Image src="/brand.png" width="150" height="60" />
+        <Image src="/brand.png" width="150" height="60" alt="Tefzon Logo" />
       </div>
       <div className="w-full block flex-grow lg:flex">
         <div className="text-sm lg:flex-grow pt-4">
