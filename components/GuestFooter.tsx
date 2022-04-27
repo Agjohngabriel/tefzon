@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function GuestFooter() {
   return (
-    <div className="bg-primary-200 h-24 px-10 text-white flex flex-row items-center justify-between w-full fixed bottom-0 shadow-inner">
+    <div className="bg-primary-200 h-24 px-10 text-white flex flex-row items-center justify-between w-full 2xl:h-36 fixed bottom-0 shadow-inner">
       <div>
         <h1>No Room for Racism</h1>
       </div>
@@ -37,8 +37,8 @@ export default function GuestFooter() {
           </div>
         ))}
       </div>
-      <div>
-        <span>Copy right</span>
+      <div  className="text-sm">
+        <span>2022 All Simple Rights Reserved</span>
       </div>
     </div>
   );
