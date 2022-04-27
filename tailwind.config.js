@@ -4,6 +4,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      oswald: ["Oswald"],
+      nunito: ["Nunito"],
+      arcon: ["Arcon-Regular"],
+      montserrat: ["Montserrat"],
+      poppins: ["Poppins"],
+    },
     extend: {
       colors: {
         primary: {

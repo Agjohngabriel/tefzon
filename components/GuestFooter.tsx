@@ -4,7 +4,7 @@ export default function GuestFooter() {
   return (
     <div className="bg-primary-200 h-24 px-10 text-white flex flex-row items-center justify-between w-full 2xl:h-36 fixed bottom-0 shadow-inner">
       <div>
-        <h1>No Room for Racism</h1>
+        <h1 className="font-montserrat">No Room for Racism</h1>
       </div>
       <div className="flex flex-row">
         {[
@@ -37,8 +37,10 @@ export default function GuestFooter() {
           </div>
         ))}
       </div>
-      <div  className="text-sm">
-        <span>2022 All Simple Rights Reserved</span>
+      <div>
+        <span className="font-poppins text-[0.60rem]">
+          2022 All Simple Rights Reserved
+        </span>
       </div>
     </div>
   );

@@ -4,7 +4,9 @@ export default function Button(props: {
   title: string;
 }) {
   return (
-    <button className={`${props.color} ${props.bgcolor} rounded p-3.5 text-xs shadow`}>
+    <button
+      className={`${props.color} ${props.bgcolor} font-montserrat rounded p-3.5 text-xs shadow`}
+    >
       {props.title}
     </button>
   );
