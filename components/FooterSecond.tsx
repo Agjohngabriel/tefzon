@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-export default function GuestFooter() {
+export const FooterSecond = () => {
   return (
-    <div className="bg-primary-200 h-28 px-10 text-white flex flex-row items-center justify-between w-full 2xl:h-36 fixed bottom-0 shadow-inner shadow-slate-100">
+    <div className=" h-28 px-10 text-black-150 flex flex-row items-center justify-between w-full 2xl:h-36  shadow-inner shadow-slate-100">
       <div>
         <h1 className="font-montserrat">No Room for Racism</h1>
       </div>
       <div className="flex flex-row">
-        {[
+        {/* {[
           {
             src: "/facebook.png",
             width: "18",
@@ -35,7 +35,18 @@ export default function GuestFooter() {
               alt={item.alt}
             />
           </div>
-        ))}
+        ))} */}
+        <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
+          <span className="ml-2 material-icons hover:text-green-500">
+            facebook
+          </span>
+          <span className="ml-2 material-icons hover:text-green-500">
+            facebook
+          </span>
+          <span className="ml-2 material-icons hover:text-green-500">
+            facebook
+          </span>
+        </div>
       </div>
       <div>
         <span className="font-poppins text-[0.60rem]">
@@ -44,4 +55,4 @@ export default function GuestFooter() {
       </div>
     </div>
   );
-}
+};
