@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function GuestHeader() {
   return (
     <nav className="w-full bg-white shadow z-10">
@@ -21,42 +23,36 @@ function GuestHeader() {
         </div>
         <div className="w-full block flex-grow md:flex md:justify-end md:w-auto">
           <div>
-            <a
-              href="#"
-              className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 under hover:text-blue-500 mt-4 md:mt-0"
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0"
-            >
-              Price
-            </a>
-            <a
-              href="#"
-              className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0"
-            >
-              Scout
-            </a>
-            <a
-              href="#"
-              className="font-arcon block md:inline-block text-sm px-1 lg:px-3 mr-4 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0"
-            >
-              Statistics
-            </a>
-            <a
-              href="#"
-              className="font-arcon block md:inline-block text-sm px-1 lg:px-3 mr-4 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0"
-            >
-              Help
-            </a>
-            <a
-              href="#"
-              className="font-arcon block md:inline-block text-sm px-1 lg:px-3 mr-4 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0"
-            >
-              Contact
-            </a>
+            <Link href="">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 under hover:text-blue-500 mt-4 md:mt-0">
+                Home
+              </span>
+            </Link>
+            <Link href="#">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+                Price
+              </span>
+            </Link>
+            <Link href="#">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+                Scout
+              </span>
+            </Link>
+            <Link href="#">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+                Statistics
+              </span>
+            </Link>
+            <Link href="#">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+                Help
+              </span>
+            </Link>
+            <Link href="#">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+                Contact
+              </span>
+            </Link>
           </div>
         </div>
       </div>

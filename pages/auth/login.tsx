@@ -1,6 +1,6 @@
 import MainLayout from "../../components/MainLayout";
 
-const login = () => {
+const Login = () => {
   return (
     <MainLayout>
       <h1 className="text-red-500"></h1>
@@ -8,4 +8,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

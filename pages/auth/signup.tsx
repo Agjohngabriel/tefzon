@@ -5,7 +5,7 @@ import Favourite from "../../components/form/Favourite";
 import PersonalDetails from "../../components/form/PersonalDetails";
 import MainLayout from "../../components/MainLayout";
 
-const signup = () => {
+const Signup = () => {
   const [formStep, setFormStep] = useState(0);
 
   const goToEmail = () => {
@@ -158,4 +158,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;

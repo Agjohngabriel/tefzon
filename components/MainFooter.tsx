@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function MainFooter() {
   return (
@@ -20,9 +21,9 @@ export default function MainFooter() {
               </h4>
               <ul>
                 <li>
-                  <a
-                    href="/"
-                    className="
+                  <Link href="/">
+                    <span
+                      className="
                     font-arcon
                             inline-block
                             text-base text-white
@@ -30,14 +31,15 @@ export default function MainFooter() {
                             leading-loose
                             mb-2
                             "
-                  >
-                    Home
-                  </a>
+                    >
+                      Home
+                    </span>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="##"
-                    className="
+                  <Link href="/">
+                    <span
+                      className="
                     font-arcon
                             inline-block
                             text-base text-white
@@ -45,14 +47,15 @@ export default function MainFooter() {
                             leading-loose
                             mb-2
                             "
-                  >
-                    My Team
-                  </a>
+                    >
+                      My Team
+                    </span>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="##"
-                    className="
+                  <Link href="/">
+                    <span
+                      className="
                     font-arcon
                             inline-block
                             text-base text-white
@@ -60,9 +63,10 @@ export default function MainFooter() {
                             leading-loose
                             mb-2
                             "
-                  >
-                    Transfer
-                  </a>
+                    >
+                      Transfer
+                    </span>
+                  </Link>
                 </li>
               </ul>
             </div>

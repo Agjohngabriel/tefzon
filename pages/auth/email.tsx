@@ -1,6 +1,6 @@
 import MainLayout from "../../components/MainLayout";
 
-const email = () => {
+const Email = () => {
   return (
     <MainLayout>
       <div>
@@ -47,4 +47,4 @@ const email = () => {
   );
 };
 
-export default email;
+export default Email;
