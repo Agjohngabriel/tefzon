@@ -1,10 +1,16 @@
+import Router from "next/router";
 import { useState } from "react";
+import { Agreement } from "../../components/form/Agreement";
 import Favourite from "../../components/form/Favourite";
 import PersonalDetails from "../../components/form/PersonalDetails";
 import MainLayout from "../../components/MainLayout";
 
 const signup = () => {
   const [formStep, setFormStep] = useState(0);
+
+  const goToEmail = () => {
+    Router.push("/auth/success");
+  };
 
   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
@@ -101,8 +107,51 @@ const signup = () => {
               </div>
             </div>
           </div>
-          {formStep >= 0 && <PersonalDetails formStep={0} nextFormStep={1} />}
-          {formStep >= 1 && <Favourite formStep={1} nextFormStep={2} />}
+          {formStep >= 0 && (
+            <PersonalDetails formStep={formStep} nextFormStep={nextFormStep} />
+          )}
+          {formStep >= 1 && (
+            <Favourite formStep={formStep} nextFormStep={nextFormStep} />
+          )}
+
+          {formStep >= 2 && (
+            <Agreement formStep={formStep} nextFormStep={nextFormStep} />
+          )}
+          {/* <Button
+            Onclick={() => nextFormStep}
+              title="Next"
+              bgcolor="bg-violet-500"
+              color="text-grey-200"
+              opacity="opacity-100"
+              width="w-40"
+            /> */}
+
+          <div className=" p-2 mt-10 justify-center">
+            <button
+              onClick={formStep == 2 ? goToEmail : nextFormStep}
+              type="button"
+              className={`text-base hover:scale-110 focus:outline-none flex justify-center p-3.5 font-bold cursor-pointer                                 
+                                            hover:bg-blue-500 shadow-inner rounded-lg
+                                            bg-violet-500 text-gray-200
+                                            duration-200 ease-in-out 
+                                            transition mx-auto`}
+            >
+              {formStep == 2 ? "Complete Registration" : "Next"}
+            </button>
+            {formStep > 0 && (
+              <button
+                onClick={prevFormStep}
+                type="button"
+                className="flex items-center text-gray-500 rounded py-2 focus:outline-none mx-auto"
+              >
+                <span className=" -mr-20 material-icons hover:text-green-500">
+                  arrow_backward
+                </span>
+                {formStep == 1 && <span>Back to Personal Details</span>}
+                {formStep == 2 && <span>Back to favourites</span>}
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </MainLayout>

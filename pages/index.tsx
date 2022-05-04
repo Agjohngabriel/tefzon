@@ -1,8 +1,12 @@
 import type { NextPage } from "next";
+import Router from "next/router";
 import Button from "../components/base/Button";
 import GuestLayout from "../components/GuestLayout";
 
 const Home: NextPage = () => {
+  const goToRegister = () => {
+    Router.push("/auth/signup");
+  };
   return (
     <GuestLayout footer="">
       <div className="container rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-4 py-2 lg:px-20 h-3/4">
@@ -18,6 +22,7 @@ const Home: NextPage = () => {
             </p>
             <div className="flex mt-10">
               <Button
+                Onclick={goToRegister}
                 title="Register"
                 bgcolor="bg-primary-200"
                 color="text-white"

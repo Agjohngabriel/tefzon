@@ -1,4 +1,4 @@
-const Favourite = (props: { formStep: number; nextFormStep: number }) => {
+const Favourite = (props: { formStep: number; nextFormStep: any }) => {
   return (
     <div className={`p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center pt-20 space-y-4 max-w-lg mx-auto">
@@ -421,27 +421,6 @@ const Favourite = (props: { formStep: number; nextFormStep: number }) => {
             <div className="font-sans text-sm font-bold px-10">
               Load more clubs
             </div>
-          </button>
-        </div>
-
-        <div className=" p-2 mt-10 justify-center">
-          <button
-            className="text-base hover:scale-110 focus:outline-none flex justify-center px-10 py-2s font-bold cursor-pointer                                 
-                                            hover:bg-blue-500 shadow-inner rounded-lg
-                                            bg-violet-500 text-gray-200
-                                            duration-200 ease-in-out 
-                                            transition mx-auto"
-          >
-            <div className="font-sans text-sm font-bold px-10">Next</div>
-          </button>
-          <button
-            type="button"
-            className="flex items-center text-gray-500 rounded py-2 focus:outline-none mx-auto"
-          >
-            <span className=" -mr-20 material-icons hover:text-green-500">
-              arrow_backward
-            </span>
-            Back to favourites
           </button>
         </div>
       </div>

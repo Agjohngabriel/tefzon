@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import Button from "../base/Button";
-import { useFormData } from "../../context";
+// import { useFormData } from "../../context";
 
-const PersonalDetails = (props: { formStep: number; nextFormStep: number }) => {
+const PersonalDetails = (props: { formStep: number; nextFormStep: any }) => {
   const formRef = useRef();
-  const { setFormValues } = useFormData();
+  // const { setFormValues } = useFormData();
 
   async function handleSubmit() {
     //     try{
@@ -199,14 +199,6 @@ const PersonalDetails = (props: { formStep: number; nextFormStep: number }) => {
           </div>
 
           <div className="flex p-2 mt-4 justify-center">
-            <Button
-              title="Next"
-              bgcolor="bg-violet-500"
-              color="text-grey-200"
-              opacity="opacity-100"
-              width="w-40"
-            />
-
             {/* <button
             className="text-base hover:scale-110 focus:outline-none flex justify-center px-10 py-2 font-bold cursor-pointer 
               
