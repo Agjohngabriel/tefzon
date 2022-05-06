@@ -1,5 +1,7 @@
 import MainLayout from "../../components/MainLayout";
 
+import Image from "next/image";
+
 import Link from "next/link";
 
 const Success = () => {
@@ -16,8 +18,8 @@ const Success = () => {
               <div className="mt-10 -translate-y-1/2 transform">
                 <img
                   src="/img/edit.png"
-                  alt="edit"
-                  title="edit"
+                  alt="verify"
+                  title="verify"
                   className="mx-auto"
                 />
               </div>
@@ -30,7 +32,7 @@ const Success = () => {
                   Please check the message sent to kolagk@gmail.com. Confirming
                   the message allow you to complete the process.
                 </p>
-                <Link href="/auth/email">
+                <Link href="/auth/email" passHref>
                   <div className="w-full sm:w-auto bg-indigo-500 text-gray-200 shadow-inner rounded hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300 inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <div className="font-montserrat text-sm font-semibold px-10">
                       Go To Email

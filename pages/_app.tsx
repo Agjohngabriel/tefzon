@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -33,12 +34,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"
           rel="stylesheet"
         />
-        <script
-          src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
-          defer
-        ></script>
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
       </Head>
+      <Script
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+        defer
+      ></Script>
+      <Script src="https://kit.fontawesome.com/a076d05399.js"></Script>
       <Component {...pageProps} />
     </>
   );

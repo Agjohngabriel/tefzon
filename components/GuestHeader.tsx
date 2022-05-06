@@ -1,15 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 
-
 function GuestHeader() {
   return (
     <nav className="w-full bg-white shadow z-10">
       <div className="container mx-auto px-6 py-3 lg:px-20 flex items-center justify-between flex-wrap">
         <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
-          <Link href="/">
-            <Image src="/brand.png" alt="logo" width={150} height={50}/>
-          </Link> 
+          <Link href="/" passHref>
+            <img src="/brand.png" alt="logo" width="150px" />
+          </Link>
         </div>
         <div className="block md:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-gray-600 border-gray-600">
@@ -25,32 +24,32 @@ function GuestHeader() {
         </div>
         <div className="w-full block flex-grow md:flex md:justify-end md:w-auto">
           <div>
-            <Link href="">
+            <Link href="" passHref>
               <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 under hover:text-blue-500 mt-4 md:mt-0">
                 Home
               </span>
             </Link>
-            <Link href="#">
+            <Link href="" passHref>
               <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
                 Price
               </span>
             </Link>
-            <Link href="#">
+            <Link href="" passHref>
               <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
                 Scout
               </span>
             </Link>
-            <Link href="#">
+            <Link href="" passHref>
               <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
                 Statistics
               </span>
             </Link>
-            <Link href="#">
+            <Link href="" passHref>
               <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
                 Help
               </span>
             </Link>
-            <Link href="#">
+            <Link href="" passHref>
               <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
                 Contact
               </span>

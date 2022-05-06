@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export const Agreement = (props: { formStep: number; nextFormStep: any }) => {
@@ -69,10 +70,10 @@ export const Agreement = (props: { formStep: number; nextFormStep: any }) => {
               htmlFor="Terms"
               className="font-montserrat block ml-2 text-sm font-bold text-gray-900"
             >
-              I have agreed to the{" "}
-              <a href="##" className="text-violet-800">
-                Terms & Conditions
-              </a>
+              I have agreed to the
+              <Link href="##" passHref>
+                <span className="text-violet-800">Terms & Conditions</span>
+              </Link>
             </label>
           </div>
         </div>

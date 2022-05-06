@@ -3,6 +3,8 @@ import Router from "next/router";
 import Button from "../components/base/Button";
 import GuestLayout from "../components/GuestLayout";
 
+import Image from "next/image";
+
 const Home: NextPage = () => {
   const goToRegister = () => {
     Router.push("/auth/signup");
@@ -43,15 +45,17 @@ const Home: NextPage = () => {
           </div>
           <div className="lg:w-1/2">
             <div className="mt-3 ">
-              <img
-                src="/soccer 1.png"
-                alt="soccer"
-                className="relative"
-                style={{
-                  animation:
-                    "up-down 2s ease-in-out infinite alternate-reverse both",
-                }}
-              />
+              <div className="mt-3 ">
+                <img
+                  src="/img/soccer 1.png"
+                  alt="soccer"
+                  className="relative"
+                  style={{
+                    animation:
+                      "up-down 2s ease-in-out infinite alternate-reverse both",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
