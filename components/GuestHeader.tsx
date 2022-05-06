@@ -1,13 +1,15 @@
 import Link from "next/link";
+import Image from "next/image";
+
 
 function GuestHeader() {
   return (
     <nav className="w-full bg-white shadow z-10">
       <div className="container mx-auto px-6 py-3 lg:px-20 flex items-center justify-between flex-wrap">
         <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
-          <a href="/">
-            <img src="/brand.png" alt="logo" width="150px" />
-          </a>
+          <Link href="/">
+            <Image src="/brand.png" alt="logo" width={150} height={50}/>
+          </Link> 
         </div>
         <div className="block md:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-gray-600 border-gray-600">
