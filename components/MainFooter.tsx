@@ -8,9 +8,13 @@ export default function MainFooter() {
         <div className="flex flex-wrap mx-24">
           <div className="w-full sm:w-3/12 lg:w-3/12 px-4">
             <div className="w-full mb-10">
-              <Link href="##" passHref>
-                <span href="/" className="inline-block max-w-[160px] mb-6">
-                  <Image src="/brand.png" alt="logo" width={300} height={150} />
+              <Link href="/" passHref>
+                <span className="inline-block max-w-[160px] mb-6">
+                  <img
+                      src="/brand.png"
+                      alt="logo"
+                      className="max-w-full"
+                      />
                 </span>
               </Link>
             </div>
