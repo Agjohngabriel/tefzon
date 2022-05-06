@@ -30,7 +30,7 @@ const Email = () => {
                   Please check the message sent to kolagk@gmail.com. Confirming
                   the message allow you to complete the process.
                 </p>
-                <Link href="##" passHref>
+                <Link href="/home" passHref>
                   <div className="w-full sm:w-auto bg-indigo-500 text-gray-200 shadow-inner rounded hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300 inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <div className="font-montserrat text-sm font-semibold px-10">
                       Login

@@ -10,11 +10,7 @@ export default function MainFooter() {
             <div className="w-full mb-10">
               <Link href="/" passHref>
                 <span className="inline-block max-w-[160px] mb-6">
-                  <img
-                      src="/brand.png"
-                      alt="logo"
-                      className="max-w-full"
-                      />
+                  <img src="/brand.png" alt="logo" className="max-w-full" />
                 </span>
               </Link>
             </div>
