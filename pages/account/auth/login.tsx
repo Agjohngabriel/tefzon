@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Router from "next/router";
 import { useState } from "react";
 import GuestLayout from "../../../components/GuestLayout";
@@ -32,61 +33,58 @@ const Login = () => {
         </p>
 
         <div className="flex mx-auto items-center justify-center">
-          <a
-            href="##"
-            className="flex items-center justify-center px-8 py-2 space-x-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none "
-          >
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
-                className="w-4 h-4 text-gray-100"
-              >
-                <path
-                  fill="currentColor"
-                  d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+          <Link href="##">
+            <div className="flex items-center justify-center px-8 py-2 space-x-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none ">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 320 512"
+                  className="w-4 h-4 text-gray-100"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                  />
+                </svg>
+              </span>
+              <span className="text-xs font-montserrat text-white group-hover:text-white">
+                Facebook
+              </span>
+            </div>
+          </Link>
+
+          <Link href="##">
+            <div className="flex items-center justify-center mx-3 px-10 py-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none ">
+              <span>
+                <img
+                  className=" h-5 cursor-pointer"
+                  src="https://i.imgur.com/arC60SB.png"
+                  alt=""
                 />
-              </svg>
-            </span>
-            <span className="text-xs font-montserrat text-white group-hover:text-white">
-              Facebook
-            </span>
-          </a>
+              </span>
+              <span className="text-xs font-montserrat text-gray-800 group-hover:text-white">
+                Google
+              </span>
+            </div>
+          </Link>
 
-          <a
-            href="##"
-            className="flex items-center justify-center mx-3 px-10 py-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none"
-          >
-            <span>
-              <img
-                className=" h-5 cursor-pointer"
-                src="https://i.imgur.com/arC60SB.png"
-                alt=""
-              />
-            </span>
-            <span className="text-xs font-montserrat text-gray-800 group-hover:text-white">
-              Google
-            </span>
-          </a>
-
-          <a
-            href="##"
-            className="flex items-center justify-center px-10 py-2 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none"
-          >
-            <span>
-              <svg
-                className="text-gray-100 group-hover:text-white"
-                width="20"
-                height="20"
-                fill="currentColor"
-              >
-                <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"></path>
-              </svg>
-            </span>
-            <span className="text-xs font-montserrat text-gray-100 group-hover:text-white">
-              Twitter
-            </span>
-          </a>
+          <Link href="##">
+            <div className="flex items-center justify-center px-10 py-2 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none ">
+              <span>
+                <svg
+                  className="text-gray-100 group-hover:text-white"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                >
+                  <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"></path>
+                </svg>
+              </span>
+              <span className="text-xs font-montserrat text-gray-100 group-hover:text-white">
+                Twitter
+              </span>
+            </div>
+          </Link>
         </div>
 
         <p className="font-arcon text-sm text-gray-500 text-center my-8">
@@ -132,12 +130,11 @@ const Login = () => {
           </div>
         </div>
 
-        <a
-          href="##"
-          className="flex items-center text-[#222222]/50 font-arcon text-sm justify-center mx-auto px-8 py-4 focus:outline-none"
-        >
-          Forgot Password?
-        </a>
+        <Link href="##">
+          <span className="flex items-center text-[#222222]/50 font-arcon text-sm justify-center mx-auto px-8 py-4 focus:outline-none">
+            Forgot Password?
+          </span>
+        </Link>
 
         <div className="w-full mx-auto  py-5 flex-1 svelte-1l8159u">
           <button
