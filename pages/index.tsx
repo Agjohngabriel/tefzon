@@ -3,14 +3,15 @@ import Router from "next/router";
 import Button from "../components/base/Button";
 import GuestLayout from "../components/GuestLayout";
 
-import Image from "next/image";
-
 const Home: NextPage = () => {
   const goToRegister = () => {
-    Router.push("/auth/signup");
+    Router.push("/account/auth/signup");
+  };
+  const goToLogin = () => {
+    Router.push("/account/auth/login");
   };
   return (
-    <GuestLayout footer="">
+    <GuestLayout>
       <div className="container rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-4 py-2 lg:px-20 h-3/4">
         <div className="flex z-0 ">
           <div className="lg:w-1/2 mt-20 mb-12">
@@ -33,6 +34,7 @@ const Home: NextPage = () => {
               />
 
               <button
+                onClick={goToLogin}
                 type="button"
                 className="flex items-center text-gray-600 rounded px-8 py-2 focus:outline-none"
               >

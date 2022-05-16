@@ -3,10 +3,7 @@ function BreadCrumb() {
     <div className="bg-violet-500 pt-20 lg:pt-[20px] md:pt-[5px] sm:pt-[2px] justify-between ">
       <div className="flex z-[100] ">
         <div className="ml-24 lg:w-1/2 mt-16  mb-12">
-          <h2
-            className="text-gray-100 font-bold text-5xl tracking-tighter leading-tight"
-            style={{ fontFamily: "Roboto" }}
-          >
+          <h2 className="font-oswald text-gray-100 font-bold text-5xl tracking-tighter leading-tight">
             Tefzon Fantasy
           </h2>
         </div>
@@ -26,7 +23,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Status
             </a>
@@ -34,7 +31,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Pick Team
             </a>
@@ -42,7 +39,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Transfer
             </a>
@@ -50,7 +47,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Leauge
             </a>
@@ -58,7 +55,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Fixtures
             </a>
@@ -66,7 +63,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               The Scout
             </a>
@@ -74,7 +71,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Stats
             </a>
@@ -82,7 +79,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Prize
             </a>
@@ -90,7 +87,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Help
             </a>
@@ -98,7 +95,7 @@ function BreadCrumb() {
           <div>
             <a
               href="##"
-              className=" block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Sign Out
             </a>
