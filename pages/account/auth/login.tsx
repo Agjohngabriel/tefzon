@@ -33,7 +33,7 @@ const Login = () => {
         </p>
 
         <div className="flex mx-auto items-center justify-center">
-          <Link href="##">
+          <Link href="##" passHref>
             <div className="flex items-center justify-center px-8 py-2 space-x-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none ">
               <span>
                 <svg
@@ -53,7 +53,7 @@ const Login = () => {
             </div>
           </Link>
 
-          <Link href="##">
+          <Link href="##" passHref>
             <div className="flex items-center justify-center mx-3 px-10 py-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none ">
               <span>
                 <img
@@ -68,7 +68,7 @@ const Login = () => {
             </div>
           </Link>
 
-          <Link href="##">
+          <Link href="##" passHref>
             <div className="flex items-center justify-center px-10 py-2 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none ">
               <span>
                 <svg
@@ -130,7 +130,7 @@ const Login = () => {
           </div>
         </div>
 
-        <Link href="##">
+        <Link href="##" passHref>
           <span className="flex items-center text-[#222222]/50 font-arcon text-sm justify-center mx-auto px-8 py-4 focus:outline-none">
             Forgot Password?
           </span>
@@ -152,12 +152,11 @@ const Login = () => {
 
         <p className="text-xs font-arcon text-gray-500 text-center my-8">
           Don't have an account?
-          <a
-            href="/account/auth/signup"
-            className="items-center font-arcon text-indigo-700  text-xs justify-center mx-auto px-2 py-4 focus:outline-none"
-          >
-            Sign Up
-          </a>
+          <Link href="/account/auth/signup" passHref>
+            <span className="items-center font-arcon text-indigo-700  text-xs justify-center mx-auto px-2 py-4 focus:outline-none">
+              Sign Up
+            </span>
+          </Link>
         </p>
       </div>
     </GuestLayout>
