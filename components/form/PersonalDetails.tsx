@@ -24,7 +24,7 @@ const PersonalDetails = (props: { formStep: number; nextFormStep: any }) => {
       </div>
 
       <div className="mt-8 p-4">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           <div className="flex flex-col md:flex-row">
             <div className="w-full flex-1 mx-2 svelte-1l8159u">
               <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -84,7 +84,7 @@ const PersonalDetails = (props: { formStep: number; nextFormStep: any }) => {
             <div className="w-full mx-2 flex-1 svelte-1l8159u">
               <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
               <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                <select className="form-select w-full px-3 py-2   rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                <select className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                   <option value="">Select Gender</option>
                   <option value="02">Male</option>
                   <option value="03">Female</option>
@@ -97,11 +97,11 @@ const PersonalDetails = (props: { formStep: number; nextFormStep: any }) => {
               <label className="text-gray-600 font-normal text-sm mb-9 ml-1">
                 Date of birth
               </label>
-              <div className="bg-white  border border-gray-200  rounded svelte-1l8159u">
+              <div className="bg-white  svelte-1l8159u">
                 <div className="flex items-end -mb-1">
                   <div className="w-1/3">
                     <div>
-                      <select className="form-select w-full px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                      <select className="form-select bg-white w-full px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                         <option value="">Date </option>
                         <option value="01">01 </option>
                         <option value="02">02 </option>
@@ -120,7 +120,7 @@ const PersonalDetails = (props: { formStep: number; nextFormStep: any }) => {
                   </div>
                   <div className="px-2 w-1/3">
                     <div>
-                      <select className="form-select w-full px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                      <select className="form-select w-full  bg-white px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                         <option value="">Month</option>
                         <option value="01">January</option>
                         <option value="02">February</option>
@@ -138,7 +138,7 @@ const PersonalDetails = (props: { formStep: number; nextFormStep: any }) => {
                     </div>
                   </div>
                   <div className=" w-1/3">
-                    <select className="form-select w-full px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                    <select className="form-select w-full px-3 bg-white py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                       <option value="">Year</option>
                       <option value="2021">2021</option>
                       <option value="2022">2022</option>
@@ -158,8 +158,9 @@ const PersonalDetails = (props: { formStep: number; nextFormStep: any }) => {
 
           <div className="flex flex-col md:flex-row pt-7">
             <div className="w-full mx-2 flex-1 svelte-1l8159u">
+            <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
               <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                <select className="form-select w-full px-3 py-2   rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                <select className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                   <option value="">Select Country</option>
                   <option value="02">Niger</option>
                   <option value="03">Boni</option>
@@ -167,34 +168,32 @@ const PersonalDetails = (props: { formStep: number; nextFormStep: any }) => {
                 </select>
               </div>
             </div>
-            <div className="w-full mx-2 flex-1 svelte-1l8159u">
-              {/* <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">                                                 */}
-              <div className="mb-3 -mx-2 flex items-end ">
-                <div className="px-2 w-1/4">
-                  <div>
-                    <label className="text-gray-600 font-normal text-sm mb-2 ml-1">
-                      Mobile number
-                    </label>
-                    <select className="form-select w-full px-3 py-3 mb-1 border border-gray-200 rounded focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                      <option value="01">Code</option>
-                      <option value="02">+222</option>
-                      <option value="03">+223</option>
-                      <option value="04">+234</option>
-                    </select>
-                  </div>
+            <div className="w-full mx-2 mt-2 flex-1 svelte-1l8159u">
+              <label className="text-gray-600 font-normal text-sm mb-9 ml-1">
+                Mobile number
+              </label>
+              <div className="bg-white  svelte-1l8159u">                                                
+              <div className="flex items-end -mb-1">
+                <div className="w-1/3 border border-gray-200 rounded">
+                  <select className="form-select bg-white w-full px-3 py-2 mb-1 rounded focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                    <option value="01">+234</option>
+                    <option value="02">+222</option>
+                    <option value="03">+223</option>
+                    <option value="04">+234</option>
+                  </select>
                 </div>
 
-                <div className="px-2 w-3/4">
+                <div className="px-1 w-2/3">
                   <div>
                     <input
-                      className="w-full px-2 py-2 mb-1 border border-gray-200 rounded focus:outline-none focus:border-indigo-500 transition-colors"
+                      className="w-full px-3 py-2 mb-1 border border-gray-200 rounded focus:outline-none focus:border-indigo-500 transition-colors"
                       placeholder="Enter number"
                       type="text"
                     />
                   </div>
                 </div>
               </div>
-              {/* </div> */}
+              </div>
             </div>
           </div>
 
