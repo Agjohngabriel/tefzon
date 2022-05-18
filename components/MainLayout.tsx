@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
+import Auth from "./Auth";
 import BreadCrumb from "./base/BreadCrumb";
 import GuestHeader from "./GuestHeader";
 import MainFooter from "./MainFooter";
 
 export default function MainLayout(props: { children: ReactNode }) {
   return (
-    <>
+    <Auth>
       <GuestHeader />
       <BreadCrumb />
       <div className="bg-[#E4ECFB] pt-10 pb-10">
@@ -14,6 +15,6 @@ export default function MainLayout(props: { children: ReactNode }) {
         {/* </div> */}
       </div>
       <MainFooter />
-    </>
+    </Auth>
   );
 }

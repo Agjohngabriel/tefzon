@@ -1,7 +1,11 @@
 import Link from "next/link";
 import React from "react";
 
-export const Agreement = (props: { formStep: number; nextFormStep: any }) => {
+export const Agreement = (props: {
+  formStep: number;
+  nextFormStep: any;
+  updateFormData: any;
+}) => {
   return (
     <div className={`p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center pt-10 space-y-4 max-w-lg mx-auto">

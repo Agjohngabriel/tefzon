@@ -6,6 +6,11 @@ import PersonalDetails from "../../../components/form/PersonalDetails";
 import GuestLayout from "../../../components/GuestLayout";
 const Signup = () => {
   const [formStep, setFormStep] = useState(0);
+  const [formData, setFormData] = useState({});
+
+  const updateFormData = (newData: any) => {
+    setFormData({ ...formData, ...newData });
+  };
 
   const goToEmail = () => {
     Router.push("/account/auth/success");
@@ -106,20 +111,22 @@ const Signup = () => {
                 </div>
               </div>
             </div>
-            {formStep >= 0 && (
-              <PersonalDetails
-                formStep={formStep}
-                nextFormStep={nextFormStep}
-              />
-            )}
-            {formStep >= 1 && (
-              <Favourite formStep={formStep} nextFormStep={nextFormStep} />
-            )}
+            <form>
+              {formStep >= 0 && (
+                <PersonalDetails
+                updateFormData={updateFormData}
+                  formStep={formStep}
+                  nextFormStep={nextFormStep}
+                />
+              )}
+              {formStep >= 1 && (
+                <Favourite updateFormData={updateFormData} formStep={formStep} nextFormStep={nextFormStep} />
+              )}
 
-            {formStep >= 2 && (
-              <Agreement formStep={formStep} nextFormStep={nextFormStep} />
-            )}
-            {/* <Button
+              {formStep >= 2 && (
+                <Agreement updateFormData={updateFormData} formStep={formStep} nextFormStep={nextFormStep} />
+              )}
+              {/* <Button
             Onclick={() => nextFormStep}
               title="Next"
               bgcolor="bg-violet-500"
@@ -128,32 +135,34 @@ const Signup = () => {
               width="w-40"
             /> */}
 
-            <div className=" p-2 mt-10 justify-center">
-              <button
-                onClick={formStep == 2 ? goToEmail : nextFormStep}
-                type="button"
-                className={`text-base hover:scale-110 focus:outline-none flex justify-center p-3.5 font-bold cursor-pointer                                 
+              <div className=" p-2 mt-10 justify-center">
+                <button
+                  onClick={formStep == 2 ? goToEmail : nextFormStep}
+                  type="button"
+                  className={`text-base hover:scale-110 focus:outline-none flex justify-center p-3.5 font-bold cursor-pointer                                 
                                             hover:bg-blue-500 shadow-inner rounded-lg
                                             bg-violet-500 text-gray-200
                                             duration-200 ease-in-out 
                                             transition mx-auto w-72`}
-              >
-                {formStep == 2 ? "Complete Registration" : "Next"}
-              </button>
-              {formStep > 0 && (
-                <button
-                  onClick={prevFormStep}
-                  type="button"
-                  className="flex items-center text-gray-500 rounded py-2 focus:outline-none mx-auto"
                 >
-                  <span className=" -mr-20 material-icons hover:text-green-500">
-                    arrow_backward
-                  </span>
-                  {formStep == 1 && <span>Back to Personal Details</span>}
-                  {formStep == 2 && <span>Back to favourites</span>}
+                  {formStep == 2 ? "Complete Registration" : "Next"}
                 </button>
-              )}
-            </div>
+
+                {formStep > 0 && (
+                  <button
+                    onClick={prevFormStep}
+                    type="button"
+                    className="flex items-center text-gray-500 rounded py-2 focus:outline-none mx-auto"
+                  >
+                    <span className=" -mr-20 material-icons hover:text-green-500">
+                      arrow_backward
+                    </span>
+                    {formStep == 1 && <span>Back to Personal Details</span>}
+                    {formStep == 2 && <span>Back to favourites</span>}
+                  </button>
+                )}
+              </div>
+            </form>
           </div>
         </div>
         {}

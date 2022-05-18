@@ -1,4 +1,27 @@
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 function BreadCrumb() {
+  const { data: session } = useSession();
+  async function logOut() {
+    try {
+      const out = await axios.get(
+        `${process.env.BASE_URL}logout/${session.data.user.id}`,
+        {
+          headers: {
+            accept: "*/*",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (out) {
+        signOut();
+      }
+    } catch (e) {
+      return null;
+    }
+    // signOut();
+  }
   return (
     <div className="bg-violet-500 pt-20 lg:pt-[20px] md:pt-[5px] sm:pt-[2px] justify-between ">
       <div className="flex z-[100] ">
@@ -22,7 +45,7 @@ function BreadCrumb() {
         <div className="w-full block flex-grow md:flex md:justify-between md:w-auto">
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Status
@@ -30,7 +53,7 @@ function BreadCrumb() {
           </div>
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Pick Team
@@ -38,7 +61,7 @@ function BreadCrumb() {
           </div>
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Transfer
@@ -46,15 +69,15 @@ function BreadCrumb() {
           </div>
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
-              Leauge
+              League
             </a>
           </div>
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Fixtures
@@ -62,7 +85,7 @@ function BreadCrumb() {
           </div>
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               The Scout
@@ -70,7 +93,7 @@ function BreadCrumb() {
           </div>
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Stats
@@ -78,7 +101,7 @@ function BreadCrumb() {
           </div>
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Prize
@@ -86,19 +109,19 @@ function BreadCrumb() {
           </div>
           <div>
             <a
-              href="##"
+              href="/home/leagues/create"
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Help
             </a>
           </div>
           <div>
-            <a
-              href="##"
+            <button
+              onClick={logOut}
               className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Sign Out
-            </a>
+            </button>
           </div>
         </div>
       </div>

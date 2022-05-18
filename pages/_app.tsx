@@ -1,9 +1,10 @@
 import "../styles/globals.css";
+import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <>
       <Head>
@@ -40,7 +41,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         defer
       ></Script>
       <Script src="https://kit.fontawesome.com/a076d05399.js"></Script>
-      <Component {...pageProps} />
+      <SessionProvider session={session} refetchInterval={5 * 60}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </>
   );
 }

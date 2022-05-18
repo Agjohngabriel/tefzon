@@ -1,7 +1,9 @@
 import React from "react";
 import MainLayout from "../../../components/MainLayout";
+import { useSession } from "next-auth/react";
 
 const CreateLeague = () => {
+  const { data: session } = useSession();
   return (
     <MainLayout>
       <div className="container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 md:w-3/5 ml-24 mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
@@ -106,13 +108,17 @@ const CreateLeague = () => {
 
         <div className="w-full bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mt-5 py-6">
           <h1 className="font-arcon text-md  text-[#222222]/60 px-5 pb-2 ">
-          Invite paticipants
+            Invite paticipants
           </h1>
           <div className="  px-5  ">
             <div className="bg-[#F3F3F3] rounded-sm border shadow-xl p-5 w-full pb-10 ">
               <div className="flex flex-col  space-y-4">
                 <p className="font-arcon text-[0.7rem] text-[#222222]/60 w-5/6">
-                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected
+                  There are many variations of passages of Lorem Ipsum
+                  available, but the majority have suffered alteration in some
+                  form, by injected There are many variations of passages of
+                  Lorem Ipsum available, but the majority have suffered
+                  alteration in some form, by injected
                 </p>
                 <div className="flex ">
                   <div className="bg-white  flex border border-gray-200 svelte-1l8159u w-full">
@@ -140,7 +146,10 @@ const CreateLeague = () => {
                     </div>
 
                     <div className="col-span-3 px-1 font-arcon flex flex-col">
-                      <div className="text-[#222222]/70 text-sm font-arconpy-1"> Sangwa Albine </div>
+                      <div className="text-[#222222]/70 text-sm font-arconpy-1">
+                        {" "}
+                        Sangwa Albine{" "}
+                      </div>
                     </div>
 
                     <div className="col-span-2  justify-self-end">
@@ -160,7 +169,10 @@ const CreateLeague = () => {
                     </div>
 
                     <div className="col-span-3 px-1 font-normal flex flex-col ">
-                      <div className="text-[#222222]/70 text-sm font-arcon"> Mbonyintege </div>
+                      <div className="text-[#222222]/70 text-sm font-arcon">
+                        {" "}
+                        Mbonyintege{" "}
+                      </div>
                     </div>
 
                     <div className="col-span-2  justify-self-end">

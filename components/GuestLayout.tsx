@@ -6,7 +6,6 @@ import MainFooter from "./MainFooter";
 
 export default function GuestLayout(props: { children: ReactNode }) {
   const Router = useRouter();
-  console.log(Router.asPath);
   return (
     <>
       <GuestHeader />
