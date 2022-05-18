@@ -2,13 +2,11 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-
-interface Favorite{
-  id:string,
-  logo_path:string,
-  name:string
+interface Favorite {
+  id: string;
+  logo_path: string;
+  name: string;
 }
-
 
 const Favourite = (props: {
   formStep: number;
@@ -17,7 +15,6 @@ const Favourite = (props: {
 }) => {
   const [favourite, setFavourite] = useState([]);
   const { data: session }: any = useSession();
-
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -38,7 +35,7 @@ const Favourite = (props: {
     };
 
     getFavourites();
-  }, []);
+  });
 
   return (
     <div className={`p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
