@@ -37,7 +37,7 @@ export default NextAuth({
           if (user) {
             return user.data;
           }
-        } catch (e) {
+        } catch (e: any) {
           const errorMessage = e.response.data.message;
           throw new Error(errorMessage + " &email=" + credentials.email);
         }
