@@ -18,15 +18,6 @@ const Favourite = (props: {
   const [favourite, setFavourite] = useState([]);
   const { data: session }: any = useSession();
 
-  useEffect(() => {
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setFavourite(FavouritesFromApi);
-    };
-
-    getFavourites();
-  }, []);
-
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BASE_URL}get/league/teams`, {
       headers: {
@@ -38,6 +29,15 @@ const Favourite = (props: {
     console.log(response);
     return response;
   };
+
+  useEffect(() => {
+    const getFavourites = async () => {
+      const FavouritesFromApi = await fetchAll();
+      setFavourite(FavouritesFromApi);
+    };
+
+    getFavourites();
+  }, [fetchAll]);
 
   return (
     <div className={`p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
