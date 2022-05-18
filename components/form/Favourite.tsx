@@ -54,7 +54,7 @@ const Favourite = (props: {
           <section className="max-w-6xl mx-auto  ">
             <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 ">
               {favourite.map((item: Favorite, index) => (
-                <button className="w-full border  sahdow-lg p-8 flex flex-col justify-center items-center">
+                <button className="w-full border  sahdow-lg p-8 flex flex-col justify-center items-center" key={item.id}>
                   <div className="mb-8">
                     <img
                       className="object-center object-cover rounded-full h-26 w-26"
