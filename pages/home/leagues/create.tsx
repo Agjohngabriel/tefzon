@@ -3,7 +3,6 @@ import MainLayout from "../../../components/MainLayout";
 import { useSession } from "next-auth/react";
 
 const CreateLeague = () => {
-  const { data: session } = useSession();
   return (
     <MainLayout>
       <div className="container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 md:w-3/5 ml-24 mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
@@ -187,7 +186,7 @@ const CreateLeague = () => {
               </div>
             </div>
             <div className="flex bg-white px-2 py-5 border">
-              <p className="text-[#222222]/60 text-sm font-arcon text-black-150 w-5/6 font-sm">
+              <p className="text-[#222222]/60 text-sm font-arcon  w-5/6 font-sm">
                 https://www.tefzon.com/c/MzcxODgzjNKUI?ctht
               </p>
 

@@ -2,13 +2,21 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
+
+interface Favorite{
+  id:string,
+  logo_path:string,
+  name:string
+}
+
+
 const Favourite = (props: {
   formStep: number;
   nextFormStep: any;
   updateFormData: any;
 }) => {
   const [favourite, setFavourite] = useState([]);
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
 
   useEffect(() => {
     const getFavourites = async () => {
@@ -47,7 +55,7 @@ const Favourite = (props: {
         <div className="w-full border">
           <section className="max-w-6xl mx-auto  ">
             <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 ">
-              {favourite.map((item, index) => (
+              {favourite.map((item: Favorite, index) => (
                 <button className="w-full border  sahdow-lg p-8 flex flex-col justify-center items-center">
                   <div className="mb-8">
                     <img

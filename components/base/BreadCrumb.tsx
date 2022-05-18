@@ -2,11 +2,11 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 function BreadCrumb() {
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
   async function logOut() {
     try {
       const out = await axios.get(
-        `${process.env.BASE_URL}logout/${session.data.user.id}`,
+        `${process.env.BASE_URL}logout/${session?.data.user.id}`,
         {
           headers: {
             accept: "*/*",
@@ -20,7 +20,6 @@ function BreadCrumb() {
     } catch (e) {
       return null;
     }
-    // signOut();
   }
   return (
     <div className="bg-violet-500 pt-20 lg:pt-[20px] md:pt-[5px] sm:pt-[2px] justify-between ">
