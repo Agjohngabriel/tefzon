@@ -1,7 +1,9 @@
 import MainLayout from "../../../components/MainLayout";
 
 const JoinPublic = () => {
-  return <MainLayout></MainLayout>;
+  return <MainLayout>
+    <h1>uguigig</h1>
+  </MainLayout>;
 };
 
 export default JoinPublic;
