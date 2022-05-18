@@ -37,7 +37,7 @@ const Favourite = (props: {
     };
 
     getFavourites();
-  }, [fetchAll]);
+  }, [favourite]);
 
   return (
     <div className={`p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
