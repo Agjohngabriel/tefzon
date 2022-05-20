@@ -1,5 +1,6 @@
 import MainLayout from "../../../../components/MainLayout";
 import { useState } from "react";
+import Link from "next/link";
 
 const SquadSelection = () => {
   const [openTab, setOpenTab] = useState(1);
@@ -13,16 +14,19 @@ const SquadSelection = () => {
         </div>
         <div className="w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
           <div>
-            <button
-              className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
+            <Link href="/home/account/squad/select_captain">
+              <a
+                className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
                                     bg-[#4AAE75] text-gray-200
                                     duration-200 ease-in-out 
                                     transition"
-              type="submit"
-            >
-              <div className="font-montserrat text-sm text-black-150">Next</div>
-            </button>
+              >
+                <span className="font-montserrat text-sm text-black-150">
+                  Next
+                </span>
+              </a>
+            </Link>
           </div>
         </div>
       </div>

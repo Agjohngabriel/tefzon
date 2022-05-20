@@ -188,7 +188,7 @@ export default function MainFooter() {
               <h4 className="font-montserrat text-white text-lg  font-semibold mb-9">
                 Follow Us
               </h4>
-              <p className="text-base text-white mb-7">
+              <p className="text-base font-arcon text-white mb-7">
                 Find exclusive contents on our social networks
               </p>
               <div className="flex items-center mb-6">
