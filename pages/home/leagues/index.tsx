@@ -1,12 +1,11 @@
-import Link from "next/link";
-import Router from "next/router";
 import MainLayout from "../../../components/MainLayout";
+import Router from "next/router";
+import Link from "next/link";
 
-const Join = () => {
+const Index = () => {
   const goToPrivate = () => {
     Router.push("/home/leagues/join_private");
   };
-
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
@@ -19,20 +18,9 @@ const Join = () => {
           navigate_next
         </span>
 
-        <Link href="/home/leagues" passHref>
-          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-            Leagues
-          </a>
-        </Link>
-        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-          navigate_next
-        </span>
-
-        <Link href="/home/leagues" passHref>
-          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-            Join
-          </a>
-        </Link>
+        <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
+          Leagues
+        </h1>
       </div>
       <div className=" container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-10  w-auto">
         <div className="flex">
@@ -40,25 +28,21 @@ const Join = () => {
             <div className="   py-1 px-1 w-full">
               <div className="flex flex-col space-y-4 mb-5">
                 <h1 className="font-montserrat text-3xl text-black-0 w-4/6 ">
-                  Choose a league type to join
+                  Create or join leagues
                 </h1>
-                <p className="font-arcon text-xs px-8 py-2  text-black-0  w-full">
-                  Join a private or public league to compete against friends and
-                  other game players.
-                </p>
               </div>
 
               <div className="flex flex-col space-y-2 mb-5">
                 <h1 className="font-montserrat text-2xl text-black-0 w-4/6 ">
-                  Private leagues
+                  Join an existing league
                 </h1>
                 <p className="font-arcon text-sm px-8 py-2 text-black-0  w-full">
-                  Join a private league if somebody has given you a code to
-                  enter
+                  Join a private or public league to compete against friends and
+                  other game players.
                 </p>
-                <Link href="/home/leagues/join_private" passHref>
+                <Link href="/home/leagues/join" passHref>
                   <a className="font-montserrat flex items-center text-black-150 rounded  focus:outline-none">
-                    Join private league
+                    Join a league
                     <span className="ml-2 material-icons text-[#6E4BEC] hover:text-green-500">
                       arrow_forward
                     </span>
@@ -68,15 +52,15 @@ const Join = () => {
 
               <div className="flex flex-col space-y-2 ">
                 <h1 className="font-montserrat text-2xl text-black-0 w-4/6 ">
-                  Public leagues
+                  Create a new league
                 </h1>
                 <p className="font-arcon text-sm px-8 py-2 text-black-150  w-full">
-                  Join a public league to play a small randomly selected group
-                  of game players
+                  Create a private or public league to compete against friends
+                  and other game players.
                 </p>
-                <Link href="/home/leagues/join_public" passHref>
+                <Link href="/home/leagues/create" passHref>
                   <a className="font-montserrat flex items-center text-black-150 rounded  focus:outline-none">
-                    Join public league
+                    Create a league
                     <span className="ml-2 material-icons text-[#6E4BEC] hover:text-green-500">
                       arrow_forward
                     </span>
@@ -116,4 +100,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default Index;

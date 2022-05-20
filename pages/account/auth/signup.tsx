@@ -1,20 +1,63 @@
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { useState } from "react";
 import { Agreement } from "../../../components/form/Agreement";
 import Favourite from "../../../components/form/Favourite";
 import PersonalDetails from "../../../components/form/PersonalDetails";
 import GuestLayout from "../../../components/GuestLayout";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 const Signup = () => {
   const [formStep, setFormStep] = useState(0);
   const [formData, setFormData] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [regError, setRegError] = useState({});
+  const [error, setError] = useState(false);
+  const MySwal = withReactContent(Swal);
+  const router = useRouter();
 
   const updateFormData = (newData: any) => {
     setFormData({ ...formData, ...newData });
   };
 
-  const goToEmail = () => {
-    Router.push("/account/auth/success");
-  };
+  async function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      const user = await axios.post(
+        `${process.env.BASE_URL}register`,
+        formData,
+        {
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (user) {
+        setIsSubmitting(false);
+        MySwal.fire({
+          title: "Registration was Successful",
+          confirmButtonText: "Proceed to Login",
+          showLoaderOnConfirm: true,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            router.push("/account/auth/login");
+          }
+        });
+      }
+    } catch (e: any) {
+      setIsSubmitting(false);
+      const errorMessage = e.response.data.errors;
+      setError(true);
+      setRegError(errorMessage);
+      setFormStep(0);
+    }
+  }
 
   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
@@ -111,20 +154,29 @@ const Signup = () => {
                 </div>
               </div>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               {formStep >= 0 && (
                 <PersonalDetails
-                updateFormData={updateFormData}
+                  errors={regError}
+                  updateFormData={updateFormData}
                   formStep={formStep}
                   nextFormStep={nextFormStep}
                 />
               )}
               {formStep >= 1 && (
-                <Favourite updateFormData={updateFormData} formStep={formStep} nextFormStep={nextFormStep} />
+                <Favourite
+                  updateFormData={updateFormData}
+                  formStep={formStep}
+                  nextFormStep={nextFormStep}
+                />
               )}
 
               {formStep >= 2 && (
-                <Agreement updateFormData={updateFormData} formStep={formStep} nextFormStep={nextFormStep} />
+                <Agreement
+                  updateFormData={updateFormData}
+                  formStep={formStep}
+                  nextFormStep={nextFormStep}
+                />
               )}
               {/* <Button
             Onclick={() => nextFormStep}
@@ -136,17 +188,31 @@ const Signup = () => {
             /> */}
 
               <div className=" p-2 mt-10 justify-center">
-                <button
-                  onClick={formStep == 2 ? goToEmail : nextFormStep}
-                  type="button"
-                  className={`text-base hover:scale-110 focus:outline-none flex justify-center p-3.5 font-bold cursor-pointer                                 
+                {formStep == 2 ? (
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`text-base hover:scale-110 focus:outline-none flex justify-center p-3.5 font-bold cursor-pointer                                 
                                             hover:bg-blue-500 shadow-inner rounded-lg
                                             bg-violet-500 text-gray-200
                                             duration-200 ease-in-out 
                                             transition mx-auto w-72`}
-                >
-                  {formStep == 2 ? "Complete Registration" : "Next"}
-                </button>
+                  >
+                    {isSubmitting ? "Loadin..." : "Complete Registration"}
+                  </button>
+                ) : (
+                  <a
+                    onClick={nextFormStep}
+                    type="button"
+                    className={`text-base hover:scale-110 focus:outline-none flex justify-center p-3.5 font-bold cursor-pointer                                 
+                                            hover:bg-blue-500 shadow-inner rounded-lg
+                                            bg-violet-500 text-gray-200
+                                            duration-200 ease-in-out 
+                                            transition mx-auto w-72`}
+                  >
+                    Next
+                  </a>
+                )}
 
                 {formStep > 0 && (
                   <button

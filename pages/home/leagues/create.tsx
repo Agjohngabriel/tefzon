@@ -1,12 +1,101 @@
-import React from "react";
+import { useState } from "react";
 import MainLayout from "../../../components/MainLayout";
 import { useSession } from "next-auth/react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import Link from "next/link";
 
 const CreateLeague = () => {
+  const { data: session }: any = useSession();
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [duration, setDuration] = useState("");
+  const [start, setStart] = useState("");
+  const [fee, setFee] = useState("");
+  const [winner, setWinner] = useState("");
+  const [entry, setEntry] = useState("");
+  const [pat, setPat] = useState("");
+  const [error, setError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const MySwal = withReactContent(Swal);
+
+  async function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      const user = await axios.post(
+        `${process.env.BASE_URL}leagues`,
+        {
+          name: name,
+          participants: pat,
+          type: type,
+          duration: duration,
+          start: start,
+          entry_fee: fee,
+          winner_type: winner,
+          entry_type: entry,
+        },
+        {
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.data.token}`,
+          },
+        }
+      );
+      if (user) {
+        setIsSubmitting(false);
+        MySwal.fire({
+          title: "Successful",
+          confirmButtonText: "Proceed",
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            // router.push('/account/auth/login')
+          }
+        });
+      }
+    } catch (e: any) {
+      setIsSubmitting(false);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setError(errorMessage);
+    }
+  }
   return (
     <MainLayout>
+      <div className="inline-flex rounded -ml-1">
+        <Link href="/home/account/status" passHref>
+          <a className="font-montserrat text-sm text-[#240155] ml-24 mt-10 px-2 ">
+            Home
+          </a>
+        </Link>
+
+        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
+          navigate_next
+        </span>
+
+        <Link href="/home/leagues" passHref>
+          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
+            Leagues
+          </a>
+        </Link>
+        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
+          navigate_next
+        </span>
+
+        <Link href="/home/leagues" passHref>
+          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
+            Create
+          </a>
+        </Link>
+      </div>
       <div className="container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 md:w-3/5 ml-24 mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={handleSubmit}>
           <div className="flex flex-col  pt-10 space-y-4 max-w-lg mx-2">
             <h1 className="font-montserrat text-3xl text-black-150 w-4/6 ">
               Create a League
@@ -25,21 +114,28 @@ const CreateLeague = () => {
                     League type
                   </label>
                   <div className="font-arcon bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <select className="font-arcon fill-white form-select w-full px-3 py-2   rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                      <option value=""></option>
-                      <option value="">Public</option>
-                      <option value="02">Private</option>
+                    <select
+                      onChange={(e) => setType(e.currentTarget.value)}
+                      required
+                      className="font-arcon fill-white form-select w-full px-3 py-2  bg-white  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                    >
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
                     </select>
                   </div>
                 </div>
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
                   <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                    Paid/Free
+                    Entry Type
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <select className="form-select w-full px-3 py-2   rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                      <option value="">Paid</option>
-                      <option value="02">Free</option>
+                    <select
+                      onChange={(e) => setEntry(e.currentTarget.value)}
+                      required
+                      className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                    >
+                      <option value="paid">Paid</option>
+                      <option value="free">Free</option>
                     </select>
                   </div>
                 </div>
@@ -51,16 +147,30 @@ const CreateLeague = () => {
                     League title
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <input className="p-1 px-2 appearance-none outline-none w-full text-gray-700" />{" "}
+                    <input
+                      name="name"
+                      onInput={(e) => setName(e.currentTarget.value)}
+                      required
+                      className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                    />{" "}
                   </div>
                 </div>
 
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
                   <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                    League duration
+                    Duration
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <input className="p-1 px-2 appearance-none outline-none w-full text-gray-700" />{" "}
+                    <select
+                      onChange={(e) => setDuration(e.currentTarget.value)}
+                      name="duration"
+                      required
+                      className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                    >
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -71,7 +181,11 @@ const CreateLeague = () => {
                     Amount
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <input className="p-1 px-2 appearance-none outline-none w-full text-gray-700" />{" "}
+                    <input
+                      onInput={(e) => setFee(e.currentTarget.value)}
+                      name="entry_fee"
+                      className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                    />{" "}
                   </div>
                 </div>
 
@@ -80,9 +194,14 @@ const CreateLeague = () => {
                     Winning type
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <select className="form-select w-full px-3 py-2   rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                      <option value="">First - Third Position</option>
-                      <option value="04">Prefer not to state</option>
+                    <select
+                      onChange={(e) => setWinner(e.currentTarget.value)}
+                      name="winner_type"
+                      className="form-select w-full px-3 py-2 bg-white  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                    >
+                      <option value="single">Single</option>
+                      <option value="double">Double</option>
+                      <option value="triple">Triple</option>
                     </select>
                   </div>
                 </div>
@@ -91,21 +210,52 @@ const CreateLeague = () => {
               <div className="flex flex-col md:flex-row pt-2">
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
                   <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                    League code
+                    Start Date
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                     <input
-                      placeholder="E-mail"
+                      onInput={(e) => setStart(e.currentTarget.value)}
+                      name="start"
+                      type="date"
+                      className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                    />{" "}
+                  </div>
+                </div>
+
+                <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                  <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
+                    Participants
+                  </label>
+                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                    <input
+                      onInput={(e) => setPat(e.currentTarget.value)}
+                      name="participants"
+                      type="number"
                       className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
                     />{" "}
                   </div>
                 </div>
               </div>
+              <div className="w-full mx-auto  py-5 flex-1 svelte-1l8159u">
+                <button
+                  type="submit"
+                  className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex mx-auto justify-center px-28 py-2 rounded font-bold cursor-pointer 
+                                
+										hover:bg-blue-500 
+										bg-violet-500 text-gray-200
+										duration-200 ease-in-out 
+										transition"
+                >
+                  <div className="font-arcon text-xs font-medium px-10">
+                    {isSubmitting ? "Loading..." : "Create"}
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </form>
 
-        <div className="w-full bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mt-5 py-6">
+        {/* <div className="w-full bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mt-5 py-6">
           <h1 className="font-arcon text-md  text-[#222222]/60 px-5 pb-2 ">
             Invite paticipants
           </h1>
@@ -193,7 +343,7 @@ const CreateLeague = () => {
               <h2 className="text-[#240155]">Copy link</h2>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="container mb-5">

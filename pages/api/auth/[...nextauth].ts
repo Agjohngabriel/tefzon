@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
 
-
 export default NextAuth({
   providers: [
     CredentialsProvider({
@@ -18,8 +17,6 @@ export default NextAuth({
         credentials: Record<"email" | "password", string> | undefined
       ) {
         if (!credentials) return null;
-        console.log(credentials.email);
-        console.log(credentials.password);
         try {
           const user = await axios.post(
             `${process.env.BACKEND_URL}login`,
@@ -38,8 +35,8 @@ export default NextAuth({
             return user.data;
           }
         } catch (e: any) {
-          const errorMessage = e.response.data.message;
-          throw new Error(errorMessage + " &email=" + credentials.email);
+          const errorMessage = e.response.data.errors;
+          throw new Error(errorMessage);
         }
         return null;
       },

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MainLayout from "../../../../components/MainLayout";
 
-const WalletWithdraw = () => {
+const Fund = () => {
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
@@ -23,9 +23,9 @@ const WalletWithdraw = () => {
           navigate_next
         </span>
 
-        <Link href="/home/account/wallet/withdraw" passHref>
+        <Link href="/home/account/wallet/fund" passHref>
           <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-            Withdraw
+            Fund
           </a>
         </Link>
       </div>
@@ -34,15 +34,15 @@ const WalletWithdraw = () => {
           <div className="container max-w-3xl h-3/4  bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 md:w-3/5 ml-24 mt-10 mb-20  px-2 py-6 lg:px-10  w-auto">
             <div className="flex flex-col  pt-10 space-y-4 max-w-2xl mx-2">
               <h1 className="font-montserrat text-2xl text-[#333333] w-4/6 ">
-                Withdraw Money
+                Fund Wallet
               </h1>
               <p className="text-sm  font-arcon text-black-150 opacity-60 mb-20 w-5/6">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in same form by
-                injected.
+                There are many variations of passages of Lorem Ipsum available,
+                but the majority have suffered alteration in some form, by
+                injected
               </p>
               <p className="text-sm  font-arcon text-black-150 opacity-60 mb-20 w-5/6">
-                Withdraw money from Tefzone wallet
+                Transfer money to Tefzone wallet
               </p>
               <div className="lg:w-3/5 md:w-3/4 h-48  bg-[#5F5999] rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-110">
                 <img
@@ -79,49 +79,65 @@ const WalletWithdraw = () => {
 
               <div className="lg:w-2/3 md:w-3/5 pt-2">
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                  <label className=" font-arcon text-black-150 opacity-60 text-xs mb-2 ml-1">
-                    To
+                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
+                    From
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <select className="form-select w-full px-3 py-2 text-sm  font-arcon text-black-150 opacity-100 rounded-md focus:outline-none bg-white focus:border-indigo-500 transition-colors cursor-pointer">
-                      <option value="">Select Bank</option>
+                    <select className="form-select w-full px-3 py-2 text-sm font-arcon  bg-white text-black-150 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                      <option value="">Card</option>
                       <option value="04">Prefer not to state</option>
                     </select>
                   </div>
                 </div>
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                  <label className="font-arcon text-black-150 opacity-60 text-xs mb-2 ml-1">
-                    Account number
+                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
+                    Card number
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                     <input className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700" />{" "}
                   </div>
                 </div>
 
+                <div className="flex flex-col md:flex-row pt-2">
+                  <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                    <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
+                      Expiry
+                    </label>
+                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                      <input className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700" />{" "}
+                    </div>
+                  </div>
+
+                  <div className="w-full  flex-1 svelte-1l8159u">
+                    <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
+                      CVV
+                    </label>
+                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                      <input className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700" />{" "}
+                    </div>
+                  </div>
+                </div>
+
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                  <label className="font-arcon text-black-150 opacity-60 text-xs mb-2 ml-1">
+                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
                     Amount
                   </label>
 
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <span className="font-arcon text-black-150 opacity-100 pl-2">
-                      (₦)
-                    </span>
+                    <span className="text-black-150 font-arcon pl-2">(₦)</span>
                     <input className="px-2 appearance-none outline-none w-full text-sm text-gray-700 py-1" />{" "}
                   </div>
                 </div>
                 <div className="w-full mx-2  py-5 flex-1 svelte-1l8159u">
                   <button
                     className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center w-full py-2 rounded font-bold cursor-pointer 
-                                
+                                opacity-50
 										hover:bg-blue-500 
-										bg-[#6E4BEC] opacity-50 text-gray-200
+										bg-[#6E4BEC] text-gray-200
 										duration-200 ease-in-out 
 										transition"
                   >
-                    <div className="font-sans text-sm font-semibold px-10">
-                      Withdraw Money
-                    </div>
+                    <div className="font-montserrat text-sm px-10">Next</div>
                   </button>
                 </div>
               </div>
@@ -426,4 +442,4 @@ const WalletWithdraw = () => {
   );
 };
 
-export default WalletWithdraw;
+export default Fund;

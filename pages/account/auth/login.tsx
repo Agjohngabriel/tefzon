@@ -9,13 +9,13 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [loginError, setLoginError] = useState("");
+  const [loginError, setLoginError] = useState({});
+  const [error, setError] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     // Getting the error details from URL
     if (router.query.error) {
-      console.log(router.query.error);
       const error = router.query.error as string;
       const errormail = router.query.email as string;
       setLoginError(error); // Shown below the input field in my example
@@ -23,7 +23,6 @@ const Login = () => {
     }
   }, [router]);
   async function handleSubmit(e: React.SyntheticEvent) {
-    console.log(`${process.env.BACKEND_URL}logout`);
     e.preventDefault();
     if (isSubmitting) {
       return;
@@ -36,7 +35,12 @@ const Login = () => {
       email,
       // callbackUrl,
     });
-    console.log(response);
+    if (response?.error) {
+      console.log(response);
+      setLoginError(response);
+      setError(true);
+      setIsSubmitting(false);
+    }
     if (!response) {
       throw new Error("Received empty response from next auth");
     }
@@ -54,7 +58,7 @@ const Login = () => {
         <h1 className="font-oswald text-4xl text-gray-700 pt-20 text-center">
           Login
         </h1>
-        {loginError}
+
         <p className="font-arcon text-xs text-gray-500 text-center my-10">
           Welcome back to Tefzone Fantasy, please login to your account to
           continue.
@@ -62,7 +66,7 @@ const Login = () => {
 
         <div className="flex mx-auto items-center justify-center">
           <Link href="/" passHref>
-            <div className="flex items-center justify-center px-8 py-2 space-x-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none ">
+            <a className="flex items-center justify-center px-8 py-2 space-x-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none ">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -78,11 +82,11 @@ const Login = () => {
               <span className="text-xs font-montserrat text-white group-hover:text-white">
                 Facebook
               </span>
-            </div>
+            </a>
           </Link>
 
           <Link href="/" passHref>
-            <div className="flex items-center justify-center mx-3 px-10 py-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none ">
+            <a className="flex items-center justify-center mx-3 px-10 py-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none ">
               <span>
                 <img
                   className=" h-5 cursor-pointer"
@@ -93,11 +97,11 @@ const Login = () => {
               <span className="text-xs font-montserrat text-gray-800 group-hover:text-white">
                 Google
               </span>
-            </div>
+            </a>
           </Link>
 
           <Link href="/" passHref>
-            <div className="flex items-center justify-center px-10 py-2 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none ">
+            <a className="flex items-center justify-center px-10 py-2 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none ">
               <span>
                 <svg
                   className="text-gray-100 group-hover:text-white"
@@ -111,7 +115,7 @@ const Login = () => {
               <span className="text-xs font-montserrat text-gray-100 group-hover:text-white">
                 Twitter
               </span>
-            </div>
+            </a>
           </Link>
         </div>
 
@@ -121,7 +125,11 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <div className="w-3/4  mx-auto">
             <div className="w-full py-4  flex-1 svelte-1l8159u">
-              <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+              <div
+                className={`bg-white my-2 p-1 flex border ${
+                  error ? "border-red-500" : "border-gray-200"
+                } rounded svelte-1l8159u`}
+              >
                 <input
                   placeholder="Enter e-mail"
                   type="email"
@@ -131,9 +139,16 @@ const Login = () => {
                   className="p-1 px-2 appearance-none h-12 outline-none w-full text-gray-700 font-arcon"
                 />{" "}
               </div>
+              <span className="text-red-600 text-[0.7rem]">
+                {error ? "Invalid Email  Or Password" : ""}
+              </span>
             </div>
             <div className="w-full  flex-1 svelte-1l8159u">
-              <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+              <div
+                className={`bg-white my-2 p-1 flex border ${
+                  error ? "border-red-500" : "border-gray-200"
+                } rounded svelte-1l8159u`}
+              >
                 <input
                   placeholder="Enter Password"
                   required
@@ -172,9 +187,9 @@ const Login = () => {
           </div>
 
           <Link href="/" passHref>
-            <span className="flex items-center text-[#222222]/50 font-arcon text-sm justify-center mx-auto px-8 py-4 focus:outline-none">
+            <a className="flex items-center text-[#222222]/50 font-arcon text-sm justify-center mx-auto px-8 py-4 focus:outline-none">
               Forgot Password?
-            </span>
+            </a>
           </Link>
 
           <div className="w-full mx-auto  py-5 flex-1 svelte-1l8159u">
@@ -197,9 +212,9 @@ const Login = () => {
         <p className="text-xs font-arcon text-gray-500 text-center my-8">
           Don't have an account?
           <Link href="/account/auth/signup" passHref>
-            <span className="items-center font-arcon text-indigo-700  text-xs justify-center mx-auto px-2 py-4 focus:outline-none">
+            <a className="items-center font-arcon text-indigo-700  text-xs justify-center mx-auto px-2 py-4 focus:outline-none">
               Sign Up
-            </span>
+            </a>
           </Link>
         </p>
       </div>

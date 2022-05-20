@@ -13,9 +13,19 @@ const Favourite = (props: {
   nextFormStep: any;
   updateFormData: any;
 }) => {
-  const [favourite, setFavourite] = useState([]);
+  const [favourite, setFavourite] = useState({});
+  const [teams, setTeams] = useState([]);
   const { data: session }: any = useSession();
 
+  const updateFavData = (newData: any) => {
+    const set = { newData };
+    setFavourite({ ...favourite, ...set });
+    update();
+  };
+
+  const update = () => {
+    props.updateFormData({ favourite_team: favourite });
+  };
   useEffect(() => {
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BASE_URL}get/league/teams`, {
@@ -25,13 +35,12 @@ const Favourite = (props: {
         },
       });
       const response = await res.data;
-      console.log(response);
       return response;
     };
 
     const getFavourites = async () => {
       const FavouritesFromApi = await fetchAll();
-      setFavourite(FavouritesFromApi);
+      setTeams(FavouritesFromApi);
     };
 
     getFavourites();
@@ -53,8 +62,19 @@ const Favourite = (props: {
         <div className="w-full border">
           <section className="max-w-6xl mx-auto  ">
             <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 ">
-              {favourite.map((item: Favorite, index) => (
-                <button className="w-full border  sahdow-lg p-8 flex flex-col justify-center items-center" key={item.id}>
+              {teams.map((item: Favorite, index) => (
+                <button
+                  onClick={() =>
+                    updateFavData({
+                      id: item.id,
+                      name: item.name,
+                      logo_path: item.logo_path,
+                    })
+                  }
+                  type="button"
+                  className="w-full border  sahdow-lg p-8 flex flex-col justify-center items-center"
+                  key={item.id}
+                >
                   <div className="mb-8">
                     <img
                       className="object-center object-cover rounded-full h-26 w-26"

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Button from "../base/Button";
 // import { useFormData } from "../../context";
 
@@ -6,7 +6,9 @@ const PersonalDetails = (props: {
   formStep: number;
   nextFormStep: any;
   updateFormData: any;
+  errors: object;
 }) => {
+  const [passwordType, setPasswordType] = useState("password");
   const handleDateChange = () => {
     const day: string = (document.getElementById("day") as HTMLInputElement)
       .value;
@@ -50,9 +52,12 @@ const PersonalDetails = (props: {
                 required
               />{" "}
             </div>
+            {/* <span>{props.errors.email}</span> */}
           </div>
           <div className="w-full flex-1 mx-2 svelte-1l8159u">
-            <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+            <div
+              className={`bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u`}
+            >
               <input
                 placeholder="Last Name"
                 onInput={(e) =>
@@ -67,7 +72,11 @@ const PersonalDetails = (props: {
 
         <div className="flex flex-col md:flex-row pt-8">
           <div className="w-full mx-2 flex-1 svelte-1l8159u">
-            <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+            <div
+              className={`bg-white my-2 p-1 flex border ${
+                "email" in props.errors ? "border-red-500" : "border-gray-200"
+              } rounded svelte-1l8159u`}
+            >
               <input
                 placeholder="E-mail"
                 type="email"
@@ -78,6 +87,11 @@ const PersonalDetails = (props: {
                 required
               />{" "}
             </div>
+            <span className="text-red-600 opacity-40">
+              {"email" in props.errors
+                ? "The email has already been taken"
+                : ""}
+            </span>
           </div>
           <div className="w-full mx-2 flex-1 svelte-1l8159u">
             {/* <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase"> Your Email</div> */}
@@ -89,11 +103,19 @@ const PersonalDetails = (props: {
                 }
                 className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 required
-                type="password"
+                type={passwordType}
               />
               <div className="flex -mr-px">
                 <span className="flex items-center leading-normal bg-white rounded rounded-l-none border-0 px-3 whitespace-no-wrap text-gray-600">
                   <button
+                    onClick={() => {
+                      if (passwordType === "password") {
+                        setPasswordType("text");
+                        return;
+                      }
+                      setPasswordType("password");
+                    }}
+                    type="button"
                     className="text-base hover:scale-110 focus:outline-none flex justify-center py-1 cursor-pointer                                 
                                   hover:bg-gray-300 shadow-inner rounded-lg
                                   bg-gray-200 text-gray-500
@@ -101,7 +123,7 @@ const PersonalDetails = (props: {
                                   transition"
                   >
                     <div className="font-sans text-sm font-light  px-3">
-                      Show
+                      {passwordType === "password" ? "show" : "Hide"}
                     </div>
                   </button>
                 </span>
@@ -113,19 +135,28 @@ const PersonalDetails = (props: {
         <div className="flex flex-col md:flex-row pt-4">
           <div className="w-full mx-2 flex-1 svelte-1l8159u">
             <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
-            <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-              <select
-                onChange={(e) =>
-                  props.updateFormData({ gender: e.currentTarget.value })
+            <div
+              className={`bg-white my-2 p-1 flex border ${
+                "username" in props.errors
+                  ? "border-red-500"
+                  : "border-gray-200"
+              } rounded svelte-1l8159u`}
+            >
+              <input
+                placeholder="Username"
+                type="text"
+                onInput={(e) =>
+                  props.updateFormData({ username: e.currentTarget.value })
                 }
-                className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
                 required
-              >
-                <option>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
+              />{" "}
             </div>
+            <span className="text-red-600 opacity-40">
+              {"username" in props.errors
+                ? "The username has already been taken"
+                : ""}
+            </span>
           </div>
 
           <div className="w-full mx-2 flex-1 mt-2 svelte-1l8159u">
@@ -207,44 +238,82 @@ const PersonalDetails = (props: {
         </div>
 
         <div className="flex flex-col md:flex-row pt-7">
-          <div className="w-full mx-2 flex-1 svelte-1l8159u">
-            <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
-            <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-              <select onChange={(e) =>
-                  props.updateFormData({ country: e.currentTarget.value })
-                } className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                <option>Select Country</option>
-                <option value="02">Niger</option>
-                <option value="03">Boni</option>
-                <option value="04">PAmerica</option>
-              </select>
+          <div className="flex w-1/2 items-end -mb-1">
+            <div className="w-full mx-2 flex-1 svelte-1l8159u">
+              <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
+              <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                <select
+                  onChange={(e) =>
+                    props.updateFormData({ gender: e.currentTarget.value })
+                  }
+                  className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                  required
+                >
+                  <option>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div className="w-full mx-2 flex-1 svelte-1l8159u">
+              <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
+              <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                <select
+                  onChange={(e) =>
+                    props.updateFormData({ country: e.currentTarget.value })
+                  }
+                  className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                >
+                  <option>Select Country</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Boni">Boni</option>
+                  <option value="America">PAmerica</option>
+                </select>
+              </div>
             </div>
           </div>
-          <div className="w-full mx-2 mt-2 flex-1 svelte-1l8159u">
-            <label className="text-gray-600 font-normal text-sm mb-9 ml-1">
-              Mobile number
-            </label>
-            <div className="bg-white  svelte-1l8159u">
-              <div className="flex items-end -mb-1">
-                <div className="w-1/3 border border-gray-200 rounded">
-                  <select onChange={handlePhoneChange}
-                      id="cd" className="form-select bg-white w-full px-3 py-2 mb-1 rounded focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                    <option value="+234">+234</option>
-                    <option value="+222">+222</option>
-                    <option value="+223">+223</option>
-                    <option value="+235">+234</option>
-                  </select>
-                </div>
-
-                <div className="px-1 w-2/3">
-                  <div>
-                    <input
-                      className="w-full px-3 py-2 mb-1 border border-gray-200 rounded focus:outline-none focus:border-indigo-500 transition-colors"
-                      placeholder="Enter number"
-                      onInput={handlePhoneChange}
-                      id="ph"
-                      type="number"
-                    />
+          <div className="w-2/2 mx-2 mt-2 flex-1 svelte-1l8159u">
+            <div className="w-full mx-2 flex-1 mt-2 svelte-1l8159u">
+              <label className="text-gray-600 font-normal text-sm mb-9 ml-1">
+                Date of birth
+              </label>
+              <div className="bg-white  svelte-1l8159u">
+                <div className="flex items-end -mb-1">
+                  <div className="w-1/3">
+                    <div>
+                      <select
+                        onChange={handlePhoneChange}
+                        id="cd"
+                        className="form-select bg-white w-full px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                        required
+                      >
+                        <option>code </option>
+                        <option value="+1">+1 </option>
+                        <option value="+2">02 </option>
+                        <option value="+3">03 </option>
+                        <option value="+4">04 </option>
+                        <option value="+5">05 </option>
+                        <option value="+6">06 </option>
+                        <option value="+7">07 </option>
+                        <option value="+8">08 </option>
+                        <option value="+9">09 </option>
+                        <option value="+0">10 </option>
+                        <option value="+1">11 </option>
+                        <option value="+2">12 </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className=" w-2/3">
+                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                      <input
+                        placeholder="Enter Phone Number"
+                        type="number"
+                        id="ph"
+                        onInput={handlePhoneChange}
+                        className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                        required
+                      />{" "}
+                    </div>
                   </div>
                 </div>
               </div>

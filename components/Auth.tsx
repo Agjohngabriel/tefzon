@@ -2,13 +2,12 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
 
-
-export interface User{
-  token: string,
-  user:{
-    email: string,
-    username: string
-  }
+export interface User {
+  token: string;
+  user: {
+    email: string;
+    username: string;
+  };
 }
 
 export default function Auth(props: { children: ReactNode }) {

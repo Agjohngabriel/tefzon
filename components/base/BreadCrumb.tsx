@@ -1,8 +1,11 @@
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
+import { useRouter } from "next/router";
+import Link from "next/link";
 function BreadCrumb() {
   const { data: session }: any = useSession();
+  const Router = useRouter();
   async function logOut() {
     try {
       const out = await axios.get(
@@ -43,81 +46,139 @@ function BreadCrumb() {
       <div className="flex justify-between w-2/3 ml-24 ">
         <div className="w-full block flex-grow md:flex md:justify-between md:w-auto">
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              Status
-            </a>
+            <Link href="/home/leagues/create" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/account/status")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Status
+              </span>
+            </Link>
           </div>
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              Pick Team
-            </a>
+            <Link href="/home/leagues/create" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/leagues/teams")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Pick Team
+              </span>
+            </Link>
           </div>
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              Transfer
-            </a>
+            <Link href="/home/account/transfer" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/account/transfer")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Transfer
+              </span>
+            </Link>
           </div>
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              League
-            </a>
+            <Link href="/home/leagues/" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/leagues")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                League
+              </span>
+            </Link>
           </div>
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              Fixtures
-            </a>
+            <Link href="/home/fixtures" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/fixtures")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Fixtures
+              </span>
+            </Link>
           </div>
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              The Scout
-            </a>
+            <Link href="/home/leagues/create" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/leagues/scout")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                The Scout
+              </span>
+            </Link>
           </div>
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              Stats
-            </a>
+            <Link href="/home/leagues/create" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/leagues/stats")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Stats
+              </span>
+            </Link>
           </div>
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              Prize
-            </a>
+            <Link href="/home/account/wallet" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/account/wallet")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Wallet
+              </span>
+            </Link>
           </div>
           <div>
-            <a
-              href="/home/leagues/create"
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
-            >
-              Help
-            </a>
+            <Link href="/home/leagues/create" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/leagues/prices")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Price
+              </span>
+            </Link>
           </div>
+          {/* <div>
+            <Link href="/home/leagues/create" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/account/help")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Help
+              </span>
+            </Link>
+          </div> */}
           <div>
             <button
               onClick={logOut}
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green-500 text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Sign Out
             </button>

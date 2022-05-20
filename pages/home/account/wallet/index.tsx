@@ -1,8 +1,25 @@
+import Link from "next/link";
 import MainLayout from "../../../../components/MainLayout";
 
 const Index = () => {
   return (
     <MainLayout>
+      <div className="inline-flex rounded -ml-1">
+        <Link href="/home" passHref>
+          <a className="font-montserrat text-sm text-[#240155] ml-24 mt-10 px-2 ">
+            Home
+          </a>
+        </Link>
+        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
+          navigate_next
+        </span>
+
+        <Link href="/home/account/wallet" passHref>
+          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
+            Wallet
+          </a>
+        </Link>
+      </div>
       <div className="container">
         <div className="flex">
           <div className="container max-w-3xl h-3/4  bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#AEBEDF]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 md:w-3/5 ml-24 mt-10 mb-20  px-2 py-6 lg:px-10  w-auto">
@@ -51,33 +68,37 @@ const Index = () => {
 
               <div className="flex flex-col md:flex-row py-10">
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                  <button
-                    className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center px-20 py-4 rounded font-bold cursor-pointer 
+                  <Link href="/home/account/wallet/fund">
+                    <a
+                      className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center px-20 py-4 rounded font-bold cursor-pointer 
                                 
                                 hover:bg-blue-500 
                                 bg-[#6E4BEC] opacity-50 text-gray-200
                                  duration-200 ease-in-out 
                                  transition"
-                  >
-                    <div className="font-montserrat text-sm font-semibold">
-                      Fund Wallet
-                    </div>
-                  </button>
+                    >
+                      <span className="font-montserrat text-sm font-semibold">
+                        Fund Wallet
+                      </span>
+                    </a>
+                  </Link>
                 </div>
 
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                  <button
-                    className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center px-20 py-4 rounded font-bold cursor-pointer 
+                  <Link href="/home/account/wallet/withdraw">
+                    <a
+                      className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center px-20 py-4 rounded font-bold cursor-pointer 
                                 
                                 hover:bg-blue-500 
                                 bg-[#6E4BEC] opacity-50 text-gray-200
                                  duration-200 ease-in-out 
                                  transition"
-                  >
-                    <div className="font-montserrat text-sm font-semibold">
-                      Withdraw Money
-                    </div>
-                  </button>
+                    >
+                      <span className="font-montserrat text-sm font-semibold">
+                        Withdraw Money
+                      </span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
