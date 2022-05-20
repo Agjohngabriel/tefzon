@@ -43,7 +43,7 @@ function BreadCrumb() {
         </div>
       </div>
 
-      <div className="flex justify-between w-2/3 ml-24 ">
+      <div className="absolute flex justify-between w-3/4 ml-24 z-50 -mt-12">
         <div className="w-full block flex-grow md:flex md:justify-between md:w-auto">
           <div>
             <Link href="/home/leagues/create" passHref>
