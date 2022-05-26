@@ -1,10 +1,11 @@
-
 import MainLayout from "../../../components/MainLayout";
 
 const Index = () => {
-  return <MainLayout>
+  return (
+    <MainLayout>
       <h1>helo</h1>
-  </MainLayout>;
+    </MainLayout>
+  );
 };
 
 export default Index;

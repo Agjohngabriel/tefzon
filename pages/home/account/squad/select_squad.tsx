@@ -2083,7 +2083,7 @@ const SquadSelection = () => {
                 </div>
 
                 <div className="flex flex-col md:flex-row py-10 ">
-                  <div className=" flex-1 svelte-1l8159u">
+                  {/* <div className=" flex-1 svelte-1l8159u">
                     <button
                       className="text-base  hover:scale-110 focus:outline-none flex justify-center px-4 py-2  cursor-pointer                                 
                                 hover:bg-blue-500 
@@ -2093,9 +2093,10 @@ const SquadSelection = () => {
                     >
                       <div className="font-arcon text-sm ">ALL</div>
                     </button>
-                  </div>
+                  </div> */}
                   <div className=" flex-1 svelte-1l8159u">
                     <button
+                    onClick={fetchPlayers}
                       className="text-base  hover:scale-110 focus:outline-none flex justify-center px-4 py-2  cursor-pointer                                 
                                 hover:bg-blue-500 
                                 bg-white text-gray-900
