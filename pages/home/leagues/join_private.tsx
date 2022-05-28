@@ -1,9 +1,79 @@
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Loader } from "../../../components/base/Loader";
 import MainLayout from "../../../components/MainLayout";
 
+interface Team {
+  name: string;
+  entry_type: string;
+  type: string;
+  start: string;
+}
+
 const JoinPrivate = () => {
+  const [leagues, setLeagues] = useState([]);
+  const { data: session }: any = useSession();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState({
+    message: "",
+  });
+  const [isLoading, setLoading] = useState(0);
+
+  const joinLeague = async ({ id, code }: any) => {
+    try {
+      setLoading(1);
+      const res = await axios.post(
+        `${process.env.BASE_URL}join/private/league`,
+        {
+          id: id,
+          code: code,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
+      const response = await res.data;
+      console.log(response);
+      // setMessage(response.message);
+      // getFavourites();
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
+
+  useEffect(() => {
+    const fetchAll = async () => {
+      const res = await axios.get(`${process.env.BASE_URL}private-leagues`, {
+        headers: {
+          Authorization: `Bearer ${session?.data.token}`,
+          "content-type": "application/json",
+        },
+      });
+      const response = await res.data;
+      console.log(response);
+      return response;
+    };
+
+    const getFavourites = async () => {
+      const FavouritesFromApi = await fetchAll();
+      setLeagues(FavouritesFromApi);
+      console.log(leagues);
+    };
+    getFavourites();
+  }, []);
   return (
     <MainLayout>
+      {isLoading === 1 && <Loader />}
       <div className="inline-flex rounded -ml-1">
         <Link href="/home/account/status" passHref>
           <a className="font-montserrat text-sm text-[#240155] ml-24 mt-10 px-2 ">
@@ -35,12 +105,14 @@ const JoinPrivate = () => {
             <h1 className="font-montserrat text-2xl text-black-150 w-4/6 ">
               Join private league
             </h1>
+            {error === true && (
+              <div className="bg-red-800 w-1/2 text-center rounded shadow-md">
+                <h1 className="font-montserrat text-lg py-2 text-black-150  ">
+                  {errorMsg.message}
+                </h1>
+              </div>
+            )}
 
-            <div className="bg-red-800 w-1/2 text-center rounded shadow-md">
-              <h1 className="font-montserrat text-lg py-2 text-black-150  ">
-                eRROR 502: Please enter the right league code
-              </h1>
-            </div>
             <div className="flex flex-col md:flex-row pt-2">
               <div className="w-full mx-2 flex-1 svelte-1l8159u">
                 <label className="text-black-150 font-montserrat text-[1rem] mb-2 ml-1">
@@ -88,181 +160,36 @@ const JoinPrivate = () => {
             <div className="-ml-6 relative overflow-x-auto  sm:rounded-lg">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <tbody>
-                  <tr className=" dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-arcon text-black-150 opacity-80 "
-                    >
-                      Gameweek24"
-                    </th>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Private
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Paid
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      12 August, 2021
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <a
-                        href="##"
-                        className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
+                  {leagues.map((item: Team, index) => (
+                    <tr className=" dark:border-gray-700">
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-arcon text-black-150 opacity-80 "
                       >
-                        Join League
-                      </a>
-                    </td>
-                  </tr>
-                  <tr className=" dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-arcon text-black-150 opacity-80 "
-                    >
-                      Gameweek24"
-                    </th>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Private
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Paid
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      12 August, 2021
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <a
-                        href="##"
-                        className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
-                      >
-                        Join League
-                      </a>
-                    </td>
-                  </tr>
-                  <tr className=" dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-arcon text-black-150 opacity-80 "
-                    >
-                      Gameweek24"
-                    </th>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Private
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Paid
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      12 August, 2021
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <a
-                        href="##"
-                        className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
-                      >
-                        Join League
-                      </a>
-                    </td>
-                  </tr>
-                  <tr className=" dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-arcon text-black-150 opacity-80 "
-                    >
-                      Gameweek24"
-                    </th>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Private
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Paid
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      12 August, 2021
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <a
-                        href="##"
-                        className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
-                      >
-                        Join League
-                      </a>
-                    </td>
-                  </tr>
-                  <tr className=" dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-arcon text-black-150 opacity-80 "
-                    >
-                      Gameweek24"
-                    </th>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Private
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Paid
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      12 August, 2021
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <a
-                        href="##"
-                        className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
-                      >
-                        Join League
-                      </a>
-                    </td>
-                  </tr>
-                  <tr className=" dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-arcon text-black-150 opacity-80 "
-                    >
-                      Gameweek24"
-                    </th>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Private
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Paid
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      12 August, 2021
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <a
-                        href="##"
-                        className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
-                      >
-                        Join League
-                      </a>
-                    </td>
-                  </tr>
-                  <tr className=" dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-arcon text-black-150 opacity-80 "
-                    >
-                      Gameweek24"
-                    </th>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Private
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      Paid
-                    </td>
-                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                      12 August, 2021
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <a
-                        href="##"
-                        className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
-                      >
-                        Join League
-                      </a>
-                    </td>
-                  </tr>
+                        {item.name}
+                      </th>
+                      <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
+                        {item.type}
+                      </td>
+                      <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
+                        {item.entry_type}
+                      </td>
+                      <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
+                        {item.start}
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <button
+                          onClick={() =>
+                            joinLeague({ id: item.id, code: item.code })
+                          }
+                          type="button"
+                          className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
+                        >
+                          Join League
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

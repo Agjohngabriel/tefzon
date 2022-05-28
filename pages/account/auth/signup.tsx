@@ -7,6 +7,7 @@ import GuestLayout from "../../../components/GuestLayout";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { client } from "../../../libs/axiosClient";
 const Signup = () => {
   const [formStep, setFormStep] = useState(0);
   const [formData, setFormData] = useState({});
@@ -27,16 +28,7 @@ const Signup = () => {
     }
     setIsSubmitting(true);
     try {
-      const user = await axios.post(
-        `${process.env.BASE_URL}register`,
-        formData,
-        {
-          headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const user = await client.post("register", formData);
       if (user) {
         setIsSubmitting(false);
         MySwal.fire({

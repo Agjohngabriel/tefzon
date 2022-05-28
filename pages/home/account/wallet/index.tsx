@@ -1,7 +1,36 @@
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import MainLayout from "../../../../components/MainLayout";
 
 const Index = () => {
+  const [account, setAccount] = useState({
+    balance: "",
+  });
+  const { data: session }: any = useSession();
+  useEffect(() => {
+    const fetchAll = async () => {
+      const res = await axios.get(
+        `${process.env.BASE_URL}get-account-details`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+      const response = await res.data;
+      console.log(response);
+      return response;
+    };
+
+    const getFavourites = async () => {
+      const FavouritesFromApi = await fetchAll();
+      setAccount(FavouritesFromApi);
+    };
+    getFavourites();
+  }, []);
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
@@ -48,10 +77,10 @@ const Index = () => {
                   </div>
                   <div className="pt-4">
                     <p className="font-montserrat tracking-more-wider text-2xl">
-                      ₦5,000
+                      ₦{account.balance}
                     </p>
                   </div>
-                  <div className="pt-8 pr-6">
+                  {/* <div className="pt-8 pr-6">
                     <div className="flex justify-between">
                       <div className="">
                         <p className="font-arcon opacity-50 text-xs mb-3">
@@ -62,7 +91,7 @@ const Index = () => {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

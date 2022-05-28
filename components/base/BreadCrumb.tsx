@@ -62,7 +62,7 @@ function BreadCrumb() {
             <Link href="/home/account/squad/select_squad" passHref>
               <span
                 className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
-                  Router.pathname.startsWith("/home/leagues/teams")
+                  Router.pathname.startsWith("/home/account/squad")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}

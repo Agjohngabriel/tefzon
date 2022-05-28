@@ -20,7 +20,6 @@ const Favourite = (props: {
   const updateFavData = (newData: any) => {
     const set = { newData };
     setFavourite({ ...favourite, ...set });
-    update();
   };
 
   const update = () => {
@@ -64,13 +63,14 @@ const Favourite = (props: {
             <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 ">
               {teams.map((item: Favorite, index) => (
                 <button
-                  onClick={() =>
+                  onClick={() => {
                     updateFavData({
                       id: item.id,
                       name: item.name,
                       logo_path: item.logo_path,
-                    })
-                  }
+                    }),
+                      update();
+                  }}
                   type="button"
                   className="w-full border  sahdow-lg p-8 flex flex-col justify-center items-center"
                   key={item.id}

@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import axios from "axios";
+import { client } from "../../../libs/axiosClient";
 
 export default NextAuth({
   providers: [
@@ -18,19 +18,10 @@ export default NextAuth({
       ) {
         if (!credentials) return null;
         try {
-          const user = await axios.post(
-            `${process.env.BACKEND_URL}login`,
-            {
-              password: credentials?.password,
-              email: credentials?.email,
-            },
-            {
-              headers: {
-                accept: "*/*",
-                "Content-Type": "application/json",
-              },
-            }
-          );
+          const user = await client.post("login", {
+            email: credentials.email,
+            password: credentials.password,
+          });
           if (user) {
             return user.data;
           }
