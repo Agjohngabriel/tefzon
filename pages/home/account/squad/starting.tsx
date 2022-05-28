@@ -37,7 +37,9 @@ const Starting = () => {
   });
   const [isLoading, setLoading] = useState(0);
   const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState({});
+  const [errorMsg, setErrorMsg] = useState({
+    message: ""
+  });
 
   const fetchByPos = async (id: number) => {
     setLoading(1);
