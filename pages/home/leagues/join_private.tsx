@@ -10,6 +10,8 @@ interface Team {
   entry_type: string;
   type: string;
   start: string;
+  id:number;
+  code: number
 }
 
 const JoinPrivate = () => {
