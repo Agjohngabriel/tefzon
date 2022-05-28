@@ -65,6 +65,7 @@ const SelectVice = () => {
     }
   };
   useEffect(() => {
+    const { data: session }: any = useSession();
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
         headers: {
@@ -80,7 +81,6 @@ const SelectVice = () => {
     const getFavourites = async () => {
       const FavouritesFromApi = await fetchAll();
       setTeams(FavouritesFromApi);
-      console.log(teams);
     };
     getFavourites();
   }, []);
@@ -158,6 +158,7 @@ const SelectVice = () => {
               <div className="flex mt-[7rem]  py-10 mx-auto">
                 {teams.goalkeepers.map((item: Players, player_id: number) => (
                   <button
+                    key={player_id}
                     type="button"
                     onClick={() => selectCap(item.id)}
                     className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
@@ -209,6 +210,7 @@ const SelectVice = () => {
               <div className="flex   py-10 mx-auto w-1/2">
                 {teams.defenders.map((item: Players, player_id: number) => (
                   <button
+                    key={player_id}
                     type="button"
                     onClick={() => selectCap(item.id)}
                     className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
@@ -260,6 +262,7 @@ const SelectVice = () => {
               <div className="flex   py-10 mx-auto w-3/4">
                 {teams.midfielders.map((item: Players, player_id: number) => (
                   <button
+                    key={player_id}
                     type="button"
                     onClick={() => selectCap(item.id)}
                     className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
@@ -311,6 +314,7 @@ const SelectVice = () => {
               <div className="flex   py-10 mx-auto w-1/2">
                 {teams.forwards.map((item: Players, player_id: number) => (
                   <button
+                    key={player_id}
                     type="button"
                     onClick={() => selectCap(item.id)}
                     className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
@@ -362,6 +366,7 @@ const SelectVice = () => {
               <div className="flex py-10 mx-auto">
                 {teams.subs.map((item: Players, player_id: number) => (
                   <button
+                    key={player_id}
                     type="button"
                     onClick={() => selectCap(item.id)}
                     className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"

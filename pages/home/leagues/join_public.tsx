@@ -13,8 +13,9 @@ interface Team {
 
 const JoinPublic = () => {
   const [leagues, setLeagues] = useState([]);
-  const { data: session }: any = useSession();
+
   useEffect(() => {
+    const { data: session }: any = useSession();
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BASE_URL}public-leagues`, {
         headers: {
@@ -30,7 +31,6 @@ const JoinPublic = () => {
     const getFavourites = async () => {
       const FavouritesFromApi = await fetchAll();
       setLeagues(FavouritesFromApi);
-      console.log(leagues);
     };
     getFavourites();
   }, []);
@@ -121,7 +121,7 @@ const JoinPublic = () => {
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <tbody>
                   {leagues.map((item: Team, index) => (
-                    <tr className=" dark:border-gray-700">
+                    <tr key={index} className=" dark:border-gray-700">
                       <th
                         scope="row"
                         className="px-6 py-4 font-arcon text-black-150 opacity-80 "

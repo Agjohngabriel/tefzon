@@ -38,7 +38,7 @@ const Starting = () => {
   const [isLoading, setLoading] = useState(0);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState({
-    message: ""
+    message: "",
   });
 
   const fetchByPos = async (id: number) => {
@@ -90,6 +90,7 @@ const Starting = () => {
     }
   };
   useEffect(() => {
+    const { data: session }: any = useSession();
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
         headers: {
@@ -105,7 +106,6 @@ const Starting = () => {
     const getFavourites = async () => {
       const FavouritesFromApi = await fetchAll();
       setTeams(FavouritesFromApi);
-      console.log(teams);
     };
     getFavourites();
   }, []);
@@ -232,7 +232,10 @@ const Starting = () => {
                         <div className="flex   py-10 mx-auto">
                           {teams.goalkeepers.map(
                             (item: Players, player_id: number) => (
-                              <div className="p-3 bg-gray-800/90 rounded mt-24 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div
+                                key={player_id}
+                                className="p-3 bg-gray-800/90 rounded mt-24 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                              >
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -271,7 +274,10 @@ const Starting = () => {
                         <div className="flex   py-10 mx-auto">
                           {teams.defenders.map(
                             (item: Players, player_id: number) => (
-                              <div className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div
+                                key={player_id}
+                                className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                              >
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -310,7 +316,10 @@ const Starting = () => {
                         <div className="flex   py-10 mx-auto">
                           {teams.midfielders.map(
                             (item: Players, player_id: number) => (
-                              <div className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div
+                                key={player_id}
+                                className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                              >
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -349,7 +358,10 @@ const Starting = () => {
                         <div className="flex   py-10 mx-auto">
                           {teams.forwards.map(
                             (item: Players, player_id: number) => (
-                              <div className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div
+                                key={player_id}
+                                className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                              >
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -416,7 +428,7 @@ const Starting = () => {
                                   <tbody>
                                     {teams.goalkeepers.map(
                                       (item: Players, player_id: number) => (
-                                        <tr className="">
+                                        <tr key={player_id} className="">
                                           <td
                                             key={player_id}
                                             className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle"
@@ -525,7 +537,7 @@ const Starting = () => {
                                   <tbody>
                                     {teams.defenders.map(
                                       (item: Players, player_id: number) => (
-                                        <tr className="">
+                                        <tr key={player_id} className="">
                                           <td
                                             key={player_id}
                                             className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle"
@@ -634,7 +646,7 @@ const Starting = () => {
                                   <tbody>
                                     {teams.midfielders.map(
                                       (item: Players, player_id: number) => (
-                                        <tr className="">
+                                        <tr key={player_id} className="">
                                           <td
                                             key={player_id}
                                             className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle"
@@ -743,7 +755,7 @@ const Starting = () => {
                                   <tbody>
                                     {teams.forwards.map(
                                       (item: Players, player_id: number) => (
-                                        <tr className="">
+                                        <tr key={player_id} className="">
                                           <td
                                             key={player_id}
                                             className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle"
@@ -852,7 +864,7 @@ const Starting = () => {
                                   <tbody>
                                     {teams.subs.map(
                                       (item: Players, player_id: number) => (
-                                        <tr className="">
+                                        <tr key={player_id} className="">
                                           <td
                                             key={player_id}
                                             className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle"
