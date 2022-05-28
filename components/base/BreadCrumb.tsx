@@ -72,7 +72,7 @@ function BreadCrumb() {
             </Link>
           </div>
           <div>
-            <Link href="/home/account/transfer" passHref>
+            <Link href="/home/leagues/create" passHref>
               <span
                 className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
                   Router.pathname.startsWith("/home/account/transfer")
