@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
@@ -23,6 +24,9 @@ export default function Auth(props: { children: ReactNode }) {
           callbackUrl: `${location.pathname}${location.search}`,
         },
       });
+      if (session) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${session?.data.token}`;
+      }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

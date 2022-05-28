@@ -54,7 +54,6 @@ const JoinPrivate = () => {
   };
 
   useEffect(() => {
-    const { data: session }: any = useSession();
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BASE_URL}private-leagues`, {
         headers: {
@@ -72,7 +71,7 @@ const JoinPrivate = () => {
       setLeagues(FavouritesFromApi);
     };
     getFavourites();
-  }, []);
+  }, [session]);
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}

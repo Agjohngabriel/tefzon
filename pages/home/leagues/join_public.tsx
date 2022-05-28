@@ -13,9 +13,9 @@ interface Team {
 
 const JoinPublic = () => {
   const [leagues, setLeagues] = useState([]);
-
+  const { data: session }: any = useSession();
   useEffect(() => {
-    const { data: session }: any = useSession();
+    
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BASE_URL}public-leagues`, {
         headers: {
@@ -33,7 +33,7 @@ const JoinPublic = () => {
       setLeagues(FavouritesFromApi);
     };
     getFavourites();
-  }, []);
+  }, [session]);
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">

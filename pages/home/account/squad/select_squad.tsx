@@ -108,10 +108,9 @@ const SquadSelection = () => {
     const getFavourites = async () => {
       const FavouritesFromApi = await fetchAll();
       setTeams(FavouritesFromApi);
-      console.log(teams);
     };
     getFavourites();
-  }, []);
+  }, [session]);
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
       headers: {
@@ -273,7 +272,7 @@ const SquadSelection = () => {
                               (e: Players) => e.player_position === "GoalKeeper"
                             )
                             .map((item: Players, position_id) => (
-                              <div className="p-3 bg-gray-800/90 rounded mt-24 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div key={position_id} className="p-3 bg-gray-800/90 rounded mt-24 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -314,7 +313,7 @@ const SquadSelection = () => {
                               (e: Players) => e.player_position === "Defender"
                             )
                             .map((item: Players, position_id) => (
-                              <div className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div key={position_id} className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -355,7 +354,7 @@ const SquadSelection = () => {
                               (e: Players) => e.player_position === "Midfielder"
                             )
                             .map((item: Players, position_id) => (
-                              <div className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div key={position_id} className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -396,7 +395,7 @@ const SquadSelection = () => {
                               (e: Players) => e.player_position === "Forward"
                             )
                             .map((item: Players, position_id) => (
-                              <div className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div key={position_id} className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -461,7 +460,7 @@ const SquadSelection = () => {
                                   </thead>
                                   <tbody>
                                     {teams.map((item: Players, position_id) => (
-                                      <tr className="">
+                                      <tr key={position_id} className="">
                                         <td
                                           key={position_id}
                                           className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle"

@@ -5,11 +5,12 @@ import { useState, useEffect } from "react";
 import MainLayout from "../../../../components/MainLayout";
 
 const Index = () => {
+  const { data: session }: any = useSession();
   const [account, setAccount] = useState({
     balance: "",
   });
   useEffect(() => {
-    const { data: session }: any = useSession();
+    
     const fetchAll = async () => {
       const res = await axios.get(
         `${process.env.BASE_URL}get-account-details`,
@@ -30,7 +31,7 @@ const Index = () => {
       setAccount(FavouritesFromApi);
     };
     getFavourites();
-  }, []);
+  }, [session]);
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">

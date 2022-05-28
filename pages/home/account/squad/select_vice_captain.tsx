@@ -65,7 +65,6 @@ const SelectVice = () => {
     }
   };
   useEffect(() => {
-    const { data: session }: any = useSession();
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
         headers: {
@@ -83,7 +82,7 @@ const SelectVice = () => {
       setTeams(FavouritesFromApi);
     };
     getFavourites();
-  }, []);
+  }, [session]);
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
       headers: {
