@@ -46,15 +46,41 @@ function BreadCrumb() {
       <div className="absolute flex justify-between w-3/4 ml-24 z-50 -mt-12">
         <div className="w-full block flex-grow md:flex md:justify-between md:w-auto">
           <div>
-            <Link href="/home/leagues/create" passHref>
+            <Link href="/home/leagues/join_public" passHref>
               <span
                 className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
-                  Router.pathname.startsWith("/home/account/status")
+                  Router.pathname.startsWith("/home/leagues/join_public")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
               >
-                Status
+                Public League
+              </span>
+            </Link>
+          </div>
+          <div>
+            <Link href="/home/leagues/join_private" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/leagues/join_private")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Private League
+              </span>
+            </Link>
+          </div>
+          <div>
+            <Link href="/home/leagues/create" passHref>
+              <span
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                  Router.pathname.startsWith("/home/leagues/create")
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Create League
               </span>
             </Link>
           </div>
@@ -85,19 +111,6 @@ function BreadCrumb() {
             </Link>
           </div>
           <div>
-            <Link href="/home/leagues/" passHref>
-              <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
-                  Router.pathname.startsWith("/home/leagues")
-                    ? "bg-white text-black-150"
-                    : "bg-green text-white"
-                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
-              >
-                League
-              </span>
-            </Link>
-          </div>
-          <div>
             <Link href="/home/fixtures" passHref>
               <span
                 className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
@@ -107,19 +120,6 @@ function BreadCrumb() {
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
               >
                 Fixtures
-              </span>
-            </Link>
-          </div>
-          <div>
-            <Link href="/home/leagues/create" passHref>
-              <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
-                  Router.pathname.startsWith("/home/leagues/scout")
-                    ? "bg-white text-black-150"
-                    : "bg-green text-white"
-                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
-              >
-                The Scout
               </span>
             </Link>
           </div>
@@ -146,19 +146,6 @@ function BreadCrumb() {
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
               >
                 Wallet
-              </span>
-            </Link>
-          </div>
-          <div>
-            <Link href="/home/leagues/create" passHref>
-              <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
-                  Router.pathname.startsWith("/home/leagues/prices")
-                    ? "bg-white text-black-150"
-                    : "bg-green text-white"
-                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
-              >
-                Price
               </span>
             </Link>
           </div>

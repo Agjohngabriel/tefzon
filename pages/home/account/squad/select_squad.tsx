@@ -272,7 +272,10 @@ const SquadSelection = () => {
                               (e: Players) => e.player_position === "GoalKeeper"
                             )
                             .map((item: Players, position_id) => (
-                              <div key={position_id} className="p-3 bg-gray-800/90 rounded mt-24 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div
+                                key={position_id}
+                                className="p-3 bg-gray-800/90 rounded mt-24 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                              >
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -313,7 +316,10 @@ const SquadSelection = () => {
                               (e: Players) => e.player_position === "Defender"
                             )
                             .map((item: Players, position_id) => (
-                              <div key={position_id} className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div
+                                key={position_id}
+                                className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                              >
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -354,7 +360,10 @@ const SquadSelection = () => {
                               (e: Players) => e.player_position === "Midfielder"
                             )
                             .map((item: Players, position_id) => (
-                              <div key={position_id} className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div
+                                key={position_id}
+                                className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                              >
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -395,7 +404,10 @@ const SquadSelection = () => {
                               (e: Players) => e.player_position === "Forward"
                             )
                             .map((item: Players, position_id) => (
-                              <div key={position_id} className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer">
+                              <div
+                                key={position_id}
+                                className="p-3 bg-gray-800/90 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                              >
                                 <div className="-mt-[4rem] ">
                                   <svg
                                     width="52"
@@ -652,7 +664,7 @@ const SquadSelection = () => {
                       </select>
                     </div>
                   </div>
-                  <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                  {/* <div className="w-full mx-2 flex-1 svelte-1l8159u">
                     <label className="text-gray-600 font-arcon text-sm mb-2 ml-1">
                       Max Cost
                     </label>
@@ -662,7 +674,7 @@ const SquadSelection = () => {
                         <option value="02">Free</option>
                       </select>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

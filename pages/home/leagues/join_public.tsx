@@ -15,7 +15,6 @@ const JoinPublic = () => {
   const [leagues, setLeagues] = useState([]);
   const { data: session }: any = useSession();
   useEffect(() => {
-    
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BASE_URL}public-leagues`, {
         headers: {
