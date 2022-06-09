@@ -51,11 +51,7 @@ const Home: NextPage = () => {
                 <img
                   src="/img/soccer 1.png"
                   alt="soccer"
-                  className="relative"
-                  style={{
-                    animation:
-                      "up-down 2s ease-in-out infinite alternate-reverse both",
-                  }}
+                  className="relative animate-pulse"                  
                 />
               </div>
             </div>

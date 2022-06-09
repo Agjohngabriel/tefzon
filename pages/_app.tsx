@@ -37,8 +37,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         />
       </Head>
       <Script
+      defer
         src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
-        defer
       ></Script>
       <Script src="https://kit.fontawesome.com/a076d05399.js"></Script>
       <SessionProvider session={session} refetchInterval={5 * 60}>
