@@ -31,12 +31,13 @@ const Home: NextPage = () => {
                 color="text-white"
                 opacity="opacity-100"
                 width="w-40"
+                
               />
 
               <button
                 onClick={goToLogin}
                 type="button"
-                className="flex items-center text-gray-600 rounded px-8 py-2 focus:outline-none"
+                className="flex items-center text-gray-600 rounded px-8 py-2 focus:outline-none animate-wiggle"
               >
                 Login to play
                 <span className="ml-2 material-icons hover:text-green-500">
@@ -51,7 +52,7 @@ const Home: NextPage = () => {
                 <img
                   src="/img/soccer 1.png"
                   alt="soccer"
-                  className="relative animate-pulse"                  
+                  className="relative animate-up-down"                  
                 />
               </div>
             </div>
