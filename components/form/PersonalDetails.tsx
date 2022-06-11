@@ -28,7 +28,7 @@ const PersonalDetails = (props: {
     props.updateFormData({ phone: phne });
   };
   return (
-    <div className={`p-5 ${props.formStep === 0 ? "" : "hidden"}`}>
+    <div className={`p-5 animate-fade-in-up ${props.formStep === 0 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center pt-10 space-y-4 max-w-lg mx-auto">
         <h1 className="font-montserrat text-lg text-gray-700 w-4/6 text-center">
           Personal Details
@@ -39,7 +39,7 @@ const PersonalDetails = (props: {
         </p>
       </div>
 
-      <div className="mt-8 p-4">
+      <div className="mt-8 p-4 animate-fade-in-down">
         <div className="flex flex-col md:flex-row">
           <div className="w-full flex-1 mx-2 svelte-1l8159u">
             <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -592,14 +592,14 @@ const PersonalDetails = (props: {
               </div>
             </div>
           </div>
-          <div className="w-2/2 mx-2 mt-2 flex-1 svelte-1l8159u">
+          <div className="w-2/2  mt-2 flex-1 svelte-1l8159u">
             <div className="w-full mx-2 flex-1 mt-2 svelte-1l8159u">
               <label className="text-gray-600 font-normal text-sm mb-9 ml-1">
                 Phone Number
               </label>
               <div className="bg-white  svelte-1l8159u">
                 <div className="flex  items-end -mb-1 ">
-                  <div className="w-16 sm:w-1/3 mr-1">
+                  <div className="w-16 sm:w-1/4 mr-1 sm:mr-2">
                     <div>
                       <select
                         onChange={handlePhoneChange}
@@ -913,16 +913,16 @@ const PersonalDetails = (props: {
                       </select>
                     </div>
                   </div>
-                  <div className=" w-2/3">
-                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                  <div className=" w-48 sm:mr-5 sm:w-3/4">
+                    <div className="bg-white my-2 p-1.5 flex border border-gray-200 rounded svelte-1l8159u">
                       <input
                         placeholder="Enter Phone Number"
                         type="phone"
                         id="ph"
                         onInput={handlePhoneChange}
-                        className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                        className="p-1  text-sm appearance-none outline-none w-full text-gray-700"
                         required
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>

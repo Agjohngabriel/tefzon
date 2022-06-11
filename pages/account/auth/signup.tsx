@@ -56,7 +56,7 @@ const Signup = () => {
   return (
     <GuestLayout>
       <div className="flex items-center justify-center pb-20  mx-auto mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
-        <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-2xl border shadow-xl p-2 sm:p-10 pb-10 w-full">
+        <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-2xl border shadow-xl p-2 sm:p-10 pb-5 sm:pb-10 w-full">
           <h1 className="font-oswald text-2xl text-gray-700 pb-10 text-center">
             Create Your Account
           </h1>
@@ -179,7 +179,7 @@ const Signup = () => {
               width="w-40"
             /> */}
 
-              <div className=" p-2 mt-10 justify-center">
+              <div className=" pb-10 mt-2 justify-center">
                 {formStep == 2 ? (
                   <button
                     type="submit"
@@ -188,7 +188,7 @@ const Signup = () => {
                                             hover:bg-blue-500 shadow-inner rounded-lg
                                             bg-violet-500 text-gray-200
                                             duration-200 ease-in-out 
-                                            transition mx-auto w-72`}
+                                            transition mx-auto w-52 sm:w-72`}
                   >
                     {isSubmitting ? "Loadin..." : "Complete Registration"}
                   </button>
@@ -200,7 +200,7 @@ const Signup = () => {
                                             hover:bg-blue-500 shadow-inner rounded-lg
                                             bg-violet-500 text-gray-200
                                             duration-200 ease-in-out 
-                                            transition mx-auto w-72`}
+                                            transition mx-auto w-52 sm:w-72`}
                   >
                     Next
                   </a>
