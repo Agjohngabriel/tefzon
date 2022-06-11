@@ -46,7 +46,7 @@ function BreadCrumb() {
       <div className="absolute flex justify-between w-3/4 ml-24 z-50 -mt-12">
         <div className="w-full block flex-grow md:flex md:justify-between md:w-auto">
           <div>
-            <Link href="/home/leagues/create" passHref>
+            <Link href="/home/leagues/join_public" passHref>
               <span
                 className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/account/status")
@@ -54,12 +54,12 @@ function BreadCrumb() {
                     : "bg-green text-white"
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
               >
-                Status
+                Public League
               </span>
             </Link>
           </div>
           <div>
-            <Link href="/home/account/squad/select_squad" passHref>
+            <Link href="/home/leagues/join_private" passHref>
               <span
                 className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/account/squad")
@@ -67,7 +67,7 @@ function BreadCrumb() {
                     : "bg-green text-white"
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
               >
-                Pick Team
+                Private League
               </span>
             </Link>
           </div>
@@ -80,12 +80,12 @@ function BreadCrumb() {
                     : "bg-green text-white"
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
               >
-                Transfer
+                Create League
               </span>
             </Link>
           </div>
           <div>
-            <Link href="/home/leagues/" passHref>
+            <Link href="/home/account/squad/select_squad" passHref>
               <span
                 className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/leagues")
@@ -93,7 +93,23 @@ function BreadCrumb() {
                     : "bg-green text-white"
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
               >
-                League
+                Pick Team
+              </span>
+            </Link>
+          </div>
+          <div>
+            <Link href="/home/leagues/create" passHref>
+              <span
+
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
+                  Router.pathname.startsWith("/home/fixtures")
+
+         
+                    ? "bg-white text-black-150"
+                    : "bg-green text-white"
+                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+              >
+                Transfer
               </span>
             </Link>
           </div>
@@ -101,25 +117,12 @@ function BreadCrumb() {
             <Link href="/home/fixtures" passHref>
               <span
                 className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
-                  Router.pathname.startsWith("/home/fixtures")
-                    ? "bg-white text-black-150"
-                    : "bg-green text-white"
-                } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
-              >
-                Fixtures
-              </span>
-            </Link>
-          </div>
-          <div>
-            <Link href="/home/leagues/create" passHref>
-              <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/leagues/scout")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
                 } hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
               >
-                The Scout
+                Fixtures
               </span>
             </Link>
           </div>
@@ -162,6 +165,7 @@ function BreadCrumb() {
               </span>
             </Link>
           </div>
+
           {/* <div>
             <Link href="/home/leagues/create" passHref>
               <span
