@@ -54,7 +54,7 @@ const Login = () => {
 
   return (
     <GuestLayout>
-      <div className="container max-w-3xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-5 items-center justify-center w-auto">
+      <div className="container max-w-sm sm:max-w-3xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-5 items-center justify-center w-auto">
         <h1 className="font-oswald text-4xl text-gray-700 pt-20 text-center">
           Login
         </h1>
@@ -64,9 +64,9 @@ const Login = () => {
           continue.
         </p>
 
-        <div className="flex mx-auto items-center justify-center">
+        <div className="sm:flex mx-auto items-center justify-center">
           <Link href="/" passHref>
-            <a className="flex items-center justify-center px-8 py-2 space-x-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none ">
+            <a className="flex items-center justify-center px-8 py-2 space-x-2 mt-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none ">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@ const Login = () => {
           </Link>
 
           <Link href="/" passHref>
-            <a className="flex items-center justify-center mx-3 px-10 py-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none ">
+            <a className="flex items-center justify-center sm:mx-3 px-10 py-2 mt-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none ">
               <span>
                 <img
                   className=" h-5 cursor-pointer"
@@ -101,7 +101,7 @@ const Login = () => {
           </Link>
 
           <Link href="/" passHref>
-            <a className="flex items-center justify-center px-10 py-2 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none ">
+            <a className="flex items-center justify-center px-10 py-2 mt-2 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none ">
               <span>
                 <svg
                   className="text-gray-100 group-hover:text-white"
