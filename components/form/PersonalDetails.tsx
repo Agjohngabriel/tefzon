@@ -164,8 +164,8 @@ const PersonalDetails = (props: {
               Date of birth
             </label>
             <div className="bg-white  svelte-1l8159u">
-              <div className="flex items-end -mb-1">
-                <div className="w-1/3">
+              <div className="sm:flex items-end -mb-1">
+                <div className="sm:w-1/3">
                   <div>
                     <select
                       onChange={handleDateChange}
@@ -189,7 +189,7 @@ const PersonalDetails = (props: {
                     </select>
                   </div>
                 </div>
-                <div className="px-2 w-1/3">
+                <div className="sm:px-2 sm:w-1/3">
                   <div>
                     <select
                       onChange={handleDateChange}
@@ -213,7 +213,7 @@ const PersonalDetails = (props: {
                     </select>
                   </div>
                 </div>
-                <div className=" w-1/3">
+                <div className=" sm:w-1/3">
                   <select
                     onChange={handleDateChange}
                     id="year"
@@ -238,7 +238,7 @@ const PersonalDetails = (props: {
         </div>
 
         <div className="flex flex-col md:flex-row pt-7">
-          <div className="flex w-1/2 items-end -mb-1">
+          <div className="sm:flex sm:w-1/2 items-end -mb-1">
             <div className="w-full mx-2 flex-1 svelte-1l8159u">
               <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
               <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -275,16 +275,16 @@ const PersonalDetails = (props: {
           <div className="w-2/2 mx-2 mt-2 flex-1 svelte-1l8159u">
             <div className="w-full mx-2 flex-1 mt-2 svelte-1l8159u">
               <label className="text-gray-600 font-normal text-sm mb-9 ml-1">
-                Date of birth
+                Phone Number
               </label>
               <div className="bg-white  svelte-1l8159u">
-                <div className="flex items-end -mb-1">
-                  <div className="w-1/3">
+                <div className="flex  items-end -mb-1 ">
+                  <div className="w-16 sm:w-1/3 mr-1">
                     <div>
                       <select
                         onChange={handlePhoneChange}
                         id="cd"
-                        className="form-select bg-white w-full px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                        className="form-select bg-white w-full px-1 py-2.5 mb-2 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
                         required
                       >
                         <option>code </option>

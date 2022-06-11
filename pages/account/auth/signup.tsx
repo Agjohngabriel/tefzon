@@ -56,7 +56,7 @@ const Signup = () => {
   return (
     <GuestLayout>
       <div className="flex items-center justify-center pb-20  mx-auto mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
-        <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-2xl border shadow-xl p-10 pb-10 w-full">
+        <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-2xl border shadow-xl p-2 sm:p-10 pb-10 w-full">
           <h1 className="font-oswald text-2xl text-gray-700 pb-10 text-center">
             Create Your Account
           </h1>
