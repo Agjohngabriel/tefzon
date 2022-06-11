@@ -13,8 +13,8 @@ const Home: NextPage = () => {
   return (
     <GuestLayout>
       <div className="container rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-4 py-2 lg:px-20 h-3/4">
-        <div className="flex z-0 ">
-          <div className="lg:w-1/2 mt-20 mb-12">
+        <div className="md:flex z-0 ">
+          <div className="md:w-3/5  mt-20 mb-12">
             <h2 className="font-oswald text-gray-800 font-bold text-5xl tracking-tighter  leading-tight mb-4 animate-fade-in-up">
               FANTASY SOCCER TO PLAY WITH PLEASURE
             </h2>
@@ -37,22 +37,22 @@ const Home: NextPage = () => {
               <button
                 onClick={goToLogin}
                 type="button"
-                className="flex items-center text-gray-600 rounded px-8 py-2 focus:outline-none animate-wiggle"
+                className="flex items-center text-gray-600 rounded md:px-8 ml-4 sm:ml-0 sm:px-6 py-2 focus:outline-none animate-wiggle "
               >
                 Login to play
-                <span className="ml-2 material-icons hover:text-green-500">
+                <span className="ml-2 material-icons hover:text-green ">
                   arrow_forward
                 </span>
               </button>
             </div>
           </div>
-          <div className="lg:w-1/2">
+          <div className="md:w-1/2 mt-20">
             <div className="mt-3 ">
               <div className="mt-3 ">
                 <img
                   src="/img/soccer 1.png"
                   alt="soccer"
-                  className="relative animate-up-down"                  
+                  className=" relative animate-up-down"                  
                 />
               </div>
             </div>
