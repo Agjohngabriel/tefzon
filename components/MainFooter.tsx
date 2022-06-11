@@ -31,8 +31,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Home
                     </span>
@@ -47,7 +47,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
+                            mb-2 
+                            cursor-pointer
                             "
                     >
                       My Team
@@ -63,8 +64,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Transfer
                     </span>
@@ -84,8 +85,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                   >
                     Leagues
                   </a>
@@ -99,8 +100,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Fixtures
                     </span>
@@ -115,8 +116,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Statistics
                     </span>
@@ -141,8 +142,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Privacy Policy
                     </span>
@@ -157,8 +158,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Terms of Use
                     </span>
@@ -173,8 +174,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Cookies Settings
                     </span>

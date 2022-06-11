@@ -48,7 +48,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/leagues/create" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/account/status")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -61,7 +61,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/account/squad/select_squad" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/account/squad")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -74,7 +74,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/leagues/create" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/account/transfer")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -87,7 +87,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/leagues/" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/leagues")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -100,7 +100,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/fixtures" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/fixtures")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -113,7 +113,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/leagues/create" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/leagues/scout")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -126,7 +126,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/leagues/create" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/leagues/stats")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -139,7 +139,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/account/wallet" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/account/wallet")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -152,7 +152,7 @@ function BreadCrumb() {
           <div>
             <Link href="/home/leagues/create" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/leagues/prices")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -165,7 +165,7 @@ function BreadCrumb() {
           {/* <div>
             <Link href="/home/leagues/create" passHref>
               <span
-                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded ${
+                className={`font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer ${
                   Router.pathname.startsWith("/home/account/help")
                     ? "bg-white text-black-150"
                     : "bg-green text-white"
@@ -178,7 +178,7 @@ function BreadCrumb() {
           <div>
             <button
               onClick={logOut}
-              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded bg-green text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+              className="font-montserrat  block md:inline-block text-sm px-4 py-4 leading-none rounded cursor-pointer bg-green text-gray-200 hover:text-gray-700 font-semibold hover:bg-gray-100 mt-4 md:mt-0"
             >
               Sign Out
             </button>

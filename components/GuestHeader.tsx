@@ -25,32 +25,32 @@ function GuestHeader() {
         <div className="w-full block flex-grow md:flex md:justify-end md:w-auto">
           <div>
             <Link href="" passHref>
-              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 under hover:text-blue-500 mt-4 md:mt-0">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 under hover:text-blue-500 mt-4 md:mt-0 cursor-pointer">
                 Home
               </span>
             </Link>
             <Link href="" passHref>
-              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0 cursor-pointer">
                 Price
               </span>
             </Link>
             <Link href="" passHref>
-              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0 cursor-pointer">
                 Scout
               </span>
             </Link>
             <Link href="" passHref>
-              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0 cursor-pointer">
                 Statistics
               </span>
             </Link>
             <Link href="" passHref>
-              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0 cursor-pointer">
                 Help
               </span>
             </Link>
             <Link href="" passHref>
-              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0">
+              <span className="font-arcon block md:inline-block text-sm px-1 lg:px-3 py-2 leading-none rounded text-gray-600 hover:text-blue-500 mt-4 md:mt-0 cursor-pointer">
                 Contact
               </span>
             </Link>

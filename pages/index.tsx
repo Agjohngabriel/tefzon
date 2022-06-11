@@ -15,10 +15,10 @@ const Home: NextPage = () => {
       <div className="container rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-4 py-2 lg:px-20 h-3/4">
         <div className="flex z-0 ">
           <div className="lg:w-1/2 mt-20 mb-12">
-            <h2 className="font-oswald text-gray-800 font-bold text-5xl tracking-tighter  leading-tight mb-4">
+            <h2 className="font-oswald text-gray-800 font-bold text-5xl tracking-tighter  leading-tight mb-4 animate-fade-in-up">
               FANTASY SOCCER TO PLAY WITH PLEASURE
             </h2>
-            <p className="font-nunito text-gray-700 text-1xl">
+            <p className="font-nunito text-gray-700 text-1xl animate-fade-in-down">
               Listen to the songs at tip of your finger, feel the vibes and
               dance.Listen to the songs at tip of your finger, feel the vibes
               and dance. Listen to the songs at tip of your finger.
