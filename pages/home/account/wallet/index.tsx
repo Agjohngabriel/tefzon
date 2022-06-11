@@ -10,7 +10,6 @@ const Index = () => {
     balance: "",
   });
   useEffect(() => {
-    
     const fetchAll = async () => {
       const res = await axios.get(
         `${process.env.BASE_URL}get-account-details`,
