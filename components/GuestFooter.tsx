@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export default function GuestFooter() {
   return (
-    <div className="bg-primary-200 h-28 px-10 text-white flex flex-row items-center justify-between w-full 2xl:h-36 bottom-0 shadow-inner shadow-slate-100">
+    <div className="bg-primary-200 h-28 py-5 text-center px-10 text-white sm:flex flex-row items-center justify-between w-full 2xl:h-36 bottom-0 shadow-inner shadow-slate-100">
       <div>
         <h1 className="font-montserrat">No Room for Racism</h1>
       </div>
-      <div className="flex flex-row">
+      <div className="flex flex-row mx-24 items-center">
         {[
           {
             src: "/facebook.png",
