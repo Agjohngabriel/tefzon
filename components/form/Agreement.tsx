@@ -7,7 +7,7 @@ export const Agreement = (props: {
   updateFormData: any;
 }) => {
   return (
-    <div className={`p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
+    <div className={`p-2 sm:p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center pt-10 space-y-4 max-w-lg mx-auto">
         <h1 className="font-montserrat text-lg text-gray-700 w-4/6 text-center animate-fade-in-up">
           Subscription & Agreement
@@ -18,13 +18,13 @@ export const Agreement = (props: {
         </p>
       </div>
 
-      <div className="mt-8 p-4">
+      <div className="mt-8 p-2 sm:p-4">
         <div className="border-b border-gray-200">
           <div className="py-2 bg-white text-gray-700 font-montserrat uppercase animate-fade-in-up">
             Newsletter
           </div>
 
-          <div className="font-arcon text-gray-400 bg-white font-medium text-xs leading-loose w-5/6 animate-fade-in-down">
+          <div className="font-arcon text-gray-400 bg-white font-medium text-xs leading-loose sm:w-5/6 animate-fade-in-down">
             This apartment is an inviting choice. Created as a space to spend
             time in, there's extra room in the open-plan living area, allowing
             guests to stretch out; whether relaxing on the sofa or enjoying the
@@ -53,7 +53,7 @@ export const Agreement = (props: {
             Our Privacy Policy
           </div>
 
-          <div className="text-gray-400 bg-white font-arcon text-xs leading-loose w-5/6 animate-fade-in-up">
+          <div className="text-gray-400 bg-white font-arcon text-xs leading-loose sm:w-5/6 animate-fade-in-up">
             This apartment is an inviting choice. Created as a space to spend
             time in, there's extra room in the open-plan living area, allowing
             guests to stretch out; whether relaxing on the sofa or enjoying the
