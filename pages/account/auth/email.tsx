@@ -12,7 +12,7 @@ const Email = () => {
 
           <div className="flex items-center justify-center pb-20 ">
             <div className="bg-white rounded-2xl border shadow-xl p-10 max-w-lg pb-10 ">
-              <div className="mt-10 -translate-y-1/2 transform">
+              <div className="mt-10 -translate-y-1/2 transform animate-fade-in-up">
                 <img
                   src="/img/verify.png"
                   alt="verify"
@@ -21,11 +21,11 @@ const Email = () => {
                 />
               </div>
 
-              <div className="flex flex-col items-center space-y-4">
+              <div className="flex flex-col items-center space-y-4 animate-fade-in-down">
                 <h1 className="font-montserrat text-2xl text-gray-700 w-4/6 text-center">
                   Email Address Confirmed
                 </h1>
-                <p className="font-arcon text-sm text-gray-500 text-center w-5/6">
+                <p className="font-arcon text-sm text-gray-500 text-center w-5/6 animate-fade-in-up">
                   Please check the message sent to kolagk@gmail.com. Confirming
                   the message allow you to complete the process.
                 </p>

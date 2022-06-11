@@ -210,7 +210,7 @@ const Signup = () => {
                   <button
                     onClick={prevFormStep}
                     type="button"
-                    className="flex items-center text-gray-500 rounded py-2 focus:outline-none mx-auto"
+                    className="flex items-center text-gray-500 rounded py-3 focus:outline-none mx-auto"
                   >
                     <span className=" -mr-20 material-icons hover:text-green-500">
                       arrow_backward
