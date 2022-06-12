@@ -77,7 +77,7 @@ const JoinPrivate = () => {
       {isLoading === 1 && <Loader />}
       <div className="inline-flex rounded -ml-1">
         <Link href="/home/account/status" passHref>
-          <a className="font-montserrat text-sm text-[#240155] ml-24 mt-10 px-2 ">
+          <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
             Home
           </a>
         </Link>
@@ -103,7 +103,7 @@ const JoinPrivate = () => {
       <div className=" container max-w-6xl bg-gradient-to-br from-[##FFFFFF]/100 via-[##F2F6FF]/50 to-[##E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
         <div className="   py-1 px-1 w-full">
           <div className="flex flex-col space-y-4 mb-5">
-            <h1 className="font-montserrat text-2xl text-black-150 w-4/6 ">
+            <h1 className="font-montserrat text-xl sm:text-3xl text-black-150 w-4/6 ">
               Join private league
             </h1>
             {error === true && (
@@ -115,7 +115,7 @@ const JoinPrivate = () => {
             )}
 
             <div className="flex flex-col md:flex-row pt-2">
-              <div className="w-full mx-2 flex-1 svelte-1l8159u">
+              <div className="w-full sm:mx-2 flex-1 svelte-1l8159u">
                 <label className="text-black-150 font-montserrat text-[1rem] mb-2 ml-1">
                   Search league to join
                 </label>
@@ -132,7 +132,7 @@ const JoinPrivate = () => {
                 </div>
               </div>
 
-              <div className="w-full mx-2 flex-1 svelte-1l8159u">
+              <div className="w-full sm:mx-2 flex-1 svelte-1l8159u">
                 <label className="text-black-150 font-montserrat text-[1rem] mb-2 ml-1">
                   Join league with a code
                 </label>
@@ -158,7 +158,7 @@ const JoinPrivate = () => {
               List of live leagues
             </h1>
 
-            <div className="-ml-6 relative overflow-x-auto  sm:rounded-lg">
+            <div className="-ml-6 relative overflow-x-auto scrollbar-hide sm:rounded-lg">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <tbody>
                   {leagues.map((item: Team, index) => (
@@ -205,26 +205,27 @@ const JoinPrivate = () => {
         </div>
       </div>
 
-      <div className="container ml-24 max-w-6xl">
-        <hr className="mt-20 max-w-6xl rounded-lg border-b-2 border-violet-500 mx-auto " />
+      <div className="container mb-5 mx-auto">
 
-        <div className="w-full flex mb-5">
-          <div className="rounded-2xl bg-gray-200 border mt-5  py-5 px-3 w-1/6 h-24">
+        <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
+
+        <div className="mx-3  flex mb-5">
+          <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
         </div>
