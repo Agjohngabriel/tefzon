@@ -66,7 +66,7 @@ const Login = () => {
 
         <div className="sm:flex mx-auto items-center justify-center">
           <Link href="/" passHref>
-            <a className="flex items-center justify-center px-8 py-2 space-x-2 mt-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none animate-fade-in-up">
+            <a className="flex items-center justify-center mx-6 px-8 py-2 space-x-2 mt-2 transition-colors duration-300 border border-blue-800  group bg-blue-800 hover:bg-gray-500 focus:outline-none animate-fade-in-up">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@ const Login = () => {
           </Link>
 
           <Link href="/" passHref>
-            <a className="flex items-center justify-center sm:mx-3 px-10 py-2 mt-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none animate-fade-in-down">
+            <a className="flex items-center justify-center mx-6 sm:mx-3 px-10 py-2 mt-2 space-x-2 transition-colors duration-300 border border-gray-100  group bg-white hover:bg-gray-500 focus:outline-none animate-fade-in-down">
               <span>
                 <img
                   className=" h-5 cursor-pointer"
@@ -101,7 +101,7 @@ const Login = () => {
           </Link>
 
           <Link href="/" passHref>
-            <a className="flex items-center justify-center px-10 py-2 mt-2 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none animate-fade-in-up">
+            <a className="flex items-center justify-center px-10 py-2 mt-2 mx-6 space-x-2 transition-colors duration-300 border border-blue-500  group bg-blue-500 hover:bg-gray-500 focus:outline-none animate-fade-in-up">
               <span>
                 <svg
                   className="text-gray-100 group-hover:text-white"

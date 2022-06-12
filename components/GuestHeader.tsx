@@ -16,7 +16,7 @@ function GuestHeader() {
         </a>
       </Link>
       <button
-        className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-gray-600 border-gray-600 ml-auto hover:text-white outline-none"
+        className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-gray-600 border-gray-600 ml-auto hover:text-violet-500 outline-none"
         onClick={handleClick}
       >
         <svg

@@ -68,7 +68,7 @@ const CreateLeague = () => {
   }
   return (
     <MainLayout>
-      <div className="inline-flex rounded -ml-1">
+      {/* <div className="inline-flex rounded -ml-1">
         <Link href="/home/account/status" passHref>
           <a className="font-montserrat text-sm text-[#240155] ml-24 mt-10 px-2 ">
             Home
@@ -93,8 +93,8 @@ const CreateLeague = () => {
             Create
           </a>
         </Link>
-      </div>
-      <div className="container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 md:w-3/5 ml-24 mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
+      </div> */}
+      <div className="container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 md:w-3/5 mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <div className="flex flex-col  pt-10 space-y-4 max-w-lg mx-2">
             <h1 className="font-montserrat text-3xl text-black-150 w-4/6 ">
@@ -346,26 +346,27 @@ const CreateLeague = () => {
         </div> */}
       </div>
 
-      <div className="container mb-5">
-        <hr className="mt-20 max-w-6xl rounded-lg border-b-2 border-violet-500 mx-auto " />
+      <div className="container mb-5 mx-auto">
 
-        <div className="ml-16 max-w-6xl flex mb-5">
-          <div className="rounded-2xl bg-gray-200 border mt-5  py-5 px-3 w-1/6 h-24">
+        <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
+
+        <div className="mx-3  flex mb-5">
+          <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
         </div>

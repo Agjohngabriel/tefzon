@@ -3,7 +3,7 @@ const AccountBreadCrumb = () => {
     <div>
       <div className="bg-violet-500 pt-20 lg:pt-[20px]">
         <div className="flex justify-between ">
-          <div className="ml-20 lg:w-1/2 mt-16  mb-12">
+          <div className="ml-20 sm:w-1/2 mt-16  mb-12">
             <h2 className="font-oswald text-gray-100 font-bold text-5xl tracking-tighter leading-tight">
               Your Account
             </h2>
@@ -13,7 +13,7 @@ const AccountBreadCrumb = () => {
               <img
                 src="/img/Header Image.png"
                 alt="soccer"
-                className="relative"
+                className="relative animate-pulse"
               />
             </div>
           </div>
