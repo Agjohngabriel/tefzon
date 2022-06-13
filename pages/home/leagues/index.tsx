@@ -10,7 +10,7 @@ const Index = () => {
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
         <Link href="/home/account/status" passHref>
-          <a className="font-montserrat text-sm text-[#240155] ml-24 mt-10 px-2 ">
+          <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
             Home
           </a>
         </Link>
@@ -24,19 +24,19 @@ const Index = () => {
       </div>
       <div className=" container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-10  w-auto">
         <div className="flex">
-          <div className=" w-3/4 ">
+          <div className=" sm:w-3/4 ">
             <div className="   py-1 px-1 w-full">
               <div className="flex flex-col space-y-4 mb-5">
-                <h1 className="font-montserrat text-3xl text-black-0 w-4/6 ">
+                <h1 className="font-montserrat text-2xl sm:text-3xl text-black-150 md:w-4/6  ">
                   Create or join leagues
                 </h1>
               </div>
 
               <div className="flex flex-col space-y-2 mb-5">
-                <h1 className="font-montserrat text-2xl text-black-0 w-4/6 ">
+                <h1 className="font-montserrat text-xl sm:text-3xl text-black-150 md:w-4/6 ">
                   Join an existing league
                 </h1>
-                <p className="font-arcon text-sm px-8 py-2 text-black-0  w-full">
+                <p className="font-arcon text-sm sm:px-8 py-2 text-black-0  w-full">
                   Join a private or public league to compete against friends and
                   other game players.
                 </p>
@@ -51,10 +51,10 @@ const Index = () => {
               </div>
 
               <div className="flex flex-col space-y-2 ">
-                <h1 className="font-montserrat text-2xl text-black-0 w-4/6 ">
+                <h1 className="font-montserrat text-xl sm:text-3xl text-black-150 md:w-4/6 ">
                   Create a new league
                 </h1>
-                <p className="font-arcon text-sm px-8 py-2 text-black-150  w-full">
+                <p className="font-arcon text-sm md:px-8 py-2 text-black-150  w-full">
                   Create a private or public league to compete against friends
                   and other game players.
                 </p>
@@ -71,30 +71,31 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="container  max-w-6xl">
-          <hr className="mt-20 max-w-6xl rounded-lg border-b-2 border-violet-500 mx-auto " />
+        <div className="container mb-5 mx-auto">
 
-          <div className="w-full flex mb-5">
-            <div className="rounded-2xl bg-gray-200 border mt-5  py-5 px-3 w-1/6 h-24">
-              {" "}
-            </div>
-            <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
-              {" "}
-            </div>
-            <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
-              {" "}
-            </div>
-            <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
-              {" "}
-            </div>
-            <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
-              {" "}
-            </div>
-            <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
-              {" "}
-            </div>
+        <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
+
+        <div className="mx-3  flex mb-5">
+          <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+            {" "}
+          </div>
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+            {" "}
+          </div>
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+            {" "}
+          </div>
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+            {" "}
+          </div>
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+            {" "}
+          </div>
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+            {" "}
           </div>
         </div>
+      </div>
       </div>
     </MainLayout>
   );

@@ -70,7 +70,7 @@ const CreateLeague = () => {
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
         <Link href="/home/account/status" passHref>
-          <a className="font-montserrat text-sm text-[#240155] ml-24 mt-10 px-2 ">
+          <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
             Home
           </a>
         </Link>
@@ -94,13 +94,13 @@ const CreateLeague = () => {
           </a>
         </Link>
       </div>
-      <div className="container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 md:w-3/5 ml-24 mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
+      <div className="container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 md:w-3/5 mt-10 mb-20  px-4 py-6 lg:px-20 md:ml-10 w-auto">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <div className="flex flex-col  pt-10 space-y-4 max-w-lg mx-2">
-            <h1 className="font-montserrat text-3xl text-black-150 w-4/6 ">
+            <h1 className="font-montserrat text-2xl sm:text-3xl text-black-150 w-4/6 ">
               Create a League
             </h1>
-            <p className="font-arcon text-sm text-[#222222]/60  w-5/6">
+            <p className="font-arcon text-sm text-[#222222]/60  sm:w-5/6">
               Please type carefully and fill out the form with Personal details.
               You can't edit these details once you submit the form.
             </p>
@@ -239,7 +239,7 @@ const CreateLeague = () => {
               <div className="w-full mx-auto  py-5 flex-1 svelte-1l8159u">
                 <button
                   type="submit"
-                  className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex mx-auto justify-center px-28 py-2 rounded font-bold cursor-pointer 
+                  className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex mx-auto justify-center lg:px-28 py-2 rounded font-bold cursor-pointer 
                                 
 										hover:bg-blue-500 
 										bg-violet-500 text-gray-200
@@ -346,26 +346,27 @@ const CreateLeague = () => {
         </div> */}
       </div>
 
-      <div className="container mb-5">
-        <hr className="mt-20 max-w-6xl rounded-lg border-b-2 border-violet-500 mx-auto " />
+      <div className="container mb-5 mx-auto">
 
-        <div className="ml-16 max-w-6xl flex mb-5">
-          <div className="rounded-2xl bg-gray-200 border mt-5  py-5 px-3 w-1/6 h-24">
+        <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
+
+        <div className="mx-3  flex mb-5">
+          <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
         </div>

@@ -4,129 +4,128 @@ import Link from "next/link";
 export default function MainFooter() {
   return (
     <footer className="bg-violet-500 pt-20 lg:pt-[120px]  relative z-10">
-      <div className="container">
-        <div className="flex flex-wrap mx-24">
-          <div className="w-full sm:w-3/12 lg:w-3/12 px-4">
-            <div className="w-full mb-10">
-              <Link href="/" passHref>
-                <span className="inline-block max-w-[160px] mb-6">
-                  <img src="/brand.png" alt="logo" className="max-w-full" />
-                </span>
-              </Link>
-            </div>
+      <div className="flex flex-wrap mx-auto md:mx-5 lg:mx-12">
+        <div className="w-full sm:w-3/12 lg:w-3/12 px-4">
+          <div className="w-full mb-10">
+            <Link href="/" passHref>
+              <span className="inline-block max-w-[160px] mb-6">
+                <img src="/brand.png" alt="logo" className="max-w-full" />
+              </span>
+            </Link>
           </div>
+        </div>
 
-          <div className="flex flex-wrap w-full sm:w-3/12 lg:w-3/12 px-4">
-            <div className="w-1/2 mb-10">
-              <h4 className="text-white text-lg  font-montserrat mb-9">
-                Pages
-              </h4>
-              <ul>
-                <li>
-                  <Link href="/" passHref>
-                    <span
-                      className="
+        <div className="flex flex-wrap w-full sm:w-3/12 lg:w-3/12 px-4">
+          <div className="w-1/2 mb-10">
+            <h4 className="text-white text-lg  font-montserrat mb-9">Pages</h4>
+            <ul>
+              <li>
+                <Link href="/" passHref>
+                  <span
+                    className="
                     font-arcon
                             inline-block
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
-                    >
-                      Home
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/" passHref>
-                    <span
-                      className="
+                            mb-2 
+                            cursor-pointer"
+                  >
+                    Home
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/" passHref>
+                  <span
+                    className="
                     font-arcon
                             inline-block
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
-                    >
-                      My Team
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/" passHref>
-                    <span
-                      className="
-                    font-arcon
-                            inline-block
-                            text-base text-white
-                            hover:text-primary
-                            leading-loose
-                            mb-2
-                            "
-                    >
-                      Transfer
-                    </span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="w-1/2 mb-10">
-              <h4 className="text-white text-lg  font-semibold mb-16"></h4>
-              <ul>
-                <li>
-                  <a
-                    href="##"
-                    className="font-arcon
-                            inline-block
-                            text-base text-white
-                            hover:text-primary
-                            leading-loose
-                            mb-2
+                            mb-2 
+                            cursor-pointer
                             "
                   >
-                    Leagues
-                  </a>
-                </li>
-                <li>
-                  <Link href="##" passHref>
-                    <span
-                      className="
+                    My Team
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/" passHref>
+                  <span
+                    className="
                     font-arcon
                             inline-block
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
-                    >
-                      Fixtures
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="##" passHref>
-                    <span
-                      className="
-                    font-arcon
-                            inline-block
-                            text-base text-white
-                            hover:text-primary
-                            leading-loose
-                            mb-2
-                            "
-                    >
-                      Statistics
-                    </span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
+                            mb-2 
+                            cursor-pointer"
+                  >
+                    Transfer
+                  </span>
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          <div className="w-full sm:w-3/12 lg:w-3/12 px-4">
+          <div className="w-1/2 mb-10">
+            <h4 className="text-white text-lg  font-semibold mb-16"></h4>
+            <ul>
+              <li>
+                <a
+                  href="##"
+                  className="font-arcon
+                            inline-block
+                            text-base text-white
+                            hover:text-primary
+                            leading-loose
+                            mb-2 
+                            cursor-pointer"
+                >
+                  Leagues
+                </a>
+              </li>
+              <li>
+                <Link href="##" passHref>
+                  <span
+                    className="
+                    font-arcon
+                            inline-block
+                            text-base text-white
+                            hover:text-primary
+                            leading-loose
+                            mb-2 
+                            cursor-pointer"
+                  >
+                    Fixtures
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="##" passHref>
+                  <span
+                    className="
+                    font-arcon
+                            inline-block
+                            text-base text-white
+                            hover:text-primary
+                            leading-loose
+                            mb-2 
+                            cursor-pointer"
+                  >
+                    Statistics
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex  sm:w-6/12">
+          <div className="w-full sm:w-1/2 lg:w-1/2 px-4">
             <div className="w-full mb-10">
               <h4 className=" font-montserrat text-white text-lg  font-semibold mb-9">
                 About
@@ -141,8 +140,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Privacy Policy
                     </span>
@@ -157,8 +156,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Terms of Use
                     </span>
@@ -173,8 +172,8 @@ export default function MainFooter() {
                             text-base text-white
                             hover:text-primary
                             leading-loose
-                            mb-2
-                            "
+                            mb-2 
+                            cursor-pointer"
                     >
                       Cookies Settings
                     </span>
@@ -183,7 +182,7 @@ export default function MainFooter() {
               </ul>
             </div>
           </div>
-          <div className="w-full sm:w-3/12 lg:w-3/12 px-4">
+          <div className="w-full sm:w-1/2 lg:w-1/2 px-4">
             <div className="w-full mb-10">
               <h4 className="font-montserrat text-white text-lg  font-semibold mb-9">
                 Follow Us
@@ -283,8 +282,8 @@ export default function MainFooter() {
           </div>
         </div>
       </div>
-      <span className="font-arcon bg-white block text-sm text-gray-700 sm:text-center dark:text-gray-400 py-5 -pb-5">
-        {" "}
+
+      <span className="font-arcon bg-white block text-sm text-gray-700 sm:text-center dark:text-gray-400 py-5 -pb-5 px-5">
         All Rights Reserved © 2022 Tefzon Fantasy.
       </span>
 
