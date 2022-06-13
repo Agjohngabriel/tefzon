@@ -9,11 +9,11 @@ const SaveTeam = () => {
       <form>
         <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
-            <h1 className="font-oswald text-4xl text-black-0  text-center">
-              Save Your Team
+            <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
+            Save Your Team
             </h1>
           </div>
-          <div className="w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
+          <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
             <div>
               <Link href="/home/account/squad/select_squad">
                 <a
@@ -24,7 +24,7 @@ const SaveTeam = () => {
                                     transition"
                 >
                   <span className="font-montserrat text-sm text-black-150">
-                    Save
+                  Save
                   </span>
                 </a>
               </Link>
@@ -32,7 +32,7 @@ const SaveTeam = () => {
           </div>
         </div>
 
-        <hr className="my-6 max-w-6xl rounded-lg border-b-2 border-violet-500 mx-auto" />
+        <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-4 lg:mx-28" />
 
         <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-5  w-auto">
           <div
@@ -50,14 +50,13 @@ const SaveTeam = () => {
 
             <div className={"mt-20" + (openTab === 1 ? "block" : "hidden")}>
               <div className="flex mt-[7rem]  py-10 mx-auto">
-                <div className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+                <div className="p-3  rounded mt-2 mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[3rem] ">
                     <svg
-                      width="43"
-                      height="41"
+                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto  z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -74,13 +73,13 @@ const SaveTeam = () => {
                   <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
@@ -88,15 +87,13 @@ const SaveTeam = () => {
                 </div>
               </div>
 
-              <div className="flex   py-10 mx-auto w-1/2">
-                <div className="p-3  rounded mt-2  mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+              <div className="flex   py-10 mx-auto sm:w-1/2">
+                <div className="p-3  rounded mt-2  mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[3rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -110,30 +107,28 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
                   </div>
                 </div>
 
-                <div className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+                <div className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[3rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -147,30 +142,28 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
                   </div>
                 </div>
 
-                <div className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+                <div className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[3rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -184,16 +177,16 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
@@ -201,15 +194,13 @@ const SaveTeam = () => {
                 </div>
               </div>
 
-              <div className="flex   py-10 mx-auto w-3/4">
-                <div className="p-3  rounded mt-5 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+              <div className="flex   py-10 sm:mx-auto -mx-3 sm:w-3/4">
+                <div className="p-1  rounded mt-5 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -223,30 +214,28 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
                   </div>
                 </div>
 
-                <div className="p-3  rounded mt-1 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+                <div className="p-1  rounded mt-1 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -260,30 +249,28 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
                   </div>
                 </div>
 
-                <div className="p-3  rounded mt-1 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+                <div className="p-1  rounded mt-1 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -297,30 +284,28 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
                   </div>
                 </div>
 
-                <div className="p-3  rounded mt-5 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+                <div className="p-1  rounded mt-5 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -334,16 +319,16 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
@@ -351,15 +336,13 @@ const SaveTeam = () => {
                 </div>
               </div>
 
-              <div className="flex   py-10 mx-auto w-1/2">
-                <div className="p-3  rounded -mt-5 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+              <div className="flex   py-10 mx-auto sm:w-1/2">
+                <div className="p-3  rounded -mt-5 mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -373,30 +356,28 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
                   </div>
                 </div>
 
-                <div className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+                <div className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -410,30 +391,28 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
                   </div>
                 </div>
 
-                <div className="p-3  rounded -mt-5 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
+                <div className="p-3  rounded -mt-5 mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg
-                      width="43"
-                      height="41"
+                    <svg                      
                       viewBox="0 0 53 51"
                       fill="none"
-                      className=" mx-auto z-0"
+                      className=" h-8 sm:h-12 mx-auto z-0"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -447,16 +426,16 @@ const SaveTeam = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full mx-auto -mt-1    mb-2">
+                  <div className="w-full mx-auto -mt-1    mb-1">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-xs font-arcon py-1 mt-1 -ml-9 pl-5 tracking-wider rounded text-gray-100 bg-[#33175A]"
+                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]"
                     >
                       C. Ronaldo
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center  -ml-9 -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                     >
                       11.9
                     </p>
@@ -465,7 +444,7 @@ const SaveTeam = () => {
               </div>
             </div>
 
-            <div className="flex justify-between items-center mb-3 bg-gray-800/90 w-[26rem] rounded-3xl mx-auto mt-12">
+            <div className="flex justify-between items-center mb-3 bg-gray-800/90 sm:w-[30rem] rounded-3xl mx-auto mt-12">
               <div
                 className={`inline-flex rounded-3xl ${
                   openTab === 1
@@ -489,7 +468,7 @@ const SaveTeam = () => {
                 <label
                   htmlFor="fixtures"
                   className={
-                    "radio text-center  self-center py-3 px-12 cursor-pointer  hover:opacity-75 "
+                    "radio text-center  self-center py-2 sm:py-3 px-4 sm:px-12 cursor-pointer  hover:opacity-75 "
                   }
                 >
                   Pitch View
@@ -517,7 +496,7 @@ const SaveTeam = () => {
                 <label
                   htmlFor="fdr"
                   className={
-                    "radio text-center  self-center py-3 px-12 cursor-pointer   hover:opacity-75 "
+                    "radio text-center  self-center py-2 sm:py-3 px-4 sm:px-12 cursor-pointer   hover:opacity-75 "
                   }
                 >
                   List View
@@ -545,7 +524,7 @@ const SaveTeam = () => {
                 <label
                   htmlFor="date"
                   className={
-                    "radio text-center  self-center py-3 px-12 cursor-pointer   hover:opacity-75 "
+                    "radio text-center  self-center py-2 sm:py-3 px-8 sm:px-12 cursor-pointer   hover:opacity-75 "
                   }
                 >
                   Date

@@ -11,7 +11,7 @@ const NameTeam = () => {
               Name Your Team
             </h1>
           </div>
-          <div className="sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
+          <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
             <div>
               <Link href="/home/account/squad/save_team">
                 <a
