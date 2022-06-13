@@ -116,7 +116,7 @@ const Index = () => {
                 <div className="w-full lg:mx-2 flex-1 svelte-1l8159u">
                   <Link href="/home/account/wallet/withdraw">
                     <a
-                      className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center mt-2 xl:px-20 py-4 rounded md:mx-2 xl:mx-0< font-bold cursor-pointer 
+                      className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center mt-2 xl:px-20 py-4 rounded md:mx-2 xl:mx-0 font-bold cursor-pointer 
                                 
                                 hover:bg-blue-500 
                                 bg-[#6E4BEC] opacity-50 text-gray-200
@@ -133,7 +133,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="container max-w-sm bg-[#6544DE]  border-inherit rounded-xl shadow-lg shadow-indigo-500/50 md:w-3/5 sm:ml-10  xl:ml-24 mt-10 mb-20  px-4 py-6 lg:px-5  w-auto">
+          <div className="container max-w-sm bg-[#6544DE]  border-inherit rounded-xl shadow-lg shadow-indigo-500/50 md:w-3/5 mx-2 sm:ml-10  xl:ml-24 mt-10 mb-20  px-4 py-6 lg:px-5  w-auto">
             <div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
               <div className="md:flex">
                 <div className="w-full">
@@ -173,7 +173,7 @@ const Index = () => {
                         </p>
                       </div>
 
-                      <div className=" pl-24 w-full text-right">
+                      <div className=" pl-20 lg:pl-24 w-full text-right">
                         <p
                           tabIndex={0}
                           className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
@@ -206,7 +206,7 @@ const Index = () => {
                         </p>
                       </div>
 
-                      <div className=" pl-24 w-full text-right">
+                      <div className=" pl-20 lg:pl-24 w-full text-right">
                         <p
                           tabIndex={0}
                           className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
@@ -239,7 +239,7 @@ const Index = () => {
                         </p>
                       </div>
 
-                      <div className=" pl-24 w-full text-right">
+                      <div className=" pl-20 lg:pl-24 w-full text-right">
                         <p
                           tabIndex={0}
                           className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
@@ -272,7 +272,7 @@ const Index = () => {
                         </p>
                       </div>
 
-                      <div className=" pl-24 w-full text-right">
+                      <div className=" pl-20 lg:pl-24 w-full text-right">
                         <p
                           tabIndex={0}
                           className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
@@ -305,7 +305,7 @@ const Index = () => {
                         </p>
                       </div>
 
-                      <div className=" pl-24 w-full text-right">
+                      <div className=" pl-20 lg:pl-24 w-full text-right">
                         <p
                           tabIndex={0}
                           className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
@@ -338,7 +338,7 @@ const Index = () => {
                         </p>
                       </div>
 
-                      <div className=" pl-24 w-full text-right">
+                      <div className=" pl-20 lg:pl-24 w-full text-right">
                         <p
                           tabIndex={0}
                           className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
@@ -371,7 +371,7 @@ const Index = () => {
                         </p>
                       </div>
 
-                      <div className=" pl-24 w-full text-right">
+                      <div className=" pl-20 lg:pl-24 w-full text-right">
                         <p
                           tabIndex={0}
                           className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
