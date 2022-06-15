@@ -131,7 +131,7 @@ const SelectCaptain = () => {
         <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-4 lg:mx-28" />
         <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-5  w-auto">
           <div
-            className="rounded-2xl border shadow-xl py-20 px-5 w-full "
+            className="rounded-2xl border shadow-xl py-20 sm:px-5 w-full "
             style={{
               backgroundImage: 'url("/img/pitch-lg.png")',
               backgroundRepeat: "no-repeat",
@@ -143,12 +143,12 @@ const SelectCaptain = () => {
               Your Captain's point will be doubled
             </p>
             {error === true && (
-              <p className="text-sm font-arcon text-red-0 text-center max-w-3xl -mb-8 py-3 ml-24 tracking-wider px-2  lg:px-1 ">
+              <p className="text-sm font-arcon text-red-0 text-center max-w-3xl -mb-8 py-3 mx-auto tracking-wider px-2  lg:px-1 ">
                 {errorMsg.message}
               </p>
             )}
             {message !== "" && (
-              <p className="text-sm font-arcon text-white text-center max-w-3xl -mb-8 py-3  ml-24 tracking-wider px-2  lg:px-1 ">
+              <p className="text-sm font-arcon text-white text-center max-w-3xl -mb-8 py-3  mx-auto tracking-wider px-2  lg:px-1 ">
                 {message}
               </p>
             )}
@@ -292,7 +292,7 @@ const SelectCaptain = () => {
                     key={player_id}
                     type="button"
                     onClick={() => selectCap(item.id)}
-                    className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                    className="p-3  rounded mt-2 mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
                       <svg
@@ -329,7 +329,7 @@ const SelectCaptain = () => {
                   </button>
                 ))}
               </div>
-              <hr />
+              <hr className="my-6 rounded-lg border-b border-white mx-4 lg:mx-28"/>
               <div className="flex   py-10 sm:mx-auto -mx-3 sm:w-3/4">
                 {teams.forwards.map((item: Players, player_id: number) => (
                     <button
