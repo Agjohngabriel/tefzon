@@ -577,7 +577,7 @@ const SquadSelection = () => {
           <div className="container max-w-sm   shadow-indigo-500/50  md:w-3/5  sm:ml-5  xl:ml-8 mt-10 mb-20 px-1   lg:px-5  w-auto">
             <div className="px-1">
               <div className="bg-gray-100 rounded-sm border shadow-xl py-5 px-2 lg:p-5 w-full pb-10 ">
-                <div className="max-w-md mx-auto scrollbar-hide overflow-hidden md:max-w-xl">
+                <div className="max-w-md mx-auto  overflow-hidden md:max-w-xl">
                   <div className="md:flex">
                     <div className="w-full">
                       <div className="relative flex">
@@ -717,7 +717,7 @@ const SquadSelection = () => {
                           </span>
                         </p>
 
-                        <div className="ml-5 border-l border-gray-400 pl-2  w-[7rem] mb-2">
+                        <div className="ml-5 border-l border-gray-400 pl-2  w-[8rem] mb-2">
                           <p
                             tabIndex={0}
                             className="focus:outline-none text-xs font-arcon leading-5 text-white"
@@ -739,7 +739,7 @@ const SquadSelection = () => {
                         </div>
                       </div>
 
-                      <div className=" ml-3 py-2 border-l text-right  flex-auto w-24">
+                      <div className=" ml-2 py-2 border-l text-right  flex-auto w-24">
                         <p
                           tabIndex={0}
                           className="focus:outline-none  text-md font-arcon leading-5  px-4 text-white"
