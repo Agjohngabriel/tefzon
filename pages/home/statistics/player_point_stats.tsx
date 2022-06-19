@@ -27,7 +27,7 @@ const PlayerPointStats = () => {
               </div>
             </div>
 
-            <div className="flex lg:ml-20  py-10 ">
+            <div className="flex mx-auto ml-3 lg:ml-20  py-10 ">
               <div className=" flex-1 svelte-1l8159u">
                 <button
                   //   onClick={() => fetchByPos(1)}
@@ -98,10 +98,10 @@ const PlayerPointStats = () => {
             </div>
           </div>
           <div className="text-center">
-            <h3 className="text-center text-xl font-bold">Kobe Bryant</h3>
+            <h3 className="text-center text-base font-bold">Kobe Bryant</h3>
             <span className="text-sm">Forward</span>
           </div>
-          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-xl">
+          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-lg">
             <li className="flex flex-col">
               <span className="font-bold">PTS</span> 30.00
             </li>
@@ -123,10 +123,10 @@ const PlayerPointStats = () => {
             </div>
           </div>
           <div className="text-center">
-            <h3 className="text-center text-xl font-bold">Kobe Bryant</h3>
+            <h3 className="text-center text-base font-bold">Kobe Bryant</h3>
             <span className="text-sm">Forward</span>
           </div>
-          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-xl">
+          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-lg">
             <li className="flex flex-col">
               <span className="font-bold">PTS</span> 30.00
             </li>
@@ -147,35 +147,10 @@ const PlayerPointStats = () => {
             </div>
           </div>
           <div className="text-center">
-            <h3 className="text-center text-xl font-bold">Kobe Bryant</h3>
+            <h3 className="text-center text-base font-bold">Kobe Bryant</h3>
             <span className="text-sm">Forward</span>
           </div>
-          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-xl">
-            <li className="flex flex-col">
-              <span className="font-bold">PTS</span> 30.00
-            </li>
-            <li className=" flex flex-col">
-              <span className="font-bold">AST</span> 4
-            </li>
-          </ul>
-        </div>
-
-        <div className="py-3 px-3 sm:px-5 lg:px-8 w-[47%] mb-14 sm:w-[23%] lg:w-[18%]  mx-auto cursor-pointer rounded-3xl bg-gray-100 transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl">
-          <div className="-mb-10 -translate-y-1/2 transform">
-            <div className=" h-28 w-28 rounded-full border-2 border-white shadow-md mx-auto">
-              <img
-                className="rounded-full object-cover object-center"
-                src="https://images.pexels.com/photos/1654748/pexels-photo-1654748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                alt="Kobe Bryant"
-                title="Kobe Bryant"
-              />
-            </div>
-          </div>
-          <div className="text-center">
-            <h3 className="text-center text-xl font-bold">Kobe Bryant</h3>
-            <span className="text-sm">Forward</span>
-          </div>
-          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-xl">
+          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-lg">
             <li className="flex flex-col">
               <span className="font-bold">PTS</span> 30.00
             </li>
@@ -197,10 +172,35 @@ const PlayerPointStats = () => {
             </div>
           </div>
           <div className="text-center">
-            <h3 className="text-center text-xl font-bold">Kobe Bryant</h3>
+            <h3 className="text-center text-base font-bold">Kobe Bryant</h3>
             <span className="text-sm">Forward</span>
           </div>
-          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-xl">
+          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-lg">
+            <li className="flex flex-col">
+              <span className="font-bold">PTS</span> 30.00
+            </li>
+            <li className=" flex flex-col">
+              <span className="font-bold">AST</span> 4
+            </li>
+          </ul>
+        </div>
+
+        <div className="py-3 px-3 sm:px-5 lg:px-8 w-[47%] mb-14 sm:w-[23%] lg:w-[18%]  mx-auto cursor-pointer rounded-3xl bg-gray-100 transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl">
+          <div className="-mb-10 -translate-y-1/2 transform">
+            <div className=" h-28 w-28 rounded-full border-2 border-white shadow-md mx-auto">
+              <img
+                className="rounded-full object-cover object-center"
+                src="https://images.pexels.com/photos/1654748/pexels-photo-1654748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="Kobe Bryant"
+                title="Kobe Bryant"
+              />
+            </div>
+          </div>
+          <div className="text-center">
+            <h3 className="text-center text-base font-bold">Kobe Bryant</h3>
+            <span className="text-sm">Forward</span>
+          </div>
+          <ul className="mt-2 mb-2 mx-auto flex justify-between text-center text-lg">
             <li className="flex flex-col">
               <span className="font-bold">PTS</span> 30.00
             </li>

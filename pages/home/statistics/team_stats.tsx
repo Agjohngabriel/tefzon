@@ -5,7 +5,8 @@ const TeamStats = () => {
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
-        <Link href="/wallet" passHref>
+        <Link href="/statistics
+        " passHref>
           <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2   ">
             Home
           </a>
@@ -15,12 +16,12 @@ const TeamStats = () => {
         </span>
 
         <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
-          Statistics
+          Team Statistics
         </h1>
       </div>
 
 
-        <div className="container mx-auto px-4 sm:px-8 bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 shadow-lg shadow-indigo-500/50">
+        <div className="container mx-auto px-4 sm:px-8 ">
           <div className="py-8">
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
               <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
