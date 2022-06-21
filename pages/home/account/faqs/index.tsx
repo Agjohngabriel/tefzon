@@ -1,6 +1,13 @@
+import { useState } from "react";
 import Layout from "../../../../components/Layouts";
 
 const Index = () => {
+  const [open, setOpen] = useState(false);
+
+  const toggleHandler = () => {
+    //switch state
+    setOpen(!open);
+  };
   return (
     <Layout>
       <div className="flex justify-center items-start my-2">
@@ -9,7 +16,7 @@ const Index = () => {
           <ul className="flex flex-col">
             <li className="bg-white my-2 shadow-lg" x-data="accordion(1)">
               <h2
-                // @click="handleClick()"
+                onClick={toggleHandler}
                 className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer"
               >
                 <span>When will my order arrive?</span>
@@ -33,7 +40,7 @@ const Index = () => {
             </li>
             <li className="bg-white my-2 shadow-lg" x-data="accordion(2)">
               <h2
-                // @click="handleClick()"
+                onClick={toggleHandler}
                 className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer"
               >
                 <span>How do I track my order?</span>
@@ -57,7 +64,7 @@ const Index = () => {
             </li>
             <li className="bg-white my-2 shadow-lg" x-data="accordion(3)">
               <h2
-                // @click="handleClick()"
+                onClick={toggleHandler}
                 className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer"
               >
                 <span>What’s your return policy?</span>
@@ -81,7 +88,7 @@ const Index = () => {
             </li>
             <li className="bg-white my-2 shadow-lg" x-data="accordion(4)">
               <h2
-                // @click="handleClick()"
+                onClick={toggleHandler}
                 className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer"
               >
                 <span>How do I make changes to an existing order?</span>
@@ -105,7 +112,7 @@ const Index = () => {
             </li>
             <li className="bg-white my-2 shadow-lg" x-data="accordion(5)">
               <h2
-                // @click="handleClick()"
+                onClick={toggleHandler}
                 className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer"
               >
                 <span>What shipping options do you have?</span>
@@ -129,7 +136,7 @@ const Index = () => {
             </li>
             <li className="bg-white my-2 shadow-lg" x-data="accordion(6)">
               <h2
-                // @click="handleClick()"
+                onClick={toggleHandler}
                 className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer"
               >
                 <span>What payment methods do you accept?</span>

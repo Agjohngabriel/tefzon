@@ -41,7 +41,7 @@ function GuestHeader() {
         }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
       >
         <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
-          <Link href="" passHref>
+          <Link href="/" passHref>
             <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
               Home
             </a>
@@ -51,12 +51,12 @@ function GuestHeader() {
             Price
             </a>
           </Link>
-          <Link href="" passHref>
+          <Link href="/home/scout" passHref>
             <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
             Scout
             </a>
           </Link>
-          <Link href="" passHref>
+          <Link href="/home/statistics" passHref>
             <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
             Statistics
             </a>
@@ -66,7 +66,7 @@ function GuestHeader() {
             Help
             </a>
           </Link>
-          <Link href="" passHref>
+          <Link href="/home/contact" passHref>
             <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
               Contact
             </a>

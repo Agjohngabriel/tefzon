@@ -6,7 +6,7 @@ const Index = () => {
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
         <Link href="/wallet" passHref>
-          <a className="font-montserrat text-sm text-[#240155] ml-24 mt-10 px-2 ">
+          <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2   ">
             Home
           </a>
         </Link>
@@ -18,19 +18,20 @@ const Index = () => {
           Fixtures
         </h1>
       </div>
+      
       <div className="container">
-        <div className="flex">
-          <div className="container flex max-w-4xl h-3/4 bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50  ml-20 mt-10 mb-20  px-2 py-6 lg:px-10  ">
+        <div className="sm:flex">
+          <div className="container flex max-w-4xl h-3/4 bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20 mt-10 mb-20  px-2 py-6 lg:px-10  ">
             <div className="flex flex-col  pt-10 space-y-4 w-full mx-2">
-              <h1 className="font-montserrat text-3xl text-black-0 mb-5 ">
+              <h1 className="font-montserrat text-xl sm:text-3xl text-black-0 mb-5 ">
                 League 1842968
               </h1>
-              <p className="text-xs text-black-0 font-arcon text-center mt-24 w-full py-4 bg-[#E1CEFF]">
+              <p className="text-xs text-black-0 font-arcon text-center mt-24 w-full mx-auto py-4 bg-[#E1CEFF]  max-w-3xl mb-5   tracking-wider px-2 lg:px-1 ">
                 League scoring started in the Gameweek 24.
               </p>
 
               <div className="w-full mx-2  flex svelte-1l8159u">
-                <h1 className="font-montserrat text-xl text-black-0 mb-5  mt-3">
+                <h1 className="font-montserrat text-base sm:text-xl text-black-0 mb-5  mt-3">
                   Select Phase
                 </h1>
                 <div className="bg-white mx-3 mb-10 p-1 flex border border-gray-200 rounded svelte-1l8159u w-1/3">
@@ -64,7 +65,7 @@ const Index = () => {
                   <tr className="border-b border-gray-300 py-3">
                     <td className="p-2 text-sm font-normal">
                       1
-                      <span className=" align-middle  material-icons text-5xl text-green ">
+                      <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                         arrow_drop_up
                       </span>
                     </td>
@@ -92,8 +93,8 @@ const Index = () => {
                   </tr>
                   <tr className="border-b border-gray-300 py-3">
                     <td className="p-2 text-sm font-normal">
-                      1
-                      <span className=" align-middle  material-icons text-5xl text-green ">
+                      2
+                      <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                         arrow_drop_down
                       </span>
                     </td>
@@ -112,7 +113,7 @@ const Index = () => {
                       </p>
                     </td>
                     <td className="p-2 text-center font-arcon text-black-0">
-                      {" "}
+
                       56
                     </td>
                     <td className="p-2 text-center font-arcon text-black-0">
@@ -121,8 +122,8 @@ const Index = () => {
                   </tr>
                   <tr className="border-b border-gray-300 py-3">
                     <td className="p-2 text-sm font-normal">
-                      1
-                      <span className=" align-middle  material-icons text-5xl text-green ">
+                    3
+                      <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                         arrow_drop_up
                       </span>
                     </td>
@@ -141,7 +142,6 @@ const Index = () => {
                       </p>
                     </td>
                     <td className="p-2 text-center font-arcon text-black-0">
-                      {" "}
                       56
                     </td>
                     <td className="p-2 text-center font-arcon text-black-0">
@@ -153,9 +153,9 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="w-full mx-4 flex-1 svelte-1l8159u pt-10">
+          <div className="w-full pl-5 flex-1 svelte-1l8159u pt-10">
             <button
-              className="text-base  hover:scale-110 focus:outline-none flex justify-center px-5 py-2 rounded font-bold cursor-pointer 
+              className="text-base  hover:scale-110 focus:outline-none flex justify-center  py-2 rounded font-bold cursor-pointer 
                                 
                                 hover:bg-blue-500 
                                 bg-stone-200 text-gray-700
@@ -164,7 +164,7 @@ const Index = () => {
             >
               <div className="flex font-sans text-xs font-montserrat px-2">
                 <span className="pt-1 text-[#060606] opacity-60">
-                  {" "}
+
                   Report Offensive Name
                 </span>
                 <span className="ml-10 material-icons hover:text-gray-100">
@@ -176,26 +176,26 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="container mb-5">
-        <hr className="mt-20 max-w-6xl rounded-lg border-b-2 border-violet-500 mx-auto " />
+      <div className="container mb-5 mx-auto">
+        <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
 
-        <div className="ml-16 max-w-6xl flex mb-5">
-          <div className="rounded-2xl bg-gray-200 border mt-5  py-5 px-3 w-1/6 h-24">
+        <div className="mx-3  flex mb-5">
+          <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 ml-10 py-5 px-3 w-1/6 h-24">
+          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
             {" "}
           </div>
         </div>
