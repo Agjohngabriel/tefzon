@@ -12,13 +12,13 @@ const Home: NextPage = () => {
   };
   return (
     <GuestLayout>
-      <div className="container rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-4 py-2 lg:px-20 h-3/4">
-        <div className="md:flex z-0 ">
-          <div className="md:w-3/5  mt-20 mb-12">
-            <h2 className="font-oswald text-gray-800 font-bold text-5xl tracking-tighter  leading-tight mb-4 animate-fade-in-up">
-              FANTASY SOCCER TO PLAY WITH PLEASURE
+      <div className="container px-4 py-2 mx-auto shadow-2xl rounded-xl shadow-indigo-500/50 lg:px-20 h-3/4">
+        <div className="z-0 md:flex ">
+          <div className="mt-20 mb-12 md:w-3/5">
+            <h2 className="mb-4 text-5xl font-bold leading-tight tracking-tighter text-gray-800 font-oswald animate-fade-in-up">
+              FANTASY SOCCER TO PLAY WITH PLEASUREs
             </h2>
-            <p className="font-nunito text-gray-700 text-1xl animate-fade-in-down">
+            <p className="text-gray-700 font-nunito text-1xl animate-fade-in-down">
               Listen to the songs at tip of your finger, feel the vibes and
               dance.Listen to the songs at tip of your finger, feel the vibes
               and dance. Listen to the songs at tip of your finger.
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
               <button
                 onClick={goToLogin}
                 type="button"
-                className="flex items-center text-gray-600 rounded md:px-8 ml-4 sm:ml-0 sm:px-6 py-2 focus:outline-none animate-wiggle "
+                className="flex items-center py-2 ml-4 text-gray-600 rounded md:px-8 sm:ml-0 sm:px-6 focus:outline-none animate-wiggle "
               >
                 Login to play
                 <span className="ml-2 material-icons hover:text-green ">
@@ -46,13 +46,13 @@ const Home: NextPage = () => {
               </button>
             </div>
           </div>
-          <div className="md:w-1/2 mt-20">
+          <div className="mt-20 md:w-1/2">
             <div className="mt-3 ">
               <div className="mt-3 ">
                 <img
                   src="/img/soccer 1.png"
                   alt="soccer"
-                  className=" relative animate-up-down"                  
+                  className="relative  animate-up-down"                  
                 />
               </div>
             </div>
