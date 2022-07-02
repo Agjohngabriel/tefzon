@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <div className="z-0 md:flex ">
           <div className="mt-20 mb-12 md:w-3/5">
             <h2 className="mb-4 text-5xl font-bold leading-tight tracking-tighter text-gray-800 font-oswald animate-fade-in-up">
-              FANTASY SOCCER TO PLAY WITH PLEASUREs
+              FANTASY SOCCER TO PLAY WITH PLEASURE
             </h2>
             <p className="text-gray-700 font-nunito text-1xl animate-fade-in-down">
               Listen to the songs at tip of your finger, feel the vibes and
@@ -31,7 +31,6 @@ const Home: NextPage = () => {
                 color="text-white"
                 opacity="opacity-100"
                 width="w-40"
-                
               />
 
               <button
@@ -52,14 +51,13 @@ const Home: NextPage = () => {
                 <img
                   src="/img/soccer 1.png"
                   alt="soccer"
-                  className="relative  animate-up-down"                  
+                  className="relative  animate-up-down"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </GuestLayout>
   );
 };

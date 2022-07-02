@@ -10,7 +10,7 @@ const SaveTeam = () => {
         <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
             <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
-            Save Your Team
+              Save Your Team
             </h1>
           </div>
           <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
@@ -24,7 +24,7 @@ const SaveTeam = () => {
                                     transition"
                 >
                   <span className="font-montserrat text-sm text-black-150">
-                  Save
+                    Save
                   </span>
                 </a>
               </Link>
@@ -53,7 +53,6 @@ const SaveTeam = () => {
                 <div className="p-3  rounded mt-2 mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[3rem] ">
                     <svg
-                      
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto  z-0"
@@ -90,7 +89,7 @@ const SaveTeam = () => {
               <div className="flex   py-10 mx-auto sm:w-1/2">
                 <div className="p-3  rounded mt-2  mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[3rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -125,7 +124,7 @@ const SaveTeam = () => {
 
                 <div className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[3rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -160,7 +159,7 @@ const SaveTeam = () => {
 
                 <div className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[3rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -197,7 +196,7 @@ const SaveTeam = () => {
               <div className="flex   py-10 sm:mx-auto -mx-3 sm:w-3/4">
                 <div className="p-1  rounded mt-5 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -232,7 +231,7 @@ const SaveTeam = () => {
 
                 <div className="p-1  rounded mt-1 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -267,7 +266,7 @@ const SaveTeam = () => {
 
                 <div className="p-1  rounded mt-1 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -302,7 +301,7 @@ const SaveTeam = () => {
 
                 <div className="p-1  rounded mt-5 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -339,7 +338,7 @@ const SaveTeam = () => {
               <div className="flex   py-10 mx-auto sm:w-1/2">
                 <div className="p-3  rounded -mt-5 mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -374,7 +373,7 @@ const SaveTeam = () => {
 
                 <div className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"
@@ -409,7 +408,7 @@ const SaveTeam = () => {
 
                 <div className="p-3  rounded -mt-5 mx-auto   h-10 hover:scale-105 transition transform duration-500 cursor-pointer">
                   <div className="-mt-[4rem] ">
-                    <svg                      
+                    <svg
                       viewBox="0 0 53 51"
                       fill="none"
                       className=" h-8 sm:h-12 mx-auto z-0"

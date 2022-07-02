@@ -9,14 +9,14 @@ function GuestHeader() {
     setActive(!active);
   };
   return (
-    <nav className="flex items-center flex-wrap mx-auto px-6 py-3 lg:px-20  bg-green-400 p-3 ">
+    <nav className="flex flex-wrap items-center p-3 px-6 py-3 mx-auto bg-green-400 lg:px-20 ">
       <Link href="/" passHref>
         <a className="inline-flex items-center p-2 mr-4 ">
           <img src="/brand.png" alt="logo" width="150px" />
         </a>
       </Link>
       <button
-        className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-gray-600 border-gray-600 ml-auto hover:text-violet-500 outline-none"
+        className="inline-flex p-3 ml-auto text-gray-600 border-gray-600 rounded outline-none  hover:bg-green-600 lg:hidden hover:text-violet-500"
         onClick={handleClick}
       >
         <svg
@@ -40,34 +40,34 @@ function GuestHeader() {
           active ? "" : "hidden"
         }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
       >
-        <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
+        <div className="flex flex-col items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
           <Link href="/" passHref>
-            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
+            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
               Home
             </a>
           </Link>
-          <Link href="" passHref>
-            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
+          {/* <Link href="" passHref>
+            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
             Price
             </a>
-          </Link>
+          </Link> */}
           <Link href="/home/scout" passHref>
-            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
-            Scout
+            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+              Scout
             </a>
           </Link>
           <Link href="/home/statistics" passHref>
-            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
-            Statistics
+            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+              Statistics
             </a>
           </Link>
           <Link href="" passHref>
-            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
-            Help
+            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+              Help
             </a>
           </Link>
           <Link href="/home/contact" passHref>
-            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-600 under hover:text-blue-500 font-bold items-center justify-center hover:bg-green-600 ">
+            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
               Contact
             </a>
           </Link>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { Loader } from "../base/Loader";
 
 interface Favorite {
   id: string;
@@ -13,19 +14,24 @@ const Favourite = (props: {
   nextFormStep: any;
   updateFormData: any;
 }) => {
-  const [favourite, setFavourite] = useState([]);
+  const [favourite, setFavourite] = useState(new Set());
   const [teams, setTeams] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { data: session }: any = useSession();
 
-  const updateFavData = (...newData: any) => {
-    setFavourite({ ...favourite, ...newData });
+  const selectFavourite = ({ id, name, logo_path }: Favorite) => {
+    setFavourite((favourite) => {
+      favourite = new Set(favourite);
+      favourite.add({ id, name, logo_path });
+      return favourite;
+    });
   };
-
   const update = () => {
     props.updateFormData({ favourite_team: favourite });
   };
   useEffect(() => {
     const fetchAll = async () => {
+      setIsLoading(true);
       const res = await axios.get(`${process.env.BASE_URL}get/league/teams`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
@@ -33,6 +39,7 @@ const Favourite = (props: {
         },
       });
       const response = await res.data;
+      setIsLoading(false);
       return response;
     };
 
@@ -46,66 +53,66 @@ const Favourite = (props: {
 
   return (
     <div className={`p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
-      <div className="flex flex-col items-center pt-20 space-y-4 max-w-lg mx-auto">
-        <h1 className="font-bold text-lg text-gray-700 w-4/6 text-center animate-fade-in-up">
+      <div className="flex flex-col items-center max-w-lg pt-20 mx-auto space-y-4">
+        <h1 className="w-4/6 text-lg font-bold text-center text-gray-700 animate-fade-in-up">
           Your Favourites
         </h1>
-        <p className="text-sm text-gray-500 text-center w-5/6 animate-fade-in-down">
+        <p className="w-5/6 text-sm text-center text-gray-500 animate-fade-in-down">
           Please type carefully and fill out the form with Personal details. You
           can't edit these details once you submit the form.
         </p>
       </div>
+      {isLoading && <Loader />}
+      {!isLoading && (
+        <div className="p-4 mt-8">
+          <div className="w-full border">
+            <section className="max-w-6xl mx-auto ">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 ">
+                {teams.map((item: Favorite, index) => (
+                  <button
+                    onClick={() => {
+                      selectFavourite({
+                        id: item.id,
+                        name: item.name,
+                        logo_path: item.logo_path,
+                      });
+                      // update();
+                    }}
+                    type="button"
+                    className={`${
+                      favourite.has(item) ? "bg-red" : "bg-black"
+                    } flex flex-col items-center justify-center w-full p-4 border sahdow-lg sm:p-8 animate-fade-in-up`}
+                    key={item.id}
+                  >
+                    <div className="mb-4 sm:mb-8">
+                      <img
+                        className="object-cover object-center w-5 h-5 rounded-full sm:h-20 sm:w-20"
+                        src={item.logo_path}
+                        alt="club"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <p className="mb-2 text-xs font-normal text-gray-700 sm:text-sm">
+                        {item.name}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </section>
+          </div>
 
-      <div className="mt-8 p-4">
-        <div className="w-full border">
-          <section className="max-w-6xl mx-auto  ">
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 ">
-              {teams.map((item: Favorite, index) => (
-                <button
-                  onClick={() => {
-                    updateFavData({
-                      id: item.id,
-                      name: item.name,
-                      logo_path: item.logo_path,
-                    }),
-                      update();
-                  }}
-                  type="button"
-                  className="w-full border  sahdow-lg p-4 sm:p-8 flex flex-col justify-center items-center animate-fade-in-up"
-                  key={item.id}
-                >
-                  <div className="mb-4 sm:mb-8">
-                    <img
-                      className="object-center object-cover rounded-full h-5 w-5 sm:h-20 sm:w-20"
-                      src={item.logo_path}
-                      alt="club"
-                    />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xs sm:text-sm text-gray-700 font-normal mb-2">
-                      {item.name}
-                    </p>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </section>
-        </div>
-
-        {/* <div className=" p-2 mt-10 justify-center border-b border-gray-200 pb-10">
+          {/* <div className="justify-center p-2 pb-10 mt-10 border-b border-gray-200 ">
           <button
-            className="text-base hover:scale-110 focus:outline-none flex justify-center px-20 py-2  font-bold cursor-pointer                                 
-                                            hover:bg-blue-500 shadow-inner 
-                                            bg-gray-200 text-gray-500
-                                            duration-200 ease-in-out 
-                                            transition mx-auto"
+            className="flex justify-center px-20 py-2 mx-auto text-base font-bold text-gray-500 transition duration-200 ease-in-out bg-gray-200 shadow-inner cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
           >
-            <div className="font-sans text-sm font-bold px-10">
+            <div className="px-10 font-sans text-sm font-bold">
               Load more clubs
             </div>
           </button>
         </div> */}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

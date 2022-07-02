@@ -12,7 +12,9 @@ const Index = () => {
     <Layout>
       <div className="flex justify-center items-start my-2">
         <div className="w-full sm:w-10/12 md:w-1/2 my-1">
-          <h2 className="text-xl font-semibold text-vnet-blue mb-2">FAQ - Order, Shipping, Etc.</h2>
+          <h2 className="text-xl font-semibold text-vnet-blue mb-2">
+            FAQ - Order, Shipping, Etc.
+          </h2>
           <ul className="flex flex-col">
             <li className="bg-white my-2 shadow-lg" x-data="accordion(1)">
               <h2
@@ -34,7 +36,9 @@ const Index = () => {
                 className="border-l-2 border-purple-600 overflow-hidden max-h-0 duration-500 transition-all"
               >
                 <p className="p-3 text-gray-900">
-                  Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation
+                  Shipping time is set by our delivery partners, according to
+                  the delivery method chosen by you. Additional details can be
+                  found in the order confirmation
                 </p>
               </div>
             </li>
@@ -58,7 +62,9 @@ const Index = () => {
                 // :style="handleToggle()"
               >
                 <p className="p-3 text-gray-900">
-                  Once shipped, you’ll get a confirmation email that includes a tracking number and additional information regarding tracking your order.
+                  Once shipped, you’ll get a confirmation email that includes a
+                  tracking number and additional information regarding tracking
+                  your order.
                 </p>
               </div>
             </li>
@@ -82,7 +88,10 @@ const Index = () => {
                 // :style="handleToggle()"
               >
                 <p className="p-3 text-gray-900">
-                  We allow the return of all items within 30 days of your original order’s date. If you’re interested in returning your items, send us an email with your order number and we’ll ship a return label.
+                  We allow the return of all items within 30 days of your
+                  original order’s date. If you’re interested in returning your
+                  items, send us an email with your order number and we’ll ship
+                  a return label.
                 </p>
               </div>
             </li>
@@ -106,7 +115,12 @@ const Index = () => {
                 // :style="handleToggle()"
               >
                 <p className="p-3 text-gray-900">
-                  Changes to an existing order can be made as long as the order is still in “processing” status. Please contact our team via email and we’ll make sure to apply the needed changes. If your order has already been shipped, we cannot apply any changes to it. If you are unhappy with your order when it arrives, please contact us for any changes you may require.
+                  Changes to an existing order can be made as long as the order
+                  is still in “processing” status. Please contact our team via
+                  email and we’ll make sure to apply the needed changes. If your
+                  order has already been shipped, we cannot apply any changes to
+                  it. If you are unhappy with your order when it arrives, please
+                  contact us for any changes you may require.
                 </p>
               </div>
             </li>
@@ -154,7 +168,9 @@ const Index = () => {
                 // :style="handleToggle()"
               >
                 <p className="p-3 text-gray-900">
-                  Any method of payments acceptable by you. For example: We accept MasterCard, Visa, American Express, PayPal, JCB Discover, Gift Cards, etc.
+                  Any method of payments acceptable by you. For example: We
+                  accept MasterCard, Visa, American Express, PayPal, JCB
+                  Discover, Gift Cards, etc.
                 </p>
               </div>
             </li>

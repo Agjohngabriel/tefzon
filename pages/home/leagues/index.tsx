@@ -72,30 +72,29 @@ const Index = () => {
         </div>
 
         <div className="container mb-5 mx-auto">
+          <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
 
-        <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
-
-        <div className="mx-3  flex mb-5">
-          <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
+          <div className="mx-3  flex mb-5">
+            <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+              {" "}
+            </div>
+            <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+              {" "}
+            </div>
+            <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+              {" "}
+            </div>
+            <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+              {" "}
+            </div>
+            <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+              {" "}
+            </div>
+            <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
+              {" "}
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </MainLayout>
   );

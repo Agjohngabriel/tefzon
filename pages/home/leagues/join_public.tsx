@@ -110,58 +110,55 @@ const JoinPublic = () => {
           </div>
         </div>
 
-        
-          <div className=" sm:w-3/4 ">
-            <h1 className="font-montserrat text-[1rem]  text-black-0 w-4/6 tracking-tighter">
-              List of live leagues
-            </h1>
+        <div className=" sm:w-3/4 ">
+          <h1 className="font-montserrat text-[1rem]  text-black-0 w-4/6 tracking-tighter">
+            List of live leagues
+          </h1>
 
-            <div className="-ml-6 relative overflow-x-auto scrollbar-hide sm:rounded-lg">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <tbody>
-                  {leagues.map((item: Team, index) => (
-                    <tr key={index} className=" dark:border-gray-700">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-arcon text-black-150 opacity-80 "
+          <div className="-ml-6 relative overflow-x-auto scrollbar-hide sm:rounded-lg">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <tbody>
+                {leagues.map((item: Team, index) => (
+                  <tr key={index} className=" dark:border-gray-700">
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-arcon text-black-150 opacity-80 "
+                    >
+                      {item.name}
+                    </th>
+                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
+                      {item.type}
+                    </td>
+                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
+                      {item.entry_type}
+                    </td>
+                    <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
+                      {item.start}
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <a
+                        href="##"
+                        className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
                       >
-                        {item.name}
-                      </th>
-                      <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                        {item.type}
-                      </td>
-                      <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                        {item.entry_type}
-                      </td>
-                      <td className="px-6 py-4 font-arcon text-black-150 opacity-80">
-                        {item.start}
-                      </td>
-                      <td className="px-6 py-4 text-right">
-                        <a
-                          href="##"
-                          className="font-montserrat text-[#240155] dark:text-indigo-500 hover:underline"
-                        >
-                          Join League
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <button
-              type="button"
-              className="flex items-center font-montserrat text-sm  text-[#240155] rounded  focus:outline-none"
-            >
-              See more
-            </button>
+                        Join League
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        
+
+          <button
+            type="button"
+            className="flex items-center font-montserrat text-sm  text-[#240155] rounded  focus:outline-none"
+          >
+            See more
+          </button>
+        </div>
       </div>
 
       <div className="container mb-5 mx-auto">
-
         <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
 
         <div className="mx-3  flex mb-5">
