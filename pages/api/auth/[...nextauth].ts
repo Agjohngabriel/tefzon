@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { client } from "../../../libs/axiosClient";
+import GoogleProvider from "next-auth/providers/google";
+import axios from "axios";
 
 export default NextAuth({
   providers: [
@@ -22,6 +24,7 @@ export default NextAuth({
             email: credentials.email,
             password: credentials.password,
           });
+          console.log(user.statusText);
           if (user) {
             return user.data;
           }
@@ -31,6 +34,10 @@ export default NextAuth({
         }
         return null;
       },
+    }),
+    GoogleProvider({
+      clientId: `${process.env.GOOGLE_CLIENT_ID}`,
+      clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
     }),
   ],
   callbacks: {

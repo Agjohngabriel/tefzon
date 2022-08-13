@@ -347,7 +347,6 @@ const CreateLeague = () => {
       </div>
 
       <div className="container mb-5 mx-auto">
-
         <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
 
         <div className="mx-3  flex mb-5">

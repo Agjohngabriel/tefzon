@@ -83,9 +83,7 @@ const Index = () => {
         </div>
       </div>
 
-      <div 
-      className="container lg:max-w-7xl flex flex-wrap     mx-auto mt-1 mb-2  px-auto py-2 lg:px-10 "
-      >
+      <div className="container lg:max-w-7xl flex flex-wrap     mx-auto mt-1 mb-2  px-auto py-2 lg:px-10 ">
         <div className="py-3 px-3 sm:px-5 lg:px-8 w-[47%] mb-14 sm:w-[23%] lg:w-[18%]  mx-auto cursor-pointer rounded-3xl bg-gray-100 transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl">
           <div className="-mb-10 -translate-y-1/2 transform">
             <div className=" h-28 w-28 rounded-full border-2 border-white shadow-md mx-auto">
@@ -209,8 +207,6 @@ const Index = () => {
             </li>
           </ul>
         </div>
-
-        
       </div>
     </MainLayout>
   );

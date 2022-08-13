@@ -1,4 +1,4 @@
-  import Link from "next/link";
+import Link from "next/link";
 import MainLayout from "../../../../components/MainLayout";
 
 const NameTeam = () => {
@@ -31,7 +31,6 @@ const NameTeam = () => {
         </div>
 
         <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-3" />
-    
 
         <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
           <div

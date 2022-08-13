@@ -15,10 +15,10 @@ const Matches = () => {
         </span>
 
         <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
-         Matches
+          Matches
         </h1>
       </div>
-      
+
       <div className="container lg:max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20 mt-10 mb-20  px-2 py-6 lg:px-10 ">
         <div className="flex flex-col  pt-10 space-y-4 max-w-3xl mx-auto">
           <div className="mx-auto flex-1 svelte-1l8159u ">
@@ -93,7 +93,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -124,7 +126,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -155,7 +159,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -195,7 +201,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -226,7 +234,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -257,7 +267,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -297,7 +309,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -328,7 +342,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -359,7 +375,9 @@ const Matches = () => {
             <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
               <div className="flex items-center">
                 <div className="mr-3">
-                  <p className="text-gray-900 whitespace-no-wrap">lookester city</p>
+                  <p className="text-gray-900 whitespace-no-wrap">
+                    lookester city
+                  </p>
                 </div>
                 <div className="flex-shrink-0 w-12 sm:w-14 h-12 sm:h-14  sm:table-cell">
                   <img
@@ -390,7 +408,7 @@ const Matches = () => {
           </div>
         </div>
       </div>
-    
+
       <div className="container mb-5 mx-auto">
         <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
 

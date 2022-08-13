@@ -19,6 +19,7 @@ interface Players {
 
 const SquadSelection = () => {
   const [openTab, setOpenTab] = useState(1);
+  const [name, setName] = useState("");
   const [players, setPlayers] = useState([]);
   const { data: session }: any = useSession();
   const [isFetching, setIsFetching] = useState(0);
@@ -49,6 +50,25 @@ const SquadSelection = () => {
     setLoading(0);
   };
 
+  const fetchByName = async (name: String) => {
+    setLoading(1);
+    setIsFetching(1);
+    const res = await axios.get(
+      `${process.env.BASE_URL}/search/player?query=${name}`,
+      {
+        headers: {
+          Authorization: `Bearer ${session?.data.token}`,
+          "content-type": "application/json",
+        },
+      }
+    );
+    const response = await res.data;
+    console.log(response);
+    setPlayers(response);
+    setIsFetching(0);
+    setLoading(0);
+  };
+
   const clear = async () => {
     setLoading(1);
     const res = await axios.get(`${process.env.BASE_URL}reset/team`, {
@@ -62,6 +82,30 @@ const SquadSelection = () => {
     setMessage(response.message);
     setTeams([]);
     setLoading(0);
+  };
+  const autoComplete = async () => {
+    try {
+      setLoading(1);
+      const res = await axios.get(`${process.env.BASE_URL}use-autocomplete`, {
+        headers: {
+          Authorization: `Bearer ${session?.data.token}`,
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+      });
+      const response = await res.data;
+      setMessage(response.message);
+      setError(false);
+      getFavourites();
+      setLoading(0);
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setMessage("");
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
   };
   const addToSquad = async (id: number) => {
     try {
@@ -132,13 +176,13 @@ const SquadSelection = () => {
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
-      <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
-        <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
-          <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
+      <div className="container flex flex-wrap items-center justify-between px-6 pt-10 mx-auto lg:px-20">
+        <div className="flex items-center flex-shrink-0 mr-6 text-gray-600">
+          <h1 className="text-xl text-center font-oswald sm:text-4xl text-black-0">
             Squad Selection
           </h1>
         </div>
-        <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
+        <div className="items-center flex-grow block mx-7 sm:w-full md:flex md:justify-end md:w-auto">
           <div>
             <Link href="/home/account/squad/starting">
               <a
@@ -148,7 +192,7 @@ const SquadSelection = () => {
                                     duration-200 ease-in-out 
                                     transition"
               >
-                <span className="font-montserrat text-sm text-black-150">
+                <span className="text-sm font-montserrat text-black-150">
                   Next
                 </span>
               </a>
@@ -157,17 +201,18 @@ const SquadSelection = () => {
         </div>
       </div>
 
-      <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-4 lg:mx-28" />
+      <hr className="mx-4 my-6 border-b-2 rounded-lg border-violet-500 lg:mx-28" />
 
       <div className="container max-w-6xl  bg-[#6E4BEC7D]/70 py-4 mb-10  rounded-md shadow-2xl shadow-gray-700/90 px-2 lg:px-2 flex items-center mx-auto justify-between flex-wrap">
-        <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
-          <h1 className="font-arcon text-xl sm:text-4xl text-white  text-center">
+        <div className="flex items-center flex-shrink-0 mr-6 text-gray-600">
+          <h1 className="text-xl text-center text-white font-arcon sm:text-4xl">
             Players: ({teams.length}/15)
           </h1>
         </div>
-        <div className="sm:w-full items-center block  flex-grow md:flex md:justify-end md:w-auto">
+        <div className="items-center flex-grow block sm:w-full md:flex md:justify-end md:w-auto">
           <div>
             <button
+              onClick={autoComplete}
               className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-3   cursor-pointer                                 
                                 hover:bg-blue-500 
                                 text-white/80 border border-[#E3EBFA]
@@ -182,13 +227,9 @@ const SquadSelection = () => {
           <div>
             <button
               onClick={clear}
-              className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-3  ml-5 cursor-pointer                                 
-                                hover:bg-blue-500 
-                                text-white/50 
-                                 duration-200 ease-in-out 
-                                 transition"
+              className="flex justify-center px-6 py-3 ml-5 transition duration-200 ease-in-out cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500 text-white/50"
             >
-              <div className="font-arcon text-sm text-white">Clear Team</div>
+              <div className="text-sm text-white font-arcon">Clear Team</div>
             </button>
           </div>
         </div>
@@ -196,7 +237,7 @@ const SquadSelection = () => {
 
       <div className="container">
         {error === true && (
-          <p className="text-sm font-arcon text-black-0 text-center max-w-3xl -mb-8 py-3 bg-red-800 ml-24 tracking-wider px-2  lg:px-1 ">
+          <p className="max-w-3xl px-2 py-3 ml-24 -mb-8 text-sm tracking-wider text-center bg-red-800 font-arcon text-black-0 lg:px-1 ">
             {errorMsg.message}
           </p>
         )}
@@ -208,7 +249,7 @@ const SquadSelection = () => {
 
         <div className="md:flex ">
           <div
-            className="container  lg:max-w-4xl h-3/4  md:w-4/5 sm:ml-4 lg:ml-24 mt-10 mb-20  px-2 py-6 lg:px-10  w-auto "
+            className="container w-auto px-2 py-6 mt-10 mb-20 lg:max-w-4xl h-3/4 md:w-4/5 sm:ml-4 lg:ml-24 lg:px-10 "
             style={{
               backgroundImage: 'url("/img/pitch-md.png")',
               backgroundRepeat: "no-repeat",
@@ -216,8 +257,8 @@ const SquadSelection = () => {
               backgroundPosition: "center center",
             }}
           >
-            <div className="flex justify-center items-center mb-3  mx-auto mt-12">
-              <div className="inline-flex rounded border border-red-800">
+            <div className="flex items-center justify-center mx-auto mt-12 mb-3">
+              <div className="inline-flex border border-red-800 rounded">
                 <input
                   type="radio"
                   name="room_type"
@@ -242,7 +283,7 @@ const SquadSelection = () => {
                   Pitch View
                 </label>
               </div>
-              <div className="inline-flex rounded border border-red-800 -ml-1">
+              <div className="inline-flex -ml-1 border border-red-800 rounded">
                 <input
                   type="radio"
                   name="room_type"
@@ -271,14 +312,14 @@ const SquadSelection = () => {
 
             <div className="flex flex-wrap">
               <div className="w-full">
-                <div className="relative flex flex-col min-w-0 break-words  w-full  rounded">
-                  <div className="px-4 flex-auto">
+                <div className="relative flex flex-col w-full min-w-0 break-words rounded">
+                  <div className="flex-auto px-4">
                     <div className="tab-content tab-space">
                       <div
                         className={openTab === 1 ? "block" : "hidden"}
                         id="link1"
                       >
-                        <div className="flex   py-10 mx-auto">
+                        <div className="flex py-10 mx-auto">
                           {teams
                             .filter(
                               (e: Players) => e.player_position === "GoalKeeper"
@@ -286,14 +327,14 @@ const SquadSelection = () => {
                             .map((item: Players, position_id) => (
                               <div
                                 key={position_id}
-                                className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                                className="h-10 p-3 mx-auto mt-2 space-x-6 transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
                                 <div className="-mt-[4rem] ">
-                                  <svg                                    
+                                  <svg
                                     viewBox="0 0 52 51"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-8 sm:h-12 mx-auto z-0"
+                                    className="z-0 h-8 mx-auto sm:h-12"
                                   >
                                     <path
                                       d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
@@ -320,7 +361,7 @@ const SquadSelection = () => {
                             ))}
                         </div>
 
-                        <div className="flex   py-10 mx-auto">
+                        <div className="flex py-10 mx-auto">
                           {teams
                             .filter(
                               (e: Players) => e.player_position === "Defender"
@@ -328,14 +369,14 @@ const SquadSelection = () => {
                             .map((item: Players, position_id) => (
                               <div
                                 key={position_id}
-                                className="p-3  rounded mt-5 mx-auto text-center hover:scale-105 transition transform duration-500 cursor-pointer"
+                                className="p-3 mx-auto mt-5 text-center transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
                                 <div className="-mt-[4rem] ">
-                                  <svg                                    
+                                  <svg
                                     viewBox="0 0 52 51"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-8 sm:h-12 mx-auto z-0"
+                                    className="z-0 h-8 mx-auto sm:h-12"
                                   >
                                     <path
                                       d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
@@ -362,7 +403,7 @@ const SquadSelection = () => {
                             ))}
                         </div>
 
-                        <div className="flex   py-10 mx-auto">
+                        <div className="flex py-10 mx-auto">
                           {teams
                             .filter(
                               (e: Players) => e.player_position === "Midfielder"
@@ -370,14 +411,14 @@ const SquadSelection = () => {
                             .map((item: Players, position_id) => (
                               <div
                                 key={position_id}
-                                className="p-1  rounded mt-5 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                                className="h-10 p-1 mx-auto mt-5 transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
                                 <div className="-mt-[4rem] ">
-                                  <svg                                    
+                                  <svg
                                     viewBox="0 0 52 51"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-8 sm:h-12 mx-auto z-0"
+                                    className="z-0 h-8 mx-auto sm:h-12"
                                   >
                                     <path
                                       d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
@@ -404,7 +445,7 @@ const SquadSelection = () => {
                             ))}
                         </div>
 
-                        <div className="flex   py-10 mx-auto">
+                        <div className="flex py-10 mx-auto">
                           {teams
                             .filter(
                               (e: Players) => e.player_position === "Forward"
@@ -412,14 +453,14 @@ const SquadSelection = () => {
                             .map((item: Players, position_id) => (
                               <div
                                 key={position_id}
-                                className="p-3 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                                className="p-3 mx-auto mt-5 space-x-6 transition duration-500 transform rounded shadow-md cursor-pointer hover:scale-105"
                               >
                                 <div className="-mt-[4rem] ">
-                                  <svg                                    
+                                  <svg
                                     viewBox="0 0 52 51"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-8 sm:h-12 mx-auto z-0"
+                                    className="z-0 h-8 mx-auto sm:h-12"
                                   >
                                     <path
                                       d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
@@ -445,32 +486,31 @@ const SquadSelection = () => {
                               </div>
                             ))}
                         </div>
-
                       </div>
                       <div
                         className={openTab === 2 ? "block" : "hidden"}
                         id="link2"
                       >
-                        <div className=" mx-auto">
+                        <div className="mx-auto ">
                           <div className="pt-4">
-                            <div className="-mx-4 sm:-mx-8 px-1 sm:px-8 py-4 overflow-x-auto scrollbar-hide">
+                            <div className="px-1 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8 scrollbar-hide">
                               <div className="inline-block min-w-full shadow rounded-lg h-[42rem]">
                                 <table className="min-w-full leading-normal">
                                   <thead>
                                     <tr className="bg-red-700">
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider">
+                                      <th className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon">
                                         Squad Members
                                       </th>
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider">
+                                      <th className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon">
                                         ₦
                                       </th>
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider hidden lg:table-cell">
+                                      <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
                                         SB
                                       </th>
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider hidden lg:table-cell">
+                                      <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
                                         TP
                                       </th>
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider hidden lg:table-cell">
+                                      <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
                                         Fix
                                       </th>
                                     </tr>
@@ -480,18 +520,18 @@ const SquadSelection = () => {
                                       <tr key={position_id} className="">
                                         <td
                                           key={position_id}
-                                          className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle"
+                                          className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200"
                                         >
-                                          <div className=" w-full flex">
+                                          <div className="flex w-full ">
                                             <p
                                               tabIndex={0}
-                                              className="focus:outline-none text-xs text-left leading-normal text-gray-500 flex align-middle"
+                                              className="flex text-xs leading-normal text-left text-gray-500 align-middle focus:outline-none"
                                             >
-                                              <span className=" align-middle  material-icons text-2xl text-red-500 ">
+                                              <span className="text-2xl text-red-500 align-middle material-icons">
                                                 info_outline
                                               </span>
 
-                                              <span className="flex-shrink-0 w-10 h-10 ml-4  mb-2">
+                                              <span className="flex-shrink-0 w-10 h-10 mb-2 ml-4">
                                                 <svg
                                                   width="43"
                                                   height="40"
@@ -512,16 +552,16 @@ const SquadSelection = () => {
                                               </span>
                                             </p>
 
-                                            <div className="ml-5 pl-3 mb-2">
+                                            <div className="pl-3 mb-2 ml-5">
                                               <p
                                                 tabIndex={0}
-                                                className="focus:outline-none text-sm font-arcon leading-5 text-gray-900"
+                                                className="text-sm leading-5 text-gray-900 focus:outline-none font-arcon"
                                               >
                                                 {item.player_name}
                                               </p>
                                               <p
                                                 tabIndex={0}
-                                                className="focus:outline-none text-xs leading-normal  text-gray-900"
+                                                className="text-xs leading-normal text-gray-900 focus:outline-none"
                                               >
                                                 {item.team}
                                                 <span className="ml-4">
@@ -538,23 +578,23 @@ const SquadSelection = () => {
                                             </div>
                                           </div>
                                         </td>
-                                        <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle">
-                                          <p className="text-gray-900 whitespace-no-wrap border-l border-gray-400 py-2 text-center">
+                                        <td className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200">
+                                          <p className="py-2 text-center text-gray-900 whitespace-no-wrap border-l border-gray-400">
                                             5.4
                                           </p>
                                         </td>
-                                        <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle hidden lg:table-cell">
-                                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                                        <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
+                                          <p className="text-center text-gray-900 whitespace-no-wrap">
                                             15.4
                                           </p>
                                         </td>
-                                        <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle hidden lg:table-cell">
-                                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                                        <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
+                                          <p className="text-center text-gray-900 whitespace-no-wrap">
                                             84
                                           </p>
                                         </td>
-                                        <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle hidden lg:table-cell">
-                                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                                        <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
+                                          <p className="text-center text-gray-900 whitespace-no-wrap">
                                             AVL (H)
                                           </p>
                                         </td>
@@ -574,17 +614,20 @@ const SquadSelection = () => {
             </div>
           </div>
 
-          <div className="container max-w-sm   shadow-indigo-500/50  md:w-3/5  sm:ml-5  xl:ml-8 mt-10 mb-20 px-1   lg:px-5  w-auto">
+          <div className="container w-auto max-w-sm px-1 mt-10 mb-20 shadow-indigo-500/50 md:w-3/5 sm:ml-5 xl:ml-8 lg:px-5">
             <div className="px-1">
-              <div className="bg-gray-100 rounded-sm border shadow-xl py-5 px-2 lg:p-5 w-full pb-10 ">
-                <div className="max-w-md mx-auto  overflow-hidden md:max-w-xl">
+              <div className="w-full px-2 py-5 pb-10 bg-gray-100 border rounded-sm shadow-xl lg:p-5 ">
+                <div className="max-w-md mx-auto overflow-hidden md:max-w-xl">
                   <div className="md:flex">
                     <div className="w-full">
                       <div className="relative flex">
                         <input
                           type="text"
-                          className="bg-white h-10 w-full font-arcon text-xs px-2 mr-3 mt-2 focus:outline-none hover:cursor-pointer"
+                          className="w-full h-10 px-2 mt-2 mr-3 text-xs bg-white font-arcon focus:outline-none hover:cursor-pointer"
                           name="search"
+                          onChange={() => fetchByName(name)}
+                          value={name}
+                          onInput={(e) => setName(e.currentTarget.value)}
                           placeholder="Search"
                         />
 
@@ -595,73 +638,57 @@ const SquadSelection = () => {
                                  duration-200 ease-in-out 
                                  transition"
                         >
-                          <div className="font-arcon text-sm">Reset</div>
+                          <div className="text-sm font-arcon">Search</div>
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex mx-auto md:flex-row py-10 ">
-                  <div className=" flex-1 svelte-1l8159u">
+                <div className="flex py-10 mx-auto md:flex-row ">
+                  <div className="flex-1 svelte-1l8159u">
                     <button
                       onClick={() => fetchByPos(1)}
-                      className="text-base  hover:scale-110 focus:outline-none flex justify-center px-4 py-2  cursor-pointer                                 
-                                hover:bg-blue-500 
-                                bg-white text-gray-900
-                                 duration-200 ease-in-out 
-                                 transition"
+                      className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
-                      <div className="font-arcon text-sm">GK</div>
+                      <div className="text-sm font-arcon">GK</div>
                     </button>
                   </div>
                   <div className="flex-1 svelte-1l8159u">
                     <button
                       onClick={() => fetchByPos(2)}
-                      className="text-base  hover:scale-110 focus:outline-none flex justify-center px-4 py-2  cursor-pointer                                 
-                                hover:bg-blue-500 
-                                bg-white text-gray-900
-                                 duration-200 ease-in-out 
-                                 transition"
+                      className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
-                      <div className="font-arcon text-sm">DEF</div>
+                      <div className="text-sm font-arcon">DEF</div>
                     </button>
                   </div>
 
-                  <div className="w-full flex-1 svelte-1l8159u">
+                  <div className="flex-1 w-full svelte-1l8159u">
                     <button
                       onClick={() => fetchByPos(3)}
-                      className="text-base  hover:scale-110 focus:outline-none flex justify-center px-4 py-2  cursor-pointer                                 
-                                hover:bg-blue-500 
-                                bg-white text-gray-900
-                                 duration-200 ease-in-out 
-                                 transition"
+                      className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
-                      <div className="font-arcon text-sm">MID</div>
+                      <div className="text-sm font-arcon">MID</div>
                     </button>
                   </div>
 
-                  <div className="w-full  flex-1 svelte-1l8159u">
+                  <div className="flex-1 w-full svelte-1l8159u">
                     <button
                       onClick={() => fetchByPos(4)}
-                      className="text-base  hover:scale-110 focus:outline-none flex justify-center px-4 py-2  cursor-pointer                                 
-                                hover:bg-blue-500 
-                                bg-white text-gray-900
-                                 duration-200 ease-in-out 
-                                 transition"
+                      className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
-                      <div className="font-arcon text-sm">FWD</div>
+                      <div className="text-sm font-arcon">FWD</div>
                     </button>
                   </div>
                 </div>
 
                 <div className="flex flex-col md:flex-row">
-                  <div className="w-full lg:mx-2 flex-1 svelte-1l8159u">
-                    <label className="text-gray-600 font-arcon text-sm mb-2 ml-1">
+                  <div className="flex-1 w-full lg:mx-2 svelte-1l8159u">
+                    <label className="mb-2 ml-1 text-sm text-gray-600 font-arcon">
                       Sort by
                     </label>
-                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                      <select className="form-select w-full px-3 py-2 bg-white font-arcon  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                    <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
+                      <select className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select font-arcon focus:outline-none focus:border-indigo-500">
                         <option value="">Total Point</option>
                         <option value="02">Goals</option>
                         <option value="03">Female</option>
@@ -669,12 +696,12 @@ const SquadSelection = () => {
                       </select>
                     </div>
                   </div>
-                  {/* <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                    <label className="text-gray-600 font-arcon text-sm mb-2 ml-1">
+                  {/* <div className="flex-1 w-full mx-2 svelte-1l8159u">
+                    <label className="mb-2 ml-1 text-sm text-gray-600 font-arcon">
                       Max Cost
                     </label>
-                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                      <select className="form-select w-full px-3 py-2 bg-white font-arcon  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                    <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
+                      <select className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select font-arcon focus:outline-none focus:border-indigo-500">
                         <option value="">3.00</option>
                         <option value="02">Free</option>
                       </select>
@@ -694,23 +721,23 @@ const SquadSelection = () => {
               {players.slice(0, 70).map((item: Players, index) => (
                 <button
                   onClick={() => addToSquad(item.player_id)}
-                  className=" pt-3 px-1"
+                  className="px-1 pt-3 "
                   key={index}
                 >
-                  <div className="flex items-center border-b border-gray-300 w-full">
-                    <div className="flex items-start justify-end  ">
-                      <div className=" w-full flex">
+                  <div className="flex items-center w-full border-b border-gray-300">
+                    <div className="flex items-start justify-end ">
+                      <div className="flex w-full ">
                         <p
                           tabIndex={0}
-                          className="focus:outline-none text-xs text-left leading-normal text-gray-500 flex"
+                          className="flex text-xs leading-normal text-left text-gray-500 focus:outline-none"
                         >
-                          <span className=" align-middle  material-icons text-2xl text-red-500 ">
+                          <span className="text-2xl text-red-500 align-middle material-icons">
                             info_outline
                           </span>
 
-                          <span className="flex-shrink-0 w-7 h-7 ml-2 border-l  border-gray-400 mb-2">
+                          <span className="flex-shrink-0 mb-2 ml-2 border-l border-gray-400 w-7 h-7">
                             <img
-                              className="w-full h-full rounded-full ml-2"
+                              className="w-full h-full ml-2 rounded-full"
                               src={item.image_path}
                               alt={item.display_name}
                             />
@@ -720,13 +747,13 @@ const SquadSelection = () => {
                         <div className="ml-5 border-l border-gray-400 pl-2  w-[8rem] mb-2">
                           <p
                             tabIndex={0}
-                            className="focus:outline-none text-xs font-arcon leading-5 text-white"
+                            className="text-xs leading-5 text-white focus:outline-none font-arcon"
                           >
                             {item.display_name}
                           </p>
                           <p
                             tabIndex={0}
-                            className="focus:outline-none text-xs leading-normal  text-white"
+                            className="text-xs leading-normal text-white focus:outline-none"
                           >
                             {item.short_team_name}{" "}
                             <span className="ml-4">
@@ -739,10 +766,10 @@ const SquadSelection = () => {
                         </div>
                       </div>
 
-                      <div className=" ml-2 py-2 border-l text-right  flex-auto w-24">
+                      <div className="flex-auto w-24 py-2 ml-2 text-right border-l ">
                         <p
                           tabIndex={0}
-                          className="focus:outline-none  text-md font-arcon leading-5  px-4 text-white"
+                          className="px-4 leading-5 text-white focus:outline-none text-md font-arcon"
                         >
                           {item.rating}
                         </p>

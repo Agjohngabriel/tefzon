@@ -28,33 +28,37 @@ const PersonalDetails = (props: {
     props.updateFormData({ phone: phne });
   };
   return (
-    <div className={`p-5 animate-fade-in-up ${props.formStep === 0 ? "" : "hidden"}`}>
-      <div className="flex flex-col items-center pt-10 space-y-4 max-w-lg mx-auto">
-        <h1 className="font-montserrat text-lg text-gray-700 w-4/6 text-center">
+    <div
+      className={`p-5 animate-fade-in-up ${
+        props.formStep === 0 ? "" : "hidden"
+      }`}
+    >
+      <div className="flex flex-col items-center max-w-lg pt-10 mx-auto space-y-4">
+        <h1 className="w-4/6 text-lg text-center text-gray-700 font-montserrat">
           Personal Details
         </h1>
-        <p className="font-arcon text-sm text-gray-500 text-center w-5/6">
+        <p className="w-5/6 text-sm text-center text-gray-500 font-arcon">
           Please type carefully and fill out the form with Personal details. You
           can't edit these details once you submit the form.
         </p>
       </div>
 
-      <div className="mt-8 p-4 animate-fade-in-down">
+      <div className="p-4 mt-8 animate-fade-in-down">
         <div className="flex flex-col md:flex-row">
-          <div className="w-full flex-1 mx-2 svelte-1l8159u">
-            <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+          <div className="flex-1 w-full mx-2 svelte-1l8159u">
+            <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
               <input
                 placeholder="First Name"
                 onInput={(e) =>
                   props.updateFormData({ first_name: e.currentTarget.value })
                 }
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
                 required
               />{" "}
             </div>
             {/* <span>{props.errors.email}</span> */}
           </div>
-          <div className="w-full flex-1 mx-2 svelte-1l8159u">
+          <div className="flex-1 w-full mx-2 svelte-1l8159u">
             <div
               className={`bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u`}
             >
@@ -63,15 +67,15 @@ const PersonalDetails = (props: {
                 onInput={(e) =>
                   props.updateFormData({ last_name: e.currentTarget.value })
                 }
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
                 required
               />{" "}
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row pt-8">
-          <div className="w-full mx-2 flex-1 svelte-1l8159u">
+        <div className="flex flex-col pt-8 md:flex-row">
+          <div className="flex-1 w-full mx-2 svelte-1l8159u">
             <div
               className={`bg-white my-2 p-1 flex border ${
                 "email" in props.errors ? "border-red-500" : "border-gray-200"
@@ -83,7 +87,7 @@ const PersonalDetails = (props: {
                 onInput={(e) =>
                   props.updateFormData({ email: e.currentTarget.value })
                 }
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
                 required
               />{" "}
             </div>
@@ -93,20 +97,20 @@ const PersonalDetails = (props: {
                 : ""}
             </span>
           </div>
-          <div className="w-full mx-2 flex-1 svelte-1l8159u">
-            {/* <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase"> Your Email</div> */}
-            <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+          <div className="flex-1 w-full mx-2 svelte-1l8159u">
+            {/* <div className="h-6 mt-3 text-xs font-bold leading-8 text-gray-600 uppercase"> Your Email</div> */}
+            <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
               <input
                 placeholder="password"
                 onInput={(e) =>
                   props.updateFormData({ password: e.currentTarget.value })
                 }
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
                 required
                 type={passwordType}
               />
               <div className="flex -mr-px">
-                <span className="flex items-center leading-normal bg-white rounded rounded-l-none border-0 px-3 whitespace-no-wrap text-gray-600">
+                <span className="flex items-center px-3 leading-normal text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none">
                   <button
                     onClick={() => {
                       if (passwordType === "password") {
@@ -116,13 +120,9 @@ const PersonalDetails = (props: {
                       setPasswordType("password");
                     }}
                     type="button"
-                    className="text-base hover:scale-110 focus:outline-none flex justify-center py-1 cursor-pointer                                 
-                                  hover:bg-gray-300 shadow-inner rounded-lg
-                                  bg-gray-200 text-gray-500
-                                  duration-200 ease-in-out 
-                                  transition"
+                    className="flex justify-center py-1 text-base text-gray-500 transition duration-200 ease-in-out bg-gray-200 rounded-lg shadow-inner cursor-pointer hover:scale-110 focus:outline-none hover:bg-gray-300"
                   >
-                    <div className="font-sans text-sm font-light  px-3">
+                    <div className="px-3 font-sans text-sm font-light">
                       {passwordType === "password" ? "show" : "Hide"}
                     </div>
                   </button>
@@ -132,9 +132,9 @@ const PersonalDetails = (props: {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row pt-4">
-          <div className="w-full mx-2 flex-1 svelte-1l8159u">
-            <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
+        <div className="flex flex-col pt-4 md:flex-row">
+          <div className="flex-1 w-full mx-2 svelte-1l8159u">
+            <label className="mb-2 ml-1 text-sm font-normal text-gray-600"></label>
             <div
               className={`bg-white my-2 p-1 flex border ${
                 "username" in props.errors
@@ -148,7 +148,7 @@ const PersonalDetails = (props: {
                 onInput={(e) =>
                   props.updateFormData({ username: e.currentTarget.value })
                 }
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
                 required
               />{" "}
             </div>
@@ -159,20 +159,20 @@ const PersonalDetails = (props: {
             </span>
           </div>
 
-          <div className="w-full mx-2 flex-1 mt-2 svelte-1l8159u">
-            <label className="text-gray-600 font-normal text-sm mb-9 ml-1">
+          <div className="flex-1 w-full mx-2 mt-2 svelte-1l8159u">
+            <label className="ml-1 text-sm font-normal text-gray-600 mb-9">
               Date of birth <span className="text-[0.5rem]">(optional)</span>
             </label>
-            <div className="bg-white  svelte-1l8159u">
-              <div className="sm:flex items-end -mb-1">
+            <div className="bg-white svelte-1l8159u">
+              <div className="items-end -mb-1 sm:flex">
                 <div className="sm:w-1/3">
                   <div>
                     <select
                       onChange={handleDateChange}
                       id="day"
-                      className="form-select bg-white w-full px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                      className="w-full px-3 py-3 mb-1 transition-colors bg-white border border-gray-200 rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500"
                     >
-                      <option>Date </option>
+                      <option>Day</option>
                       <option value="01">01 </option>
                       <option value="02">02 </option>
                       <option value="03">03 </option>
@@ -193,7 +193,7 @@ const PersonalDetails = (props: {
                     <select
                       onChange={handleDateChange}
                       id="month"
-                      className="form-select w-full  bg-white px-3 py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                      className="w-full px-3 py-3 mb-1 transition-colors bg-white border border-gray-200 rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500"
                     >
                       <option>Month</option>
                       <option value="01">January</option>
@@ -215,18 +215,68 @@ const PersonalDetails = (props: {
                   <select
                     onChange={handleDateChange}
                     id="year"
-                    className="form-select w-full px-3 bg-white py-3 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                    className="w-full px-3 py-3 mb-1 transition-colors bg-white border border-gray-200 rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500"
                   >
                     <option>Year</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                    <option value="2028">2028</option>
-                    <option value="2029">2029</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                    <option value="2000">2000</option>
+                    <option value="1999">1999</option>
+                    <option value="1998">1998</option>
+                    <option value="1997">1997</option>
+                    <option value="1996">1996</option>
+                    <option value="1995">1995</option>
+                    <option value="1994">1994</option>
+                    <option value="1993">1993</option>
+                    <option value="1992">1992</option>
+                    <option value="1991">1991</option>
+                    <option value="1990">1990</option>
+                    <option value="1989">1989</option>
+                    <option value="1988">1988</option>
+                    <option value="1987">1987</option>
+                    <option value="1986">1986</option>
+                    <option value="1985">1985</option>
+                    <option value="1984">1984</option>
+                    <option value="1983">1983</option>
+                    <option value="1982">1982</option>
+                    <option value="1981">1981</option>
+                    <option value="1980">1980</option>
+                    <option value="1999">1979</option>
+                    <option value="1998">1978</option>
+                    <option value="1997">1977</option>
+                    <option value="1996">1976</option>
+                    <option value="1995">1975</option>
+                    <option value="1994">1974</option>
+                    <option value="1993">1973</option>
+                    <option value="1992">1972</option>
+                    <option value="1991">1971</option>
+                    <option value="1990">1970</option>
+                    <option value="1989">1969</option>
+                    <option value="1988">1968</option>
+                    <option value="1987">1967</option>
+                    <option value="1986">1966</option>
+                    <option value="1985">1965</option>
+                    <option value="1984">1964</option>
+                    <option value="1983">1963</option>
+                    <option value="1982">1962</option>
+                    <option value="1981">1961</option>
+                    <option value="1980">1960</option>
+                    <option value="1999">1959</option>
+                    <option value="1998">1958</option>
+                    <option value="1997">1957</option>
+                    <option value="1996">1956</option>
+                    <option value="1995">1955</option>
+                    <option value="1994">1954</option>
+                    <option value="1993">1953</option>
+                    <option value="1992">1952</option>
+                    <option value="1991">1951</option>
+                    <option value="1990">1950</option>
+                    <option value="1989">1949</option>
+                    <option value="1988">1948</option>
+                    <option value="1987">1947</option>
+                    <option value="1986">1946</option>
+                    <option value="1985">1945</option>
                   </select>
                 </div>
               </div>
@@ -235,15 +285,15 @@ const PersonalDetails = (props: {
         </div>
 
         <div className="flex flex-col md:flex-row pt-7">
-          <div className="sm:flex sm:w-1/2 items-end -mb-1">
-            <div className="w-full mx-2 flex-1 svelte-1l8159u">
-              <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
-              <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+          <div className="items-end -mb-1 sm:flex sm:w-1/2">
+            <div className="flex-1 w-full mx-2 svelte-1l8159u">
+              <label className="mb-2 ml-1 text-sm font-normal text-gray-600"></label>
+              <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
                 <select
                   onChange={(e) =>
                     props.updateFormData({ gender: e.currentTarget.value })
                   }
-                  className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                  className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500"
                   required
                 >
                   <option>Select Gender</option>
@@ -252,14 +302,14 @@ const PersonalDetails = (props: {
                 </select>
               </div>
             </div>
-            <div className="w-full mx-2 flex-1 svelte-1l8159u">
-              <label className="text-gray-600 font-normal text-sm mb-2 ml-1"></label>
-              <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+            <div className="flex-1 w-full mx-2 svelte-1l8159u">
+              <label className="mb-2 ml-1 text-sm font-normal text-gray-600"></label>
+              <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
                 <select
                   onChange={(e) =>
                     props.updateFormData({ country: e.currentTarget.value })
                   }
-                  className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                  className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500"
                 >
                   <option>Select Country</option>
                   <option value="Afghanistan">Afghanistan</option>
@@ -592,14 +642,14 @@ const PersonalDetails = (props: {
               </div>
             </div>
           </div>
-          <div className="w-2/2  mt-2 flex-1 svelte-1l8159u">
-            <div className="w-full mx-2 flex-1 mt-2 svelte-1l8159u">
-              <label className="text-gray-600 font-normal text-sm mb-9 ml-1">
+          <div className="flex-1 mt-2 w-2/2 svelte-1l8159u">
+            <div className="flex-1 w-full mx-2 mt-2 svelte-1l8159u">
+              <label className="ml-1 text-sm font-normal text-gray-600 mb-9">
                 Phone Number
               </label>
-              <div className="bg-white  svelte-1l8159u">
-                <div className="flex  items-end -mb-1 ">
-                  <div className="w-16 sm:w-1/4 mr-1 sm:mr-2">
+              <div className="bg-white svelte-1l8159u">
+                <div className="flex items-end -mb-1 ">
+                  <div className="w-16 mr-1 sm:w-1/4 sm:mr-2">
                     <div>
                       <select
                         onChange={handlePhoneChange}
@@ -913,14 +963,14 @@ const PersonalDetails = (props: {
                       </select>
                     </div>
                   </div>
-                  <div className=" w-48 sm:mr-5 sm:w-3/4">
+                  <div className="w-48 sm:mr-5 sm:w-3/4">
                     <div className="bg-white my-2 p-1.5 flex border border-gray-200 rounded svelte-1l8159u">
                       <input
                         placeholder="Enter Phone Number"
                         type="phone"
                         id="ph"
                         onInput={handlePhoneChange}
-                        className="p-1  text-sm appearance-none outline-none w-full text-gray-700"
+                        className="w-full p-1 text-sm text-gray-700 outline-none appearance-none"
                         required
                       />
                     </div>
@@ -931,16 +981,11 @@ const PersonalDetails = (props: {
           </div>
         </div>
 
-        <div className="flex p-2 mt-4 justify-center">
+        <div className="flex justify-center p-2 mt-4">
           {/* <button
-            className="text-base hover:scale-110 focus:outline-none flex justify-center px-10 py-2 font-bold cursor-pointer 
-              
-              hover:bg-blue-500 shadow-inner rounded-lg
-              bg-violet-500 text-gray-200
-               duration-200 ease-in-out 
-               transition"
+            className="flex justify-center px-10 py-2 text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded-lg shadow-inner cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500 bg-violet-500"
           >
-            <div className="font-montserrat text-sm font-semibold px-10">
+            <div className="px-10 text-sm font-semibold font-montserrat">
               Next
             </div>
           </button> */}

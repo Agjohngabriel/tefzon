@@ -137,7 +137,9 @@ const Fund = () => {
 										duration-200 ease-in-out 
 										transition"
                   >
-                    <div className="font-montserrat text-sm px-20 lg:px-10">Next</div>
+                    <div className="font-montserrat text-sm px-20 lg:px-10">
+                      Next
+                    </div>
                   </button>
                 </div>
               </div>

@@ -18,7 +18,7 @@ const Index = () => {
           Fixtures
         </h1>
       </div>
-      
+
       <div className="container">
         <div className="sm:flex">
           <div className="container flex max-w-4xl h-3/4 bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20 mt-10 mb-20  px-2 py-6 lg:px-10  ">
@@ -113,7 +113,6 @@ const Index = () => {
                       </p>
                     </td>
                     <td className="p-2 text-center font-arcon text-black-0">
-
                       56
                     </td>
                     <td className="p-2 text-center font-arcon text-black-0">
@@ -122,7 +121,7 @@ const Index = () => {
                   </tr>
                   <tr className="border-b border-gray-300 py-3">
                     <td className="p-2 text-sm font-normal">
-                    3
+                      3
                       <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                         arrow_drop_up
                       </span>
@@ -164,7 +163,6 @@ const Index = () => {
             >
               <div className="flex font-sans text-xs font-montserrat px-2">
                 <span className="pt-1 text-[#060606] opacity-60">
-
                   Report Offensive Name
                 </span>
                 <span className="ml-10 material-icons hover:text-gray-100">
