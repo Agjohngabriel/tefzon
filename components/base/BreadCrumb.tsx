@@ -94,7 +94,7 @@ function BreadCrumb() {
         
         
           <Link href="/home/leagues/join_private" passHref>
-=======
+
 
             <span
               className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full inline-flex justify-center ${
@@ -196,7 +196,7 @@ function BreadCrumb() {
             >
               Price
             </span>
-          </Link> */}
+          </Link> 
 
         {/* 
             <Link href="/home/leagues/create" passHref>
@@ -212,7 +212,7 @@ function BreadCrumb() {
             </Link>
         v> */}
 
-        {/* <button
+        <button
             onClick={logOut}
 
             className="font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer bg-green text-gray-200 hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-4 md:mt-0 w-full inline-flex "
@@ -222,6 +222,7 @@ function BreadCrumb() {
         
 
       </div>
+    </div>
     </div>
   );
 }
