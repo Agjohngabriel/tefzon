@@ -43,63 +43,63 @@ function BreadCrumb() {
         </div>
       </div>
 
-      <div className="absolute flex-grow flex justify-between px-10  md:px-10 lg:px-36  z-50 -mt-14 md:-mt-10 lg:-mt-14 w-full overflow-x-auto scrollbar-hide ">
+      <div className="absolute flex-grow flex justify-between px-10  md:px-10   z-50 -mt-14 md:-mt-10 lg:-mt-14 w-98 overflow-x-auto scrollbar-hide ">
         
           <Link href="/home/leagues/join_public" passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1 lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1 lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full inline-flex ${
                 Router.pathname.startsWith("/home/account/status")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
               } hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
             >
-              Public_League
+              Public League
             </span>
           </Link>
         
         
           <Link href="/home/leagues/join_private" passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full inline-flex justify-center ${
                 Router.pathname.startsWith("/home/account/squad")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
               } hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
             >
-              Private_League
+              Private League
             </span>
           </Link>
         
         
           <Link href="/home/leagues/create" passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center  sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center  sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full inline-flex justify-center${
                 Router.pathname.startsWith("/home/account/transfer")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
               } hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
             >
-              Create_League
+              Create League
             </span>
           </Link>
         
         
           <Link href="/home/account/squad/select_squad" passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full inline-flex justify-center ${
                 Router.pathname.startsWith("/home/leagues")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
               } hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
             >
-              Pick_Team
+              Pick Team
             </span>
           </Link>
         
         
           <Link href="/home/transfer" passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full ${
                 Router.pathname.startsWith("/home/fixtures")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
@@ -112,7 +112,7 @@ function BreadCrumb() {
         
           <Link href="/home/fixtures" passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full ${
                 Router.pathname.startsWith("/home/leagues/scout")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
@@ -125,7 +125,7 @@ function BreadCrumb() {
         
           <Link href="/home/statistics " passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full ${
                 Router.pathname.startsWith("/home/leagues/stats")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
@@ -138,7 +138,7 @@ function BreadCrumb() {
         
           <Link href="/home/account/wallet" passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full ${
                 Router.pathname.startsWith("/home/account/wallet")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
@@ -151,7 +151,7 @@ function BreadCrumb() {
         
           <Link href="/home/price" passHref>
             <span
-              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer ${
+              className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer w-full ${
                 Router.pathname.startsWith("/home/leagues/prices")
                   ? "bg-white text-black-150"
                   : "bg-green text-white"
@@ -177,9 +177,9 @@ function BreadCrumb() {
         
           <button
             onClick={logOut}
-            className="font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer bg-green text-gray-200 hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-4 md:mt-0"
+            className="font-montserrat  md:inline-block text-xs lg:text-sm px-1  mx-1  lg:px-2 py-3 items-center sm:mx-2 lg:py-4 leading-none rounded cursor-pointer bg-green text-gray-200 hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-4 md:mt-0 w-full inline-flex "
           >
-            Sign_Out
+            Sign Out
           </button>
         
       </div>
