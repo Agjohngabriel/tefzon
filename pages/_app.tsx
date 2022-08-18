@@ -31,6 +31,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
           rel="stylesheet"
         />
+        <link rel="stylesheet" href="https://widgets.sportmonks.com/css/app.css"></link>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"
           rel="stylesheet"
@@ -40,6 +41,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         defer
         src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       ></Script>
+      <Script src="https://widgets.sportmonks.com/js/app.js"></Script>
       <Script src="https://kit.fontawesome.com/a076d05399.js"></Script>
       <SessionProvider session={session} refetchInterval={5 * 60}>
         <Component {...pageProps} />

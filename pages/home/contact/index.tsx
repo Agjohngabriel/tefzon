@@ -1,62 +1,50 @@
-import MainLayout from "../../../components/MainLayout";
+import GuestLayout from "../../../components/GuestLayout";
 
 const Index = () => {
   return (
-    <MainLayout>
+    <GuestLayout>
       <section
-        className="py-20 px-4 lg:px-16 overflow-hidden relative z-10"
+        className="relative z-10 px-4 py-20 overflow-hidden lg:px-16"
         data-aos="fade-up"
         id="contact"
       >
         <div className="container">
-          <div className="mb-5 flex items-center max-w-md">
-            <h2 className="text-slate-900 dark:text-gray-200 text-3xl font-bold">
+          <div className="flex items-center max-w-md mb-5">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-gray-200">
               {" "}
               Contact Me
             </h2>
           </div>
-          <div className="flex flex-col lg:flex-row lg:items-center text-slate-900 dark:text-gray-200 lg:justify-between -mx-4">
+          <div className="flex flex-col -mx-4 lg:flex-row lg:items-center text-slate-900 dark:text-gray-200 lg:justify-between">
             <div
-              className="w-full lg:w-1/2 xl:w-6/12 px-4"
+              className="w-full px-4 lg:w-1/2 xl:w-6/12"
               data-aos="fade-up"
               data-aos-delay="200"
             >
               <div className="max-w-[570px] mb-12 lg:mb-0">
-                <p className="text-base text-4xl font-extrabold text-body-color leading-relaxed stand__out__text mb-9 mx-5">
+                <p className="mx-5 text-base text-4xl font-extrabold leading-relaxed text-body-color stand__out__text mb-9">
                   Lorem ipsum dolor. Nulla porttitor accumsan tincidunt.
                 </p>
-                <p className="text-base text-2xl font-medium text-body-color leading-relaxed mb-9 mx-5">
+                <p className="mx-5 text-base text-2xl font-medium leading-relaxed text-body-color mb-9">
                   Based in{" "}
-                  <span className="font-bold font-bold italic">America</span>,
+                  <span className="italic font-bold">America</span>,
                   available worldwide.
                 </p>
               </div>
             </div>
             <div
-              className="w-full lg:w-1/2 xl:w-5/12 px-4"
+              className="w-full px-4 lg:w-1/2 xl:w-5/12"
               data-aos="fade-up"
               data-aos-delay="500"
               data-aos-duration="2000"
             >
-              <div className="bg-gray-100 dark:bg-slate-800 relative rounded-lg p-8 sm:p-12 shadow-lg">
+              <div className="relative p-8 bg-gray-100 rounded-lg shadow-lg dark:bg-slate-800 sm:p-12">
                 <form>
                   <div className="mb-6">
                     <input
                       type="text"
                       placeholder="Your Name"
-                      className="
-                                    w-full
-                                    rounded
-                                    p-3
-                                    text-gray-800
-                                    dark:text-gray-50
-                                    dark:bg-slate-700
-                                    border-gray-500
-                                    dark:border-slate-600
-                                    outline-none
-                                    focus-visible:shadow-none
-                                    focus:border-primary
-                                    "
+                      className="w-full p-3 text-gray-800 border-gray-500 rounded outline-none  dark:text-gray-50 dark:bg-slate-700 dark:border-slate-600 focus-visible:shadow-none focus:border-primary"
                       name="full_name"
                       id="full_name"
                     />
@@ -65,19 +53,7 @@ const Index = () => {
                     <input
                       type="email"
                       placeholder="Your Email"
-                      className="
-                                    w-full
-                                    rounded
-                                    p-3
-                                    text-gray-800
-                                    dark:text-gray-50
-                                    dark:bg-slate-700
-                                    border-gray-500
-                                    dark:border-slate-600
-                                    outline-none
-                                    focus-visible:shadow-none
-                                    focus:border-primary
-                                    "
+                      className="w-full p-3 text-gray-800 border-gray-500 rounded outline-none  dark:text-gray-50 dark:bg-slate-700 dark:border-slate-600 focus-visible:shadow-none focus:border-primary"
                       name="email"
                       id="email"
                     />
@@ -86,19 +62,7 @@ const Index = () => {
                     <input
                       inputMode="numeric"
                       placeholder="Your Phone"
-                      className="
-                                    w-full
-                                    rounded
-                                    p-3
-                                    text-gray-800
-                                    dark:text-gray-50
-                                    dark:bg-slate-700
-                                    border-gray-500
-                                    dark:border-slate-600
-                                    outline-none
-                                    focus-visible:shadow-none
-                                    focus:border-primary
-                                    "
+                      className="w-full p-3 text-gray-800 border-gray-500 rounded outline-none  dark:text-gray-50 dark:bg-slate-700 dark:border-slate-600 focus-visible:shadow-none focus:border-primary"
                       name="phone_number"
                       id="phone_number"
                     />
@@ -106,19 +70,7 @@ const Index = () => {
                   <div className="mb-6">
                     <textarea
                       placeholder="Your Message"
-                      className="
-                                    w-full
-                                    rounded
-                                    p-3
-                                    text-gray-800
-                                    dark:text-gray-50
-                                    dark:bg-slate-700
-                                    border-gray-500
-                                    dark:border-slate-600
-                                    outline-none
-                                    focus-visible:shadow-none
-                                    focus:border-primary
-                                    "
+                      className="w-full p-3 text-gray-800 border-gray-500 rounded outline-none  dark:text-gray-50 dark:bg-slate-700 dark:border-slate-600 focus-visible:shadow-none focus:border-primary"
                       name="message"
                       id="message"
                     ></textarea>
@@ -126,20 +78,7 @@ const Index = () => {
                   <div>
                     <button
                       type="submit"
-                      className="
-                                    w-full
-                                    text-gray-100
-                                    hover:text-gray-700
-                                    bg-yellow-400
-                                    rounded
-                                    border border-primary
-                                    dark:border-slate-600
-                                    p-3
-                                    transition
-                                    ease-in-out
-                                    duration-500
-                                    hover:bg-yellow-300
-                                    "
+                      className="w-full p-3 text-gray-100 transition duration-500 ease-in-out bg-yellow-400 border rounded  hover:text-gray-700 border-primary dark:border-slate-600 hover:bg-yellow-300"
                     >
                       Send Message
                     </button>
@@ -960,7 +899,7 @@ const Index = () => {
       </section>
 
       <div className="max-w-4xl mx-auto">
-        <div className="p-4 w-full text-center bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full p-4 text-center bg-white border rounded-lg shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
           <h3 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Work fast from anywhere
           </h3>
@@ -968,7 +907,7 @@ const Index = () => {
             Stay up to date and move work forward with Flowbite on iOS &
             Android. Download the app today.
           </p>
-          <div className="justify-center items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+          <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
             <a
               href="#"
               className="w-full sm:w-auto flex bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
@@ -1024,7 +963,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
+    </GuestLayout>
   );
 };
 
