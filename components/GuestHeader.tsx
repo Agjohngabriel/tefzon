@@ -10,7 +10,7 @@ function GuestHeader() {
     setActive(!active);
   };
   return (
-    <nav className="flex flex-wrap items-center p-3 px-6 py-3 mx-auto bg-green-400 lg:px-20 ">
+    <nav className="flex flex-wrap items-center p-3 px-6 py-3 mx-auto bg-green-400 md:px-10 lg:px-20 ">
       <Link href="/" passHref>
         <motion.a
           initial={{
