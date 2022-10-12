@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function GuestHeader() {
   const [active, setActive] = useState(false);
@@ -11,9 +12,24 @@ function GuestHeader() {
   return (
     <nav className="flex flex-wrap items-center p-3 px-6 py-3 mx-auto bg-green-400 lg:px-20 ">
       <Link href="/" passHref>
-        <a className="inline-flex items-center p-2 mr-4 ">
+        <motion.a
+          initial={{
+            x: -500,
+            opacity: 0,
+            scale: 0.5,
+          }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            duration: 0.5,
+          }}
+          className="inline-flex items-center p-2 mr-4 "
+        >
           <img src="/brand.png" alt="logo" width="150px" />
-        </a>
+        </motion.a>
       </Link>
       <button
         className="inline-flex p-3 ml-auto text-gray-600 border-gray-600 rounded outline-none  hover:bg-green-600 lg:hidden hover:text-violet-500"
@@ -35,7 +51,20 @@ function GuestHeader() {
         </svg>
       </button>
 
-      <div
+      <motion.div
+        initial={{
+          x: 500,
+          opacity: 0,
+          scale: 0.5,
+        }}
+        animate={{
+          x: 0,
+          opacity: 1,
+          scale: 1,
+        }}
+        transition={{
+          duration: 0.5,
+        }}
         className={`${
           active ? "" : "hidden"
         }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
@@ -72,7 +101,7 @@ function GuestHeader() {
             </a>
           </Link>
         </div>
-      </div>
+      </motion.div>
     </nav>
   );
 }
