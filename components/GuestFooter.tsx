@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function GuestFooter() {
   return (
-    <div className=" h-28 py-5 text-center px-20 text-gray sm:flex flex-row items-center justify-between w-full 2xl:h-36 bottom-0 shadow-inner shadow-slate-100">
+    <div className=" h-28 py-5 text-center px-20 text-gray sm:flex flex-row items-center justify-between w-full 2xl:h-36 bottom-0">
       <div>
         <h1 className="font-montserrat">No Room for Racism</h1>
       </div>
@@ -11,19 +11,19 @@ export default function GuestFooter() {
           {
             src: "/facebook_dark.png",
             width: "18",
-            height: "16",
+            height: "17",
             alt: "Facebook Logo",
           },
           {
             src: "/twitter_dark.png",
             width: "18",
-            height: "16",
+            height: "17",
             alt: "Twitter Logo",
           },
           {
             src: "/instagram_dark.png",
             width: "18",
-            height: "16",
+            height: "17",
             alt: "Instagram Icon",
           },
         ].map((item) => (
