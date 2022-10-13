@@ -63,19 +63,19 @@ const Login = () => {
 
   return (
     <GuestLayout>
-      <div className="container max-w-sm sm:max-w-3xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-5 items-center justify-center w-auto">
-        <h1 className="pt-20 text-4xl text-center text-gray-700 font-oswald">
-          Login
-        </h1>
+      <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
+        <div className="max-w-sm sm:max-w-3xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-5 sm:px-10 py-3 items-center justify-center w-auto">
+          <h1 className="pt-8 sm:pt-14 text-4xl text-center text-gray-700 font-oswald">
+            Login
+          </h1>
 
-        <p className="my-10 text-xs text-center text-gray-500 font-arcon">
-          Welcome back to Tefzone Fantasy, please login to your account to
-          continue.
-        </p>
+          <p className="my-5 sm:my-8 px-5 text-xs text-center text-gray-500 font-arcon">
+            Welcome back to Tefzone Fantasy, please login to your account to
+            continue.
+          </p>
 
-        <div className="items-center justify-center mx-auto sm:flex">
-          <Link href="/" passHref>
-            <a className="flex items-center justify-center px-8 py-2 mx-6 mt-2 space-x-2 transition-colors duration-300 bg-blue-800 border border-blue-800 group hover:bg-gray-500 focus:outline-none animate-fade-in-up">
+          <div className="items-center mx-4 sm:mx-auto flex flex-col sm:flex-row ">
+            <button className="flex items-center justify-center w-full sm:px-8 py-2 sm:mx-6 mt-2 space-x-1 transition-colors duration-300 bg-blue-800 border border-blue-800 group hover:bg-gray-500 focus:outline-none animate-fade-in-up">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -91,29 +91,27 @@ const Login = () => {
               <span className="text-xs text-white font-montserrat group-hover:text-white">
                 Facebook
               </span>
-            </a>
-          </Link>
+            </button>
 
-          <button
-            onClick={() =>
-              signIn("google", { callbackUrl: "http://localhost:3000/get" })
-            }
-            className="flex items-center justify-center px-10 py-2 mx-6 mt-2 space-x-2 transition-colors duration-300 bg-white border border-gray-100 sm:mx-3 group hover:bg-gray-500 focus:outline-none animate-fade-in-down"
-          >
-            <span>
-              <img
-                className="h-5 cursor-pointer "
-                src="https://i.imgur.com/arC60SB.png"
-                alt=""
-              />
-            </span>
-            <span className="text-xs text-gray-800 font-montserrat group-hover:text-white">
-              Google
-            </span>
-          </button>
+            <button
+              onClick={() =>
+                signIn("google", { callbackUrl: "http://localhost:3000/get" })
+              }
+              className="flex items-center justify-center w-full px-2 sm:px-8 sm:px-10 py-2  mt-2 space-x-2 transition-colors duration-300 bg-white border border-gray-100  group hover:bg-gray-500 focus:outline-none animate-fade-in-down"
+            >
+              <span>
+                <img
+                  className="h-5 cursor-pointer "
+                  src="https://i.imgur.com/arC60SB.png"
+                  alt=""
+                />
+              </span>
+              <span className="text-xs text-gray-800 font-montserrat group-hover:text-white">
+                Google
+              </span>
+            </button>
 
-          <Link href="/" passHref>
-            <a className="flex items-center justify-center px-10 py-2 mx-6 mt-2 space-x-2 transition-colors duration-300 bg-blue-500 border border-blue-500 group hover:bg-gray-500 focus:outline-none animate-fade-in-up">
+            <button className="flex items-center justify-center w-full sm:px-10 py-2 mx-6 mt-2 space-x-2 transition-colors duration-300 bg-blue-500 border border-blue-500 group hover:bg-gray-500 focus:outline-none animate-fade-in-up">
               <span>
                 <svg
                   className="text-gray-100 group-hover:text-white"
@@ -127,99 +125,99 @@ const Login = () => {
               <span className="text-xs text-gray-100 font-montserrat group-hover:text-white">
                 Twitter
               </span>
-            </a>
-          </Link>
-        </div>
+            </button>
+          </div>
 
-        <p className="my-8 text-sm text-center text-gray-500 font-arcon">
-          or login with
-        </p>
-        <form onSubmit={handleSubmit}>
-          <div className="w-3/4 mx-auto">
-            <div className="flex-1 w-full py-4 svelte-1l8159u">
-              <div
-                className={`bg-white my-2 p-1 flex border ${
-                  error ? "border-red-500" : "border-gray-200"
-                } rounded svelte-1l8159u`}
-              >
-                <input
-                  placeholder="Enter e-mail"
-                  type="email"
-                  required
-                  value={email}
-                  onInput={(e) => setEmail(e.currentTarget.value)}
-                  className="w-full h-12 p-1 px-2 text-gray-700 outline-none appearance-none font-arcon"
-                />{" "}
+          <p className="my-8 text-sm text-center text-gray-500 font-arcon">
+            or login with
+          </p>
+          <form onSubmit={handleSubmit}>
+            <div className="sm:w-3/4  mx-2 sm:mx-auto">
+              <div className="flex-1 w-full  sm:py-4 svelte-1l8159u">
+                <div
+                  className={`bg-white my-2 p-1 flex border ${
+                    error ? "border-red-500" : "border-gray-200"
+                  } rounded svelte-1l8159u`}
+                >
+                  <input
+                    placeholder="Enter e-mail"
+                    type="email"
+                    required
+                    value={email}
+                    onInput={(e) => setEmail(e.currentTarget.value)}
+                    className="w-full h-12 p-1 px-2 text-gray-700 outline-none appearance-none font-arcon"
+                  />{" "}
+                </div>
+                <span className="text-red-600 text-[0.7rem]">
+                  {error ? "Invalid Email  Or Password" : ""}
+                </span>
               </div>
-              <span className="text-red-600 text-[0.7rem]">
-                {error ? "Invalid Email  Or Password" : ""}
-              </span>
-            </div>
-            <div className="flex-1 w-full svelte-1l8159u">
-              <div
-                className={`bg-white my-2 p-1 flex border ${
-                  error ? "border-red-500" : "border-gray-200"
-                } rounded svelte-1l8159u`}
-              >
-                <input
-                  placeholder="Enter Password"
-                  required
-                  value={password}
-                  onInput={(e) => setPassword(e.currentTarget.value)}
-                  className="w-full h-12 p-1 px-2 text-gray-800 outline-none appearance-none font-arcon"
-                  type={passwordType}
-                />
-                <div className="flex -mr-px">
-                  <span className="flex items-center px-3 leading-normal text-gray-600 whitespace-no-wrap border-0 rounded rounded-l-none">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (passwordType === "password") {
-                          setPasswordType("text");
-                          return;
-                        }
-                        setPasswordType("password");
-                      }}
-                      className="flex justify-center py-1 text-base text-gray-500 transition duration-200 ease-in-out rounded cursor-pointer hover:scale-110 focus:outline-none"
-                    >
-                      {passwordType === "password" ? (
-                        <span className="material-icons">visibility</span>
-                      ) : (
-                        <span className="material-icons">visibility_off</span>
-                      )}
-                    </button>
-                  </span>
+              <div className="flex-1 w-full svelte-1l8159u">
+                <div
+                  className={`bg-white my-2 p-1 flex border ${
+                    error ? "border-red-500" : "border-gray-200"
+                  } rounded svelte-1l8159u`}
+                >
+                  <input
+                    placeholder="Enter Password"
+                    required
+                    value={password}
+                    onInput={(e) => setPassword(e.currentTarget.value)}
+                    className="w-full h-12 p-1 px-2 text-gray-800 outline-none appearance-none font-arcon"
+                    type={passwordType}
+                  />
+                  <div className="flex -mr-px">
+                    <span className="flex items-center px-3 leading-normal text-gray-600 whitespace-no-wrap border-0 rounded rounded-l-none">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (passwordType === "password") {
+                            setPasswordType("text");
+                            return;
+                          }
+                          setPasswordType("password");
+                        }}
+                        className="flex justify-center py-1 text-base text-gray-500 transition duration-200 ease-in-out rounded cursor-pointer hover:scale-110 focus:outline-none"
+                      >
+                        {passwordType === "password" ? (
+                          <span className="material-icons">visibility</span>
+                        ) : (
+                          <span className="material-icons">visibility_off</span>
+                        )}
+                      </button>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <Link href="/" passHref>
-            <a className="flex items-center text-[#222222]/50 font-arcon text-sm justify-center mx-auto px-8 py-4 focus:outline-none">
-              Forgot Password?
-            </a>
-          </Link>
+            <Link href="/" passHref>
+              <a className="flex items-center text-[#222222]/50 font-arcon text-sm justify-center mx-auto px-8 py-4 focus:outline-none">
+                Forgot Password?
+              </a>
+            </Link>
 
-          <div className="flex-1 w-full py-5 mx-auto svelte-1l8159u">
-            <button
-              type="submit"
-              className="flex justify-center py-3 mx-auto text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded shadow-xl cursor-pointer shadow-indigo-500/50 hover:scale-110 focus:outline-none px-28 hover:bg-blue-500 bg-violet-500"
-            >
-              <div className="px-10 text-xs font-medium font-arcon">
-                {isSubmitting ? "Loading..." : "Login"}
-              </div>
-            </button>
-          </div>
-        </form>
+            <div className="flex-1 sm:w-full py-5 mx-auto svelte-1l8159u">
+              <button
+                type="submit"
+                className="flex justify-center py-3 mx-auto text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded shadow-xl cursor-pointer shadow-indigo-500/50 hover:scale-110 focus:outline-none px-5 sm:px-28 hover:bg-blue-500 bg-violet-500"
+              >
+                <div className="px-10 text-xs font-medium font-arcon">
+                  {isSubmitting ? "Loading..." : "Login"}
+                </div>
+              </button>
+            </div>
+          </form>
 
-        <p className="my-8 text-xs text-center text-gray-500 font-arcon">
-          Don't have an account?
-          <Link href="/account/auth/signup" passHref>
-            <a className="items-center justify-center px-2 py-4 mx-auto text-xs text-indigo-700 font-arcon focus:outline-none">
-              Sign Up
-            </a>
-          </Link>
-        </p>
+          <p className="my-8 text-xs text-center text-gray-500 font-arcon">
+            Don't have an account?
+            <Link href="/account/auth/signup" passHref>
+              <a className="items-center justify-center px-2 py-4 mx-auto text-xs text-indigo-700 font-arcon focus:outline-none">
+                Sign Up
+              </a>
+            </Link>
+          </p>
+        </div>
       </div>
     </GuestLayout>
   );
