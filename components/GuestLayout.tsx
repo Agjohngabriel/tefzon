@@ -14,7 +14,7 @@ export default function GuestLayout(props: { children: ReactNode }) {
         {props.children}
         {/* </div> */}
       </div>
-      {Router.pathname == "/" ||
+      {Router.pathname === "/" ||
       "/account/auth/signup" ||
       "/account/auth/login" ? (
         <GuestFooter />

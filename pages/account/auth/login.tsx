@@ -65,7 +65,7 @@ const Login = () => {
     <GuestLayout>
       <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
         <div className="max-w-sm sm:max-w-3xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-5 sm:px-10 py-3 items-center justify-center w-auto">
-          <h1 className="pt-8 sm:pt-14 text-4xl text-center text-gray-700 font-oswald">
+          <h1 className="pt-8 sm:pt-14 text-4xl lg:text-5xl text-center text-gray-700 font-oswald">
             Login
           </h1>
 
@@ -223,7 +223,7 @@ const Login = () => {
               </div>
             </div>
 
-            <Link href="/" passHref>
+            <Link href="/account/auth/forgetpassword" passHref>
               <a className="flex items-center text-[#222222]/50 font-arcon text-sm justify-center mx-auto px-8 py-4 focus:outline-none">
                 Forgot Password?
               </a>
@@ -234,7 +234,7 @@ const Login = () => {
                 type="submit"
                 className="flex justify-center py-3 mx-auto text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded shadow-xl cursor-pointer shadow-indigo-500/50 hover:scale-110 focus:outline-none px-5 sm:px-28 hover:bg-blue-500 bg-violet-500"
               >
-                <div className="px-10 text-xs font-medium font-arcon">
+                <div className="px-10 text-sm font-medium font-arcon">
                   {isSubmitting ? "Loading..." : "Login"}
                 </div>
               </button>
