@@ -37,7 +37,7 @@ const Home: NextPage = () => {
     </div>
   ) : (
     <GuestLayout>
-      <div className="container px-5 md:px-12 py-2 md:py-10  mx-auto ">
+      <div className="container px-5 md:px-12 py-2 md:py-10 lg:py-2  mx-auto ">
         <div
           className="z-0 md:flex shadow-2xl rounded-2xl shadow-indigo-500/50 px-10 md:px-14 lg:px-20 h-3/4 flex flex-col text-center md:text-left lg:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
         >

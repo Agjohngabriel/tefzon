@@ -55,13 +55,13 @@ const Signup = () => {
   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
   return (
     <GuestLayout>
-      <div className="flex items-center justify-center pb-20  mx-auto mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
-        <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-2xl border shadow-xl p-2 sm:p-10 pb-5 sm:pb-10 w-full">
-          <h1 className="font-oswald text-2xl text-gray-700 pb-10 text-center">
+      <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6 lg:px-28  bg-[#E4ECFB] shadow-inner w-auto">
+        <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-3xl border shadow-2xl p-2 sm:p-10 lg:p-14 pb-5 sm:pb-10 w-full">
+          <h1 className="font-oswald pt-5 pb-5 text-xl md:text-2xl lg:text-3xl text-gray-700 md:pb-10 text-center">
             Create Your Account
           </h1>
-          <div className="bg-white">
-            <div className="mx-4 p-4">
+          <div className="bg-white rounded-xl shadow shadow-[#09A5DB]/20 ">
+            <div className="mx-8 p-8">
               <div className="flex items-center">
                 <div className="flex items-center text-white relative ">
                   <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 bg-[#240155]/100 border-[#240155]/100">

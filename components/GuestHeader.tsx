@@ -71,33 +71,39 @@ function GuestHeader() {
       >
         <div className="flex flex-col items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
           <Link href="/" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Home
+              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
+              
             </a>
           </Link>
           {/* <Link href="" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
             Price
             </a>
           </Link> */}
           <Link href="/home/scout" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Scout
+              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
           <Link href="/home/statistics" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Statistics
+              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
           <Link href="" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Help
+              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
           <Link href="/home/contact" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-bold text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-blue-500 hover:bg-green-600 ">
+            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group">
               Contact
+              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
         </div>

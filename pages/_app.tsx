@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/png" sizes="32x32" href="icon.png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap"
           rel="stylesheet"

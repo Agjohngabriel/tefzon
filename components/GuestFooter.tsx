@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function GuestFooter() {
   return (
-    <div className=" h-28 py-5 text-center px-20 text-gray sm:flex flex-row items-center justify-between w-full 2xl:h-36 bottom-0">
+    <div className=" h-28 py-5 text-center px-16 lg:px-20 text-gray sm:flex flex-row items-center justify-between w-full 2xl:h-36 bottom-0">
       <div>
         <h1 className="font-montserrat">No Room for Racism</h1>
       </div>
