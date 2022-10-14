@@ -12,8 +12,16 @@ const ForgotPassword = () => {
       <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 pt-10 pb-20  bg-[#E4ECFB] shadow-inner w-auto">
         <div className=" max-w-sm sm:max-w-3xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-5 sm:px-10 py-3  w-auto">
           <div className="px-2 sm:px-8 mb-4 text-center">
-            <h3 className="pt-8 sm:pt-14 text-2xl sm:text-4xl lg:text-5xl text-center text-gray-700 font-oswald">
-              Forgot Your Password?
+          <div className="mt-10 -translate-y-1/6 transform animate-fade-in-up">
+              <img
+                src="/img/reset.png"
+                alt="verify"
+                title="verify"
+                className="mx-auto w-20 sm:w-24"
+              />
+            </div>
+            <h3 className="pt-5 text-2xl sm:text-4xl lg:text-5xl text-center text-gray-700 font-oswald">
+              Forgot Password?
             </h3>
             <p className="my-3 sm:my-6 text-sm text-gray-700  md:px-20">
               We get it, stuff happens. Just enter registered your email address

@@ -33,7 +33,7 @@ const Email = () => {
               </Link>
 
               <div className="text-center ">
-                <Link href="/account/auth/signup" passHref>
+                <Link href="/account/auth/forgetpassword" passHref>
                   <a className="inline-block text-xs text-indigo-700 align-baseline hover:text-blue-800">
                     Didn't recieve the email? <span className="font-semibold">Click to resend</span> 
                   </a>

@@ -81,7 +81,8 @@ const Favourite = (props: {
                     type="button"
                     className={`${
                       favourite.has(item) ? "bg-red" : "bg-black"
-                    } flex flex-col items-center justify-center w-full p-4 border sahdow-lg sm:p-8 animate-fade-in-up`}
+                    } flex flex-col items-center justify-center w-full p-4 border sahdow-lg sm:p-8 animate-fade-in-up transition duration-300 
+                    hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100`}
                     key={item.id}
                   >
                     <div className="mb-4 sm:mb-8">
