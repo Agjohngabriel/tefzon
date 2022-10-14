@@ -60,7 +60,7 @@ const ForgotPassword = () => {
                   className="flex items-center mx-16 py-5 text-sm text-gray-600 hover:text-blue-800 justify-center  "
                 >
                   <span className="material-icons  ">arrow_backward</span>
-                  <span className="-ml-24 ">Back to Log in!</span>
+                  <span className="-ml-24 ">Back to Log in</span>
                 </a>
               </Link>
             </div>

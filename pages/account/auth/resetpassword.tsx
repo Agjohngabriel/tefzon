@@ -4,6 +4,7 @@ import GuestLayout from "../../../components/GuestLayout";
 const ResetPassword = () => {
   return (
     <GuestLayout>
+        
       <div>
         <div className="container bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-20  w-auto">
           <h1 className="font-oswald text-2xl text-gray-700 pb-10 text-center">
