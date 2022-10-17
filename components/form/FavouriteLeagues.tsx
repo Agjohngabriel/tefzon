@@ -3,37 +3,37 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Loader } from "../base/Loader";
 
-interface Favorite {
+interface FavouriteLeague {
   id: string;
   logo_path: string;
   name: string;
 }
 
-const Favourite = (props: {
+const FavouriteLeague = (props: {
   formStep: number;
   nextFormStep: any;
   updateFormData: any;
 }) => {
-  const [favourite, setFavourite] = useState(new Set());
+  const [favouriteleague, setFavouriteleague] = useState(new Set());
   const [teams, setTeams] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { data: session }: any = useSession();
 
-  const selectFavourite = ({ id, name, logo_path }: Favorite) => {
-    setFavourite((favourite) => {
-      favourite = new Set(favourite);
-      favourite.add({ id, name, logo_path });
-      return favourite;
+  const selectFavourite = ({ id, name, logo_path }: FavouriteLeague) => {
+    setFavouriteleague((favouriteleague) => {
+        favouriteleague = new Set(favouriteleague);
+        favouriteleague.add({ id, name, logo_path });
+      return favouriteleague;
     });
   };
   const update = () => {
-    props.updateFormData({ favourite_team: favourite });
+    props.updateFormData({ favourite_leauge: favouriteleague });
   };
   useEffect(() => {
     const fetchAll = async () => {
       setIsLoading(true);
       const res = await axios.get(
-        `${process.env.BACKEND_URL}/get/favourite-teams`,
+        `${process.env.BACKEND_URL}/get/favourite-league`,
         {
           headers: {
             Authorization: `Bearer ${session?.data.token}`,
@@ -55,10 +55,10 @@ const Favourite = (props: {
   }, []);
 
   return (
-    <div className={`p-5 ${props.formStep === 3 ? "" : "hidden"}`}>
+    <div className={`p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center max-w-lg pt-20 mx-auto space-y-4">
         <h1 className="w-4/6 text-lg font-bold text-center text-gray-700 animate-fade-in-up">
-          Your Favourites
+          Your Favourite League
         </h1>
         <p className="w-5/6 text-sm text-center text-gray-500 animate-fade-in-down">
           Please type carefully and fill out the form with Personal details. You
@@ -71,7 +71,7 @@ const Favourite = (props: {
           <div className="w-full border">
             <section className="max-w-6xl mx-auto ">
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 ">
-                {teams.map((item: Favorite, index) => (
+                {teams.map((item: FavouriteLeague, index) => (
                   <button
                     onClick={() => {
                       selectFavourite({
@@ -83,7 +83,7 @@ const Favourite = (props: {
                     }}
                     type="button"
                     className={`${
-                      favourite.has(item) ? "bg-red" : "bg-black"
+                        favouriteleague.has(item) ? "bg-red" : "bg-black"
                     } flex flex-col items-center justify-center w-full p-4 border sahdow-lg sm:p-8 animate-fade-in-up transition duration-300 
                     hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100`}
                     key={item.id}
@@ -121,4 +121,4 @@ const Favourite = (props: {
   );
 };
 
-export default Favourite;
+export default FavouriteLeague;

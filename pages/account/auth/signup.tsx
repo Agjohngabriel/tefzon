@@ -8,6 +8,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { client } from "../../../libs/axiosClient";
+import FavouriteLeague from "../../../components/form/FavouriteLeagues";
 const Signup = () => {
   const [formStep, setFormStep] = useState(0);
   const [formData, setFormData] = useState({});
@@ -156,15 +157,22 @@ const Signup = () => {
                 />
               )}
               {formStep >= 1 && (
-                <Favourite
+                <Agreement
+                  updateFormData={updateFormData}
+                  formStep={formStep}
+                  nextFormStep={nextFormStep}
+                />
+              )}
+              {formStep >= 2 && (
+                <FavouriteLeague
                   updateFormData={updateFormData}
                   formStep={formStep}
                   nextFormStep={nextFormStep}
                 />
               )}
 
-              {formStep >= 2 && (
-                <Agreement
+              {formStep >= 3 && (
+                <Favourite
                   updateFormData={updateFormData}
                   formStep={formStep}
                   nextFormStep={nextFormStep}
@@ -180,7 +188,7 @@ const Signup = () => {
             /> */}
 
               <div className=" pb-10 mt-2 justify-center">
-                {formStep == 2 ? (
+                {formStep == 3 ? (
                   <button
                     type="submit"
                     disabled={isSubmitting}

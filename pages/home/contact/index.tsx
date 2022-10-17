@@ -964,8 +964,7 @@ const Index = () => {
           Work fast from anywhere
         </h3>
         <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
-          Stay up to date and move work forward with Flowbite on iOS & Android.
-          Download the app today.
+        Listen to the songs at tip of your finger, feel the vibes and dance.Listen to the songs at tip of your finger, feel the vibes and dance. Listen to the songs at tip of your finger.
         </p>
         <div className="justify-center items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
           <a
