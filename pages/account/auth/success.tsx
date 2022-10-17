@@ -21,7 +21,7 @@ const Success = () => {
                 Thanks For Registering
               </h1>
               <p className="font-arcon text-sm text-gray-500 text-center sm:w-5/6 animate-fade-in-up">
-                Please check the message sent to
+                Please check the message sent to {" "}
                 <Link href="/account/auth/email" passHref>
                   <a className="text-xs text-indigo-700 align-baseline hover:text-blue-800">
                     kolagk@gmail.com
@@ -29,7 +29,7 @@ const Success = () => {
                 </Link>{" "}
                 Confirming the message allow you to complete the process.
               </p>
-              <Link href="/home/account" passHref>
+              <Link href="/home/" passHref>
                 <div className="w-full sm:w-auto bg-indigo-500 text-gray-200 shadow-inner rounded hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300 inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                   <div className="font-montserrat text-sm font-semibold sm:px-10">
                     Proceed To Home

@@ -32,7 +32,10 @@ const ResetPassword = () => {
           <form className="px-5 sm:px-32 mb-4  rounded">
             <div className="flex flex-col  ">
               <div className="flex-1 w-full mx-auto  svelte-1l8159u">
-              <div className="h-6 mt-3 text-xs font-bold leading-8 text-gray-600 uppercase"> Password </div>
+                <div className="h-6 mt-3 text-xs font-bold leading-8 text-gray-600 uppercase">
+                  {" "}
+                  Password{" "}
+                </div>
                 <div
                   className={`bg-white my-2 p-1 flex border ${"border-gray-200"} rounded svelte-1l8159u`}
                 >
@@ -46,12 +49,14 @@ const ResetPassword = () => {
                   />
                 </div>
                 <span className="text-gray-600 text-xs opacity-40">
-                   "Must be at least 6 characters"
-                    
+                  "Must be at least 6 characters"
                 </span>
               </div>
               <div className="flex-1 w-full mx-auto  svelte-1l8159u">
-                <div className="h-6 mt-3 text-xs font-bold leading-8 text-gray-600 uppercase"> Confirm Password</div>
+                <div className="h-6 mt-3 text-xs font-bold leading-8 text-gray-600 uppercase">
+                  {" "}
+                  Confirm Password
+                </div>
                 <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
                   <input
                     placeholder="password"
@@ -62,7 +67,7 @@ const ResetPassword = () => {
                     type={passwordType}
                   />
                   <div className="flex -mr-px">
-                    <span className="flex items-center px-3 leading-normal text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none">
+                    <span className="flex items-center px-3 leading-normal text-gray-600 whitespace-no-wrap  border-0 rounded rounded-l-none">
                       <button
                         onClick={() => {
                           if (passwordType === "password") {
@@ -72,10 +77,16 @@ const ResetPassword = () => {
                           setPasswordType("password");
                         }}
                         type="button"
-                        className="flex justify-center py-1 text-base text-gray-500 transition duration-200 ease-in-out bg-gray-200 rounded-lg shadow-inner cursor-pointer hover:scale-110 focus:outline-none hover:bg-gray-300"
+                        className="flex justify-center text-base text-gray-500 transition duration-200 ease-in-out  cursor-pointer hover:scale-110 focus:outline-none hover:text-gray-300"
                       >
                         <div className="px-3 font-sans text-sm font-light">
-                          {passwordType === "password" ? "show" : "Hide"}
+                          {passwordType === "password" ? (
+                            <span className="material-icons">visibility</span>
+                          ) : (
+                            <span className="material-icons">
+                              visibility_off
+                            </span>
+                          )}
                         </div>
                       </button>
                     </span>
