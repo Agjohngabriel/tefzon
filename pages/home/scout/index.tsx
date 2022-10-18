@@ -1,8 +1,8 @@
-import MainLayout from "../../../components/MainLayout";
+import Layout from "../../../components/Layouts";
 
 const Index = () => {
   return (
-    <MainLayout>
+    <Layout>
       <div className="bg-white py-6">
         <div className="xl:container mx-auto px-3 sm:px-4 xl:px-2">
           <div className="flex flex-row flex-wrap">
@@ -393,7 +393,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </MainLayout>
+    </Layout>
   );
 };
 

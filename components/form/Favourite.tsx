@@ -32,12 +32,15 @@ const Favourite = (props: {
   useEffect(() => {
     const fetchAll = async () => {
       setIsLoading(true);
-      const res = await axios.get(`${process.env.BASE_URL}get/league/teams`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.token}`,
-          "content-type": "application/json",
-        },
-      });
+      const res = await axios.get(
+        `${process.env.BACKEND_URL}/get/favourite-team`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+          },
+        }
+      );
       const response = await res.data;
       setIsLoading(false);
       return response;
@@ -81,7 +84,8 @@ const Favourite = (props: {
                     type="button"
                     className={`${
                       favourite.has(item) ? "bg-red" : "bg-black"
-                    } flex flex-col items-center justify-center w-full p-4 border sahdow-lg sm:p-8 animate-fade-in-up`}
+                    } flex flex-col items-center justify-center w-full p-4 border sahdow-lg sm:p-8 animate-fade-in-up transition duration-300 
+                    hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100`}
                     key={item.id}
                   >
                     <div className="mb-4 sm:mb-8">

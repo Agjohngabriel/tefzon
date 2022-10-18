@@ -73,7 +73,6 @@ const Login = () => {
             Welcome back to Tefzone Fantasy, please login to your account to
             continue.
           </p>
-          
 
           <div className="sm:px-10">
             <button
@@ -82,7 +81,7 @@ const Login = () => {
               }
               aria-label="Continue with google"
               role="button"
-              className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-10 animate-fade-in-up"
+              className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700  flex items-center w-full mt-10 animate-fade-in-up "
             >
               <svg
                 width="19"
@@ -162,7 +161,7 @@ const Login = () => {
             </p>
             <hr className="w-full bg-gray-400  " />
           </div>
-          
+
           <form onSubmit={handleSubmit}>
             <div className="sm:px-10 ">
               <div className="flex-1 w-full  sm:py-2 svelte-1l8159u">
@@ -235,7 +234,27 @@ const Login = () => {
                 className="flex justify-center py-3 mx-auto text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded shadow-xl cursor-pointer shadow-indigo-500/50 hover:scale-110 focus:outline-none px-5 sm:px-28 hover:bg-blue-500 bg-violet-500"
               >
                 <div className="px-10 text-sm font-medium font-arcon">
-                  {isSubmitting ? "Loading..." : "Login"}
+                  {isSubmitting ? (
+                    <span>Loading...</span>
+                  ) : (
+                    <span className="inline-flex space-x-2 items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                        />
+                      </svg>
+                      <span>Login</span>
+                    </span>
+                  )}
                 </div>
               </button>
             </div>
