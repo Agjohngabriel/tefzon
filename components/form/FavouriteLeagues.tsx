@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Loader } from "../base/Loader";
 
@@ -17,12 +16,11 @@ const FavouriteLeague = (props: {
   const [favouriteleague, setFavouriteleague] = useState(new Set());
   const [teams, setTeams] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { data: session }: any = useSession();
 
   const selectFavourite = ({ id, name, logo_path }: FavouriteLeague) => {
     setFavouriteleague((favouriteleague) => {
-        favouriteleague = new Set(favouriteleague);
-        favouriteleague.add({ id, name, logo_path });
+      favouriteleague = new Set(favouriteleague);
+      favouriteleague.add({ id, name, logo_path });
       return favouriteleague;
     });
   };
@@ -32,15 +30,8 @@ const FavouriteLeague = (props: {
   useEffect(() => {
     const fetchAll = async () => {
       setIsLoading(true);
-      const res = await axios.get(
-        `${process.env.BACKEND_URL}/get/favourite-league`,
-        {
-          headers: {
-            Authorization: `Bearer ${session?.data.token}`,
-            "content-type": "application/json",
-          },
-        }
-      );
+      const res = await axios.get(`${process.env.BACKEND_URL}/get/leagues`);
+
       const response = await res.data;
       setIsLoading(false);
       return response;
@@ -55,8 +46,8 @@ const FavouriteLeague = (props: {
   }, []);
 
   return (
-    <div className={`p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
-      <div className="flex flex-col items-center max-w-lg pt-20 mx-auto space-y-4">
+    <div className={`sm:p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
+      <div className="flex flex-col items-center max-w-lg  sm:pt-20 mx-auto space-y-4">
         <h1 className="w-4/6 text-lg font-bold text-center text-gray-700 animate-fade-in-up">
           Your Favourite League
         </h1>
@@ -70,7 +61,7 @@ const FavouriteLeague = (props: {
         <div className="p-4 mt-8">
           <div className="w-full border">
             <section className="max-w-6xl mx-auto ">
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 ">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 ">
                 {teams.map((item: FavouriteLeague, index) => (
                   <button
                     onClick={() => {
@@ -83,14 +74,14 @@ const FavouriteLeague = (props: {
                     }}
                     type="button"
                     className={`${
-                        favouriteleague.has(item) ? "bg-red" : "bg-black"
-                    } flex flex-col items-center justify-center w-full p-4 border sahdow-lg sm:p-8 animate-fade-in-up transition duration-300 
+                      favouriteleague.has(item) ? "bg-red" : "bg-black"
+                    } flex flex-col items-center justify-center w-full p-2 sm:p-4 border sahdow-lg sm:p-8 animate-fade-in-up transition duration-300 
                     hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100`}
                     key={item.id}
                   >
-                    <div className="mb-4 sm:mb-8">
+                    <div className="mb-2 sm:mb-8">
                       <img
-                        className="object-cover object-center w-5 h-5 rounded-full sm:h-20 sm:w-20"
+                        className="object-cover object-center w-9 h-9 rounded-full sm:h-20 sm:w-20"
                         src={item.logo_path}
                         alt="club"
                       />

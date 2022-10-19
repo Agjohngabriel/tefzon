@@ -15,7 +15,7 @@ const Login = () => {
   const router = useRouter();
 
   const fetchAll = async () => {
-    await axios.get(`https://tefzon.herokuapp.com/api/auth/login/google`, {
+    await axios.get(`${process.env.BACKEND_URL}/auth/login/google`, {
       headers: {
         "content-type": "application/json",
       },

@@ -33,7 +33,7 @@ const Favourite = (props: {
     const fetchAll = async () => {
       setIsLoading(true);
       const res = await axios.get(
-        `${process.env.BACKEND_URL}/get/favourite-teams`,
+        `${process.env.BACKEND_URL}/get/league/teams`,
         {
           headers: {
             Authorization: `Bearer ${session?.data.token}`,
