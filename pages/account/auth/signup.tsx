@@ -85,6 +85,7 @@ const Signup = () => {
                     </svg>
                   </div>
                 </div>
+                 {/* First Stepper */}
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
                     formStep >= 0 ? "border-[#240155]/50" : "border-gray-300"
@@ -114,6 +115,7 @@ const Signup = () => {
                     </svg>
                   </div>
                 </div>
+                {/* second stepper */}
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
                     formStep >= 1 ? "border-[#240155]/50" : "border-gray-300"
@@ -142,7 +144,7 @@ const Signup = () => {
                     </svg>
                   </div>
                 </div>
-
+                {/* third stepper */}
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
                     formStep >= 2 ? "border-[#240155]/50" : "border-gray-300"
@@ -172,6 +174,7 @@ const Signup = () => {
                 </div>
               </div>
             </div>
+
             <form onSubmit={handleSubmit}>
               {formStep >= 0 && (
                 <PersonalDetails

@@ -14,7 +14,7 @@ const FavouriteLeague = (props: {
   updateFormData: any;
 }) => {
   const [favouriteleague, setFavouriteleague] = useState(new Set());
-  const [teams, setTeams] = useState([]);
+  const [leagues, setLeagues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const selectFavourite = ({ id, name, logo_path }: FavouriteLeague) => {
@@ -37,12 +37,12 @@ const FavouriteLeague = (props: {
       return response;
     };
 
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setTeams(FavouritesFromApi);
-    };
+    // const getFavourites = async () => {
+    //   const FavouritesFromApi = await fetchAll();
+    //   setLeagues(FavouritesFromApi);
+    // };
 
-    getFavourites();
+    // getFavourites();
   }, []);
 
   return (
@@ -62,15 +62,19 @@ const FavouriteLeague = (props: {
           <div className="w-full border">
             <section className="max-w-6xl mx-auto ">
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 ">
-                {teams.map((item: FavouriteLeague, index) => (
+                {leagues.map((item: FavouriteLeague, index) => (
                   <button
-                    onClick={() => {
-                      selectFavourite({
-                        id: item.id,
-                        name: item.name,
-                        logo_path: item.logo_path,
-                      });
+                    onClick={async () => {
+                      // selectFavourite({
+                      //   id: item.id,
+                      //   name: item.name,
+                      //   logo_path: item.logo_path,
+                      // });
                       // update();
+                      const id = item.id;
+                      
+                      const res = await axios.get(`${process.env.BACKEND_URL}/get/league/teams/87`);
+                      console.log(res.data)
                     }}
                     type="button"
                     className={`${

@@ -88,7 +88,7 @@ const PersonalDetails = (props: {
                   props.updateFormData({ email: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
-                required
+                autoComplete="email" required
               />{" "}
             </div>
             <span className="text-red-600 opacity-40">

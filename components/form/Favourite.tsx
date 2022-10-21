@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Loader } from "../base/Loader";
 
@@ -17,7 +16,6 @@ const Favourite = (props: {
   const [favourite, setFavourite] = useState(new Set());
   const [teams, setTeams] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { data: session }: any = useSession();
 
   const selectFavourite = ({ id, name, logo_path }: Favorite) => {
     setFavourite((favourite) => {
@@ -33,13 +31,7 @@ const Favourite = (props: {
     const fetchAll = async () => {
       setIsLoading(true);
       const res = await axios.get(
-        `${process.env.BACKEND_URL}/get/league/teams`,
-        {
-          headers: {
-            Authorization: `Bearer ${session?.data.token}`,
-            "content-type": "application/json",
-          },
-        }
+        `${process.env.BACKEND_URL}/get/league/teams/`,
       );
       const response = await res.data;
       setIsLoading(false);
@@ -55,7 +47,7 @@ const Favourite = (props: {
   }, []);
 
   return (
-    <div className={`p-5 ${props.formStep === 3 ? "" : "hidden"}`}>
+    <div className={`sm:p-5 ${props.formStep === 3 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center max-w-lg pt-20 mx-auto space-y-4">
         <h1 className="w-4/6 text-lg font-bold text-center text-gray-700 animate-fade-in-up">
           Your Favourites
@@ -70,7 +62,7 @@ const Favourite = (props: {
         <div className="p-4 mt-8">
           <div className="w-full border">
             <section className="max-w-6xl mx-auto ">
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 ">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6">
                 {teams.map((item: Favorite, index) => (
                   <button
                     onClick={() => {
