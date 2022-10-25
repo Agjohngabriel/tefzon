@@ -104,7 +104,7 @@ const Home: NextPage = () => {
               </div>
 
               <div className="pt-5 ">
-                <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-stone-300 mx-auto tracking-wider">
+                <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
                   2022-23 English Premier League
                 </p>
 
@@ -179,7 +179,7 @@ const Home: NextPage = () => {
               </div>
 
               <div className="pt-5 ">
-                <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-stone-300 mx-auto tracking-wider">
+                <p className="text-xs text-gray-800 font-arcon text-center   py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
                   2022-23 Italian Serie A
                 </p>
 
@@ -253,7 +253,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
               <div className="pt-5 ">
-                <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-stone-300 mx-auto tracking-wider">
+                <p className="text-xs text-gray-900 font-arcon  text-center  py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
                   2022-23 Spanish LaLiga
                 </p>
 
@@ -352,34 +352,34 @@ const Home: NextPage = () => {
               English Premier League
             </h1>
             <table className="w-full">
-              <thead className="w-1/2 bg-[#EFEFEF]">
+              <thead className="w-1/2 bg-gradient-to-r from-indigo-500 bg-[#EFEFEF]">
                 <tr>
                   <th
-                    className="p-1 text-center font-montserrat text-black-0"
+                    className="p-2 text-center text-sm font-montserrat text-gray-100"
                     title="position"
                   >
                     Pos
                   </th>
                   <th
-                    className="p-1 text-left w-2/3 font-montserrat text-black-0"
+                    className="p-1 text-left w-2/3 text-sm font-montserrat text-gray-100"
                     title="club"
                   >
                     Club
                   </th>
                   <th
-                    className="p-1 text-center font-montserrat text-black-0"
+                    className="p-1 text-center text-sm font-montserrat text-black-0"
                     title="played"
                   >
                     PL
                   </th>
                   <th
-                    className="p-1 text-center font-montserrat text-black-0"
+                    className="p-1 text-center  text-sm  font-montserrat text-black-0"
                     title="Goal Different"
                   >
                     GD
                   </th>
                   <th
-                    className="p-1 text-center pr-4 font-montserrat text-black-0"
+                    className="p-1 text-center text-sm pr-4 font-montserrat text-black-0"
                     title="points"
                   >
                     PTS
@@ -407,7 +407,7 @@ const Home: NextPage = () => {
                     56
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
-                    316
+                    +13
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
@@ -433,7 +433,7 @@ const Home: NextPage = () => {
                     56
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
-                    316
+                    +10
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
@@ -459,7 +459,7 @@ const Home: NextPage = () => {
                     56
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
-                    316
+                    +4
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
@@ -472,34 +472,34 @@ const Home: NextPage = () => {
             Spanish LaLiga
             </h1>
             <table className="w-full">
-              <thead className="w-1/2 bg-[#EFEFEF]">
+              <thead className="w-1/2 bg-gradient-to-r from-indigo-500 bg-[#EFEFEF]">
                 <tr>
                   <th
-                    className="p-1 text-center font-montserrat text-black-0"
+                    className="p-2 text-center text-sm font-montserrat text-gray-100"
                     title="position"
                   >
                     Pos
                   </th>
                   <th
-                    className="p-1 text-left w-2/3 font-montserrat text-black-0"
+                    className="p-1 text-left w-2/3 text-sm font-montserrat text-gray-100"
                     title="club"
                   >
                     Club
                   </th>
                   <th
-                    className="p-1 text-center font-montserrat text-black-0"
+                    className="p-1 text-center text-sm font-montserrat text-black-0"
                     title="played"
                   >
                     PL
                   </th>
                   <th
-                    className="p-1 text-center font-montserrat text-black-0"
+                    className="p-1 text-center  text-sm  font-montserrat text-black-0"
                     title="Goal Different"
                   >
                     GD
                   </th>
                   <th
-                    className="p-1 text-center pr-4 font-montserrat text-black-0"
+                    className="p-1 text-center text-sm pr-4 font-montserrat text-black-0"
                     title="points"
                   >
                     PTS
@@ -527,7 +527,7 @@ const Home: NextPage = () => {
                     56
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
-                    316
+                    +13
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
@@ -553,7 +553,7 @@ const Home: NextPage = () => {
                     56
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
-                    316
+                    +10
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
@@ -579,7 +579,7 @@ const Home: NextPage = () => {
                     56
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
-                    316
+                    +4
                   </td>
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
@@ -589,7 +589,7 @@ const Home: NextPage = () => {
             </table>
             <button
               title="Submit"
-              className="block w-full py-3 px-6 text-center rounded-xl transition  active:text-purple-800 focus:text-indigo-600"
+              className="block w-full py-4 px-6 text-center rounded-xl transition  active:text-purple-800 focus:text-indigo-600"
             >
               <div className="flex text-purple-700 font-arcon text-xs font-semibold px-5 justify-end">
                 <span className="pt-1"> View All Tables</span>
