@@ -83,7 +83,528 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      {/* <div className="flex min-h-screen items-center justify-center px-20 mx-auto">
+      {/* Fixtures */}
+      <div className="mt-12 m-auto -space-y-4 items-center justify-center md:flex md:space-y-0 md:-space-x-4 xl:w-full">
+        <div className="relative z-10 -mx-4 group md:w-6/12 md:mx-0 lg:w-4/12">
+          <div
+            aria-hidden="true"
+            className="absolute top-0 w-full h-full rounded-2xl bg-white shadow-xl transition duration-500 group-hover:scale-105 lg:group-hover:scale-10"
+          ></div>
+
+          <div className="relative p-6 space-y-6 lg:p-8">
+            <div className="container  ">
+              <div className="flex flex-col  pt-6 space-y-4 max-w-3xl mx-auto">
+                <div className="mx-auto flex-1 svelte-1l8159u ">
+                  <div className="flex items-center flex-shrink-0 text-gray-600 ">
+                    <h1 className="font-oswald text-xl sm:text-3xl text-gray-700 sm:pb-5 mx-auto text-center">
+                      Top Fixtures
+                    </h1>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-5 ">
+                <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-stone-300 mx-auto tracking-wider">
+                  2022-23 English Premier League
+                </p>
+
+                <div className="w-full leading-normal ">
+                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
+                    <div className="flex items-center">
+                      <div className="mr-2">
+                        <p className="text-gray-900 whitespace-no-wrap">
+                          lookester city
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
+                      19:00
+                    </p>
+                    <div className="flex items-center float-right">
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                      <div className="">
+                        <p className="text-gray-900 whitespace-no-wrap text-right">
+                          Teamchester city
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-1 py-3 border-b border-gray-300  text-xs flex justify-center mx-auto">
+                    <div className="flex items-center">
+                      <div className="mr-2">
+                        <p className="text-gray-900 whitespace-no-wrap">
+                          lookester city
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
+                      19:00
+                    </p>
+                    <div className="flex items-center float-right">
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                      <div className="">
+                        <p className="text-gray-900 whitespace-no-wrap text-right">
+                          Teamchester city
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-5 ">
+                <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-stone-300 mx-auto tracking-wider">
+                  2022-23 Italian Serie A
+                </p>
+
+                <div className="w-full leading-normal ">
+                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
+                    <div className="flex items-center">
+                      <div className="mr-2">
+                        <p className="text-gray-900 whitespace-no-wrap">
+                          lookester city
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
+                      19:00
+                    </p>
+                    <div className="flex items-center float-right">
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                      <div className="">
+                        <p className="text-gray-900 whitespace-no-wrap text-right">
+                          Teamchester city
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
+                    <div className="flex items-center">
+                      <div className="mr-2">
+                        <p className="text-gray-900 whitespace-no-wrap">
+                          lookester city
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
+                      19:00
+                    </p>
+                    <div className="flex items-center float-right">
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                      <div className="">
+                        <p className="text-gray-900 whitespace-no-wrap text-right">
+                          Teamchester city
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-5 ">
+                <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-stone-300 mx-auto tracking-wider">
+                  2022-23 Spanish LaLiga
+                </p>
+
+                <div className="w-full leading-normal ">
+                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
+                    <div className="flex items-center">
+                      <div className="mr-2">
+                        <p className="text-gray-900 whitespace-no-wrap">
+                          lookester city
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
+                      19:00
+                    </p>
+                    <div className="flex items-center float-right">
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                      <div className="">
+                        <p className="text-gray-900 whitespace-no-wrap text-right">
+                          Teamchester city
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
+                    <div className="flex items-center">
+                      <div className="mr-2">
+                        <p className="text-gray-900 whitespace-no-wrap">
+                          lookester city
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
+                      19:00
+                    </p>
+                    <div className="flex items-center float-right">
+                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                          alt=""
+                        />
+                      </div>
+                      <div className="">
+                        <p className="text-gray-900 whitespace-no-wrap text-right">
+                          Teamchester city
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              title="Submit"
+              className="block w-full py-3 px-6 text-center rounded-xl transition  active:text-purple-800 focus:text-indigo-600"
+            >
+              <div className="flex text-purple-700 font-arcon text-xs font-semibold px-5 justify-end">
+                <span className="pt-1"> View All Fixtures</span>
+                <span className="ml-4 material-icons hover:text-white ">
+                  arrow_forward
+                </span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div className="relative group md:w-6/12 lg:w-7/12">
+          <div
+            aria-hidden="true"
+            className="absolute top-0 w-full h-full rounded-2xl bg-white shadow-lg transition duration-500 group-hover:scale-105"
+          ></div>
+          <div className="relative p-6 pt-16 md:p-8 md:pl-12 md:rounded-r-2xl lg:pl-20 ">
+            <h1 className="font-oswald text-xl sm:text-sm text-gray-700 sm:pb-5 mx-auto text-left">
+              English Premier League
+            </h1>
+            <table className="w-full">
+              <thead className="w-1/2 bg-[#EFEFEF]">
+                <tr>
+                  <th
+                    className="p-1 text-center font-montserrat text-black-0"
+                    title="position"
+                  >
+                    Pos
+                  </th>
+                  <th
+                    className="p-1 text-left w-2/3 font-montserrat text-black-0"
+                    title="club"
+                  >
+                    Club
+                  </th>
+                  <th
+                    className="p-1 text-center font-montserrat text-black-0"
+                    title="played"
+                  >
+                    PL
+                  </th>
+                  <th
+                    className="p-1 text-center font-montserrat text-black-0"
+                    title="Goal Different"
+                  >
+                    GD
+                  </th>
+                  <th
+                    className="p-1 text-center pr-4 font-montserrat text-black-0"
+                    title="points"
+                  >
+                    PTS
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr className="border-b border-gray-300 py-1">
+                  <td className="p-1 text-sm font-normal">
+                    1
+                    <span className=" align-middle  material-icons text-2xl sm:text-3xl text-green ">
+                      arrow_drop_up
+                    </span>
+                  </td>
+                  <td className="p-1 text-left ">
+                    <p
+                      tabIndex={0}
+                      className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
+                    >
+                      Aswinram
+                    </p>
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    {" "}
+                    56
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                </tr>  
+                <tr className="border-b border-gray-300 py-1">
+                  <td className="p-1 text-sm font-normal">
+                    2
+                    <span className=" align-middle  material-icons text-2xl sm:text-3xl text-green ">
+                      arrow_drop_up
+                    </span>
+                  </td>
+                  <td className="p-1 text-left ">
+                    <p
+                      tabIndex={0}
+                      className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
+                    >
+                      Aswinram
+                    </p>
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    {" "}
+                    56
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                </tr>  
+                <tr className="border-b border-gray-300 py-1">
+                  <td className="p-1 text-sm font-normal">
+                    3
+                    <span className=" align-middle  material-icons text-2xl sm:text-3xl text-green ">
+                      arrow_drop_up
+                    </span>
+                  </td>
+                  <td className="p-1 text-left ">
+                    <p
+                      tabIndex={0}
+                      className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
+                    >
+                      Aswinram
+                    </p>
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    {" "}
+                    56
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                </tr>    
+              </tbody>
+            </table>
+
+            <h1 className="font-oswald text-xl sm:text-sm text-gray-700 sm:pt-5 sm:pb-3 mx-auto text-left">
+            Spanish LaLiga
+            </h1>
+            <table className="w-full">
+              <thead className="w-1/2 bg-[#EFEFEF]">
+                <tr>
+                  <th
+                    className="p-1 text-center font-montserrat text-black-0"
+                    title="position"
+                  >
+                    Pos
+                  </th>
+                  <th
+                    className="p-1 text-left w-2/3 font-montserrat text-black-0"
+                    title="club"
+                  >
+                    Club
+                  </th>
+                  <th
+                    className="p-1 text-center font-montserrat text-black-0"
+                    title="played"
+                  >
+                    PL
+                  </th>
+                  <th
+                    className="p-1 text-center font-montserrat text-black-0"
+                    title="Goal Different"
+                  >
+                    GD
+                  </th>
+                  <th
+                    className="p-1 text-center pr-4 font-montserrat text-black-0"
+                    title="points"
+                  >
+                    PTS
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr className="border-b border-gray-300 py-1">
+                  <td className="p-1 text-sm font-normal">
+                    1
+                    <span className=" align-middle  material-icons text-2xl sm:text-3xl text-green ">
+                      arrow_drop_up
+                    </span>
+                  </td>
+                  <td className="p-1 text-left ">
+                    <p
+                      tabIndex={0}
+                      className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
+                    >
+                      Aswinram
+                    </p>
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    {" "}
+                    56
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                </tr>  
+                <tr className="border-b border-gray-300 py-1">
+                  <td className="p-1 text-sm font-normal">
+                    2
+                    <span className=" align-middle  material-icons text-2xl sm:text-3xl text-green ">
+                      arrow_drop_up
+                    </span>
+                  </td>
+                  <td className="p-1 text-left ">
+                    <p
+                      tabIndex={0}
+                      className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
+                    >
+                      Aswinram
+                    </p>
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    {" "}
+                    56
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                </tr>  
+                <tr className="border-b border-gray-300 py-1">
+                  <td className="p-1 text-sm font-normal">
+                    3
+                    <span className=" align-middle  material-icons text-2xl sm:text-3xl text-green ">
+                      arrow_drop_up
+                    </span>
+                  </td>
+                  <td className="p-1 text-left ">
+                    <p
+                      tabIndex={0}
+                      className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
+                    >
+                      Aswinram
+                    </p>
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    {" "}
+                    56
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                  <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    316
+                  </td>
+                </tr>    
+              </tbody>
+            </table>
+            <button
+              title="Submit"
+              className="block w-full py-3 px-6 text-center rounded-xl transition  active:text-purple-800 focus:text-indigo-600"
+            >
+              <div className="flex text-purple-700 font-arcon text-xs font-semibold px-5 justify-end">
+                <span className="pt-1"> View All Tables</span>
+                <span className="ml-4 material-icons hover:text-purple-500">
+                  arrow_forward
+                </span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* News */}
+
+      <div className="flex min-h-screen items-center justify-center px-2 sm:px-20 mx-auto py-10">
         <div className="container grid max-w-screen-xl gap-8 lg:grid-cols-2 lg:grid-rows-2">
           <div className="row-span-2 flex flex-col rounded-md border border-slate-200">
             <div className="h-1/2 flex-1">
@@ -159,9 +680,9 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
-      <div className="container mx-auto px-12">
+      <div className="container mx-auto px-2 sm:px-12">
         <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">
           {/* <!-- LEFT PART --> */}
           <div className="flex flex-col lg:ml-10 max-w-sm lg:max-w-xl z-10">
@@ -170,7 +691,7 @@ const Home: NextPage = () => {
                 Don't listen to what they say, Go See
               </h4>
 
-              <p className="text-center md:text-left text-white opacity-70 md:pb-6">
+              <p className="text-center md:text-left text-white opacity-70 mb-3 md:pb-6">
                 Your ultimate travel companion. Carries all the information you
                 need while travelling
               </p>

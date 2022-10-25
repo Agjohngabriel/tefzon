@@ -50,6 +50,8 @@ const Index = () => {
                   </div>
                 </div>
               </div>
+
+
               <div className="grid grid-cols-12 gap-6">
                 <div className="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-5 xxl:col-span-5">
                   {/* <!-- Start Card List --> */}
@@ -138,6 +140,9 @@ const Index = () => {
                 </div>
               </div>
             </div>
+
+
+            
             <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-6 py-6">
               {/* <!-- Start profile Card --> */}
               <div className="bg-white rounded-xl p-4 shadow-xl">
