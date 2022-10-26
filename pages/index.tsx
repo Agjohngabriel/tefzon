@@ -84,7 +84,7 @@ const Home: NextPage = () => {
       </div>
 
       {/* Fixtures */}
-      <div className="mt-12 m-auto -space-y-4 items-center justify-center md:flex md:space-y-0 md:-space-x-4 xl:w-full">
+      <div className="mt-12 m-auto -space-y-4 items-center justify-center md:flex md:space-y-0 md:-space-x-4">
         <div className="relative z-10 -mx-4 group md:w-6/12 md:mx-0 lg:w-4/12">
           <div
             aria-hidden="true"
@@ -387,7 +387,7 @@ const Home: NextPage = () => {
                 </tr>
               </thead>
               <tbody>
-              <tr className="border-b border-gray-300 py-1">
+                <tr className="border-b border-gray-300 py-1">
                   <td className="p-1 text-sm font-normal">
                     1
                     <span className=" align-middle  material-icons text-2xl sm:text-3xl text-green ">
@@ -412,7 +412,7 @@ const Home: NextPage = () => {
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
                   </td>
-                </tr>  
+                </tr>
                 <tr className="border-b border-gray-300 py-1">
                   <td className="p-1 text-sm font-normal">
                     2
@@ -438,7 +438,7 @@ const Home: NextPage = () => {
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
                   </td>
-                </tr>  
+                </tr>
                 <tr className="border-b border-gray-300 py-1">
                   <td className="p-1 text-sm font-normal">
                     3
@@ -464,12 +464,12 @@ const Home: NextPage = () => {
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
                   </td>
-                </tr>    
+                </tr>
               </tbody>
             </table>
 
             <h1 className="font-oswald text-xl sm:text-sm text-gray-700 sm:pt-5 sm:pb-3 mx-auto text-left">
-            Spanish LaLiga
+              Spanish LaLiga
             </h1>
             <table className="w-full">
               <thead className="w-1/2 bg-gradient-to-r from-indigo-500 bg-[#EFEFEF]">
@@ -507,7 +507,7 @@ const Home: NextPage = () => {
                 </tr>
               </thead>
               <tbody>
-              <tr className="border-b border-gray-300 py-1">
+                <tr className="border-b border-gray-300 py-1">
                   <td className="p-1 text-sm font-normal">
                     1
                     <span className=" align-middle  material-icons text-2xl sm:text-3xl text-green ">
@@ -532,7 +532,7 @@ const Home: NextPage = () => {
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
                   </td>
-                </tr>  
+                </tr>
                 <tr className="border-b border-gray-300 py-1">
                   <td className="p-1 text-sm font-normal">
                     2
@@ -558,7 +558,7 @@ const Home: NextPage = () => {
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
                   </td>
-                </tr>  
+                </tr>
                 <tr className="border-b border-gray-300 py-1">
                   <td className="p-1 text-sm font-normal">
                     3
@@ -584,7 +584,7 @@ const Home: NextPage = () => {
                   <td className="p-1 text-center text-sm font-arcon text-black-0">
                     316
                   </td>
-                </tr>    
+                </tr>
               </tbody>
             </table>
             <button
@@ -603,85 +603,493 @@ const Home: NextPage = () => {
       </div>
 
       {/* News */}
-
-      <div className="flex min-h-screen items-center justify-center px-2 sm:px-20 mx-auto py-10">
-        <div className="container grid max-w-screen-xl gap-8 lg:grid-cols-2 lg:grid-rows-2">
-          <div className="row-span-2 flex flex-col rounded-md border border-slate-200">
-            <div className="h-1/2 flex-1">
-              <img
-                src="https://d33wubrfki0l68.cloudfront.net/c43307b88fb814366e4f3a181c788796cba83faa/4c05c/new/landing/omnichannel.png"
-                className="w-full object-cover object-right-top"
-                alt="omnichannel"
-              />
-            </div>
-            <div className="p-10">
-              <h3 className="text-xl font-medium text-gray-700">
-                Omnichannel support center
-              </h3>
-              <p className="mt-2 text-slate-500">
-                Chatwoot connects with popular customer communication channels
-                like Email, Website live-chat, Facebook, Twitter, WhatsApp,
-                Instagram, Line, etc., and helps you deliver a consistent
-                customer experience across channels.
-              </p>
-              <a href="" className="mt-2 inline-flex text-sky-500">
-                Read More →
-              </a>
-            </div>
-          </div>
-          <div className="flex rounded-md border border-slate-200">
-            <div className="flex-1 p-10">
-              <h3 className="text-xl font-medium text-gray-700">
-                A live-chat that fits your brand
-              </h3>
-              <p className="mt-2 text-slate-500">
-                Connect with your website visitors, communicate with them in
-                realtime and give them quality support with a live-chat widget
-                that fits your brand.
-              </p>
-              <a href="" className="mt-2 inline-flex text-sky-500">
-                Read More →
-              </a>
-            </div>
-
-            <div className="relative hidden h-full w-1/3 overflow-hidden lg:block">
-              <div className="absolute inset-0">
+      <main className="mt-10 px-2 sm:px-20 mx-auto">
+        <div className="block md:flex md:space-x-2 px-2 lg:p-0">
+          <a
+            className="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block h-[24em] "
+            href="./blog.html"
+          >
+            <div
+              className="absolute left-0 bottom-0 w-full h-full z-10"
+              style={{
+                ["background-image" as any]:
+                  "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
+              }}
+            ></div>
+            <img
+              src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+              className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
+              alt=""
+            />
+            <div className="p-4 absolute bottom-0 left-0 z-20">
+              <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
+                Nutrition
+              </span>
+              <h2 className="text-4xl font-semibold text-gray-100 leading-tight">
+                Pellentesque a consectetur velit, ac molestie ipsum. Donec
+                sodales, massa et auctor.
+              </h2>
+              <div className="flex mt-3">
                 <img
-                  src="https://d33wubrfki0l68.cloudfront.net/e5290c26cc1703e54e0afe3d1472046098ecd819/53775/new/landing/live-chat.png"
-                  className="h-full w-full object-cover object-left-top"
+                  src="https://randomuser.me/api/portraits/men/97.jpg"
+                  className="h-10 w-10 rounded-full mr-2 object-cover"
                   alt=""
                 />
+                <div>
+                  <p className="font-semibold text-gray-200 text-sm">
+                    {" "}
+                    Mike Sullivan{" "}
+                  </p>
+                  <p className="font-semibold text-gray-400 text-xs">
+                    {" "}
+                    14 Aug{" "}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a
+            className="w-full md:w-1/3 relative rounded h-[24em] "
+            href="./blog.html"
+          >
+            <div
+              className="absolute left-0 top-0 w-full h-full z-10"
+              style={{
+                ["background-image" as any]:
+                  "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
+              }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80"
+                className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
+                alt=""
+              />
+              <div className="p-4 absolute bottom-0 left-0 z-20">
+                <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
+                  Science
+                </span>
+                <h2 className="text-3xl font-semibold text-gray-100 leading-tight">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </h2>
+                <div className="flex mt-3">
+                  <img
+                    src="https://images-na.ssl-images-amazon.com/images/M/MV5BODFjZTkwMjItYzRhMS00OWYxLWI3YTUtNWIzOWQ4Yjg4NGZiXkEyXkFqcGdeQXVyMTQ0ODAxNzE@._V1_UX172_CR0,0,172,256_AL_.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                    alt=""
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-200 text-sm">
+                      {" "}
+                      Chrishell Staus{" "}
+                    </p>
+                    <p className="font-semibold text-gray-400 text-xs">
+                      {" "}
+                      15 Aug{" "}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div className="block lg:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10">
+          {/* <!-- post cards --> */}
+          <div className="w-full lg:w-2/3">
+            <a
+              className="block rounded w-full lg:flex mb-10"
+              href="./blog-single-1.html"
+            >
+              <div
+                className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                style={{
+                  ["background-image" as any]:
+                    "url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                }}
+                title="deit is very important"
+              ></div>
+              <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                <div>
+                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                    Aliquam venenatis nisl id purus rhoncus, in efficitur sem
+                    hendrerit.
+                  </div>
+                  <p className="text-gray-700 text-base">
+                    Duis euismod est quis lacus elementum, eu laoreet dolor
+                    consectetur. Pellentesque sed neque vel tellus lacinia
+                    elementum. Proin consequat ullamcorper eleifend.
+                  </p>
+                </div>
+                <div className="flex mt-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/86.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                    alt=""
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-700 text-sm capitalize">
+                      {" "}
+                      eduard franz{" "}
+                    </p>
+                    <p className="text-gray-600 text-xs"> 14 Aug </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <div className="rounded w-full lg:flex mb-10">
+              <div
+                className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                style={{
+                  ["background-image" as any]:
+                    "url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                }}
+              ></div>
+              <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                <div>
+                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                    Integer commodo, sapien ut vulputate viverra
+                  </div>
+                  <p className="text-gray-700 text-base">
+                    Nam malesuada aliquet metus, ac commodo augue mollis sit
+                    amet. Nam bibendum risus sit amet metus semper consectetur.
+                    Proin consequat ullamcorper eleifend. Nam bibendum risus sit
+                    amet metus semper consectetur.
+                  </p>
+                </div>
+                <div className="flex mt-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/54.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                    alt=""
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-700 text-sm capitalize">
+                      {" "}
+                      Serenity Hughes{" "}
+                    </p>
+                    <p className="text-gray-600 text-xs"> 14 Aug </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="flex rounded-md border border-slate-200">
-            <div className="flex-1 p-10">
-              <h3 className="text-xl font-medium text-gray-700">
-                Respond faster, with automated chatbots
-              </h3>
-              <p className="mt-2 text-slate-500">
-                Integrate with chatbots using Rasa or Dialogflow to automate
-                conversations. Qualify using chatbots and seamlessly handoff to
-                human agents.
-              </p>
-              <a href="" className="mt-2 inline-flex text-sky-500">
-                Read More →
-              </a>
+
+          {/* <!-- right sidebar --> */}
+          <div className="w-full lg:w-1/3 px-3">
+            {/* <!-- topics --> */}
+            <div className="mb-4">
+              <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
+                {" "}
+                Popular Topics{" "}
+              </h5>
+              <ul>
+                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-green-300 mr-3"></span>
+                    Nutrition
+                    <span className="text-gray-500 ml-auto">23 articles</span>
+                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                  </a>
+                </li>
+                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
+                    Food & Diet
+                    <span className="text-gray-500 ml-auto">18 articles</span>
+                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                  </a>
+                </li>
+                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
+                    Workouts
+                    <span className="text-gray-500 ml-auto">34 articles</span>
+                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                  </a>
+                </li>
+                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
+                    Immunity
+                    <span className="text-gray-500 ml-auto">9 articles</span>
+                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
 
-            <div className="relative hidden h-full w-1/3 overflow-hidden lg:block">
-              <div className="absolute inset-0">
-                <img
-                  src="https://d33wubrfki0l68.cloudfront.net/1205a454c4b64452a51930c9b0043f8db9ff8271/d202e/new/landing/chat-bot.png"
-                  className="h-full w-full object-cover object-left-top"
-                  alt=""
-                />
+            {/* <!-- divider --> */}
+            <div className="border border-dotted"></div>
+          </div>
+        </div>
+      </main>
+
+      {/* <!-- recent posts --> */}
+      <div className="mx-auto md:px-20">
+        {/* <!-- recent posts --> */}
+        <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
+          <h2 className="font-bold text-3xl">Latest news</h2>
+          <a className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
+            View all
+          </a>
+        </div>
+        <div className="block space-x-0 lg:flex lg:space-x-6">
+          <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
+            <img
+              src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
+              className="rounded"
+              alt="technology"
+            />
+            <div className="p-4 pl-0">
+              <h2 className="font-bold text-2xl text-gray-800">
+                Put all speaking her delicate recurred possible.
+              </h2>
+              <p className="text-gray-700 mt-2">
+                Set indulgence inquietude discretion insensible bed why
+                announcing. Middleton fat two satisfied additions. So continued
+                he or commanded household smallness delivered. Door poor on do
+                walk in half. Roof his head the what.
+              </p>
+
+              <a
+                href="#"
+                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
+              >
+                {" "}
+                Read more{" "}
+              </a>
+            </div>
+          </div>
+
+          <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
+            <img
+              src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
+              className="rounded"
+              alt="technology"
+            />
+            <div className="p-4 pl-0">
+              <h2 className="font-bold text-2xl text-gray-800">
+                Is at purse tried jokes china ready decay an.{" "}
+              </h2>
+              <p className="text-gray-700 mt-2">
+                Small its shy way had woody downs power. To denoting admitted
+                speaking learning my exercise so in. Procured shutters mr it
+                feelings. To or three offer house begin taken am at.
+              </p>
+
+              <a
+                href="#"
+                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
+              >
+                {" "}
+                Read more{" "}
+              </a>
+            </div>
+          </div>
+
+          <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
+            <img
+              src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+              className="rounded"
+              alt="technology"
+            />
+            <div className="p-4 pl-0">
+              <h2 className="font-bold text-2xl text-gray-800">
+                As dissuade cheerful overcame so of friendly he indulged
+                unpacked.
+              </h2>
+              <p className="text-gray-700 mt-2">
+                Alteration connection to so as collecting me. Difficult in
+                delivered extensive at direction allowance. Alteration put use
+                diminution can considered sentiments interested discretion.
+              </p>
+
+              <a
+                href="#"
+                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
+              >
+                {" "}
+                Read more{" "}
+              </a>
+            </div>
+          </div>
+        </div>
+        {/* <!-- end recent posts --> */}
+      </div>
+
+      {/* video */}
+      <div className=" flex  items-center justify-center">
+        <div className="grid grid-cols-12 gap-2 gap-y-4 max-w-6xl">
+          <div className="col-span-12 sm:col-span-6 md:col-span-3">
+            <div className="w-full flex flex-col">
+              <div className="relative">
+                <a href="#">
+                  <img
+                    src="https://picsum.photos/seed/59/300/200"
+                    className="w-96 h-auto"
+                    alt=""
+                  />
+                </a>
+
+                <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
+                  1:15
+                </p>
+              </div>
+
+              <div className="flex flex-row mt-2 gap-2">
+                <div className="flex flex-col">
+                  <a href="#">
+                    <p className="text-gray-100 text-sm font-semibold">
+                      Learn CSS Box Model in 8 Minutes
+                    </p>
+                  </a>
+                  <a
+                    className="text-gray-400 text-xs mt-2 hover:text-gray-100"
+                    href="#"
+                  >
+                    {" "}
+                    Web Dev Simplified{" "}
+                  </a>
+                  <p className="text-gray-400 text-xs mt-1">
+                    241K views . 3 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-12 sm:col-span-6 md:col-span-3">
+            <div className="w-full flex flex-col">
+              <div className="relative">
+                <a href="#">
+                  <img
+                    src="https://picsum.photos/seed/60/300/200"
+                    className="w-96 h-auto"
+                    alt=""
+                  />
+                </a>
+
+                <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
+                  1:15
+                </p>
+              </div>
+
+              <div className="flex flex-row mt-2 gap-2">
+                <div className="flex flex-col">
+                  <a href="#">
+                    <p className="text-gray-100 text-sm font-semibold">
+                      Learn CSS Box Model in 8 Minutes
+                    </p>
+                  </a>
+                  <a
+                    className="text-gray-400 text-xs mt-2 hover:text-gray-100"
+                    href="#"
+                  >
+                    {" "}
+                    Web Dev Simplified{" "}
+                  </a>
+                  <p className="text-gray-400 text-xs mt-1">
+                    241K views . 3 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-12 sm:col-span-6 md:col-span-3">
+            <div className="w-full flex flex-col">
+              <div className="relative">
+                <a href="#">
+                  <img
+                    src="https://picsum.photos/seed/22/300/200"
+                    className="w-96 h-auto"
+                    alt=""
+                  />
+                </a>
+
+                <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
+                  1:15
+                </p>
+              </div>
+
+              <div className="flex flex-row mt-2 gap-2">
+                {/* <!-- Description --> */}
+                <div className="flex flex-col">
+                  <a href="#">
+                    <p className="text-gray-100 text-sm font-semibold">
+                      Learn CSS Box Model in 8 Minutes
+                    </p>
+                  </a>
+                  <a
+                    className="text-gray-400 text-xs mt-2 hover:text-gray-100"
+                    href="#"
+                  >
+                    {" "}
+                    Web Dev Simplified{" "}
+                  </a>
+                  <p className="text-gray-400 text-xs mt-1">
+                    241K views . 3 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-12 sm:col-span-6 md:col-span-3">
+            <div className="w-full flex flex-col">
+              <div className="relative">
+                <a href="#">
+                  <img
+                    src="https://picsum.photos/seed/90/300/200"
+                    className="w-96 h-auto"
+                    alt=""
+                  />
+                </a>
+
+                <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
+                  1:15
+                </p>
+              </div>
+
+              <div className="flex flex-row mt-2 gap-2">
+                <div className="flex flex-col">
+                  <a href="#">
+                    <p className="text-gray-100 text-sm font-semibold">
+                      Learn CSS Box Model in 8 Minutes
+                    </p>
+                  </a>
+                  <a
+                    className="text-gray-400 text-xs mt-2 hover:text-gray-100"
+                    href="#"
+                  >
+                    {" "}
+                    Web Dev Simplified{" "}
+                  </a>
+                  <p className="text-gray-400 text-xs mt-1">
+                    241K views . 3 years ago
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Get app */}
       <div className="container mx-auto px-2 sm:px-12">
         <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">
           {/* <!-- LEFT PART --> */}
@@ -3114,6 +3522,99 @@ const Home: NextPage = () => {
           {/* <!-- DÉCORATION --> */}
           <div className="absolute bg-[#6E4BEC] opacity-60 w-96 h-96 -top-10 -right-16 md:w-[800px] md:h-[800px] md:left-[45%] md:top-[-150%] rounded-full shadow-2xl z-0"></div>
         </div>
+      </div>
+
+       {/* <!-- recent posts --> */}
+       <div className="mx-auto md:px-20">
+        {/* <!-- recent posts --> */}
+        <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
+          <h2 className="font-bold text-3xl">Latest on Scout</h2>
+          <a className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
+            View all
+          </a>
+        </div>
+        <div className="block space-x-0 lg:flex lg:space-x-6">
+          <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
+            <img
+              src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
+              className="rounded"
+              alt="technology"
+            />
+            <div className="p-4 pl-0">
+              <h2 className="font-bold text-2xl text-gray-800">
+                Put all speaking her delicate recurred possible.
+              </h2>
+              <p className="text-gray-700 mt-2">
+                Set indulgence inquietude discretion insensible bed why
+                announcing. Middleton fat two satisfied additions. So continued
+                he or commanded household smallness delivered. Door poor on do
+                walk in half. Roof his head the what.
+              </p>
+
+              <a
+                href="#"
+                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
+              >
+                {" "}
+                Read more{" "}
+              </a>
+            </div>
+          </div>
+
+          <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
+            <img
+              src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
+              className="rounded"
+              alt="technology"
+            />
+            <div className="p-4 pl-0">
+              <h2 className="font-bold text-2xl text-gray-800">
+                Is at purse tried jokes china ready decay an.{" "}
+              </h2>
+              <p className="text-gray-700 mt-2">
+                Small its shy way had woody downs power. To denoting admitted
+                speaking learning my exercise so in. Procured shutters mr it
+                feelings. To or three offer house begin taken am at.
+              </p>
+
+              <a
+                href="#"
+                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
+              >
+                {" "}
+                Read more{" "}
+              </a>
+            </div>
+          </div>
+
+          <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
+            <img
+              src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+              className="rounded"
+              alt="technology"
+            />
+            <div className="p-4 pl-0">
+              <h2 className="font-bold text-2xl text-gray-800">
+                As dissuade cheerful overcame so of friendly he indulged
+                unpacked.
+              </h2>
+              <p className="text-gray-700 mt-2">
+                Alteration connection to so as collecting me. Difficult in
+                delivered extensive at direction allowance. Alteration put use
+                diminution can considered sentiments interested discretion.
+              </p>
+
+              <a
+                href="#"
+                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
+              >
+                {" "}
+                Read more{" "}
+              </a>
+            </div>
+          </div>
+        </div>
+        {/* <!-- end recent posts --> */}
       </div>
     </GuestLayout>
   );
