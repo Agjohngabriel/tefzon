@@ -1,15 +1,15 @@
-import Layout from "../../../components/Layouts";
+import GuestLayout from "../../../components/GuestLayout";
 
 const Index = () => {
   return (
-    <Layout>
+    <GuestLayout>
       <section
-        className="py-5 sm:py-10 lg:py-20 px-4 lg:px-16 overflow-hidden relative z-10"
+        className="py-5 sm:py-10 lg:py-20 px-4 lg:px-16 overflow-hidden relative z-10 mx-auto"
         data-aos="fade-up"
         id="contact"
       >
         <div className="container">
-          <div className="flex flex-col lg:flex-row lg:items-center text-slate-900 dark:text-gray-200 lg:justify-between -mx-4">
+          <div className="flex flex-col lg:flex-row lg:items-center text-slate-900 dark:text-gray-200 lg:justify-between mx-auto">
             <div
               className="w-full lg:w-1/2 xl:w-6/12 px-4"
               data-aos="fade-up"
@@ -960,16 +960,16 @@ const Index = () => {
         </div>
       </section>
 
-      <div className="container mx-auto pb-1 px-12">
-        <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">
+      <div className="container mx-auto px-2 lg:px-12 ">
+        <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-4 lg:p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">
           {/* <!-- LEFT PART --> */}
           <div className="flex flex-col lg:ml-10 max-w-sm lg:max-w-xl z-10">
             <div className="hero-text  pt-5">
-              <h4 className="text-5xl text-center md:text-left font-bold text-white md:pb-2">
+              <h4 className="lg:text-5xl text-center md:text-left font-bold text-white md:pb-2">
                 Don't listen to what they say, Go See
               </h4>
 
-              <p className="text-center md:text-left text-white opacity-70 md:pb-6">
+              <p className="text-center md:text-left text-white opacity-70 mb-3 md:pb-6">
                 Your ultimate travel companion. Carries all the information you
                 need while travelling
               </p>
@@ -1381,7 +1381,7 @@ const Index = () => {
           <div className="absolute bg-[#6E4BEC] opacity-60 w-96 h-96 -top-10 -right-16 md:w-[800px] md:h-[800px] md:left-[45%] md:top-[-150%] rounded-full shadow-2xl z-0"></div>
         </div>
       </div>
-    </Layout>
+    </GuestLayout>
   );
 };
 

@@ -4,7 +4,7 @@ import MainLayout from "../../../components/MainLayout";
 const Index = () => {
   return (
     <MainLayout>
-      <div className="inline-flex rounded -ml-1">
+      <div className="inline-flex -ml-1 rounded">
         <Link href="/wallet" passHref>
           <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2   ">
             Home
@@ -19,185 +19,8 @@ const Index = () => {
         </h1>
       </div>
 
-      <div className="container">
-        <div className="sm:flex">
-          <div className="container flex max-w-4xl h-3/4 bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20 mt-10 mb-20  px-2 py-6 lg:px-10  ">
-            <div className="flex flex-col  pt-10 space-y-4 w-full mx-2">
-              <h1 className="font-montserrat text-xl sm:text-3xl text-black-0 mb-5 ">
-                League 1842968
-              </h1>
-              <p className="text-xs text-black-0 font-arcon text-center mt-24 w-full mx-auto py-4 bg-[#E1CEFF]  max-w-3xl mb-5   tracking-wider px-2 lg:px-1 ">
-                League scoring started in the Gameweek 24.
-              </p>
+      <div id="sportmonks-widget" data-widget="livescore" data-info="xp4Q7blDCbmqUTDtGcI4xSUK0tIdK0DD7wOrMT1v4NS6aiIGaZ60sQhN3SKTB5UxKXG2e6CJuLFcZc0LN/Hsh4hAJtWlZBsWKVhzah7bmUCTQIBSZaGfVRrNLiGo0dMPykvZwOOgu1eb6GEkp4GDdqyR7nBPVI3iY2OBrUqSXYWhUabPh4RTbik65Nt2BP4XlVOEFZcnv0bthDukI9m3Pn1Ru+boI9cVFIGO1CUbbm+85NeMpTcuMUtemSbeLpFKxwldUmZTOCFDOq2L4e4n5MOmb3lHckFGsxr0wVy063uqE25wNqJuXFhtDYEB7YSLZqG08PEdcP12Cvpj77+bguMfSuaAwDNqkRs9BpgrecEiGy4UphnX5pXqHT/o4PyY2DOdvAu//eqKzE9CBLavM5Z/ePvFtKtzvHWNcabqhwdC6OM7NV6phX1E086pqI4MVTy6iMPwufL+J2WTpK4iQLV0TmnJiLVUuuRax5RdQvGS31wBzuwCLRI3utrlUNAVHBkDeiUJHI+NpEjCKkQcpHJpD+DBIFwERGGNmGO46FNdqxiGzEGacJX6JcLhpS2tGF+tie1AsgqKjYVOl9AdTr87APEhYILdEloQ/MrYM2Y4q33HBXPLZI+5JjzCtfotux/HALUI6IgjsMUoZqGNi1BKPSzchCix/43gAupk+CU=" data-switchtheme="false" data-tz="Africa/Lagos"></div>
 
-              <div className="w-full mx-2  flex svelte-1l8159u">
-                <h1 className="font-montserrat text-base sm:text-xl text-black-0 mb-5  mt-3">
-                  Select Phase
-                </h1>
-                <div className="bg-white mx-3 mb-10 p-1 flex border border-gray-200 rounded svelte-1l8159u w-1/3">
-                  <select className="form-select w-full px-3 py-2 bg-white text-black-150 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                    <option value="">Overall</option>
-                    <option value="02">Male</option>
-                    <option value="03">Female</option>
-                    <option value="04">Prefer not to state</option>
-                  </select>
-                </div>
-              </div>
-
-              <table className="w-full">
-                <thead className="w-1/2 bg-[#EFEFEF]">
-                  <tr>
-                    <th className="p-2 text-center font-montserrat text-black-0">
-                      Rank
-                    </th>
-                    <th className="p-2 text-left w-2/3 font-montserrat text-black-0">
-                      Team Manager
-                    </th>
-                    <th className="p-2 text-center font-montserrat text-black-0">
-                      GW
-                    </th>
-                    <th className="p-2 text-center pr-4 font-montserrat text-black-0">
-                      TOT
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-gray-300 py-3">
-                    <td className="p-2 text-sm font-normal">
-                      1
-                      <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
-                        arrow_drop_up
-                      </span>
-                    </td>
-                    <td className="p-2 text-left ">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
-                      >
-                        Aswinram
-                      </p>
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-xs leading-normal font-arcon text-black-0"
-                      >
-                        Aswinram R
-                      </p>
-                    </td>
-                    <td className="p-2 text-center font-arcon text-black-0">
-                      {" "}
-                      56
-                    </td>
-                    <td className="p-2 text-center font-arcon text-black-0">
-                      316
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-300 py-3">
-                    <td className="p-2 text-sm font-normal">
-                      2
-                      <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
-                        arrow_drop_down
-                      </span>
-                    </td>
-                    <td className="p-2 text-left ">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
-                      >
-                        Aswinram
-                      </p>
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-xs leading-normal font-arcon text-black-0"
-                      >
-                        Aswinram R
-                      </p>
-                    </td>
-                    <td className="p-2 text-center font-arcon text-black-0">
-                      56
-                    </td>
-                    <td className="p-2 text-center font-arcon text-black-0">
-                      316
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-300 py-3">
-                    <td className="p-2 text-sm font-normal">
-                      3
-                      <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
-                        arrow_drop_up
-                      </span>
-                    </td>
-                    <td className="p-2 text-left ">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-sm font-montserrat leading-5 text-[#240155]"
-                      >
-                        Aswinram
-                      </p>
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-xs leading-normal font-arcon text-black-0"
-                      >
-                        Aswinram R
-                      </p>
-                    </td>
-                    <td className="p-2 text-center font-arcon text-black-0">
-                      56
-                    </td>
-                    <td className="p-2 text-center font-arcon text-black-0">
-                      316
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="w-full pl-5 flex-1 svelte-1l8159u pt-10">
-            <button
-              className="text-base  hover:scale-110 focus:outline-none flex justify-center  py-2 rounded font-bold cursor-pointer 
-                                
-                                hover:bg-blue-500 
-                                bg-stone-200 text-gray-700
-                                 duration-200 ease-in-out 
-                                 transition"
-            >
-              <div className="flex font-sans text-xs font-montserrat px-2">
-                <span className="pt-1 text-[#060606] opacity-60">
-                  Report Offensive Name
-                </span>
-                <span className="ml-10 material-icons hover:text-gray-100">
-                  arrow_forward
-                </span>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="container mb-5 mx-auto">
-        <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
-
-        <div className="mx-3  flex mb-5">
-          <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-        </div>
-      </div>
     </MainLayout>
   );
 };
@@ -206,40 +29,30 @@ export default Index;
 
 {
   /* <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-2  w-auto">
-<div className="flex flex-col  pt-10 space-y-4 max-w-3xl mx-auto">
-  <div className="mx-auto flex-1 svelte-1l8159u ">
-    <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
-      <h1 className="font-oswald text-4xl text-gray-700  text-centeru">
+<div className="flex flex-col max-w-3xl pt-10 mx-auto space-y-4">
+  <div className="flex-1 mx-auto svelte-1l8159u ">
+    <div className="flex items-center flex-shrink-0 mr-6 text-gray-600">
+      <h1 className="text-4xl text-gray-700 font-oswald text-centeru">
         Fixtures
       </h1>
     </div>
     {/* <button
-      className="text-base shadow-inner shadow-gray-200/50 border hover:scale-110 focus:outline-none flex justify-center px-5 py-2 rounded font-medium cursor-pointer 
-                        
-                        hover:bg-blue-500 
-                        bg-white text-gray-700
-                         duration-200 ease-in-out 
-                         transition"
+      className="flex justify-center px-5 py-2 text-base font-medium text-gray-700 transition duration-200 ease-in-out bg-white border rounded shadow-inner cursor-pointer shadow-gray-200/50 hover:scale-110 focus:outline-none hover:bg-blue-500"
     >
-      <div className="flex font-arcon text-xs font-medium py-1">
+      <div className="flex py-1 text-xs font-medium font-arcon">
         <span className=" material-icons hover:text-white">
           calendar_month
         </span>
-        <span className="pl-3  pt-1">Sync to Calendar</span>
+        <span className="pt-1 pl-3">Sync to Calendar</span>
       </div>
     </button> 
   </div>
-  <div className="flex flex-col w-full md:flex-row py-10">
-    <div className="w-full mx-2 flex-1 svelte-1l8159u">
+  <div className="flex flex-col w-full py-10 md:flex-row">
+    <div className="flex-1 w-full mx-2 svelte-1l8159u">
       <button
-        className="text-base  hover:scale-110 focus:outline-none flex justify-center px-5 py-2 rounded font-bold cursor-pointer 
-                        
-                        hover:bg-blue-500 
-                        bg-violet-400 text-gray-200
-                         duration-200 ease-in-out 
-                         transition"
+        className="flex justify-center px-5 py-2 text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500 bg-violet-400"
       >
-        <div className="flex font-arcon text-xs font-semibold ">
+        <div className="flex text-xs font-semibold font-arcon ">
           <span className=" material-icons hover:text-white">
             arrow_backward
           </span>{" "}
@@ -247,19 +60,14 @@ export default Index;
         </div>
       </button>
     </div>
-    <h1 className="font-bold text-sm text-center text-gray-700 w-4/6 pt-3 px-5 ">
+    <h1 className="w-4/6 px-5 pt-3 text-sm font-bold text-center text-gray-700 ">
       Gameweek 20 - Tue 26 Jan 17:30
     </h1>
-    <div className="w-full mx-2 flex-1 svelte-1l8159u">
+    <div className="flex-1 w-full mx-2 svelte-1l8159u">
       <button
-        className="text-base  hover:scale-110 focus:outline-none flex justify-center px-5 py-2 rounded font-bold cursor-pointer 
-                        
-                        hover:bg-blue-500 
-                        bg-violet-400 text-gray-200
-                         duration-200 ease-in-out 
-                         transition"
+        className="flex justify-center px-5 py-2 text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500 bg-violet-400"
       >
-        <div className="flex font-arcon text-xs font-semibold px-5">
+        <div className="flex px-5 text-xs font-semibold font-arcon">
           <span className="pt-1"> Next</span>
           <span className="ml-20 material-icons hover:text-white ">
             arrow_forward
@@ -271,17 +79,17 @@ export default Index;
 </div>
 
 <div className="pt-10 ">
-  <p className="text-xs text-gray-800 font-arcon text-center  py-4 bg-stone-300 mx-auto tracking-wider">
+  <p className="py-4 mx-auto text-xs tracking-wider text-center text-gray-800 font-arcon bg-stone-300">
     Sunday 21 February 2021
   </p>
 
   <div className="w-full leading-normal ">
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -289,11 +97,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -301,18 +109,18 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
       </div>
     </div>
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -320,11 +128,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -332,18 +140,18 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
       </div>
     </div>
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -351,11 +159,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -363,7 +171,7 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
@@ -373,17 +181,17 @@ export default Index;
 </div>
 
 <div className="pt-10 ">
-  <p className="text-xs text-gray-800 font-arcon text-center  py-4 bg-stone-300 mx-auto tracking-wider">
+  <p className="py-4 mx-auto text-xs tracking-wider text-center text-gray-800 font-arcon bg-stone-300">
     Monday 22 February 2021
   </p>
 
   <div className="w-full leading-normal ">
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -391,11 +199,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -403,18 +211,18 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
       </div>
     </div>
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -422,11 +230,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -434,18 +242,18 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
       </div>
     </div>
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -453,11 +261,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -465,7 +273,7 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
@@ -475,17 +283,17 @@ export default Index;
 </div>
 
 <div className="pt-10 ">
-  <p className="text-xs text-gray-800 font-arcon text-center  py-4 bg-stone-300 mx-auto tracking-wider">
+  <p className="py-4 mx-auto text-xs tracking-wider text-center text-gray-800 font-arcon bg-stone-300">
     Sunday 27 February 2021
   </p>
 
   <div className="w-full leading-normal ">
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -493,11 +301,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -505,18 +313,18 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
       </div>
     </div>
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -524,11 +332,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -536,18 +344,18 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
       </div>
     </div>
-    <div className="px-5 py-5 border-b border-gray-300  text-sm  flex justify-center mx-auto">
+    <div className="flex justify-center px-5 py-5 mx-auto text-sm border-b border-gray-300">
       <div className="flex items-center">
         <div className="mr-3">
           <p className="text-gray-900 whitespace-no-wrap">Team 1</p>
         </div>
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell">
+        <div className="flex-shrink-0 hidden w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -555,11 +363,11 @@ export default Index;
           />
         </div>
       </div>
-      <p className="mx-16 tracking-tight px-8 text-gray-600 whitespace-no-wrap text-center border py-5 border-gray-300">
+      <p className="px-8 py-5 mx-16 tracking-tight text-center text-gray-600 whitespace-no-wrap border border-gray-300">
         19:00
       </p>
       <div className="flex items-center float-right">
-        <div className="flex-shrink-0 w-14 h-14 hidden sm:table-cell mr-3">
+        <div className="flex-shrink-0 hidden mr-3 w-14 h-14 sm:table-cell">
           <img
             className="w-full h-full rounded-full"
             src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
@@ -567,7 +375,7 @@ export default Index;
           />
         </div>
         <div className="">
-          <p className="text-gray-900 whitespace-no-wrap text-right">
+          <p className="text-right text-gray-900 whitespace-no-wrap">
             Team 2
           </p>
         </div>
