@@ -4,10 +4,11 @@ import { Agreement } from "../../../components/form/Agreement";
 import Favourite from "../../../components/form/Favourite";
 import PersonalDetails from "../../../components/form/PersonalDetails";
 import GuestLayout from "../../../components/GuestLayout";
-import axios from "axios";
+// import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { client } from "../../../libs/axiosClient";
+import FavouriteLeague from "../../../components/form/FavouriteLeagues";
 const Signup = () => {
   const [formStep, setFormStep] = useState(0);
   const [formData, setFormData] = useState({});
@@ -84,9 +85,10 @@ const Signup = () => {
                     </svg>
                   </div>
                 </div>
+                 {/* First Stepper */}
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
-                    formStep >= 0 ? "border-gray-300" : "border-[#240155]/50"
+                    formStep >= 0 ? "border-[#240155]/50" : "border-gray-300"
                   } `}
                 ></div>
                 <div className="flex items-center text-gray-500 relative">
@@ -113,9 +115,10 @@ const Signup = () => {
                     </svg>
                   </div>
                 </div>
+                {/* second stepper */}
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
-                    formStep >= 0 ? "border-gray-300" : "border-[#240155]/50"
+                    formStep >= 1 ? "border-[#240155]/50" : "border-gray-300"
                   }`}
                 ></div>
 
@@ -128,24 +131,50 @@ const Signup = () => {
                     }`}
                   >
                     <svg
+                      className="w-full fill-current"
                       xmlns="http://www.w3.org/2000/svg"
-                      width="100%"
-                      height="100%"
-                      fill="none"
                       viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="feather feather-mail "
+                      width="24"
+                      height="24"
                     >
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
+                      <path
+                        className="heroicon-ui"
+                        d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2zm14 8V5H5v6h14zm0 2H5v6h14v-6zM8 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                {/* third stepper */}
+                <div
+                  className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
+                    formStep >= 2 ? "border-[#240155]/50" : "border-gray-300"
+                  }`}
+                ></div>
+                <div className="flex items-center text-gray-500 relative">
+                  <div
+                    className={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 ${
+                      formStep >= 3
+                        ? "bg-[#240155]/100 border-[#240155]/100"
+                        : "border-gray-300"
+                    }`}
+                  >
+                    <svg
+                      className="w-full fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                    >
+                      <path
+                        className="heroicon-ui"
+                        d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z"
+                      />
                     </svg>
                   </div>
                 </div>
               </div>
             </div>
+
             <form onSubmit={handleSubmit}>
               {formStep >= 0 && (
                 <PersonalDetails
@@ -156,15 +185,22 @@ const Signup = () => {
                 />
               )}
               {formStep >= 1 && (
-                <Favourite
+                <Agreement
+                  updateFormData={updateFormData}
+                  formStep={formStep}
+                  nextFormStep={nextFormStep}
+                />
+              )}
+              {formStep >= 2 && (
+                <FavouriteLeague
                   updateFormData={updateFormData}
                   formStep={formStep}
                   nextFormStep={nextFormStep}
                 />
               )}
 
-              {formStep >= 2 && (
-                <Agreement
+              {formStep >= 3 && (
+                <Favourite
                   updateFormData={updateFormData}
                   formStep={formStep}
                   nextFormStep={nextFormStep}
@@ -180,7 +216,7 @@ const Signup = () => {
             /> */}
 
               <div className=" pb-10 mt-2 justify-center">
-                {formStep == 2 ? (
+                {formStep == 3 ? (
                   <button
                     type="submit"
                     disabled={isSubmitting}

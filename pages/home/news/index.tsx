@@ -3,146 +3,277 @@ import Layout from "../../../components/Layouts";
 const Index = () => {
   return (
     <Layout>
-      <div className=" py-6">
-        <div className="xl:container mx-auto px-3 sm:px-4 xl:px-2">
-          <div className="flex flex-row flex-wrap">
-            <div className="flex-shrink max-w-full w-full lg:w-1/2 pb-1 lg:pb-0 lg:pr-1">
-              <div className="relative hover-img max-h-98 overflow-hidden">
-                <a href="#">
-                  <img
-                    className="max-w-full w-full mx-auto h-auto"
-                    src="https://tailnews.tailwindtemplate.net/src/img/dummy/img1.jpg"
-                    alt="Image description"
-                  />
-                </a>
-                <div className="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                  <a href="#">
-                    <h2 className="text-3xl font-bold capitalize text-white mb-3">
-                      Amazon Shoppers Are Ditching Designer Belts for This
-                      Best-Selling
-                    </h2>
-                  </a>
-                  <p className="text-gray-100 hidden sm:inline-block">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This very helpfull for
-                    generate default content..
+      <main className="mt-10 px-2 sm:px-20 mx-auto">
+        <div className="block md:flex md:space-x-2 px-2 lg:p-0">
+          <a
+            className="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block h-[24em] "
+            href="./blog.html"
+          >
+            <div
+              className="absolute left-0 bottom-0 w-full h-full z-10"
+              style={{
+                ["background-image" as any]:
+                  "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
+              }}
+            ></div>
+            <img
+              src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+              className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
+              alt=""
+            />
+            <div className="p-4 absolute bottom-0 left-0 z-20">
+              <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
+                Nutrition
+              </span>
+              <h2 className="text-4xl font-semibold text-gray-100 leading-tight">
+                Pellentesque a consectetur velit, ac molestie ipsum. Donec
+                sodales, massa et auctor.
+              </h2>
+              <div className="flex mt-3">
+                <img
+                  src="https://randomuser.me/api/portraits/men/97.jpg"
+                  className="h-10 w-10 rounded-full mr-2 object-cover"
+                  alt=""
+                />
+                <div>
+                  <p className="font-semibold text-gray-200 text-sm">
+                    {" "}
+                    Mike Sullivan{" "}
                   </p>
-                  <div className="pt-2">
-                    <div className="text-gray-100">
-                      <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                      Europe
-                    </div>
+                  <p className="font-semibold text-gray-400 text-xs">
+                    {" "}
+                    14 Aug{" "}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a
+            className="w-full md:w-1/3 relative rounded h-[24em] "
+            href="./blog.html"
+          >
+            <div
+              className="absolute left-0 top-0 w-full h-full z-10"
+              style={{
+                ["background-image" as any]:
+                  "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
+              }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80"
+                className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
+                alt=""
+              />
+              <div className="p-4 absolute bottom-0 left-0 z-20">
+                <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
+                  Science
+                </span>
+                <h2 className="text-3xl font-semibold text-gray-100 leading-tight">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </h2>
+                <div className="flex mt-3">
+                  <img
+                    src="https://images-na.ssl-images-amazon.com/images/M/MV5BODFjZTkwMjItYzRhMS00OWYxLWI3YTUtNWIzOWQ4Yjg4NGZiXkEyXkFqcGdeQXVyMTQ0ODAxNzE@._V1_UX172_CR0,0,172,256_AL_.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                    alt=""
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-200 text-sm">
+                      {" "}
+                      Chrishell Staus{" "}
+                    </p>
+                    <p className="font-semibold text-gray-400 text-xs">
+                      {" "}
+                      15 Aug{" "}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div className="block lg:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10">
+          {/* <!-- post cards --> */}
+          <div className="w-full lg:w-2/3">
+            <a
+              className="block rounded w-full lg:flex mb-10"
+              href="./blog-single-1.html"
+            >
+              <div
+                className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                style={{
+                  ["background-image" as any]:
+                    "url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                }}
+                title="deit is very important"
+              ></div>
+              <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                <div>
+                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                    Aliquam venenatis nisl id purus rhoncus, in efficitur sem
+                    hendrerit.
+                  </div>
+                  <p className="text-gray-700 text-base">
+                    Duis euismod est quis lacus elementum, eu laoreet dolor
+                    consectetur. Pellentesque sed neque vel tellus lacinia
+                    elementum. Proin consequat ullamcorper eleifend.
+                  </p>
+                </div>
+                <div className="flex mt-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/86.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                    alt=""
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-700 text-sm capitalize">
+                      {" "}
+                      eduard franz{" "}
+                    </p>
+                    <p className="text-gray-600 text-xs"> 14 Aug </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <div className="rounded w-full lg:flex mb-10">
+              <div
+                className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                style={{
+                  ["background-image" as any]:
+                    "url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                }}
+              ></div>
+              <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                <div>
+                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                    Integer commodo, sapien ut vulputate viverra
+                  </div>
+                  <p className="text-gray-700 text-base">
+                    Nam malesuada aliquet metus, ac commodo augue mollis sit
+                    amet. Nam bibendum risus sit amet metus semper consectetur.
+                    Proin consequat ullamcorper eleifend. Nam bibendum risus sit
+                    amet metus semper consectetur.
+                  </p>
+                </div>
+                <div className="flex mt-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/54.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                    alt=""
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-700 text-sm capitalize">
+                      {" "}
+                      Serenity Hughes{" "}
+                    </p>
+                    <p className="text-gray-600 text-xs"> 14 Aug </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex-shrink max-w-full w-full lg:w-1/2">
-              <div className="box-one flex flex-row flex-wrap">
-                <article className="flex-shrink max-w-full w-full sm:w-1/2">
-                  <div className="relative hover-img max-h-48 overflow-hidden">
-                    <a href="#">
-                      <img
-                        className="max-w-full w-full mx-auto h-auto"
-                        src="https://tailnews.tailwindtemplate.net/src/img/dummy/img2.jpg"
-                        alt="Image description"
-                      />
-                    </a>
-                    <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
-                          News magazines are becoming obsolete, replaced by
-                          gadgets
-                        </h2>
-                      </a>
-                      <div className="pt-1">
-                        <div className="text-gray-100">
-                          <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                          Techno
-                        </div>
-                      </div>
-                    </div>
+            <div className="rounded w-full lg:flex mb-10">
+              <div
+                className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                style={{
+                  ["background-image" as any]:
+                    "url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                }}
+              ></div>
+              <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                <div>
+                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                    Suspendisse varius justo eu risus laoreet fermentum non
+                    aliquam dolor
                   </div>
-                </article>
-                <article className="flex-shrink max-w-full w-full sm:w-1/2">
-                  <div className="relative hover-img max-h-48 overflow-hidden">
-                    <a href="#">
-                      <img
-                        className="max-w-full w-full mx-auto h-auto"
-                        src="https://tailnews.tailwindtemplate.net/src/img/dummy/img3.jpg"
-                        alt="Image description"
-                      />
-                    </a>
-                    <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
-                          Minimalist designs are starting to be popular with the
-                          next generation
-                        </h2>
-                      </a>
-                      <div className="pt-1">
-                        <div className="text-gray-100">
-                          <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                          Architecture
-                        </div>
-                      </div>
-                    </div>
+                  <p className="text-gray-700 text-base">
+                    Mauris porttitor, velit at tempus vulputate, odio turpis
+                    facilisis dui, vitae eleifend odio ipsum at odio. Phasellus
+                    luctus scelerisque felis eget suscipit.
+                  </p>
+                </div>
+                <div className="flex mt-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/86.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                    alt=""
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-700 text-sm capitalize">
+                      {" "}
+                      eduard franz{" "}
+                    </p>
+                    <p className="text-gray-600 text-xs"> 14 Aug </p>
                   </div>
-                </article>
-                <article className="flex-shrink max-w-full w-full sm:w-1/2">
-                  <div className="relative hover-img max-h-48 overflow-hidden">
-                    <a href="#">
-                      <img
-                        className="max-w-full w-full mx-auto h-auto"
-                        src="https://tailnews.tailwindtemplate.net/src/img/dummy/img4.jpg"
-                        alt="Image description"
-                      />
-                    </a>
-                    <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
-                          Tips for decorating the interior of the living room
-                        </h2>
-                      </a>
-                      <div className="pt-1">
-                        <div className="text-gray-100">
-                          <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                          Interior
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-                <article className="flex-shrink max-w-full w-full sm:w-1/2">
-                  <div className="relative hover-img max-h-48 overflow-hidden">
-                    <a href="#">
-                      <img
-                        className="max-w-full w-full mx-auto h-auto"
-                        src="https://tailnews.tailwindtemplate.net/src/img/dummy/img5.jpg"
-                        alt="Image description"
-                      />
-                    </a>
-                    <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
-                          Online taxi users are increasing drastically ahead of
-                          the new year
-                        </h2>
-                      </a>
-                      <div className="pt-1">
-                        <div className="text-gray-100">
-                          <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                          Lifestyle
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* <!-- right sidebar --> */}
+          <div className="w-full lg:w-1/3 px-3">
+            {/* <!-- topics --> */}
+            <div className="mb-4">
+              <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
+                {" "}
+                Popular Topics{" "}
+              </h5>
+              <ul>
+                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-green-300 mr-3"></span>
+                    Nutrition
+                    <span className="text-gray-500 ml-auto">23 articles</span>
+                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                  </a>
+                </li>
+                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
+                    Food & Diet
+                    <span className="text-gray-500 ml-auto">18 articles</span>
+                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                  </a>
+                </li>
+                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
+                    Workouts
+                    <span className="text-gray-500 ml-auto">34 articles</span>
+                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                  </a>
+                </li>
+                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
+                    Immunity
+                    <span className="text-gray-500 ml-auto">9 articles</span>
+                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* <!-- divider --> */}
+            <div className="border border-dotted"></div>
+          </div>
         </div>
-      </div>
+      </main>
 
       <main className="py-12 md:px-20 sm:px-14 px-6">
         <div className="sm:flex items-center shadow-md">
@@ -234,6 +365,84 @@ const Index = () => {
         </div>
         <div></div>
       </main>
+
+      <div className="flex min-h-screen items-center justify-center px-2 sm:px-20 mx-auto py-10">
+        <div className="container grid max-w-screen-xl gap-8 lg:grid-cols-2 lg:grid-rows-2">
+          <div className="row-span-2 flex flex-col rounded-md border border-slate-200">
+            <div className="h-1/2 flex-1">
+              <img
+                src="https://d33wubrfki0l68.cloudfront.net/c43307b88fb814366e4f3a181c788796cba83faa/4c05c/new/landing/omnichannel.png"
+                className="w-full object-cover object-right-top"
+                alt="omnichannel"
+              />
+            </div>
+            <div className="p-10">
+              <h3 className="text-xl font-medium text-gray-700">
+                Omnichannel support center
+              </h3>
+              <p className="mt-2 text-slate-500">
+                Chatwoot connects with popular customer communication channels
+                like Email, Website live-chat, Facebook, Twitter, WhatsApp,
+                Instagram, Line, etc., and helps you deliver a consistent
+                customer experience across channels.
+              </p>
+              <a href="" className="mt-2 inline-flex text-sky-500">
+                Read More →
+              </a>
+            </div>
+          </div>
+          <div className="flex rounded-md border border-slate-200">
+            <div className="flex-1 p-10">
+              <h3 className="text-xl font-medium text-gray-700">
+                A live-chat that fits your brand
+              </h3>
+              <p className="mt-2 text-slate-500">
+                Connect with your website visitors, communicate with them in
+                realtime and give them quality support with a live-chat widget
+                that fits your brand.
+              </p>
+              <a href="" className="mt-2 inline-flex text-sky-500">
+                Read More →
+              </a>
+            </div>
+
+            <div className="relative hidden h-full w-1/3 overflow-hidden lg:block">
+              <div className="absolute inset-0">
+                <img
+                  src="https://d33wubrfki0l68.cloudfront.net/e5290c26cc1703e54e0afe3d1472046098ecd819/53775/new/landing/live-chat.png"
+                  className="h-full w-full object-cover object-left-top"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex rounded-md border border-slate-200">
+            <div className="flex-1 p-10">
+              <h3 className="text-xl font-medium text-gray-700">
+                Respond faster, with automated chatbots
+              </h3>
+              <p className="mt-2 text-slate-500">
+                Integrate with chatbots using Rasa or Dialogflow to automate
+                conversations. Qualify using chatbots and seamlessly handoff to
+                human agents.
+              </p>
+              <a href="" className="mt-2 inline-flex text-sky-500">
+                Read More →
+              </a>
+            </div>
+
+            <div className="relative hidden h-full w-1/3 overflow-hidden lg:block">
+              <div className="absolute inset-0">
+                <img
+                  src="https://d33wubrfki0l68.cloudfront.net/1205a454c4b64452a51930c9b0043f8db9ff8271/d202e/new/landing/chat-bot.png"
+                  className="h-full w-full object-cover object-left-top"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="container mx-auto pb-1 px-12">
         <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">

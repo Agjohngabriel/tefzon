@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Layout from "../../../../components/Layouts";
+import Layout from "../../../components/Layouts";
 
 const Index = () => {
   const [open, setOpen] = useState(false);

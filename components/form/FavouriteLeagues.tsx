@@ -2,55 +2,54 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Loader } from "../base/Loader";
 
-interface Favorite {
+interface FavouriteLeague {
   id: string;
   logo_path: string;
   name: string;
 }
 
-const Favourite = (props: {
+const FavouriteLeague = (props: {
   formStep: number;
   nextFormStep: any;
   updateFormData: any;
 }) => {
-  const [favourite, setFavourite] = useState(new Set());
-  const [teams, setTeams] = useState([]);
+  const [favouriteleague, setFavouriteleague] = useState(new Set());
+  const [leagues, setLeagues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const selectFavourite = ({ id, name, logo_path }: Favorite) => {
-    setFavourite((favourite) => {
-      favourite = new Set(favourite);
-      favourite.add({ id, name, logo_path });
-      return favourite;
+  const selectFavourite = ({ id, name, logo_path }: FavouriteLeague) => {
+    setFavouriteleague((favouriteleague) => {
+      favouriteleague = new Set(favouriteleague);
+      favouriteleague.add({ id, name, logo_path });
+      return favouriteleague;
     });
   };
   const update = () => {
-    props.updateFormData({ favourite_team: favourite });
+    props.updateFormData({ favourite_leauge: favouriteleague });
   };
   useEffect(() => {
     const fetchAll = async () => {
       setIsLoading(true);
-      const res = await axios.get(
-        `${process.env.BACKEND_URL}/get/league/teams/`,
-      );
+      const res = await axios.get(`${process.env.BACKEND_URL}/get/leagues`);
+
       const response = await res.data;
       setIsLoading(false);
       return response;
     };
 
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setTeams(FavouritesFromApi);
-    };
+    // const getFavourites = async () => {
+    //   const FavouritesFromApi = await fetchAll();
+    //   setLeagues(FavouritesFromApi);
+    // };
 
-    getFavourites();
+    // getFavourites();
   }, []);
 
   return (
-    <div className={`sm:p-5 ${props.formStep === 3 ? "" : "hidden"}`}>
-      <div className="flex flex-col items-center max-w-lg pt-20 mx-auto space-y-4">
+    <div className={`sm:p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
+      <div className="flex flex-col items-center max-w-lg  sm:pt-20 mx-auto space-y-4">
         <h1 className="w-4/6 text-lg font-bold text-center text-gray-700 animate-fade-in-up">
-          Your Favourites
+          Your Favourite League
         </h1>
         <p className="w-5/6 text-sm text-center text-gray-500 animate-fade-in-down">
           Please type carefully and fill out the form with Personal details. You
@@ -62,27 +61,31 @@ const Favourite = (props: {
         <div className="p-4 mt-8">
           <div className="w-full border">
             <section className="max-w-6xl mx-auto ">
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6">
-                {teams.map((item: Favorite, index) => (
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 ">
+                {leagues.map((item: FavouriteLeague, index) => (
                   <button
-                    onClick={() => {
-                      selectFavourite({
-                        id: item.id,
-                        name: item.name,
-                        logo_path: item.logo_path,
-                      });
+                    onClick={async () => {
+                      // selectFavourite({
+                      //   id: item.id,
+                      //   name: item.name,
+                      //   logo_path: item.logo_path,
+                      // });
                       // update();
+                      const id = item.id;
+                      
+                      const res = await axios.get(`${process.env.BACKEND_URL}/get/league/teams/87`);
+                      console.log(res.data)
                     }}
                     type="button"
                     className={`${
-                      favourite.has(item) ? "bg-red" : "bg-black"
-                    } flex flex-col items-center justify-center w-full p-4 border sahdow-lg sm:p-8 animate-fade-in-up transition duration-300 
+                      favouriteleague.has(item) ? "bg-red" : "bg-black"
+                    } flex flex-col items-center justify-center w-full p-2 sm:p-4 border sahdow-lg sm:p-8 animate-fade-in-up transition duration-300 
                     hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100`}
                     key={item.id}
                   >
-                    <div className="mb-4 sm:mb-8">
+                    <div className="mb-2 sm:mb-8">
                       <img
-                        className="object-cover object-center w-5 h-5 rounded-full sm:h-20 sm:w-20"
+                        className="object-cover object-center w-9 h-9 rounded-full sm:h-20 sm:w-20"
                         src={item.logo_path}
                         alt="club"
                       />
@@ -113,4 +116,4 @@ const Favourite = (props: {
   );
 };
 
-export default Favourite;
+export default FavouriteLeague;
