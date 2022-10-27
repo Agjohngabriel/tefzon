@@ -5,6 +5,7 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import Button from "../components/base/Button";
 import GuestLayout from "../components/GuestLayout";
 import SlashScreen from "../components/SlashScreen";
+import { motion } from "framer-motion";
 
 const Home: NextPage = () => {
   // Loading state
@@ -603,11 +604,11 @@ const Home: NextPage = () => {
       </div>
 
       {/* News */}
-      <main className="mt-10 px-2 sm:px-20 mx-auto">
-        <div className="block md:flex md:space-x-2 px-2 lg:p-0">
+      <main className="mt-10 px-2 sm:px-10 lg:px-20 mx-auto">
+        <div className="block flex flex-col md:flex-row md:space-x-2 px-2 lg:p-0">
           <a
-            className="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block h-[24em] "
-            href="./blog.html"
+            className="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block h-[14em] lg:h-[24em] "
+            href="news"
           >
             <div
               className="absolute left-0 bottom-0 w-full h-full z-10"
@@ -617,24 +618,16 @@ const Home: NextPage = () => {
               }}
             ></div>
             <img
-              src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH71wcIXi2rjtErIquFlztPXoZEK7YXns3gw&usqp=CAU"
               className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
               alt=""
             />
             <div className="p-4 absolute bottom-0 left-0 z-20">
-              <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
-                Nutrition
-              </span>
-              <h2 className="text-4xl font-semibold text-gray-100 leading-tight">
+              <h2 className="text-xl  lg:text-3xl font-semibold text-gray-100 leading-tight">
                 Pellentesque a consectetur velit, ac molestie ipsum. Donec
                 sodales, massa et auctor.
               </h2>
               <div className="flex mt-3">
-                <img
-                  src="https://randomuser.me/api/portraits/men/97.jpg"
-                  className="h-10 w-10 rounded-full mr-2 object-cover"
-                  alt=""
-                />
                 <div>
                   <p className="font-semibold text-gray-200 text-sm">
                     {" "}
@@ -650,8 +643,8 @@ const Home: NextPage = () => {
           </a>
 
           <a
-            className="w-full md:w-1/3 relative rounded h-[24em] "
-            href="./blog.html"
+            className="w-full md:w-1/3 relative rounded  h-[14em] lg:h-[24em] "
+            href="news"
           >
             <div
               className="absolute left-0 top-0 w-full h-full z-10"
@@ -661,23 +654,15 @@ const Home: NextPage = () => {
               }}
             >
               <img
-                src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjQdAW5NZJYumPzuko_vFu_5gObIiYZDSzZw&usqp=CAU"
                 className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
                 alt=""
               />
               <div className="p-4 absolute bottom-0 left-0 z-20">
-                <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
-                  Science
-                </span>
-                <h2 className="text-3xl font-semibold text-gray-100 leading-tight">
+                <h2 className="text-xl md:text-sm lg:text-2xl  font-semibold text-gray-100 leading-tight">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </h2>
                 <div className="flex mt-3">
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/M/MV5BODFjZTkwMjItYzRhMS00OWYxLWI3YTUtNWIzOWQ4Yjg4NGZiXkEyXkFqcGdeQXVyMTQ0ODAxNzE@._V1_UX172_CR0,0,172,256_AL_.jpg"
-                    className="h-10 w-10 rounded-full mr-2 object-cover"
-                    alt=""
-                  />
                   <div>
                     <p className="font-semibold text-gray-200 text-sm">
                       {" "}
@@ -694,9 +679,9 @@ const Home: NextPage = () => {
           </a>
         </div>
 
-        <div className="block lg:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10">
+        <div className="block sm:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10 ">
           {/* <!-- post cards --> */}
-          <div className="w-full lg:w-2/3">
+          <div className="w-full  lg:w-2/3">
             <a
               className="block rounded w-full lg:flex mb-10"
               href="./blog-single-1.html"
@@ -705,15 +690,14 @@ const Home: NextPage = () => {
                 className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
                 style={{
                   ["background-image" as any]:
-                    "url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                    "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQi6JWYdxOxusw0CB9sYcqJ6uM5wlb_OEmZg&usqp=CAU')",
                 }}
                 title="deit is very important"
               ></div>
               <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
                 <div>
-                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                    Aliquam venenatis nisl id purus rhoncus, in efficitur sem
-                    hendrerit.
+                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-xl lg:text-2xl mb-2">
+                    Aliquam venenatis nisl id purus.
                   </div>
                   <p className="text-gray-700 text-base">
                     Duis euismod est quis lacus elementum, eu laoreet dolor
@@ -722,11 +706,6 @@ const Home: NextPage = () => {
                   </p>
                 </div>
                 <div className="flex mt-3">
-                  <img
-                    src="https://randomuser.me/api/portraits/men/86.jpg"
-                    className="h-10 w-10 rounded-full mr-2 object-cover"
-                    alt=""
-                  />
                   <div>
                     <p className="font-semibold text-gray-700 text-sm capitalize">
                       {" "}
@@ -737,96 +716,50 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </a>
-
-            <div className="rounded w-full lg:flex mb-10">
-              <div
-                className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
-                style={{
-                  ["background-image" as any]:
-                    "url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
-                }}
-              ></div>
-              <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
-                <div>
-                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                    Integer commodo, sapien ut vulputate viverra
-                  </div>
-                  <p className="text-gray-700 text-base">
-                    Nam malesuada aliquet metus, ac commodo augue mollis sit
-                    amet. Nam bibendum risus sit amet metus semper consectetur.
-                    Proin consequat ullamcorper eleifend. Nam bibendum risus sit
-                    amet metus semper consectetur.
-                  </p>
-                </div>
-                <div className="flex mt-3">
-                  <img
-                    src="https://randomuser.me/api/portraits/women/54.jpg"
-                    className="h-10 w-10 rounded-full mr-2 object-cover"
-                    alt=""
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-700 text-sm capitalize">
-                      {" "}
-                      Serenity Hughes{" "}
-                    </p>
-                    <p className="text-gray-600 text-xs"> 14 Aug </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* <!-- right sidebar --> */}
-          <div className="w-full lg:w-1/3 px-3">
+          <div className="w-full sm:w-3/5 lg:w-1/3 pl-3  ">
             {/* <!-- topics --> */}
-            <div className="mb-4">
+            <div className="py-8 shadow px-3">
               <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
-                {" "}
-                Popular Topics{" "}
+                Top Headlines
               </h5>
               <ul>
-                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-green-300 mr-3"></span>
-                    Nutrition
-                    <span className="text-gray-500 ml-auto">23 articles</span>
-                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
-                  </a>
-                </li>
-                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
                   <a
                     href="#"
                     className="flex items-center text-gray-600 cursor-pointer"
                   >
                     <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
-                    Food & Diet
-                    <span className="text-gray-500 ml-auto">18 articles</span>
-                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                    Emery appointed as new Aston Villa manager
                   </a>
                 </li>
-                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base  transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
+                    Pep jokes Haaland must lay off carbs during WC
+                  </a>
+                </li>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
                   <a
                     href="#"
                     className="flex items-center text-gray-600 cursor-pointer"
                   >
                     <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
-                    Workouts
-                    <span className="text-gray-500 ml-auto">34 articles</span>
-                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                    Man Utd legend Carrick named new 'Boro boss
                   </a>
                 </li>
-                <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
                   <a
                     href="#"
                     className="flex items-center text-gray-600 cursor-pointer"
                   >
                     <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
-                    Immunity
-                    <span className="text-gray-500 ml-auto">9 articles</span>
-                    <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                    Ukraine's top club want Iran out of World Cup
                   </a>
                 </li>
               </ul>
@@ -839,7 +772,12 @@ const Home: NextPage = () => {
       </main>
 
       {/* <!-- recent posts --> */}
-      <div className="mx-auto md:px-20">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="mx-auto sm:px-10 lg:px-20"
+      >
         {/* <!-- recent posts --> */}
         <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
           <h2 className="font-bold text-3xl">Latest news</h2>
@@ -847,22 +785,20 @@ const Home: NextPage = () => {
             View all
           </a>
         </div>
-        <div className="block space-x-0 lg:flex lg:space-x-6">
+        <div className="block space-x-0 flex lg:space-x-6">
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
             <img
-              src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
-              className="rounded"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYCFWlY5LgkkD2QAkQ6RIXHuYDJpu5RTXFg&usqp=CAU"
+              className="rounded w-full"
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
                 Put all speaking her delicate recurred possible.
               </h2>
               <p className="text-gray-700 mt-2">
                 Set indulgence inquietude discretion insensible bed why
-                announcing. Middleton fat two satisfied additions. So continued
-                he or commanded household smallness delivered. Door poor on do
-                walk in half. Roof his head the what.
+                announcing. Middleton fat two satisfied additions. 
               </p>
 
               <a
@@ -877,18 +813,17 @@ const Home: NextPage = () => {
 
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
             <img
-              src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
-              className="rounded"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStohCvtIt7EAC57otkuzuh2kvFNkEuiUa-1g&usqp=CAU"
+              className="rounded w-full"
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
                 Is at purse tried jokes china ready decay an.{" "}
               </h2>
-              <p className="text-gray-700 mt-2">
+              <p className="text-gray-700 mt-2 ">
                 Small its shy way had woody downs power. To denoting admitted
-                speaking learning my exercise so in. Procured shutters mr it
-                feelings. To or three offer house begin taken am at.
+                speaking learning my exercise so in. 
               </p>
 
               <a
@@ -903,19 +838,18 @@ const Home: NextPage = () => {
 
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
             <img
-              src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
-              className="rounded"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbPzQlLjiwL1j51gAhRYFr3BGkrALrqVF-Q&usqp=CAU"
+              className="rounded w-full"
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
                 As dissuade cheerful overcame so of friendly he indulged
                 unpacked.
               </h2>
               <p className="text-gray-700 mt-2">
                 Alteration connection to so as collecting me. Difficult in
-                delivered extensive at direction allowance. Alteration put use
-                diminution can considered sentiments interested discretion.
+                delivered extensive at direction allowance. 
               </p>
 
               <a
@@ -929,21 +863,18 @@ const Home: NextPage = () => {
           </div>
         </div>
         {/* <!-- end recent posts --> */}
-      </div>
+      </motion.div>
 
       {/* video */}
-      <div className=" flex  items-center justify-center">
-        <div className="grid grid-cols-12 gap-2 gap-y-4 max-w-6xl">
-          <div className="col-span-12 sm:col-span-6 md:col-span-3">
+      <div className="py-5 flex  items-center justify-center">
+        <div className="grid grid-cols-12 gap-6 lg:gap-5 gap-y-4 w-full px-12 lg:max-w-7xl">
+          <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3">
             <div className="w-full flex flex-col">
               <div className="relative">
-                <a href="#">
-                  <img
-                    src="https://picsum.photos/seed/59/300/200"
-                    className="w-96 h-auto"
-                    alt=""
-                  />
-                </a>
+                <iframe
+                  className="w-full aspect-video ... rounded-lg h-auto"
+                  src="https://static.vecteezy.com/system/resources/previews/004/213/949/mp4/sport-stadium-background-flashing-lights-glowing-stadium-lights-free-video.mp4"
+                ></iframe>
 
                 <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
                   1:15
@@ -953,35 +884,24 @@ const Home: NextPage = () => {
               <div className="flex flex-row mt-2 gap-2">
                 <div className="flex flex-col">
                   <a href="#">
-                    <p className="text-gray-100 text-sm font-semibold">
+                    <p className="text-indigo-500 text-sm font-semibold">
                       Learn CSS Box Model in 8 Minutes
                     </p>
                   </a>
-                  <a
-                    className="text-gray-400 text-xs mt-2 hover:text-gray-100"
-                    href="#"
-                  >
-                    {" "}
-                    Web Dev Simplified{" "}
-                  </a>
-                  <p className="text-gray-400 text-xs mt-1">
-                    241K views . 3 years ago
-                  </p>
+
+                  <p className="text-gray-400 text-xs mt-1">3 years ago</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="col-span-12 sm:col-span-6 md:col-span-3">
+          <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3">
             <div className="w-full flex flex-col">
               <div className="relative">
-                <a href="#">
-                  <img
-                    src="https://picsum.photos/seed/60/300/200"
-                    className="w-96 h-auto"
-                    alt=""
-                  />
-                </a>
+                <iframe
+                  className="w-full aspect-video ... rounded-lg h-auto"
+                  src="https://static.vecteezy.com/system/resources/previews/011/440/388/mp4/aerial-view-of-amateur-football-field-amateur-football-match-free-video.mp4"
+                ></iframe>
 
                 <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
                   1:15
@@ -991,35 +911,24 @@ const Home: NextPage = () => {
               <div className="flex flex-row mt-2 gap-2">
                 <div className="flex flex-col">
                   <a href="#">
-                    <p className="text-gray-100 text-sm font-semibold">
+                    <p className="text-indigo-500 text-sm font-semibold">
                       Learn CSS Box Model in 8 Minutes
                     </p>
                   </a>
-                  <a
-                    className="text-gray-400 text-xs mt-2 hover:text-gray-100"
-                    href="#"
-                  >
-                    {" "}
-                    Web Dev Simplified{" "}
-                  </a>
-                  <p className="text-gray-400 text-xs mt-1">
-                    241K views . 3 years ago
-                  </p>
+
+                  <p className="text-gray-400 text-xs mt-1">3 years ago</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="col-span-12 sm:col-span-6 md:col-span-3">
+          <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3">
             <div className="w-full flex flex-col">
-              <div className="relative">
-                <a href="#">
-                  <img
-                    src="https://picsum.photos/seed/22/300/200"
-                    className="w-96 h-auto"
-                    alt=""
-                  />
-                </a>
+              <div className="relative ">
+                <iframe
+                  className="w-full aspect-video ... rounded-lg h-auto "
+                  src="https://static.vecteezy.com/system/resources/previews/004/213/949/mp4/sport-stadium-background-flashing-lights-glowing-stadium-lights-free-video.mp4"
+                ></iframe>
 
                 <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
                   1:15
@@ -1027,38 +936,26 @@ const Home: NextPage = () => {
               </div>
 
               <div className="flex flex-row mt-2 gap-2">
-                {/* <!-- Description --> */}
                 <div className="flex flex-col">
                   <a href="#">
-                    <p className="text-gray-100 text-sm font-semibold">
+                    <p className="text-indigo-500 text-sm font-semibold">
                       Learn CSS Box Model in 8 Minutes
                     </p>
                   </a>
-                  <a
-                    className="text-gray-400 text-xs mt-2 hover:text-gray-100"
-                    href="#"
-                  >
-                    {" "}
-                    Web Dev Simplified{" "}
-                  </a>
-                  <p className="text-gray-400 text-xs mt-1">
-                    241K views . 3 years ago
-                  </p>
+
+                  <p className="text-gray-400 text-xs mt-1">3 years ago</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="col-span-12 sm:col-span-6 md:col-span-3">
+          <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3">
             <div className="w-full flex flex-col">
               <div className="relative">
-                <a href="#">
-                  <img
-                    src="https://picsum.photos/seed/90/300/200"
-                    className="w-96 h-auto"
-                    alt=""
-                  />
-                </a>
+                <iframe
+                  className="w-full aspect-video ... rounded-lg h-auto"
+                  src="https://static.vecteezy.com/system/resources/previews/007/423/936/mp4/soccer-game-football-behind-the-fence-video.mp4"
+                ></iframe>
 
                 <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
                   1:15
@@ -1068,20 +965,12 @@ const Home: NextPage = () => {
               <div className="flex flex-row mt-2 gap-2">
                 <div className="flex flex-col">
                   <a href="#">
-                    <p className="text-gray-100 text-sm font-semibold">
+                    <p className="text-indigo-500 text-sm font-semibold">
                       Learn CSS Box Model in 8 Minutes
                     </p>
                   </a>
-                  <a
-                    className="text-gray-400 text-xs mt-2 hover:text-gray-100"
-                    href="#"
-                  >
-                    {" "}
-                    Web Dev Simplified{" "}
-                  </a>
-                  <p className="text-gray-400 text-xs mt-1">
-                    241K views . 3 years ago
-                  </p>
+
+                  <p className="text-gray-400 text-xs mt-1">3 years ago</p>
                 </div>
               </div>
             </div>
@@ -1090,12 +979,12 @@ const Home: NextPage = () => {
       </div>
 
       {/* Get app */}
-      <div className="container mx-auto px-2 sm:px-12">
-        <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">
+      <div className="container mx-auto px-2 lg:px-12 ">
+        <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-4 lg:p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">
           {/* <!-- LEFT PART --> */}
           <div className="flex flex-col lg:ml-10 max-w-sm lg:max-w-xl z-10">
             <div className="hero-text  pt-5">
-              <h4 className="text-5xl text-center md:text-left font-bold text-white md:pb-2">
+              <h4 className="lg:text-5xl text-center md:text-left font-bold text-white md:pb-2">
                 Don't listen to what they say, Go See
               </h4>
 
@@ -1186,6 +1075,7 @@ const Home: NextPage = () => {
                 viewBox="0 0 475 289"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="w-72 lg:w-full"
               >
                 <path
                   d="M54.3287 76.523C54.3287 76.523 54.3287 76.403 54.3287 76.183C54.3287 75.963 54.3287 75.6297 54.3287 75.2031C54.3287 74.3431 54.3287 73.0831 54.3287 71.4566C54.3287 68.1967 54.3287 63.4569 54.3287 57.6372C54.3287 45.9644 54.3287 29.7718 54.3745 11.6993L54.2697 11.7992H58.4333L58.3286 11.6993C58.3613 41.4312 58.3875 66.6968 58.4006 75.983L55.291 76.403L54.512 76.5163L54.2436 76.5563H54.4989L55.2779 76.463L58.4071 76.0763V76.043C58.4071 66.7568 58.4071 41.4912 58.4726 11.7592V11.6526H54.2305V11.7592C54.2305 29.8651 54.2305 46.0844 54.2763 57.7572C54.2763 63.5836 54.2763 68.29 54.2763 71.5432C54.2763 73.1565 54.2763 74.4098 54.2763 75.2697C54.2763 75.6897 54.2763 76.0097 54.2763 76.2297C54.2763 76.4497 54.3287 76.523 54.3287 76.523Z"
@@ -3524,8 +3414,15 @@ const Home: NextPage = () => {
         </div>
       </div>
 
+      {/* <!-- recent posts --> */}
+
        {/* <!-- recent posts --> */}
-       <div className="mx-auto md:px-20">
+       <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="mx-auto sm:px-10 lg:px-20"
+      >
         {/* <!-- recent posts --> */}
         <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
           <h2 className="font-bold text-3xl">Latest on Scout</h2>
@@ -3533,22 +3430,20 @@ const Home: NextPage = () => {
             View all
           </a>
         </div>
-        <div className="block space-x-0 lg:flex lg:space-x-6">
+        <div className="block space-x-0 flex lg:space-x-6">
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
             <img
-              src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
-              className="rounded"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYCFWlY5LgkkD2QAkQ6RIXHuYDJpu5RTXFg&usqp=CAU"
+              className="rounded w-full"
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
                 Put all speaking her delicate recurred possible.
               </h2>
               <p className="text-gray-700 mt-2">
                 Set indulgence inquietude discretion insensible bed why
-                announcing. Middleton fat two satisfied additions. So continued
-                he or commanded household smallness delivered. Door poor on do
-                walk in half. Roof his head the what.
+                announcing. Middleton fat two satisfied additions. 
               </p>
 
               <a
@@ -3563,18 +3458,17 @@ const Home: NextPage = () => {
 
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
             <img
-              src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
-              className="rounded"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStohCvtIt7EAC57otkuzuh2kvFNkEuiUa-1g&usqp=CAU"
+              className="rounded w-full"
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
                 Is at purse tried jokes china ready decay an.{" "}
               </h2>
-              <p className="text-gray-700 mt-2">
+              <p className="text-gray-700 mt-2 ">
                 Small its shy way had woody downs power. To denoting admitted
-                speaking learning my exercise so in. Procured shutters mr it
-                feelings. To or three offer house begin taken am at.
+                speaking learning my exercise so in. 
               </p>
 
               <a
@@ -3589,19 +3483,18 @@ const Home: NextPage = () => {
 
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
             <img
-              src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
-              className="rounded"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbPzQlLjiwL1j51gAhRYFr3BGkrALrqVF-Q&usqp=CAU"
+              className="rounded w-full"
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
                 As dissuade cheerful overcame so of friendly he indulged
                 unpacked.
               </h2>
               <p className="text-gray-700 mt-2">
                 Alteration connection to so as collecting me. Difficult in
-                delivered extensive at direction allowance. Alteration put use
-                diminution can considered sentiments interested discretion.
+                delivered extensive at direction allowance. 
               </p>
 
               <a
@@ -3615,7 +3508,8 @@ const Home: NextPage = () => {
           </div>
         </div>
         {/* <!-- end recent posts --> */}
-      </div>
+      </motion.div>
+
     </GuestLayout>
   );
 };
