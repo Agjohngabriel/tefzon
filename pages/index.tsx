@@ -24,7 +24,18 @@ const Home: NextPage = () => {
   const goToLogin = () => {
     Router.push("/account/auth/login");
   };
-
+  const goToNews = () => {
+    Router.push("/account/home/news");
+  };
+  const goToScout = () => {
+    Router.push("/account/home/scout");
+  };
+  const goToFixtures = () => {
+    Router.push("/account/home/fixtures");
+  };
+  const goToStats = () => {
+    Router.push("/account/auth/statistics");
+  };
   const [text, count] = useTypewriter({
     words: ["TO PLAY WITH PLEASURE"],
     loop: true,
@@ -330,7 +341,7 @@ const Home: NextPage = () => {
             </div>
 
             <button
-              title="Submit"
+               onClick={goToFixtures}
               className="block w-full py-3 px-6 text-center rounded-xl transition  active:text-purple-800 focus:text-indigo-600"
             >
               <div className="flex text-purple-700 font-arcon text-xs font-semibold px-5 justify-end">
@@ -589,7 +600,7 @@ const Home: NextPage = () => {
               </tbody>
             </table>
             <button
-              title="Submit"
+               onClick={goToStats}
               className="block w-full py-4 px-6 text-center rounded-xl transition  active:text-purple-800 focus:text-indigo-600"
             >
               <div className="flex text-purple-700 font-arcon text-xs font-semibold px-5 justify-end">
@@ -781,9 +792,9 @@ const Home: NextPage = () => {
         {/* <!-- recent posts --> */}
         <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
           <h2 className="font-bold text-3xl">Latest news</h2>
-          <a className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
+          <button  onClick={goToNews} className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
             View all
-          </a>
+          </button>
         </div>
         <div className="block space-x-0 flex lg:space-x-6">
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
@@ -3426,9 +3437,9 @@ const Home: NextPage = () => {
         {/* <!-- recent posts --> */}
         <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
           <h2 className="font-bold text-3xl">Latest on Scout</h2>
-          <a className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
+          <button  onClick={goToScout} className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
             View all
-          </a>
+          </button>
         </div>
         <div className="block space-x-0 flex lg:space-x-6">
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
