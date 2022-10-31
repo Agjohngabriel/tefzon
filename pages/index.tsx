@@ -796,7 +796,7 @@ const Home: NextPage = () => {
             View all
           </button>
         </div>
-        <div className="block space-x-0 flex-col md:flex-row lg:space-x-6">
+        <div className="block space-x-0 flex flex-col md:flex-row lg:space-x-6">
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYCFWlY5LgkkD2QAkQ6RIXHuYDJpu5RTXFg&usqp=CAU"
@@ -3441,7 +3441,7 @@ const Home: NextPage = () => {
             View all
           </button>
         </div>
-        <div className="block space-x-0 flex-col md:flex-row lg:space-x-6">
+        <div className="block space-x-0 flex flex-col md:flex-row lg:space-x-6">
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYCFWlY5LgkkD2QAkQ6RIXHuYDJpu5RTXFg&usqp=CAU"

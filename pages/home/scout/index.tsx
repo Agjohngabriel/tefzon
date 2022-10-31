@@ -38,8 +38,8 @@ const Index = () => {
             </div>
 
             <div className="flex-shrink max-w-full w-full lg:w-1/2">
-              <div className="box-one flex flex-row flex-wrap">
-                <article className="flex-shrink max-w-full w-full sm:w-1/2">
+              <div className="box-one  flex flex-row flex-wrap">
+                <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
                   <div className="relative hover-img max-h-48 overflow-hidden">
                     <a href="#">
                       <img
@@ -64,7 +64,7 @@ const Index = () => {
                     </div>
                   </div>
                 </article>
-                <article className="flex-shrink max-w-full w-full sm:w-1/2">
+                <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
                   <div className="relative hover-img max-h-48 overflow-hidden">
                     <a href="#">
                       <img
@@ -89,7 +89,7 @@ const Index = () => {
                     </div>
                   </div>
                 </article>
-                <article className="flex-shrink max-w-full w-full sm:w-1/2">
+                <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
                   <div className="relative hover-img max-h-48 overflow-hidden">
                     <a href="#">
                       <img
@@ -113,7 +113,7 @@ const Index = () => {
                     </div>
                   </div>
                 </article>
-                <article className="flex-shrink max-w-full w-full sm:w-1/2">
+                <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
                   <div className="relative hover-img max-h-48 overflow-hidden">
                     <a href="#">
                       <img
