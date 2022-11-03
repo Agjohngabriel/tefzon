@@ -1,12 +1,11 @@
 const GuestBreadCrumb = () => {
   return (
     <div>
-      <div className="bg-violet-500  lg:pt-[20px] md:pt-[5px] pt-3 justify-between">
-
-        <div className="flex justify-between ">
-          <div className="ml-8 sm:ml-20 w-1/2 mt-2 sm:mt-16  lg:mb-12">
-            <h2 className="font-oswald text-gray-100 font-bold text-xl sm:text-2xl lg:text-5xl tracking-tighter leading-tight">
-            Tefzon Fantasy
+      <div className="bg-violet-500  lg:pt-[20px] md:pt-[5px] pt-3  justify-between relative overflow-hidden ">
+        <div className="flex justify-between  ">
+          <div className="ml-8 sm:ml-20 w-1/2 mt-2 sm:mt-16 md:mt-12 lg:mb-12 ">
+            <h2 className="font-oswald text-gray-100 font-bold text-xl sm:text-2xl lg:text-5xl tracking-tighter leading-tight  ">
+              Tefzon Fantasy
             </h2>
           </div>
           <div className="w-1/2 justify-end ">
@@ -14,11 +13,15 @@ const GuestBreadCrumb = () => {
               <img
                 src="/img/soccer 3 3.png"
                 alt="soccer"
-                className="relative animate-pulse "
+                className="relative animate-pulse z-50"
               />
             </div>
           </div>
         </div>
+        {/* <div className="absolute -bottom-32 -left-40  w-60 md:w-80 h-60 md:h-80 border-2 md: rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -bottom-40 -left-20  w-60 md:w-80 h-60 md:h-80 border-2 md: rounded-full border-opacity-30 border-t-8"></div> */}
+        <div className="absolute -top-40 -right-0 w-60 md:w-80 h-60 md:h-80 border-2 md:border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -top-20 -right-20 w-60 md:w-80 h-60 md:h-80 border-2 md:border-4 rounded-full border-opacity-30 border-t-8"></div>
       </div>
 
       <div>
