@@ -20,6 +20,9 @@ const Index = () => {
   const goToPoints = () => {
     Router.push("/home/points");
   };
+  const goToUpdateProfile = () => {
+    Router.push("/home/account/update");
+  };
   return (
     <Layout>
       <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
@@ -30,7 +33,10 @@ const Index = () => {
               <div className="rounded-xl ">
                 <div className="grid grid-cols-1 gap-6   grid-cols-2 mt-6">
                   {/* <!-- Start Navitem --> */}
-                  <button onClick={goToSquad} className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer">
+                  <button
+                    onClick={goToSquad}
+                    className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
+                  >
                     <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-users fa-sm text-indigo-600"></i>
                     </div>
@@ -40,7 +46,10 @@ const Index = () => {
                   </button>
                   {/* <!-- End Navitem -->
                 <!-- Start Navitem --> */}
-                  <button  onClick={goToLeagues} className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer">
+                  <button
+                    onClick={goToLeagues}
+                    className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
+                  >
                     <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-futbol fa-sm text-indigo-600"></i>
                     </div>
@@ -50,7 +59,10 @@ const Index = () => {
                   </button>
                   {/* <!-- End Navitem -->
                 <!-- Start Navitem --> */}
-                  <button  onClick={goToWallet} className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer">
+                  <button
+                    onClick={goToWallet}
+                    className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
+                  >
                     <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-wallet fa-xl text-indigo-600"></i>
                     </div>
@@ -60,7 +72,10 @@ const Index = () => {
                   </button>
                   {/* <!-- End Navitem -->
                 <!-- Start Navitem --> */}
-                  <button  onClick={goToPoints} className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer">
+                  <button
+                    onClick={goToPoints}
+                    className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
+                  >
                     <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-bullseye fa-sm text-indigo-600"></i>
                     </div>
@@ -70,7 +85,10 @@ const Index = () => {
                   </button>
                   {/* <!-- End Navitem -->
                 <!-- Start Navitem --> */}
-                  <button  onClick={goToTransfer} className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer">
+                  <button
+                    onClick={goToTransfer}
+                    className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
+                  >
                     <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-handshake fa-sm text-indigo-600"></i>
                     </div>
@@ -80,7 +98,10 @@ const Index = () => {
                   </button>
                   {/* <!-- End Navitem -->
                  <!-- Start Navitem --> */}
-                  <button  onClick={goToFixtures} className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer">
+                  <button
+                    onClick={goToFixtures}
+                    className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
+                  >
                     <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
                       <i className="fa fa-table fa-sm text-indigo-600"></i>
                     </div>
@@ -153,11 +174,11 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div className="flex space-x-2 items-center">
+                <button onClick={goToUpdateProfile} className="flex space-x-2 items-center">
                   <div className="bg-gray-300 rounded-md p-2 flex items-center">
                     <i className="fas fa-chevron-right fa-sm text-black"></i>
                   </div>
-                </div>
+                </button>
               </div>
               {/* <!-- End Card List --> */}
             </div>

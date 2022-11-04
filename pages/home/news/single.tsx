@@ -121,32 +121,48 @@ const Index = () => {
           </div>
 
           <div className="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
-            <div className="p-4 border-t border-b md:border md:rounded">
-              <div className="flex py-2">
-                <img
-                  src="https://randomuser.me/api/portraits/men/97.jpg"
-                  className="h-10 w-10 rounded-full mr-2 object-cover"
-                  alt=""
-                />
-                <div>
-                  <p className="font-semibold text-gray-700 text-sm">
-                    {" "}
-                    Mike Sullivan{" "}
-                  </p>
-                  <p className="font-semibold text-gray-600 text-xs">
-                    {" "}
-                    Editor{" "}
-                  </p>
-                </div>
-              </div>
-              <p className="text-gray-700 py-3">
-                Mike writes about technology Yourself required no at thoughts
-                delicate landlord it be. Branched dashwood do is whatever it.
-              </p>
-              <button className="px-2 py-1 text-gray-100 bg-green-700 flex w-full items-center justify-center rounded">
-                Follow
-                <i className="bx bx-user-plus ml-2"></i>
-              </button>
+            <div className="py-8 shadow px-3">
+              <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
+                Headlines
+              </h5>
+              <ul>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
+                    Emery appointed as new Aston Villa manager
+                  </a>
+                </li>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base  transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
+                    Pep jokes Haaland must lay off carbs during WC
+                  </a>
+                </li>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
+                    Man Utd legend Carrick named new 'Boro boss
+                  </a>
+                </li>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
+                    Ukraine's top club want Iran out of World Cup
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
