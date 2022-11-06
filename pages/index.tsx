@@ -28,13 +28,13 @@ const Home: NextPage = () => {
     Router.push("/account/home/news");
   };
   const goToScout = () => {
-    Router.push("/account/home/scout");
+    Router.push("/home/scout");
   };
   const goToFixtures = () => {
-    Router.push("/account/home/fixtures");
+    Router.push("/home/fixtures");
   };
   const goToStats = () => {
-    Router.push("/account/auth/statistics");
+    Router.push("/home/statistics");
   };
   const [text, count] = useTypewriter({
     words: ["TO PLAY WITH PLEASURE"],

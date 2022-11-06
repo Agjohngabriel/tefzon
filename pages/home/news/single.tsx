@@ -5,45 +5,25 @@ const Index = () => {
   return (
     <Layout>
       <main className="pt-10">
-        <div className="mb-4 md:mb-0 w-full max-w-screen-lg mx-auto relative">
-          <div
-            className="absolute left-0 bottom-0 w-full h-full z-10"
-            style={{
-              ["background-image" as any]:
-                "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
-            }}
-          ></div>
-          <img
-            src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
-            className="absolute left-0 top-0 w-full h-full z-0 object-cover"
-            alt=""
-          />
-          <div className="p-4 absolute bottom-0 left-0 z-20">
-            <a
-              href="#"
-              className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2"
-            >
-              Nutrition
-            </a>
-            <h2 className="text-4xl font-semibold text-gray-100 leading-tight">
+        <div className="mb-4 md:mb-0 w-full mx-auto relative px-10 lg:px-28">
+          <div className="px-4 lg:px-0">
+            <h2 className="text-4xl font-semibold text-gray-800 leading-tight">
               Pellentesque a consectetur velit, ac molestie ipsum. Donec
               sodales, massa et auctor.
             </h2>
-            <div className="flex mt-3">
-              <img
-                src="https://randomuser.me/api/portraits/men/97.jpg"
-                className="h-10 w-10 rounded-full mr-2 object-cover"
-                alt=""
-              />
-              <div>
-                <p className="font-semibold text-gray-200 text-sm">
-                  {" "}
-                  Mike Sullivan{" "}
-                </p>
-                <p className="font-semibold text-gray-400 text-xs"> 14 Aug </p>
-              </div>
-            </div>
+            <a
+              href="#"
+              className="py-2 text-green-700 inline-flex items-center justify-center mb-2"
+            >
+              Cryptocurrency
+            </a>
           </div>
+
+          <img
+            src="https://images.unsplash.com/photo-1587614387466-0a72ca909e16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+            alt=""
+            className="w-full object-cover lg:rounded h-[12em]"
+          />
         </div>
 
         <div className="flex flex-col lg:flex-row lg:space-x-12 mx-auto px-28 ">
@@ -141,32 +121,48 @@ const Index = () => {
           </div>
 
           <div className="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
-            <div className="p-4 border-t border-b md:border md:rounded">
-              <div className="flex py-2">
-                <img
-                  src="https://randomuser.me/api/portraits/men/97.jpg"
-                  className="h-10 w-10 rounded-full mr-2 object-cover"
-                  alt=""
-                />
-                <div>
-                  <p className="font-semibold text-gray-700 text-sm">
-                    {" "}
-                    Mike Sullivan{" "}
-                  </p>
-                  <p className="font-semibold text-gray-600 text-xs">
-                    {" "}
-                    Editor{" "}
-                  </p>
-                </div>
-              </div>
-              <p className="text-gray-700 py-3">
-                Mike writes about technology Yourself required no at thoughts
-                delicate landlord it be. Branched dashwood do is whatever it.
-              </p>
-              <button className="px-2 py-1 text-gray-100 bg-green-700 flex w-full items-center justify-center rounded">
-                Follow
-                <i className="bx bx-user-plus ml-2"></i>
-              </button>
+            <div className="py-8 shadow px-3">
+              <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
+                Headlines
+              </h5>
+              <ul>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
+                    Emery appointed as new Aston Villa manager
+                  </a>
+                </li>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base  transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
+                    Pep jokes Haaland must lay off carbs during WC
+                  </a>
+                </li>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
+                    Man Utd legend Carrick named new 'Boro boss
+                  </a>
+                </li>
+                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
+                  <a
+                    href="#"
+                    className="flex items-center text-gray-600 cursor-pointer"
+                  >
+                    <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
+                    Ukraine's top club want Iran out of World Cup
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
