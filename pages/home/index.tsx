@@ -1,5 +1,6 @@
 import Router from "next/router";
-import Layout from "../../components/Layouts";
+import MainLayout from "../../components/MainLayout";
+
 
 const Index = () => {
   const goToSquad = () => {
@@ -24,7 +25,7 @@ const Index = () => {
     Router.push("/home/account/update");
   };
   return (
-    <Layout>
+    <MainLayout>
       <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
         <div className=" container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto   px-4 py-6  w-auto">
           <div className="grid grid-cols-12 gap-0">
@@ -185,7 +186,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </MainLayout>
   );
 };
 
