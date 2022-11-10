@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Layout from "../../../../components/Layouts";
+import MainLayout from "../../../../components/MainLayout";
 
 const Fund = () => {
   return (
-    <Layout>
+    <MainLayout>
       <div className="inline-flex rounded -ml-1">
         <Link href="/home" passHref>
           <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
@@ -261,7 +261,7 @@ const Fund = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </MainLayout>
   );
 };
 

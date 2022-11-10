@@ -33,7 +33,7 @@ const WalletWithdraw = () => {
         <div className="md:flex">
           <div className="container max-w-3xl h-3/4  bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 md:w-3/5 sm:ml-4 lg:ml-24 mt-10 mb-20  px-2 py-6 lg:px-10  w-auto">
             <div className="flex flex-col  pt-10 space-y-4 max-w-2xl mx-2">
-              <h1 className="font-montserrat text-2xl text-[#333333] w-4/6 ">
+              <h1 className="font-montserrat text-2xl font-medium text-[#333333] w-4/6 ">
                 Withdraw Money
               </h1>
               <p className="text-sm font-arcon text-black-150 opacity-60 mb-20 lg:w-5/6">
@@ -44,7 +44,7 @@ const WalletWithdraw = () => {
               <p className="text-sm  font-arcon text-black-150 opacity-60 mb-20 w-5/6">
                 Withdraw money from Tefzone wallet
               </p>
-              <div className="sm:w-3/5 md:w-full lg:w-4/5  xl:w-3/5 h-48  bg-[#5F5999] rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-110">
+              <div className="sm:w-3/5 md:w-full lg:w-4/5  xl:w-3/5 h-40  bg-[#5F5999] rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-110">
                 <img
                   className="relative object-cover w-full h-full rounded-xl"
                   src="/img/cardbg.png"
@@ -62,18 +62,6 @@ const WalletWithdraw = () => {
                       ₦5,000
                     </p>
                   </div>
-                  <div className="pt-8 pr-6">
-                    <div className="flex justify-between">
-                      <div className="">
-                        <p className="font-arcon opacity-50 text-xs mb-3">
-                          Number
-                        </p>
-                        <p className="font-montserrat opacity-80 tracking-wider text-sm">
-                          1234 5678 9012 9012
-                        </p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -83,9 +71,8 @@ const WalletWithdraw = () => {
                     To
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <select className="form-select w-full px-3 py-2 text-sm  font-arcon text-black-150 opacity-100 rounded-md focus:outline-none bg-white focus:border-indigo-500 transition-colors cursor-pointer">
-                      <option value="">Select Bank</option>
-                      <option value="04">Prefer not to state</option>
+                    <select className="form-select w-full px-3 py-2 text-sm  font-arcon text-black-150 opacity-100 rounded-md focus:outline-none bg-white focus:border-indigo-500 transition-colors cursor-pointer border border-gray-100">
+                      <option value="">Select Bank</option>                      
                     </select>
                   </div>
                 </div>
@@ -149,248 +136,107 @@ const WalletWithdraw = () => {
               <h1 className="font-montserrat text-2xl  text-white  mt-5 py-4 ">
                 Recent Transactions
               </h1>
-              <div className="  px-1  ">
-                <div className="bg-gray-100 rounded-sm border shadow-xl p-5 w-full pb-10 ">
-                  <div className="flex items-center border-b border-gray-300 py-3">
-                    <div className="flex items-start justify-between w-full ">
-                      <div className=" w-full">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-sm font-montserrat leading-5 text-black-150 opacity-90"
-                        >
-                          Deposite
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal font-arcon text-black-150 opacity-60 pt-1"
-                        >
-                          To: Tefzone wallet
-                        </p>
-                      </div>
+              <div className="max-w-md w-full h-full mx-auto z-10 bg-blue-900 rounded-3xl">
+                <div className="flex flex-col">
+                  <div className="bg-white relative drop-shadow-2xl  rounded-3xl p-4 m-4">
+                    <div className="flex-none sm:flex">
+                      <div className="flex-auto justify-evenly">
+                        <div className="border-b border-dashed border-b-2 my-3"></div>
+                        {/* Transaction History */}
+                        <div className="details">
+                          <div className="flex items-center py-1 px-2 text-sm">
+                            <div className="flex flex-col">
+                              <span className="text-sm">Deposit</span>
+                              <div className="flex-auto text-xs text-gray-400 my-1">
+                                <span className=" ">To: Tefzone wallet</span>
+                              </div>
+                            </div>
+                            <div className="flex flex-col ml-auto text-right">
+                              <span className="text-sm">₦5,000</span>
+                              <div className="flex-auto text-xs text-gray-400 my-1">
+                                <span className=" "> 10/08/2021</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="border-b border-dashed border-b-2 my-1 ">
+                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
+                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
+                          </div>
+                        </div>
 
-                      <div className=" pl-20 lg:pl-24 w-full text-right">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
+                        <div className="details">
+                          <div className="flex items-center py-1 px-2 text-sm">
+                            <div className="flex flex-col">
+                              <span className="text-sm">Deposit</span>
+                              <div className="flex-auto text-xs text-gray-400 my-1">
+                                <span className=" ">To: Tefzone wallet</span>
+                              </div>
+                            </div>
+                            <div className="flex flex-col ml-auto text-right">
+                              <span className="text-sm">₦5,000</span>
+                              <div className="flex-auto text-xs text-gray-400 my-1">
+                                <span className=" "> 10/08/2021</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="border-b border-dashed border-b-2 my-1 ">
+                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
+                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
+                          </div>
+                        </div>
+                        <div className="details">
+                          <div className="flex items-center py-1 px-2 text-sm">
+                            <div className="flex flex-col">
+                              <span className="text-sm">Deposit</span>
+                              <div className="flex-auto text-xs text-gray-400 my-1">
+                                <span className=" ">To: Tefzone wallet</span>
+                              </div>
+                            </div>
+                            <div className="flex flex-col ml-auto text-right">
+                              <span className="text-sm">₦5,000</span>
+                              <div className="flex-auto text-xs text-gray-400 my-1">
+                                <span className=" "> 10/08/2021</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="border-b border-dashed border-b-2 my-1 ">
+                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
+                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
+                          </div>
+                        </div>
+                        <div className="details">
+                          <div className="flex items-center py-1 px-2 text-sm">
+                            <div className="flex flex-col">
+                              <span className="text-sm">Deposit</span>
+                              <div className="flex-auto text-xs text-gray-400 my-1">
+                                <span className=" ">To: Tefzone wallet</span>
+                              </div>
+                            </div>
+                            <div className="flex flex-col ml-auto text-right">
+                              <span className="text-sm">₦5,000</span>
+                              <div className="flex-auto text-xs text-gray-400 my-1">
+                                <span className=" "> 10/08/2021</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="border-b border-dashed border-b-2 my-1 ">
+                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
+                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          className="flex items-center text-[#4D44B5] text-md font-medium font-montserrat rounded  py-5 focus:outline-none"
                         >
-                          ₦5,000
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal pt-1 font-arcon text-black-150 opacity-60"
-                        >
-                          10/08/2021
-                        </p>
+                          Load more
+                          <span className="ml-2 material-icons hover:text-blue-500">
+                            arrow_forward
+                          </span>
+                        </button>
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center border-b border-gray-300 py-3">
-                    <div className="flex items-start justify-between w-full ">
-                      <div className=" w-full">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-sm font-montserrat leading-5 text-black-150 opacity-90"
-                        >
-                          Deposite
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal font-arcon text-black-150 opacity-60 pt-1"
-                        >
-                          To: Tefzone wallet
-                        </p>
-                      </div>
-
-                      <div className=" pl-20 lg:pl-24 w-full text-right">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
-                        >
-                          ₦5,000
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal pt-1 font-arcon text-black-150 opacity-60"
-                        >
-                          10/08/2021
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center border-b border-gray-300 py-3">
-                    <div className="flex items-start justify-between w-full ">
-                      <div className=" w-full">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-sm font-montserrat leading-5 text-black-150 opacity-90"
-                        >
-                          Deposite
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal font-arcon text-black-150 opacity-60 pt-1"
-                        >
-                          To: Tefzone wallet
-                        </p>
-                      </div>
-
-                      <div className=" pl-20 lg:pl-24 w-full text-right">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
-                        >
-                          ₦5,000
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal pt-1 font-arcon text-black-150 opacity-60"
-                        >
-                          10/08/2021
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center border-b border-gray-300 py-3">
-                    <div className="flex items-start justify-between w-full ">
-                      <div className=" w-full">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-sm font-montserrat leading-5 text-black-150 opacity-90"
-                        >
-                          Deposite
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal font-arcon text-black-150 opacity-60 pt-1"
-                        >
-                          To: Tefzone wallet
-                        </p>
-                      </div>
-
-                      <div className=" pl-20 lg:pl-24 w-full text-right">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
-                        >
-                          ₦5,000
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal pt-1 font-arcon text-black-150 opacity-60"
-                        >
-                          10/08/2021
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center border-b border-gray-300 py-3">
-                    <div className="flex items-start justify-between w-full ">
-                      <div className=" w-full">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-sm font-montserrat leading-5 text-black-150 opacity-90"
-                        >
-                          Deposite
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal font-arcon text-black-150 opacity-60 pt-1"
-                        >
-                          To: Tefzone wallet
-                        </p>
-                      </div>
-
-                      <div className=" pl-20 lg:pl-24 w-full text-right">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
-                        >
-                          ₦5,000
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal pt-1 font-arcon text-black-150 opacity-60"
-                        >
-                          10/08/2021
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center border-b border-gray-300 py-3">
-                    <div className="flex items-start justify-between w-full ">
-                      <div className=" w-full">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-sm font-montserrat leading-5 text-black-150 opacity-90"
-                        >
-                          Deposite
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal font-arcon text-black-150 opacity-60 pt-1"
-                        >
-                          To: Tefzone wallet
-                        </p>
-                      </div>
-
-                      <div className=" pl-20 lg:pl-24 w-full text-right">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
-                        >
-                          ₦5,000
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal pt-1 font-arcon text-black-150 opacity-60"
-                        >
-                          10/08/2021
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center border-b border-gray-300 py-3">
-                    <div className="flex items-start justify-between w-full ">
-                      <div className=" w-full">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-sm font-montserrat leading-5 text-black-150 opacity-90"
-                        >
-                          Deposite
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal font-arcon text-black-150 opacity-60 pt-1"
-                        >
-                          To: Tefzone wallet
-                        </p>
-                      </div>
-
-                      <div className=" pl-20 lg:pl-24 w-full text-right">
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none  text-sm leading-5 font-arcon text-black-150 opacity-90"
-                        >
-                          ₦5,000
-                        </p>
-                        <p
-                          tabIndex={0}
-                          className="focus:outline-none text-xs leading-normal pt-1 font-arcon text-black-150 opacity-60"
-                        >
-                          10/08/2021
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    className="flex items-center text-[#4D44B5] text-md font-montserrat rounded  py-5 focus:outline-none"
-                  >
-                    Load more
-                    <span className="ml-2 material-icons hover:text-blue-500">
-                      arrow_forward
-                    </span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -398,30 +244,6 @@ const WalletWithdraw = () => {
         </div>
       </div>
 
-      <div className="container mb-5 mx-auto">
-        <hr className="mt-20  rounded-lg border-b-2 border-violet-500 mx-3" />
-
-        <div className="mx-3  flex mb-5">
-          <div className="rounded-2xl bg-gray-200 border mt-5  lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-          <div className="rounded-2xl bg-gray-200 border  mt-5 lg:ml-10 ml-3 lg:py-5 px-3 w-3/6 h-14 lg:h-24">
-            {" "}
-          </div>
-        </div>
-      </div>
     </MainLayout>
   );
 };
