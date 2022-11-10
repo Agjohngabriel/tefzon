@@ -2,7 +2,6 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Layout from "../../../../components/Layouts";
 import MainLayout from "../../../../components/MainLayout";
 
 const Index = () => {
@@ -33,7 +32,7 @@ const Index = () => {
     getFavourites();
   }, [session]);
   return (
-    <Layout>
+    <MainLayout>
       <div className="inline-flex rounded -ml-1">
         <Link href="/home" passHref>
           <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2  ">
@@ -63,7 +62,7 @@ const Index = () => {
                 injected.
               </p>
 
-              <div className="sm:w-3/5 md:w-full lg:w-4/5  xl:w-3/5 h-48  bg-[#5F5999] rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-110">
+              <div className="sm:w-3/5 md:w-full lg:w-4/5  xl:w-3/5 h-40   bg-[#5F5999] rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-110">
                 <img
                   className="relative object-cover w-full h-full rounded-xl"
                   src="/img/cardbg.png"
@@ -250,7 +249,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </MainLayout>
   );
 };
 
