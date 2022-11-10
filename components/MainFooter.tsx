@@ -3,7 +3,9 @@ import Link from "next/link";
 
 export default function MainFooter() {
   return (
-    <footer className="bg-violet-500 pt-20 lg:pt-[120px]  relative z-10">
+    <footer className="
+    // bg-violet-500 
+    bg-gradient-to-r from-violet-500  via-indigo-600  to-violet-500  pt-20 lg:pt-[120px]  relative z-10">
       <div className="flex flex-wrap mx-auto md:mx-5 lg:mx-12">
         <div className="w-full sm:w-3/12 lg:w-3/12 px-4">
           <div className="w-full mb-10">
