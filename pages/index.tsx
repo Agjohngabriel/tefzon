@@ -6,6 +6,7 @@ import Button from "../components/base/Button";
 import GuestLayout from "../components/GuestLayout";
 import SlashScreen from "../components/SlashScreen";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const Home: NextPage = () => {
   // Loading state
@@ -16,6 +17,16 @@ const Home: NextPage = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+
+    const fetchAll = async () => {
+      // setIsLoading(true);
+      const res = await axios.get(
+        `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+      );
+      const response = await res.data;
+      setIsLoading(false);
+      console.log(response);
+    };
   }, []);
 
   const goToRegister = () => {
@@ -341,7 +352,7 @@ const Home: NextPage = () => {
             </div>
 
             <button
-               onClick={goToFixtures}
+              onClick={goToFixtures}
               className="block w-full py-3 px-6 text-center rounded-xl transition  active:text-purple-800 focus:text-indigo-600"
             >
               <div className="flex text-purple-700 font-arcon text-xs font-semibold px-5 justify-end">
@@ -600,7 +611,7 @@ const Home: NextPage = () => {
               </tbody>
             </table>
             <button
-               onClick={goToStats}
+              onClick={goToStats}
               className="block w-full py-4 px-6 text-center rounded-xl transition  active:text-purple-800 focus:text-indigo-600"
             >
               <div className="flex text-purple-700 font-arcon text-xs font-semibold px-5 justify-end">
@@ -792,7 +803,10 @@ const Home: NextPage = () => {
         {/* <!-- recent posts --> */}
         <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
           <h2 className="font-bold text-3xl">Latest news</h2>
-          <button  onClick={goToNews} className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
+          <button
+            onClick={goToNews}
+            className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer"
+          >
             View all
           </button>
         </div>
@@ -809,7 +823,7 @@ const Home: NextPage = () => {
               </h2>
               <p className="text-gray-700 mt-2">
                 Set indulgence inquietude discretion insensible bed why
-                announcing. Middleton fat two satisfied additions. 
+                announcing. Middleton fat two satisfied additions.
               </p>
 
               <a
@@ -834,7 +848,7 @@ const Home: NextPage = () => {
               </h2>
               <p className="text-gray-700 mt-2 ">
                 Small its shy way had woody downs power. To denoting admitted
-                speaking learning my exercise so in. 
+                speaking learning my exercise so in.
               </p>
 
               <a
@@ -860,7 +874,7 @@ const Home: NextPage = () => {
               </h2>
               <p className="text-gray-700 mt-2">
                 Alteration connection to so as collecting me. Difficult in
-                delivered extensive at direction allowance. 
+                delivered extensive at direction allowance.
               </p>
 
               <a
@@ -3427,8 +3441,8 @@ const Home: NextPage = () => {
 
       {/* <!-- recent posts --> */}
 
-       {/* <!-- recent posts --> */}
-       <motion.div
+      {/* <!-- recent posts --> */}
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -3437,7 +3451,10 @@ const Home: NextPage = () => {
         {/* <!-- recent posts --> */}
         <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
           <h2 className="font-bold text-3xl">Latest on Scout</h2>
-          <button  onClick={goToScout} className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
+          <button
+            onClick={goToScout}
+            className="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer"
+          >
             View all
           </button>
         </div>
@@ -3454,7 +3471,7 @@ const Home: NextPage = () => {
               </h2>
               <p className="text-gray-700 mt-2">
                 Set indulgence inquietude discretion insensible bed why
-                announcing. Middleton fat two satisfied additions. 
+                announcing. Middleton fat two satisfied additions.
               </p>
 
               <a
@@ -3479,7 +3496,7 @@ const Home: NextPage = () => {
               </h2>
               <p className="text-gray-700 mt-2 ">
                 Small its shy way had woody downs power. To denoting admitted
-                speaking learning my exercise so in. 
+                speaking learning my exercise so in.
               </p>
 
               <a
@@ -3505,7 +3522,7 @@ const Home: NextPage = () => {
               </h2>
               <p className="text-gray-700 mt-2">
                 Alteration connection to so as collecting me. Difficult in
-                delivered extensive at direction allowance. 
+                delivered extensive at direction allowance.
               </p>
 
               <a
@@ -3520,7 +3537,6 @@ const Home: NextPage = () => {
         </div>
         {/* <!-- end recent posts --> */}
       </motion.div>
-
     </GuestLayout>
   );
 };

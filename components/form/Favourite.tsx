@@ -31,10 +31,11 @@ const Favourite = (props: {
     const fetchAll = async () => {
       setIsLoading(true);
       const res = await axios.get(
-        `${process.env.BACKEND_URL}/get/league/teams/`,
+        `${process.env.SPORTS_URL}/leagues?api_token=${process.env.SPORTS_APIKEY}`
       );
       const response = await res.data;
       setIsLoading(false);
+      console.log(response)
       return response;
     };
 
