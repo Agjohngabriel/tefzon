@@ -14,9 +14,8 @@ const FavouriteLeague = (props: {
   updateFormData: any;
 }) => {
   const [favouriteleague, setFavouriteleague] = useState(new Set());
-  const [leagues, setLeagues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [leagues, setLeagues] = useState([]);
   const selectFavourite = ({ id, name, logo_path }: FavouriteLeague) => {
     setFavouriteleague((favouriteleague) => {
       favouriteleague = new Set(favouriteleague);
@@ -24,25 +23,29 @@ const FavouriteLeague = (props: {
       return favouriteleague;
     });
   };
+
   const update = () => {
     props.updateFormData({ favourite_leauge: favouriteleague });
   };
   useEffect(() => {
     const fetchAll = async () => {
       setIsLoading(true);
-      const res = await axios.get(`${process.env.BACKEND_URL}/get/leagues`);
+      const res = await axios.get(
+        `${process.env.SPORTS_URL}/leagues?api_token=${process.env.SPORTS_APIKEY}`
+      );
 
-      const response = await res.data;
+      const response = await res.data.data;
       setIsLoading(false);
       return response;
     };
 
-    // const getFavourites = async () => {
-    //   const FavouritesFromApi = await fetchAll();
-    //   setLeagues(FavouritesFromApi);
-    // };
+    const getFavourites = async () => {
+      const FavouritesFromApi = await fetchAll();
+      console.log(FavouritesFromApi);
+      setLeagues(FavouritesFromApi);
+    };
 
-    // getFavourites();
+    getFavourites();
   }, []);
 
   return (
@@ -71,10 +74,11 @@ const FavouriteLeague = (props: {
                       //   logo_path: item.logo_path,
                       // });
                       // update();
-                      const id = item.id;
-                      
-                      const res = await axios.get(`${process.env.BACKEND_URL}/get/league/teams/87`);
-                      console.log(res.data)
+                      // const id = item.id;
+                      // const res = await axios.get(
+                      //   `${process.env.BACKEND_URL}/get/league/teams/87`
+                      // );
+                      // console.log(res.data);
                     }}
                     type="button"
                     className={`${
