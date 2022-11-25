@@ -1,7 +1,6 @@
 import Router, { useRouter } from "next/router";
 import { useState } from "react";
 import { Agreement } from "../../../components/form/Agreement";
-import Favourite from "../../../components/form/Favourite";
 import PersonalDetails from "../../../components/form/PersonalDetails";
 import GuestLayout from "../../../components/GuestLayout";
 // import axios from "axios";
@@ -116,35 +115,7 @@ const Signup = () => {
                   </div>
                 </div>
                 {/* second stepper */}
-                <div
-                  className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
-                    formStep >= 1 ? "border-[#240155]/50" : "border-gray-300"
-                  }`}
-                ></div>
-
-                <div className="flex items-center text-gray-500 relative">
-                  <div
-                    className={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 ${
-                      formStep >= 2
-                        ? "bg-[#240155]/100 border-[#240155]/100"
-                        : "border-gray-300"
-                    }`}
-                  >
-                    <svg
-                      className="w-full fill-current"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                    >
-                      <path
-                        className="heroicon-ui"
-                        d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2zm14 8V5H5v6h14zm0 2H5v6h14v-6zM8 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                {/* third stepper */}
+               
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
                     formStep >= 2 ? "border-[#240155]/50" : "border-gray-300"
@@ -185,27 +156,20 @@ const Signup = () => {
                 />
               )}
               {formStep >= 1 && (
-                <Agreement
-                  updateFormData={updateFormData}
-                  formStep={formStep}
-                  nextFormStep={nextFormStep}
-                />
-              )}
-              {formStep >= 2 && (
                 <FavouriteLeague
                   updateFormData={updateFormData}
                   formStep={formStep}
                   nextFormStep={nextFormStep}
                 />
               )}
-
-              {formStep >= 3 && (
-                <Favourite
+              {formStep >= 2 && (
+                <Agreement
                   updateFormData={updateFormData}
                   formStep={formStep}
                   nextFormStep={nextFormStep}
                 />
               )}
+              
               {/* <Button
             Onclick={() => nextFormStep}
               title="Next"
@@ -216,7 +180,7 @@ const Signup = () => {
             /> */}
 
               <div className=" pb-10 mt-2 justify-center">
-                {formStep == 3 ? (
+                {formStep == 2 ? (
                   <button
                     type="submit"
                     disabled={isSubmitting}
