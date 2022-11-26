@@ -7,15 +7,14 @@ export const Agreement = (props: {
   updateFormData: any;
 }) => {
   return (
-    <div className={`p-2 sm:p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
+    <div className={`p-2 sm:p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center pt-10 space-y-4 max-w-lg mx-auto">
-        <h1 className="font-montserrat text-lg text-gray-700 w-4/6 text-center animate-fade-in-up">
-          Subscription & Agreement
+        
+
+        <h1 className="w-4/6 text-xl font-bold text-center text-gray-700 animate-fade-in-up">
+        Subscription & Agreement
         </h1>
-        <p className="font-arcon text-sm text-gray-500 text-center w-5/6 animate-fade-in-down">
-          Please type carefully and fill out the form with Personal details. You
-          can't edit these details once you submit the form.
-        </p>
+        
       </div>
 
       <div className="mt-8 p-2 sm:p-4">
@@ -76,7 +75,7 @@ export const Agreement = (props: {
             >
               I have agreed to the
               <Link href="##" passHref>
-                <span className="text-violet-800">Terms & Conditions</span>
+                <span className="text-violet-800"> Terms & Conditions</span>
               </Link>
             </label>
           </div>

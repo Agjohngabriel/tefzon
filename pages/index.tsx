@@ -18,15 +18,21 @@ const Home: NextPage = () => {
       setIsLoading(false);
     }, 3000);
 
-    const fetchAll = async () => {
-      // setIsLoading(true);
-      const res = await axios.get(
-        `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
-      );
-      const response = await res.data;
-      setIsLoading(false);
-      console.log(response);
-    };
+      const fetchAll = async () => {
+        // setIsLoading(true);
+        const news = await axios.get(
+          `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+        );
+        const response = await news.data;
+        // for fixtures
+        // const fixture = await axios.get(
+        //   `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+        // );
+        // const fixts = await fixture.data;
+        setIsLoading(false);
+        console.log(response);
+        // console.log(fixts);
+      };
   }, []);
 
   const goToRegister = () => {
@@ -701,96 +707,7 @@ const Home: NextPage = () => {
           </a>
         </div>
 
-        <div className="block sm:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10 ">
-          {/* <!-- post cards --> */}
-          <div className="w-full  lg:w-2/3">
-            <a
-              className="block rounded w-full lg:flex mb-10"
-              href="./blog-single-1.html"
-            >
-              <div
-                className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
-                style={{
-                  ["background-image" as any]:
-                    "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQi6JWYdxOxusw0CB9sYcqJ6uM5wlb_OEmZg&usqp=CAU')",
-                }}
-                title="deit is very important"
-              ></div>
-              <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
-                <div>
-                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-xl lg:text-2xl mb-2">
-                    Aliquam venenatis nisl id purus.
-                  </div>
-                  <p className="text-gray-700 text-base">
-                    Duis euismod est quis lacus elementum, eu laoreet dolor
-                    consectetur. Pellentesque sed neque vel tellus lacinia
-                    elementum. Proin consequat ullamcorper eleifend.
-                  </p>
-                </div>
-                <div className="flex mt-3">
-                  <div>
-                    <p className="font-semibold text-gray-700 text-sm capitalize">
-                      {" "}
-                      eduard franz{" "}
-                    </p>
-                    <p className="text-gray-600 text-xs"> 14 Aug </p>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          {/* <!-- right sidebar --> */}
-          <div className="w-full sm:w-3/5 lg:w-1/3 pl-3  ">
-            {/* <!-- topics --> */}
-            <div className="py-8 shadow px-3">
-              <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
-                Top Headlines
-              </h5>
-              <ul>
-                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
-                    Emery appointed as new Aston Villa manager
-                  </a>
-                </li>
-                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base  transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
-                    Pep jokes Haaland must lay off carbs during WC
-                  </a>
-                </li>
-                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
-                    Man Utd legend Carrick named new 'Boro boss
-                  </a>
-                </li>
-                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
-                    Ukraine's top club want Iran out of World Cup
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* <!-- divider --> */}
-            <div className="border border-dotted"></div>
-          </div>
-        </div>
+        
       </main>
 
       {/* <!-- recent posts --> */}
@@ -818,21 +735,10 @@ const Home: NextPage = () => {
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-xl text-gray-800">
                 Put all speaking her delicate recurred possible.
               </h2>
-              <p className="text-gray-700 mt-2">
-                Set indulgence inquietude discretion insensible bed why
-                announcing. Middleton fat two satisfied additions.
-              </p>
-
-              <a
-                href="#"
-                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
-              >
-                {" "}
-                Read more{" "}
-              </a>
+           
             </div>
           </div>
 
@@ -843,21 +749,9 @@ const Home: NextPage = () => {
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-xl text-gray-800">
                 Is at purse tried jokes china ready decay an.{" "}
               </h2>
-              <p className="text-gray-700 mt-2 ">
-                Small its shy way had woody downs power. To denoting admitted
-                speaking learning my exercise so in.
-              </p>
-
-              <a
-                href="#"
-                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
-              >
-                {" "}
-                Read more{" "}
-              </a>
             </div>
           </div>
 
@@ -868,37 +762,41 @@ const Home: NextPage = () => {
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-xl text-gray-800">
                 As dissuade cheerful overcame so of friendly he indulged
                 unpacked.
               </h2>
-              <p className="text-gray-700 mt-2">
-                Alteration connection to so as collecting me. Difficult in
-                delivered extensive at direction allowance.
-              </p>
-
-              <a
-                href="#"
-                className="inline-block py-2 rounded text-green-900 mt-2 ml-auto"
-              >
-                {" "}
-                Read more{" "}
-              </a>
+              
+            </div>
+          </div>
+          <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbPzQlLjiwL1j51gAhRYFr3BGkrALrqVF-Q&usqp=CAU"
+              className="rounded w-full"
+              alt="technology"
+            />
+            <div className="p-4 pl-0">
+              <h2 className="font-bold text-base lg:text-xl text-gray-800">
+                As dissuade cheerful overcame so of friendly he indulged
+                unpacked.
+              </h2>
+              
             </div>
           </div>
         </div>
         {/* <!-- end recent posts --> */}
       </motion.div>
+      
 
       {/* video */}
-      <div className="py-5 flex  items-center justify-center">
+      <div className="py-10 flex  items-center justify-center">
         <div className="grid grid-cols-12 gap-6 lg:gap-5 gap-y-4 w-full px-12 lg:max-w-7xl">
           <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3">
             <div className="w-full flex flex-col">
               <div className="relative">
                 <iframe
                   className="w-full aspect-video ... rounded-lg h-auto"
-                  src="https://static.vecteezy.com/system/resources/previews/004/213/949/mp4/sport-stadium-background-flashing-lights-glowing-stadium-lights-free-video.mp4"
+                  src="https://cc.sporttube.com/embed/5ZXCCCG"
                 ></iframe>
 
                 <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
@@ -3466,7 +3364,7 @@ const Home: NextPage = () => {
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-xl text-gray-800">
                 Put all speaking her delicate recurred possible.
               </h2>
               <p className="text-gray-700 mt-2">
@@ -3491,7 +3389,7 @@ const Home: NextPage = () => {
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-xl text-gray-800">
                 Is at purse tried jokes china ready decay an.{" "}
               </h2>
               <p className="text-gray-700 mt-2 ">
@@ -3516,7 +3414,7 @@ const Home: NextPage = () => {
               alt="technology"
             />
             <div className="p-4 pl-0">
-              <h2 className="font-bold text-base lg:text-2xl text-gray-800">
+              <h2 className="font-bold text-base lg:text-xl text-gray-800">
                 As dissuade cheerful overcame so of friendly he indulged
                 unpacked.
               </h2>
