@@ -134,7 +134,7 @@ export default function MainFooter() {
               </h4>
               <ul>
                 <li>
-                  <Link href="##" passHref>
+                  <Link href="/home/privacy_policy" passHref>
                     <span
                       className="
                     font-arcon
@@ -150,7 +150,7 @@ export default function MainFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="##" passHref>
+                  <Link href="/home/terms" passHref>
                     <span
                       className="
                     font-arcon

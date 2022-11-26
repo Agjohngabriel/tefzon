@@ -45,6 +45,13 @@ const Signup = () => {
     } catch (e: any) {
       setIsSubmitting(false);
       const errorMessage = e.response.data.errors;
+      MySwal.fire({
+        title: `${errorMessage}`,
+        confirmButtonText: "Proceed to Login",
+        showLoaderOnConfirm: true,
+      })
+      console.log(errorMessage)
+      
       setError(true);
       setRegError(errorMessage);
       setFormStep(0);

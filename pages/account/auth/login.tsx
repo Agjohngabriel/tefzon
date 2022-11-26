@@ -56,7 +56,7 @@ const Login = () => {
 
     if (!response.error) {
       // we're logged in! let's do a hard refresh to the desired url
-      window.location.replace("/home/leagues/create");
+      window.location.replace("/home");
       return;
     }
   }

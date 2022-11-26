@@ -18,21 +18,21 @@ const Home: NextPage = () => {
       setIsLoading(false);
     }, 3000);
 
-      // const fetchAll = async () => {
-      //   // setIsLoading(true);
-      //   const news = await axios.get(
-      //     `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
-      //   );
-      //   const response = await news.data;
-      //   // for fixtures
-      //   const fixture = await axios.get(
-      //     `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
-      //   );
-      //   const fixts = await fixture.data.data;
-      //   setIsLoading(false);
-      //   console.log(response);
-      //   console.log(fixts);
-      // };
+      const fetchAll = async () => {
+        // setIsLoading(true);
+        const news = await axios.get(
+          `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+        );
+        const response = await news.data;
+        // for fixtures
+        // const fixture = await axios.get(
+        //   `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+        // );
+        // const fixts = await fixture.data;
+        setIsLoading(false);
+        console.log(response);
+        // console.log(fixts);
+      };
   }, []);
 
   const goToRegister = () => {

@@ -60,13 +60,13 @@ const FavouriteLeague = (props: {
     setActive(!active);
 
   };
-  const scrollToBottom = () => {
-    setActive(!active);
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
-  };
+  // const scrollToBottom = () => {
+  //   setActive(!active);
+  //   window.scrollTo({
+  //     top: document.documentElement.scrollHeight,
+  //     behavior: 'smooth',
+  //   });
+  // };
 
   return (
     <div className={`sm:p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
@@ -214,7 +214,13 @@ const FavouriteLeague = (props: {
                 {/* <!-- Modal footer --> */}
                 <div className="flex space-x-2 items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-600">
                   <button
-                    onClick={scrollToBottom}
+                    onClick={() => {
+                      setActive(!active);
+                      window.scrollTo({
+                        top: document.documentElement.scrollHeight,
+                        behavior: 'smooth',
+                      });
+                    }}
                     type="button"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
