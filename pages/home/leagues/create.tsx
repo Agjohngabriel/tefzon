@@ -28,7 +28,7 @@ const CreateLeague = () => {
     setIsSubmitting(true);
     try {
       const user = await axios.post(
-        `${process.env.BASE_URL}leagues`,
+        `${process.env.BACKEND_URL}leagues`,
         {
           name: name,
           participants: pat,
@@ -69,7 +69,7 @@ const CreateLeague = () => {
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
-        <Link href="/home/account/status" passHref>
+        <Link href="/home" passHref>
           <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
             Home
           </a>

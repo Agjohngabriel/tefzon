@@ -27,7 +27,7 @@ const JoinPrivate = () => {
     try {
       setLoading(1);
       const res = await axios.post(
-        `${process.env.BASE_URL}join/private/league`,
+        `${process.env.BACKEND_URL}join/private/league`,
         {
           id: id,
           code: code,

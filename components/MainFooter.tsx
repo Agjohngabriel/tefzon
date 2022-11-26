@@ -91,7 +91,7 @@ export default function MainFooter() {
                 </a>
               </li>
               <li>
-                <Link href="##" passHref>
+                <Link href="/home/fixtures" passHref>
                   <span
                     className="
                     font-arcon
@@ -107,7 +107,7 @@ export default function MainFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="##" passHref>
+                <Link href="/home/statistics" passHref>
                   <span
                     className="
                     font-arcon

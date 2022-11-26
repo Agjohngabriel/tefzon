@@ -1,4 +1,8 @@
+import axios from "axios";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Router from "next/router";
+import { useState } from "react";
 import MainLayout from "../../components/MainLayout";
 
 
@@ -24,6 +28,29 @@ const Index = () => {
   const goToUpdateProfile = () => {
     Router.push("/home/account/update");
   };
+  const { data: session }: any = useSession();
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function logOut() {
+    try {
+      setIsLoading(true);
+      const out = await axios.get(
+        `${process.env.BACKEND_URL}logout/${session?.data.user.id}`,
+        {
+          headers: {
+            accept: "*/*",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (out) {
+        setIsLoading(false);
+        signOut();
+      }
+    } catch (e) {
+      return null;
+    }
+  }
   return (
     <MainLayout>
       <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
@@ -113,7 +140,7 @@ const Index = () => {
                   {/* <!-- End Navitem --> */}
                 </div>
                 <div className="flex flex-col justify-center items-center lg:mt-3">
-                  <button className=" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                  <button onClick={logOut} className=" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded">
                     Sign out
                   </button>
                 </div>
