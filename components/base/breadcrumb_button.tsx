@@ -10,7 +10,7 @@ export const BreadCrumbButton = ({ title, link }: ButtonProps) => {
   return (
     <Link href={`${link}`} passHref>
       <div
-        className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1 lg:w-36 py-2 mx-1 text-center sm:mx-2 leading-none rounded cursor-pointer ${
+        className={`font-montserrat  md:inline-block text-xs lg:text-sm  px-1 lg:w-36 py-2 mx-1 text-center sm:mx-2 leading-none rounded cursor-pointer ${
           Router.pathname.endsWith(`${link}`)
             ? "bg-white text-black-150"
             : "bg-green text-white"

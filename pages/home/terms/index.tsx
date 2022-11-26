@@ -8,7 +8,7 @@ const Index = () => {
     <Layout>
       <div className="py-10">
         <div className="inline-flex rounded -ml-1 ">
-          <Link href="/" passHref>
+          <Link href="/home" passHref>
             <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
               Home
             </a>
