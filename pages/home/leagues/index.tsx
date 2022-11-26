@@ -28,11 +28,11 @@ const Index = () => {
             Leagues
           </h1>
         </div>
-        <div className=" container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-10  w-auto">
+        <div className=" container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  sm:px-4 py-6 lg:px-10  w-auto">
           <div className="flex">
             <div className="  ">
               <div className="   py-1 px-1 w-full">
-                <div className="flex flex-col space-y-4 mb-5">
+                <div className="flex flex-col space-y-4 mb-5 pl-4">
                   <h1 className="font-montserrat text-2xl sm:text-3xl font-bold text-black-150 md:w-4/6  ">
                     Create or Join leagues
                   </h1>
@@ -48,7 +48,7 @@ const Index = () => {
                           className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                         >
                           <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
-                            <p className="font-arcon text-sm sm:px-8 py-2 text-black-0  w-full">
+                            <p className="font-arcon text-xs sm:text-sm sm:px-8 py-2 text-black-0 px-2  w-full">
                               Join a private or public league to compete against
                               friends and other game players.
                             </p>
@@ -68,13 +68,13 @@ const Index = () => {
                           className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                         >
                           <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
-                            <p className="font-arcon text-sm sm:px-8 py-2 text-black-0  w-full">
+                            <p className="font-arcon text-xs sm:text-sm sm:px-8 py-2 text-black-0 px-2  w-full">
                               Create a private or public league to compete
                               against friends and other game players.
                             </p>
                           </div>
                           <p className="text-xs lg:text-sm mt-3 text-center font-semibold">
-                            <div className="font-montserrat flex items-center text-black-150 rounded  focus:outline-none">
+                            <div className="font-montserrat flex  items-center text-black-150 rounded  focus:outline-none">
                               Create a new league
                               <span className="ml-2 material-icons text-[#6E4BEC] hover:text-green-500">
                                 arrow_forward
