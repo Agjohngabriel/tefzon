@@ -35,7 +35,7 @@ const SquadSelection = () => {
     setLoading(1);
     setIsFetching(1);
     const res = await axios.get(
-      `${process.env.BASE_URL}get/all/players/${id}`,
+      `${process.env.BACKEND_URL}get/all/players/${id}`,
       {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
@@ -54,7 +54,7 @@ const SquadSelection = () => {
     setLoading(1);
     setIsFetching(1);
     const res = await axios.get(
-      `${process.env.BASE_URL}/search/player?query=${name}`,
+      `${process.env.BACKEND_URL}/search/player?query=${name}`,
       {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
@@ -71,7 +71,7 @@ const SquadSelection = () => {
 
   const clear = async () => {
     setLoading(1);
-    const res = await axios.get(`${process.env.BASE_URL}reset/team`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}reset/team`, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",
@@ -86,7 +86,7 @@ const SquadSelection = () => {
   const autoComplete = async () => {
     try {
       setLoading(1);
-      const res = await axios.get(`${process.env.BASE_URL}use-autocomplete`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}use-autocomplete`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
@@ -111,7 +111,7 @@ const SquadSelection = () => {
     try {
       setLoading(1);
       const res = await axios.post(
-        `${process.env.BASE_URL}add/player`,
+        `${process.env.BACKEND_URL}add/player`,
         {
           player_id: id,
         },
@@ -139,7 +139,7 @@ const SquadSelection = () => {
   };
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
@@ -156,7 +156,7 @@ const SquadSelection = () => {
     getFavourites();
   }, [session]);
   const fetchAll = async () => {
-    const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",

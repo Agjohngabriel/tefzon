@@ -60,13 +60,7 @@ const FavouriteLeague = (props: {
     setActive(!active);
 
   };
-  // const scrollToBottom = () => {
-  //   setActive(!active);
-  //   window.scrollTo({
-  //     top: document.documentElement.scrollHeight,
-  //     behavior: 'smooth',
-  //   });
-  // };
+
 
   return (
     <div className={`sm:p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
