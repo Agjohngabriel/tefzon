@@ -41,7 +41,7 @@ const SelectCaptain = () => {
     try {
       setLoading(1);
       const res = await axios.get(
-        `${process.env.BASE_URL}select/captain/${id}`,
+        `${process.env.BACKEND_URL}select/captain/${id}`,
         {
           headers: {
             Authorization: `Bearer ${session?.data.token}`,
@@ -66,7 +66,7 @@ const SelectCaptain = () => {
   };
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
@@ -84,7 +84,7 @@ const SelectCaptain = () => {
     getFavourites();
   }, [session]);
   const fetchAll = async () => {
-    const res = await axios.get(`${process.env.BASE_URL}get/my/squad`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",

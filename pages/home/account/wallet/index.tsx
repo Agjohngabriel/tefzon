@@ -12,7 +12,7 @@ const Index = () => {
   useEffect(() => {
     const fetchAll = async () => {
       const res = await axios.get(
-        `${process.env.BASE_URL}get-account-details`,
+        `${process.env.BACKEND_URL}get-account-details`,
         {
           headers: {
             Authorization: `Bearer ${session?.data.token}`,
