@@ -2,7 +2,24 @@ import Router from "next/router";
 import Layout from "../../../../components/Layouts";
 
 const Index = () => {
-  
+  // const fetchByPos = async (id: number) => {
+  //   setLoading(1);
+  //   setIsFetching(1);
+  //   const res = await axios.get(
+  //     `${process.env.BACKEND_URL}get/all/players/${id}`,
+  //     {
+  //       headers: {
+  //         Authorization: `Bearer ${session?.data.token}`,
+  //         "content-type": "application/json",
+  //       },
+  //     }
+  //   );
+  //   const response = await res.data;
+  //   setPlayers(response);
+  //   console.log(players);
+  //   setIsFetching(0);
+  //   setLoading(0);
+  // };
   return (
     <Layout>
       <div className="w-full lg:w-8/12 px-4 mx-auto py-6">

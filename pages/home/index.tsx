@@ -2,9 +2,26 @@ import axios from "axios";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MainLayout from "../../components/MainLayout";
 
+interface Details {
+  account_name: string;
+  account_no: string;
+  bank_name: string;
+  user_id: number;
+  id: number;
+  wins: number;
+  loss: number;
+  draw: number;
+  cancelled: number;
+  balance: number;
+}
+
+interface Profile {
+  id: number;
+  first_name: string;
+}
 
 const Index = () => {
   const goToSquad = () => {
@@ -30,6 +47,8 @@ const Index = () => {
   };
   const { data: session }: any = useSession();
   const [isLoading, setIsLoading] = useState(false);
+  const [details, setDetails] = useState([]);
+  const [profile, setProfile] = useState([]);
 
   async function logOut() {
     try {
@@ -51,6 +70,56 @@ const Index = () => {
       return null;
     }
   }
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      setIsLoading(true);
+      const respo = await axios.get(
+        `${process.env.BACKEND_URL}/get-account-details`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+      const response = await respo.data;
+      setIsLoading(false);
+      return response;
+    };
+    const getDetails = async () => {
+      const DetailsFromApi = await fetchDetails();
+      console.log(DetailsFromApi);
+      setDetails(DetailsFromApi);
+    };
+    getDetails();
+  }, [session]);
+
+  useEffect(() => {
+    const fetchProfile = async (id: number) => {
+      setIsLoading(true);
+      const res = await axios.get(`${process.env.BACKEND_URL}/gamers/${id}`, {
+        headers: {
+          Authorization: `Bearer ${session?.data.token}`,
+          "content-type": "application/json",
+        },
+      });
+      const response = await res.data.data;
+      setIsLoading(false);
+      return response;
+    };
+
+    const getProfile = async () => {
+      const ProfileFromApi = await fetchProfile(1);
+      console.log(ProfileFromApi);
+      setProfile(ProfileFromApi);
+    };
+
+    getProfile();
+  }, [session]);
+
+  const profiledetails = profile;
+  const account = details;
   return (
     <MainLayout>
       <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
@@ -65,7 +134,7 @@ const Index = () => {
                     onClick={goToSquad}
                     className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                   >
-                    <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
+                    <div className="rounded-full p-1 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-users fa-sm text-indigo-600"></i>
                     </div>
                     <p className="text-xs lg:text-sm mt-1 text-center font-semibold">
@@ -78,7 +147,7 @@ const Index = () => {
                     onClick={goToLeagues}
                     className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                   >
-                    <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
+                    <div className="rounded-full p-1 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-futbol fa-sm text-indigo-600"></i>
                     </div>
                     <p className="text-xs lg:text-sm mt-1 text-center font-semibold">
@@ -91,7 +160,7 @@ const Index = () => {
                     onClick={goToWallet}
                     className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                   >
-                    <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
+                    <div className="rounded-full p-1 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-wallet fa-xl text-indigo-600"></i>
                     </div>
                     <p className="text-xs lg:text-sm mt-1 text-center font-semibold">
@@ -104,7 +173,7 @@ const Index = () => {
                     onClick={goToPoints}
                     className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                   >
-                    <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
+                    <div className="rounded-full p-1 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-bullseye fa-sm text-indigo-600"></i>
                     </div>
                     <p className="text-xs lg:text-sm mt-1 text-center font-semibold">
@@ -117,7 +186,7 @@ const Index = () => {
                     onClick={goToTransfer}
                     className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                   >
-                    <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
+                    <div className="rounded-full p-1 bg-indigo-200 flex flex-col items-center">
                       <i className="fas fa-handshake fa-sm text-indigo-600"></i>
                     </div>
                     <p className="text-xs lg:text-sm mt-1 text-center font-semibold">
@@ -130,7 +199,7 @@ const Index = () => {
                     onClick={goToFixtures}
                     className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                   >
-                    <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
+                    <div className="rounded-full p-1 bg-indigo-200 flex flex-col items-center">
                       <i className="fa fa-table fa-sm text-indigo-600"></i>
                     </div>
                     <p className="text-xs lg:text-sm mt-1 text-center font-semibold">
@@ -140,7 +209,10 @@ const Index = () => {
                   {/* <!-- End Navitem --> */}
                 </div>
                 <div className="flex flex-col justify-center items-center lg:mt-3">
-                  <button onClick={logOut} className=" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                  <button
+                    onClick={logOut}
+                    className=" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded"
+                  >
                     Sign out
                   </button>
                 </div>
@@ -159,30 +231,60 @@ const Index = () => {
                       alt=""
                     />
                   </div>
-                  <p className="font-semibold text-xl mt-1">Safwan</p>
-                  <p className="font-semibold text-base text-gray-400">
-                    No Future
+                  <p className="font-semibold text-xl mt-1">
+                    Hi {profiledetails["first_name" as any]}
                   </p>
 
                   <div
-                    className="relative  p-4 rounded-lg shadow-xl w-full bg-cover bg-center h-32 mt-4"
+                    className="relative  p-4 rounded-lg shadow-xl w-full bg-cover bg-center h-20 mt-4"
                     style={{
                       ["background-image" as any]:
                         "url('https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')",
                     }}
                   >
                     <div className="absolute inset-0 bg-gray-800 bg-opacity-50"></div>
-                    <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center">
+                    <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center pt-1">
                       <div>
                         <h3 className="text-center text-white text-lg">
-                          Total Income
+                          Account Balance:
                         </h3>
-                        <h3 className="text-center text-white text-3xl mt-2 font-bold">
-                          RM 2000.00
+                        <h3 className="text-center text-white text-3xl  font-bold">
+                          ₦ {account["balance" as any]}
                         </h3>
                       </div>
                     </div>
                   </div>
+                  <div className="grid grid-cols-1 gap-1   grid-cols-4 mt-6">
+                    {/* <!-- Start Navitem --> */}
+                    <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-blue-300">
+                      <div>
+                        <div className="font-bold text-3xl"> {account["wins" as any]}</div>
+                        <div className="font-bold text-sm">Wins</div>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-purple-300">
+                      <div className="flex justify-between w-full"></div>
+                      <div>
+                        <div className="font-bold text-3xl text-center"> {account["draw" as any]}</div>
+                        <div className="font-bold text-sm">Draw</div>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-red-300">
+                      <div className="flex justify-between w-full"></div>
+                      <div>
+                        <div className="font-bold text-3xl text-center">{account["loss" as any]}</div>
+                        <div className="font-bold text-sm">Loss</div>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-green-300">
+                      <div>
+                        <div className="font-bold text-3xl text-center">{account["cancelled" as any]}</div>
+                        <div className="font-bold text-sm">Cancelled</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
                 </div>
               </div>
               {/* <!-- End profile Card -->
@@ -202,7 +304,10 @@ const Index = () => {
                   </div>
                 </div>
 
-                <button onClick={goToUpdateProfile} className="flex space-x-2 items-center">
+                <button
+                  onClick={goToUpdateProfile}
+                  className="flex space-x-2 items-center"
+                >
                   <div className="bg-gray-300 rounded-md p-2 flex items-center">
                     <i className="fas fa-chevron-right fa-sm text-black"></i>
                   </div>
