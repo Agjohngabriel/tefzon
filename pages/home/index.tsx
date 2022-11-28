@@ -5,23 +5,7 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import MainLayout from "../../components/MainLayout";
 
-interface Details {
-  account_name: string;
-  account_no: string;
-  bank_name: string;
-  user_id: number;
-  id: number;
-  wins: number;
-  loss: number;
-  draw: number;
-  cancelled: number;
-  balance: number;
-}
 
-interface Profile {
-  id: number;
-  first_name: string;
-}
 
 const Index = () => {
   const goToSquad = () => {
