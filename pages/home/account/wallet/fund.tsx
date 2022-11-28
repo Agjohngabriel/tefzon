@@ -1,7 +1,42 @@
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import MainLayout from "../../../../components/MainLayout";
 
 const Fund = () => {
+  const { data: session }: any = useSession();
+  // const [account, setAccount] = useState({
+  //   balance: "",
+  // });
+  const [isLoading, setIsLoading] = useState(false);
+  const [details, setDetails] = useState([]);
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      setIsLoading(true);
+      const respo = await axios.get(
+        `${process.env.BACKEND_URL}/get-account-details`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+      const response = await respo.data;
+      setIsLoading(false);
+      return response;
+    };
+    const getDetails = async () => {
+      const DetailsFromApi = await fetchDetails();
+      console.log(DetailsFromApi);
+      setDetails(DetailsFromApi);
+    };
+    getDetails();
+  }, [session]);
+
+  const account = details;
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
@@ -44,7 +79,7 @@ const Fund = () => {
               <p className="text-sm  font-arcon text-black-150 opacity-60 mb-20 w-5/6">
                 Transfer money to Tefzone wallet
               </p>
-              <div className="sm:w-3/5 md:w-full lg:w-4/5  xl:w-3/5 h-40  bg-[#5F5999] rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-110">
+              <div className="sm:w-3/5 md:w-full lg:w-4/5  xl:w-3/5 h-40   bg-[#5F5999] rounded-xl relative text-white shadow-lg transition-transform transform hover:scale-110">
                 <img
                   className="relative object-cover w-full h-full rounded-xl"
                   src="/img/cardbg.png"
@@ -54,13 +89,25 @@ const Fund = () => {
                 <div className="w-full px-8 absolute top-8">
                   <div className="flex justify-between">
                     <div className="">
-                      <p className="font-arcon lg:text-sm">Tefzone Wallet</p>
+                      <p className="font-arcon text-sm">Tefzone Wallet</p>
                     </div>
                   </div>
                   <div className="pt-4">
                     <p className="font-montserrat tracking-more-wider text-2xl">
-                      ₦5,000
+                      ₦ {account["balance" as any]}
                     </p>
+                  </div>
+                  <div className="pt-2 pr-6">
+                    <div className="flex justify-between">
+                      <div className="">
+                        <p className="font-light text-xs">
+                          {account["account_name" as any]}
+                        </p>
+                        <p className="font-medium tracking-wider text-sm">
+                          {account["account_no" as any]}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

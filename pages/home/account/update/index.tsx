@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import Layout from "../../../../components/Layouts";
+import MainLayout from "../../../../components/MainLayout";
 
 const Index = () => {
   const { data: session }: any = useSession();
@@ -33,7 +33,7 @@ const Index = () => {
   const profiledetails = profile;
 
   return (
-    <Layout>
+    <MainLayout>
       <div className="w-full lg:w-8/12 px-4 mx-auto py-6">
         <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
           <div className="rounded-t bg-white mb-0 px-6 py-6">
@@ -533,7 +533,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </MainLayout>
   );
 };
 

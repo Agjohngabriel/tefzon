@@ -86,6 +86,16 @@ const Index = () => {
                       ₦ {account["balance" as any]}
                     </p>
                   </div>
+                  <div className="pt-2 pr-6">
+										<div className="flex justify-between">
+											<div className="">
+												<p className="font-light text-xs">{account["account_name" as any]}</p>
+												<p className="font-medium tracking-wider text-sm">
+                        {account["account_no" as any]}
+												</p>
+											</div>
+										</div>
+									</div>
                 </div>
               </div>
 
