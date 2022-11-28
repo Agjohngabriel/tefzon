@@ -3,12 +3,12 @@ import Router from "next/router";
 import Link from "next/link";
 
 const Index = () => {
-  const goToPrivate = () => {
-    Router.push("/home/leagues/join_private");
+  const goToJoin = () => {
+    Router.push("/home/leagues/join");
   };
 
-  const goToPublic = () => {
-    Router.push("/home/leagues/join_public");
+  const goToCreate = () => {
+    Router.push("/home/leagues/create");
   };
 
   return (
@@ -44,7 +44,7 @@ const Index = () => {
                       <div className="grid grid-cols-1 gap-6   grid-cols-2 mt-6">
                         {/* <!-- Start Navitem --> */}
                         <button
-                          onClick={goToPrivate}
+                          onClick={goToJoin}
                           className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                         >
                           <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
@@ -64,7 +64,7 @@ const Index = () => {
                         </button>
 
                         <button
-                          onClick={goToPublic}
+                          onClick={goToCreate}
                           className="p-2 lg:p-8 flex flex-col items-center bg-white rounded-md justify-center shadow-xl cursor-pointer"
                         >
                           <div className="rounded-full p-2 bg-indigo-200 flex flex-col items-center">
