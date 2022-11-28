@@ -5,23 +5,7 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import MainLayout from "../../components/MainLayout";
 
-interface Details {
-  account_name: string;
-  account_no: string;
-  bank_name: string;
-  user_id: number;
-  id: number;
-  wins: number;
-  loss: number;
-  draw: number;
-  cancelled: number;
-  balance: number;
-}
 
-interface Profile {
-  id: number;
-  first_name: string;
-}
 
 const Index = () => {
   const goToSquad = () => {
@@ -258,28 +242,28 @@ const Index = () => {
                     {/* <!-- Start Navitem --> */}
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-blue-300">
                       <div>
-                        <div className="font-bold text-3xl"> {account["wins" as any]}</div>
-                        <div className="font-bold text-sm">Wins</div>
+                        <div className="font-bold text-2xl"> {account["wins" as any]}</div>
+                        <div className="font-bold text-xs">Wins</div>
                       </div>
                     </div>
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-purple-300">
                       <div className="flex justify-between w-full"></div>
                       <div>
-                        <div className="font-bold text-3xl text-center"> {account["draw" as any]}</div>
-                        <div className="font-bold text-sm">Draw</div>
+                        <div className="font-bold text-2xl text-center"> {account["draw" as any]}</div>
+                        <div className="font-bold text-xs">Draw</div>
                       </div>
                     </div>
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-red-300">
                       <div className="flex justify-between w-full"></div>
                       <div>
-                        <div className="font-bold text-3xl text-center">{account["loss" as any]}</div>
-                        <div className="font-bold text-sm">Loss</div>
+                        <div className="font-bold text-2xl text-center">{account["loss" as any]}</div>
+                        <div className="font-bold text-xs">Loss</div>
                       </div>
                     </div>
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-green-300">
                       <div>
-                        <div className="font-bold text-3xl text-center">{account["cancelled" as any]}</div>
-                        <div className="font-bold text-sm">Cancelled</div>
+                        <div className="font-bold text-2xl text-center">{account["cancelled" as any]}</div>
+                        <div className="font-bold text-xs">Cancelled</div>
                       </div>
                     </div>
                   </div>

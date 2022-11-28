@@ -6,13 +6,17 @@ import MainLayout from "../../../../components/MainLayout";
 
 const Index = () => {
   const { data: session }: any = useSession();
-  const [account, setAccount] = useState({
-    balance: "",
-  });
+  // const [account, setAccount] = useState({
+  //   balance: "",
+  // });
+  const [isLoading, setIsLoading] = useState(false);
+  const [details, setDetails] = useState([]);
+
   useEffect(() => {
-    const fetchAll = async () => {
-      const res = await axios.get(
-        `${process.env.BACKEND_URL}get-account-details`,
+    const fetchDetails = async () => {
+      setIsLoading(true);
+      const respo = await axios.get(
+        `${process.env.BACKEND_URL}/get-account-details`,
         {
           headers: {
             Authorization: `Bearer ${session?.data.token}`,
@@ -20,17 +24,19 @@ const Index = () => {
           },
         }
       );
-      const response = await res.data;
-      console.log(response);
+      const response = await respo.data;
+      setIsLoading(false);
       return response;
     };
-
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setAccount(FavouritesFromApi);
+    const getDetails = async () => {
+      const DetailsFromApi = await fetchDetails();
+      console.log(DetailsFromApi);
+      setDetails(DetailsFromApi);
     };
-    getFavourites();
+    getDetails();
   }, [session]);
+
+  const account = details;
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
@@ -77,9 +83,19 @@ const Index = () => {
                   </div>
                   <div className="pt-4">
                     <p className="font-montserrat tracking-more-wider text-2xl">
-                      ₦{account.balance}
+                      ₦ {account["balance" as any]}
                     </p>
                   </div>
+                  <div className="pt-2 pr-6">
+										<div className="flex justify-between">
+											<div className="">
+												<p className="font-light text-xs">{account["account_name" as any]}</p>
+												<p className="font-medium tracking-wider text-sm">
+                        {account["account_no" as any]}
+												</p>
+											</div>
+										</div>
+									</div>
                 </div>
               </div>
 

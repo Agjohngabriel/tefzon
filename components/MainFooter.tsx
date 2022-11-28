@@ -22,7 +22,7 @@ export default function MainFooter() {
             <h4 className="text-white text-lg  font-montserrat mb-9">Pages</h4>
             <ul>
               <li>
-                <Link href="/" passHref>
+                <Link href="/home" passHref>
                   <span
                     className="
                     font-arcon
