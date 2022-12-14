@@ -3,14 +3,54 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MainLayout from "../../../../components/MainLayout";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
+interface Config {
+  public_key: string;
+  tx_ref: number;
+  amount: number;
+  currency: string;
+  payment_options: string;
+  customer: {
+    email: string;
+    phone_number: string;
+    name: string;
+  };
+  customizations: {
+    title: string;
+    description: string;
+    logo: string;
+  };
+}
 const Fund = () => {
   const { data: session }: any = useSession();
-  // const [account, setAccount] = useState({
-  //   balance: "",
-  // });
+  const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [details, setDetails] = useState([]);
+  const [amount, setAmount] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const config = {
+    public_key: "FLWPUBK-20bc86a58e3cf35f497d634bc7b91c24-X",
+    tx_ref: Date.now(),
+    amount: amount,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: email,
+      phone_number: phone,
+      name: name,
+    },
+    customizations: {
+      title: "Fund Wallet",
+      description: "Fund your tefzon wallet",
+      logo: "https://tefzon.com/brand.png",
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -115,55 +155,69 @@ const Fund = () => {
               <div className="lg:w-2/3 md:w-4/5 pt-2">
                 <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
                   <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
-                    From
-                  </label>
-                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <select className="form-select w-full px-3 py-2 text-sm font-arcon  bg-white text-black-150 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer border border-gray-100">
-                      <option value="">Card</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
-                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
-                    Card number
-                  </label>
-                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <input className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700" />{" "}
-                  </div>
-                </div>
-
-                <div className="flex flex-col md:flex-row pt-2">
-                  <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
-                    <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
-                      Expiry
-                    </label>
-                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                      <input className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700" />{" "}
-                    </div>
-                  </div>
-
-                  <div className="w-full  flex-1 svelte-1l8159u">
-                    <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
-                      CVV
-                    </label>
-                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                      <input className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700" />{" "}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
-                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
                     Amount
                   </label>
 
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                     <span className="text-black-150 font-arcon pl-2">(₦)</span>
-                    <input className="px-2 appearance-none outline-none w-full text-sm text-gray-700 py-1" />{" "}
+                    <input
+                      value={amount}
+                      onInput={(e) => setAmount(e.currentTarget.value)} required 
+                      className="px-2 appearance-none outline-none w-full text-sm text-gray-700 py-1"
+                    />{" "}
                   </div>
                 </div>
+
+                <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
+                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
+                    Email
+                  </label>
+                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                    <input
+                      value={email}
+                      onInput={(e) => setEmail(e.currentTarget.value)} required
+                      className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700"
+                    />{" "}
+                  </div>
+                </div>
+
+                <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
+                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
+                    Name
+                  </label>
+                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                    <input
+                      value={name}
+                      onInput={(e) => setName(e.currentTarget.value)} required
+                      className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700"
+                    />{" "}
+                  </div>
+                </div>
+
+                <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
+                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
+                    Phone Number
+                  </label>
+                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                    <input
+                      value={phone}
+                      onInput={(e) => setPhone(e.currentTarget.value)} required
+                      className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700"
+                    />{" "}
+                  </div>
+                </div>
+
                 <div className="w-full mx-2  py-5 flex-1 svelte-1l8159u">
                   <button
+                    onClick={() =>
+                      handleFlutterPayment({
+                        callback: (response) => {
+                          console.log(response);
+                          closePaymentModal();
+                        },
+                        onClose: () => {},
+                      })
+                    }
                     className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center sm:w-full py-2 rounded font-bold cursor-pointer 
                                 opacity-50
 										hover:bg-blue-500 
@@ -172,7 +226,7 @@ const Fund = () => {
 										transition"
                   >
                     <div className="font-montserrat text-sm px-20 lg:px-10">
-                      Next
+                      Pay
                     </div>
                   </button>
                 </div>
@@ -187,6 +241,8 @@ const Fund = () => {
                   <div className="relative">
                     <i className="absolute fa fa-search text-gray-400 top-3 left-4"></i>
                     <input
+                      value={search}
+                      onInput={(e) => setSearch(e.currentTarget.value)}
                       type="text"
                       className="bg-gray-100 h-10 w-full font-arcon text-[#522593] text-xs px-12 rounded-lg focus:outline-none hover:cursor-pointer"
                       name="sesrch"
