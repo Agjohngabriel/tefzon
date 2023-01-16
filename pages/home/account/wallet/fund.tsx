@@ -50,7 +50,7 @@ const Fund = () => {
     },
   };
 
-  const handleFlutterPayment = useFlutterwave(config);
+  const handleFlutterPayment = useFlutterwave(config as any);
 
   useEffect(() => {
     const fetchDetails = async () => {
