@@ -210,7 +210,7 @@ const Index = () => {
                 <div className="flex flex-col justify-center items-center">
                   <div className="w-32 h-32 rounded-full bg-gray-300 border-2 border-white mt-2">
                     <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVxhAxJ4D7MOeTTj6kR9PBeZonW5HM7giKjTbEmR-HMBwf3G1VqGnlwpO1kWrdyIZu8_U&usqp=CAU"
+                     src="https://ionicframework.com/docs/img/demos/avatar.svg"
                       className="rounded-full w-auto"
                       alt=""
                     />
@@ -233,7 +233,7 @@ const Index = () => {
                           Account Balance:
                         </h3>
                         <h3 className="text-center text-white text-3xl  font-bold">
-                          ₦ {account["balance" as any]}
+                          ₦ {account["balance" as any]}.00
                         </h3>
                       </div>
                     </div>
@@ -250,7 +250,7 @@ const Index = () => {
                       <div className="flex justify-between w-full"></div>
                       <div>
                         <div className="font-bold text-2xl text-center"> {account["draw" as any]}</div>
-                        <div className="font-bold text-xs">Draw</div>
+                        <div className="font-bold text-xs">Draws</div>
                       </div>
                     </div>
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-red-300">
@@ -276,8 +276,8 @@ const Index = () => {
               <div className="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
                 <div className="flex space-x-6 items-center">
                   <img
-                    src="https://i.pinimg.com/originals/25/0c/a0/250ca0295215879bd0d53e3a58fa1289.png"
-                    className="w-auto h-24 rounded-lg"
+                    src="https://ionicframework.com/docs/img/demos/avatar.svg"
+                    className="w-auto h-16 rounded-lg"
                     alt=""
                   />
                   <div>
