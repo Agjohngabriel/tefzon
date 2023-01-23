@@ -35,7 +35,7 @@ const SquadSelection = () => {
     setLoading(1);
     setIsFetching(1);
     const res = await axios.get(
-      `${process.env.BACKEND_URL}get/all/players/${id}`,
+      `${process.env.BACKEND_URL}/get/all/players/${id}`,
       {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
@@ -71,7 +71,7 @@ const SquadSelection = () => {
 
   const clear = async () => {
     setLoading(1);
-    const res = await axios.get(`${process.env.BACKEND_URL}reset/team`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}/reset/team`, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",
@@ -86,7 +86,7 @@ const SquadSelection = () => {
   const autoComplete = async () => {
     try {
       setLoading(1);
-      const res = await axios.get(`${process.env.BACKEND_URL}use-autocomplete`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}/use-autocomplete`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
@@ -111,7 +111,7 @@ const SquadSelection = () => {
     try {
       setLoading(1);
       const res = await axios.post(
-        `${process.env.BACKEND_URL}add/player`,
+        `${process.env.BACKEND_URL}/add/player`,
         {
           player_id: id,
         },
@@ -139,7 +139,7 @@ const SquadSelection = () => {
   };
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
@@ -156,7 +156,7 @@ const SquadSelection = () => {
     getFavourites();
   }, [session]);
   const fetchAll = async () => {
-    const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",
@@ -204,8 +204,8 @@ const SquadSelection = () => {
       <hr className="mx-4 my-6 border-b-2 rounded-lg border-violet-500 lg:mx-28" />
 
       <div className="container max-w-6xl  bg-[#6E4BEC7D]/70 py-4 mb-10  rounded-md shadow-2xl shadow-gray-700/90 px-2 lg:px-2 flex items-center mx-auto justify-between flex-wrap">
-        <div className="flex items-center flex-shrink-0 mr-6 text-gray-600">
-          <h1 className="text-xl text-center text-white font-arcon sm:text-4xl">
+        <div className="flex items-center flex-shrink-0 ml-6 text-gray-600">
+          <h1 className="text-xl text-center text-white font-arcon sm:text-2xl">
             Players: ({teams.length}/15)
           </h1>
         </div>
@@ -227,7 +227,7 @@ const SquadSelection = () => {
           <div>
             <button
               onClick={clear}
-              className="flex justify-center px-6 py-3 ml-5 transition duration-200 ease-in-out cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500 text-white/50"
+              className="flex justify-center px-6 py-3 ml-5 transition duration-200 ease-in-out cursor-pointer hover:scale-110 focus:outline-none hover:bg-white/20  text-white/50"
             >
               <div className="text-sm text-white font-arcon">Clear Team</div>
             </button>
@@ -691,8 +691,6 @@ const SquadSelection = () => {
                       <select className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select font-arcon focus:outline-none focus:border-indigo-500">
                         <option value="">Total Point</option>
                         <option value="02">Goals</option>
-                        <option value="03">Female</option>
-                        <option value="04">Prefer not to state</option>
                       </select>
                     </div>
                   </div>
