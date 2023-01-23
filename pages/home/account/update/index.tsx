@@ -75,7 +75,7 @@ const Index = () => {
           </div>
           <div className="flex-auto px-4 lg:px-10 py-10  pt-0">
             <form>
-              <h6 className="text-blueGray-400 text-sm mt-3 mb-6 lg:ml-3 font-bold uppercase">
+              <h6 className="text-blueGray-400 text-sm mt-3 sm:mt-8 mb-6 lg:ml-3 font-bold uppercase">
                 User Information
               </h6>
               <div className="flex flex-wrap">
@@ -554,7 +554,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <hr className="mx-5  lg:my-5 my-2" />
+              <hr className="mx-5 my-4  lg:my-10   my-2" />
 
               <h6 className="text-blueGray-400 text-sm mt-3 mb-6 ml-3 font-bold uppercase">
                 Account Details

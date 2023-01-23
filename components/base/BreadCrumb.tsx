@@ -50,7 +50,7 @@ function BreadCrumb() {
         </div>
       </div>
       {isLoading && <Loader />}
-      <div className="absolute z-50 flex justify-between w-full px-5 overflow-x-auto md:px-5 lg:px-5 -mt-14 md:-mt-10 lg:-mt-9 scrollbar-hide ">
+      <div className="absolute z-50 w-[20rem] sm:w-full mx-6 md:mx-0 flex justify-between  overflow-x-auto md:px-5 lg:px-5 -mt-14 md:-mt-9 scrollbar-hide ">
         <BreadCrumbButton
           title="Public League"
           link="/home/leagues/join_public"
@@ -70,8 +70,8 @@ function BreadCrumb() {
         <BreadCrumbButton title="Stats" link="/home/statistics" />
         <button onClick={logOut}>
           <div
-            className={`font-montserrat  md:inline-block text-xs lg:text-sm px-1 lg:w-36 py-2 mx-1 text-center sm:mx-2 leading-none rounded cursor-pointer
-            bg-green text-white hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-4 md:mt-0`}
+            className={`font-montserrat bg-green text-white
+            md:inline-block text-xs md:text-sm  px-1 w-32 py-2 mx-1 text-center sm:mx-1 leading-none rounded cursor-pointer hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-7 md:mt-0`}
           >
             Sign Out
           </div>

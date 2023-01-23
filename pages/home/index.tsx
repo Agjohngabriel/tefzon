@@ -5,8 +5,6 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import MainLayout from "../../components/MainLayout";
 
-
-
 const Index = () => {
   const goToSquad = () => {
     Router.push("/home/account/squad");
@@ -210,7 +208,7 @@ const Index = () => {
                 <div className="flex flex-col justify-center items-center">
                   <div className="w-32 h-32 rounded-full bg-gray-300 border-2 border-white mt-2">
                     <img
-                     src="https://ionicframework.com/docs/img/demos/avatar.svg"
+                      src="https://ionicframework.com/docs/img/demos/avatar.svg"
                       className="rounded-full w-auto"
                       alt=""
                     />
@@ -242,33 +240,41 @@ const Index = () => {
                     {/* <!-- Start Navitem --> */}
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-blue-300">
                       <div>
-                        <div className="font-bold text-2xl"> {account["wins" as any]}</div>
+                        <div className="font-bold text-2xl">
+                          {" "}
+                          {account["wins" as any]}
+                        </div>
                         <div className="font-bold text-xs">Wins</div>
                       </div>
                     </div>
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-purple-300">
                       <div className="flex justify-between w-full"></div>
                       <div>
-                        <div className="font-bold text-2xl text-center"> {account["draw" as any]}</div>
+                        <div className="font-bold text-2xl text-center">
+                          {" "}
+                          {account["draw" as any]}
+                        </div>
                         <div className="font-bold text-xs">Draws</div>
                       </div>
                     </div>
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-red-300">
                       <div className="flex justify-between w-full"></div>
                       <div>
-                        <div className="font-bold text-2xl text-center">{account["loss" as any]}</div>
+                        <div className="font-bold text-2xl text-center">
+                          {account["loss" as any]}
+                        </div>
                         <div className="font-bold text-xs">Loss</div>
                       </div>
                     </div>
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-green-300">
                       <div>
-                        <div className="font-bold text-2xl text-center">{account["cancelled" as any]}</div>
+                        <div className="font-bold text-2xl text-center">
+                          {account["cancelled" as any]}
+                        </div>
                         <div className="font-bold text-xs">Cancelled</div>
                       </div>
                     </div>
                   </div>
-
-                  
                 </div>
               </div>
               {/* <!-- End profile Card -->
