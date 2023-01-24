@@ -36,7 +36,7 @@ const Index = () => {
     try {
       setIsLoading(true);
       const out = await axios.get(
-        `${process.env.BACKEND_URL}logout/${session?.data.user.id}`,
+        `${process.env.BACKEND_URL}/logout/${session?.data.user.id}`,
         {
           headers: {
             accept: "*/*",

@@ -45,7 +45,7 @@ const Starting = () => {
     setLoading(1);
     setIsFetching(1);
     const res = await axios.get(
-      `${process.env.BACKEND_URL}get/all/players/${id}`,
+      `${process.env.BACKEND_URL}/get/all/players/${id}`,
       {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
@@ -63,7 +63,7 @@ const Starting = () => {
     try {
       setLoading(1);
       const res = await axios.post(
-        `${process.env.BACKEND_URL}select/squad`,
+        `${process.env.BACKEND_URL}/select/squad`,
         {
           player_id: id,
         },
@@ -91,7 +91,7 @@ const Starting = () => {
   };
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
@@ -109,7 +109,7 @@ const Starting = () => {
     getFavourites();
   }, [session]);
   const fetchAll = async () => {
-    const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",

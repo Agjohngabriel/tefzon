@@ -27,7 +27,7 @@ const JoinPrivate = () => {
     try {
       setLoading(1);
       const res = await axios.post(
-        `${process.env.BACKEND_URL}join/private/league`,
+        `${process.env.BACKEND_URL}/join/private/league`,
         {
           id: id,
           code: code,
@@ -55,7 +55,7 @@ const JoinPrivate = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}private-leagues`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}/private-leagues`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
