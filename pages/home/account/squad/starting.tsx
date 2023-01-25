@@ -124,6 +124,8 @@ const Starting = () => {
     setTeams(FavouritesFromApi);
     console.log(teams);
   };
+
+  const eleven = teams.goalkeepers.length + teams.midfielders.length + teams.forwards.length + teams.defenders.length; 
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
@@ -177,55 +179,28 @@ const Starting = () => {
             }}
           >
             <div className="flex justify-center items-center mb-3  mx-auto mt-12">
-              <div className="inline-flex rounded border border-red-800">
-                <input
-                  type="radio"
-                  name="room_type"
-                  id="fixtures"
-                  hidden
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(1);
-                  }}
-                  data-toggle="tab"
-                  role="tablist"
-                />
-                <label
-                  htmlFor="fixtures"
-                  className={
-                    "radio text-center text-sm font-arcon  self-center py-3 px-12 border cursor-pointer  hover:opacity-75 " +
-                    (openTab === 1
-                      ? "text-[#A7030A] bg-white border-[#A7030A]"
-                      : "text-white bg-[#A7030A] border-[#A7030A]")
-                  }
-                >
-                  Pitch View
-                </label>
-              </div>
-              <div className="inline-flex rounded border border-red-800 -ml-1">
-                <input
-                  type="radio"
-                  name="room_type"
-                  id="fdr"
-                  hidden
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(2);
-                  }}
-                  data-toggle="tab"
-                  role="tablist"
-                />
-                <label
-                  htmlFor="fdr"
-                  className={
-                    "radio text-center text-sm font-arcon  self-center py-3 px-12 border cursor-pointer  hover:opacity-75 " +
-                    (openTab === 2
-                      ? "text-[#A7030A] bg-white border-[#A7030A]"
-                      : "text-white bg-[#A7030A] border-[#A7030A]")
-                  }
-                >
-                  List View
-                </label>
+              <div className="container max-w-sm  bg-[#6E4BEC7D]/70 py-4 mb-10  rounded-md shadow-2xl shadow-gray-700/90 px-2 lg:px-2 flex items-center mx-auto justify-between flex-wrap">
+                <div className="flex items-center flex-shrink-0 mx-auto text-gray-600">
+                  <h1 className="text-xl text-center text-white font-arcon sm:text-2xl">
+                    Players: ({eleven} /11)
+                  </h1>
+                </div>
+                {/* <div className="items-center flex-grow block sm:w-full md:flex md:justify-end md:w-auto">
+                  <div>
+                    <button
+                      // onClick={autoComplete}
+                      className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-3   cursor-pointer                                 
+                                hover:bg-blue-500 
+                                text-white/80 border border-[#E3EBFA]
+                                 duration-200 ease-in-out 
+                                 transition"
+                    >
+                      <div className="font-arcon text-sm text-[#E3EBFA]">
+                        Reset
+                      </div>
+                    </button>
+                  </div>
+                </div> */}
               </div>
             </div>
 
@@ -234,43 +209,28 @@ const Starting = () => {
                 <div className="relative flex flex-col min-w-0 break-words  w-full  rounded">
                   <div className="px-4 flex-auto">
                     <div className="tab-content tab-space">
-                      <div
-                        className={openTab === 1 ? "block" : "hidden"}
-                        id="link1"
-                      >
-                        <div className="flex   py-10 mx-auto">
+                      <div id="link1">
+                        <div className="flex   py-6 mx-auto">
                           {teams.goalkeepers.map(
                             (item: Players, player_id: number) => (
                               <div
                                 key={player_id}
-                                className="p-3  rounded mt-2 mx-auto space-x-6  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                                className="p-3  rounded mt-2 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                               >
-                                <div className="-mt-[4rem] ">
-                                  <svg
-                                    viewBox="0 0 52 51"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-8 sm:h-12 mx-auto z-0"
-                                  >
-                                    <path
-                                      d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
-                                      fill="#276556"
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-24 w-20 rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
                                     />
-                                    <path
-                                      d="M10.5718 25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60399 6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599C42.3641 4.73599 45.1693 7.53798 46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839ZM10.5718 25.2839V22.4819"
-                                      stroke="white"
-                                      strokeWidth="0.5"
-                                    />
-                                    <path
-                                      d="M27.0071 19.5599L25.6397 19.5599V24.9746L20.2188 24.9746V26.3404L25.6397 26.3404V31.7551L27.0071 31.7551L27.0071 26.3404H32.4279V24.9746H27.0071L27.0071 19.5599Z"
-                                      fill="white"
-                                    />
-                                  </svg>
+                                  </div>
                                 </div>
 
                                 <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                    {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -278,39 +238,27 @@ const Starting = () => {
                           )}
                         </div>
 
-                        <div className="flex   py-10 mx-auto">
+                        <div className="flex   py-8 mx-auto">
                           {teams.defenders.map(
                             (item: Players, player_id: number) => (
                               <div
                                 key={player_id}
-                                className="p-3  rounded mt-5 mx-auto text-center hover:scale-105 transition transform duration-500 cursor-pointer"
+                                className="p-3  rounded mt- mx-auto text-center hover:scale-105 transition transform duration-500 cursor-pointer"
                               >
-                                <div className="-mt-[4rem] ">
-                                  <svg
-                                    viewBox="0 0 52 51"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-8 sm:h-12 mx-auto z-0"
-                                  >
-                                    <path
-                                      d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
-                                      fill="#276556"
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-24 w-20 rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
                                     />
-                                    <path
-                                      d="M10.5718 25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60399 6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599C42.3641 4.73599 45.1693 7.53798 46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839ZM10.5718 25.2839V22.4819"
-                                      stroke="white"
-                                      strokeWidth="0.5"
-                                    />
-                                    <path
-                                      d="M27.0071 19.5599L25.6397 19.5599V24.9746L20.2188 24.9746V26.3404L25.6397 26.3404V31.7551L27.0071 31.7551L27.0071 26.3404H32.4279V24.9746H27.0071L27.0071 19.5599Z"
-                                      fill="white"
-                                    />
-                                  </svg>
+                                  </div>
                                 </div>
 
                                 <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1  px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                    {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -325,32 +273,20 @@ const Starting = () => {
                                 key={player_id}
                                 className="p-1  rounded mt-5 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                               >
-                                <div className="-mt-[4rem] ">
-                                  <svg
-                                    viewBox="0 0 52 51"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-8 sm:h-12 mx-auto z-0"
-                                  >
-                                    <path
-                                      d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
-                                      fill="#276556"
+                                <div className="mt-[0rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-24 w-20 rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
                                     />
-                                    <path
-                                      d="M10.5718 25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60399 6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599C42.3641 4.73599 45.1693 7.53798 46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839ZM10.5718 25.2839V22.4819"
-                                      stroke="white"
-                                      strokeWidth="0.5"
-                                    />
-                                    <path
-                                      d="M27.0071 19.5599L25.6397 19.5599V24.9746L20.2188 24.9746V26.3404L25.6397 26.3404V31.7551L27.0071 31.7551L27.0071 26.3404H32.4279V24.9746H27.0071L27.0071 19.5599Z"
-                                      fill="white"
-                                    />
-                                  </svg>
+                                  </div>
                                 </div>
 
                                 <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                    {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -363,161 +299,27 @@ const Starting = () => {
                             (item: Players, player_id: number) => (
                               <div
                                 key={player_id}
-                                className="p-3 rounded mt-5 mx-auto space-x-6  shadow-md hover:scale-105 transition transform duration-500 cursor-pointer"
+                                className="p-3 rounded mt-5 mx-auto    hover:scale-105 transition transform duration-500 cursor-pointer"
                               >
-                                <div className="-mt-[4rem] ">
-                                  <svg
-                                    viewBox="0 0 52 51"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-8 sm:h-12 mx-auto z-0"
-                                  >
-                                    <path
-                                      d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
-                                      fill="#276556"
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-24 w-20 rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
                                     />
-                                    <path
-                                      d="M10.5718 25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60399 6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599C42.3641 4.73599 45.1693 7.53798 46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839ZM10.5718 25.2839V22.4819"
-                                      stroke="white"
-                                      strokeWidth="0.5"
-                                    />
-                                    <path
-                                      d="M27.0071 19.5599L25.6397 19.5599V24.9746L20.2188 24.9746V26.3404L25.6397 26.3404V31.7551L27.0071 31.7551L27.0071 26.3404H32.4279V24.9746H27.0071L27.0071 19.5599Z"
-                                      fill="white"
-                                    />
-                                  </svg>
+                                  </div>
                                 </div>
 
                                 <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1  px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                    {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
                             )
                           )}
-                        </div>
-                      </div>
-                      <div
-                        className={openTab === 2 ? "block" : "hidden"}
-                        id="link2"
-                      >
-                        <div className=" mx-auto">
-                          <div className="pt-4">
-                            <div className="-mx-4 sm:-mx-8 px-1 sm:px-8 py-4 overflow-x-auto scrollbar-hide">
-                              <div className="inline-block min-w-full shadow rounded-lg h-[42rem]">
-                                <table className="min-w-full leading-normal">
-                                  <thead>
-                                    <tr className="bg-red-700">
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider">
-                                        Squad Members
-                                      </th>
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider">
-                                        ₦
-                                      </th>
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider hidden lg:table-cell">
-                                        SB
-                                      </th>
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider hidden lg:table-cell">
-                                        TP
-                                      </th>
-                                      <th className="px-5 py-3 border-b-2 border-gray-200  text-center text-xs font-arcon text-white uppercase tracking-wider hidden lg:table-cell">
-                                        Fix
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {teams.subs.map(
-                                      (item: Players, player_id: number) => (
-                                        <tr key={player_id} className="">
-                                          <td
-                                            key={player_id}
-                                            className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle"
-                                          >
-                                            <div className=" w-full flex">
-                                              <p
-                                                tabIndex={0}
-                                                className="focus:outline-none text-xs text-left leading-normal text-gray-500 flex align-middle"
-                                              >
-                                                <span className=" align-middle  material-icons text-2xl text-red-500 ">
-                                                  info_outline
-                                                </span>
-
-                                                <span className="flex-shrink-0 w-10 h-10 ml-4  mb-2">
-                                                  <svg
-                                                    width="43"
-                                                    height="40"
-                                                    viewBox="0 0 43 40"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                  >
-                                                    <path
-                                                      d="M6.26061 4.50793C7.76364 3.78281 16.7818 0.882324 16.7818 0.882324C20.4271 2.53732 22.4114 3.68011 27.303 0.882324L34.8182 3.78281L37.8242 6.68329C38.5758 7.40841 40.0788 9.58377 40.8303 11.034C41.5818 12.4842 42.3333 19.7355 42.3333 19.7355L40.8303 20.4606H34.0667L33.3151 17.5601V39.3137H9.26667V19.7355H1V17.5601L3.25455 8.13353C3.25455 8.13353 4.75758 5.23305 6.26061 4.50793Z"
-                                                      fill="#276556"
-                                                    />
-                                                    <path
-                                                      d="M9.26667 19.7355H1V17.5601L3.25455 8.13353C3.25455 8.13353 4.75758 5.23305 6.26061 4.50793C7.76364 3.78281 16.7818 0.882324 16.7818 0.882324C20.4271 2.53732 22.4114 3.68011 27.303 0.882324L34.8182 3.78281C34.8182 3.78281 37.0727 5.95817 37.8242 6.68329C38.5758 7.40841 40.0788 9.58377 40.8303 11.034C41.5818 12.4842 42.3333 19.7355 42.3333 19.7355L40.8303 20.4606H34.0667L33.3151 17.5601V39.3137H9.26667V19.7355ZM9.26667 19.7355V17.5601"
-                                                      stroke="white"
-                                                      strokeWidth="0.5"
-                                                    />
-                                                  </svg>
-                                                </span>
-                                              </p>
-
-                                              <div className="ml-5 pl-3 mb-2">
-                                                <p
-                                                  tabIndex={0}
-                                                  className="focus:outline-none text-sm font-arcon leading-5 text-gray-900"
-                                                >
-                                                  {item.player_name}
-                                                </p>
-                                                <p
-                                                  tabIndex={0}
-                                                  className="focus:outline-none text-xs leading-normal  text-gray-900"
-                                                >
-                                                  {item.team}
-                                                  <span className="ml-4">
-                                                    {item.player_position ===
-                                                      "GoalKeeper" && "GK"}
-                                                    {item.player_position ===
-                                                      "Defender" && "DEF"}
-                                                    {item.player_position ===
-                                                      "Midfielder" && "MID"}
-                                                    {item.player_position ===
-                                                      "Forward" && "FWD"}
-                                                  </span>
-                                                </p>
-                                              </div>
-                                            </div>
-                                          </td>
-                                          <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle">
-                                            <p className="text-gray-900 whitespace-no-wrap border-l border-gray-400 py-2 text-center">
-                                              5.4
-                                            </p>
-                                          </td>
-                                          <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle hidden lg:table-cell">
-                                            <p className="text-gray-900 whitespace-no-wrap text-center">
-                                              15.4
-                                            </p>
-                                          </td>
-                                          <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle hidden lg:table-cell">
-                                            <p className="text-gray-900 whitespace-no-wrap text-center">
-                                              84
-                                            </p>
-                                          </td>
-                                          <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm align-middle hidden lg:table-cell">
-                                            <p className="text-gray-900 whitespace-no-wrap text-center">
-                                              AVL (H)
-                                            </p>
-                                          </td>
-                                        </tr>
-                                      )
-                                    )}
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -555,7 +357,7 @@ const Starting = () => {
                   </div>
                 </div>
 
-                <div className="flex mx-auto md:flex-row py-10 ">
+                <div className="flex mx-auto md:flex-row py-6 ">
                   <div className=" flex-1 svelte-1l8159u">
                     <button
                       onClick={() => fetchByPos(1)}
@@ -607,37 +409,10 @@ const Starting = () => {
                     </button>
                   </div>
                 </div>
-
-                <div className="flex flex-col md:flex-row">
-                  <div className="w-full lg:mx-2 flex-1 svelte-1l8159u">
-                    <label className="text-gray-600 font-arcon text-sm mb-2 ml-1">
-                      Sort by
-                    </label>
-                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                      <select className="form-select w-full px-3 py-2 bg-white font-arcon  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                        <option value="">Total Point</option>
-                        <option value="02">Goals</option>
-                        <option value="03">Female</option>
-                        <option value="04">Prefer not to state</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                    <label className="text-gray-600 font-arcon text-sm mb-2 ml-1">
-                      Max Cost
-                    </label>
-                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                      <select className="form-select w-full px-3 py-2 bg-white font-arcon  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                        <option value="">3.00</option>
-                        <option value="02">Free</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
-            <div className="container bg-gradient-to-br from-[#2B1872] to-[#6A43FA]  border-inherit rounded-xl h-64 overflow-y-auto scrollbar-hide drop-shadow shadow-lg shadow-white px-4 py-3 lg:px-5">
+            <div className="container bg-gradient-to-br from-[#2B1872] to-[#6A43FA]  border-inherit rounded-xl h-[38rem] overflow-y-auto scrollbar-hide drop-shadow shadow-lg shadow-white px-4 py-3 lg:px-5">
               {isFetching === 1 ? (
                 <span className="text-white opacity-50">Loading.....</span>
               ) : (
