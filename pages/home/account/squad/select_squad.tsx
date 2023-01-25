@@ -86,13 +86,16 @@ const SquadSelection = () => {
   const autoComplete = async () => {
     try {
       setLoading(1);
-      const res = await axios.get(`${process.env.BACKEND_URL}/use-autocomplete`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.token}`,
-          "content-type": "application/json",
-          accept: "application/json",
-        },
-      });
+      const res = await axios.get(
+        `${process.env.BACKEND_URL}/use-autocomplete`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
       const response = await res.data;
       setMessage(response.message);
       setError(false);
@@ -319,7 +322,7 @@ const SquadSelection = () => {
                         className={openTab === 1 ? "block" : "hidden"}
                         id="link1"
                       >
-                        <div className="flex py-10 mx-auto">
+                        <div className="flex py-10 mx-32">
                           {teams
                             .filter(
                               (e: Players) => e.player_position === "GoalKeeper"
@@ -327,9 +330,9 @@ const SquadSelection = () => {
                             .map((item: Players, position_id) => (
                               <div
                                 key={position_id}
-                                className="h-10 p-3 mx-auto mt-2 space-x-6 transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                                className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
-                                <div className="-mt-[4rem] ">
+                                {/* <div className="-mt-[4rem] ">
                                   <svg
                                     viewBox="0 0 52 51"
                                     fill="none"
@@ -350,6 +353,16 @@ const SquadSelection = () => {
                                       fill="white"
                                     />
                                   </svg>
+                                </div> */}
+                                <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-24 w-20 rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
+                                    />
+                                  </div>
                                 </div>
 
                                 <div>
@@ -369,9 +382,9 @@ const SquadSelection = () => {
                             .map((item: Players, position_id) => (
                               <div
                                 key={position_id}
-                                className="p-3 mx-auto mt-5 text-center transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                                className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
-                                <div className="-mt-[4rem] ">
+                                {/* <div className="-mt-[4rem] ">
                                   <svg
                                     viewBox="0 0 52 51"
                                     fill="none"
@@ -392,10 +405,20 @@ const SquadSelection = () => {
                                       fill="white"
                                     />
                                   </svg>
+                                </div> */}
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-24 w-20 rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
+                                    />
+                                  </div>
                                 </div>
 
                                 <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1  px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
                                     {item.player_name}
                                   </h1>
                                 </div>
@@ -411,9 +434,9 @@ const SquadSelection = () => {
                             .map((item: Players, position_id) => (
                               <div
                                 key={position_id}
-                                className="h-10 p-1 mx-auto mt-5 transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                                className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
-                                <div className="-mt-[4rem] ">
+                                {/* <div className="-mt-[4rem] ">
                                   <svg
                                     viewBox="0 0 52 51"
                                     fill="none"
@@ -434,6 +457,16 @@ const SquadSelection = () => {
                                       fill="white"
                                     />
                                   </svg>
+                                </div> */}
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-24 w-20 rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
+                                    />
+                                  </div>
                                 </div>
 
                                 <div>
@@ -452,38 +485,48 @@ const SquadSelection = () => {
                             )
                             .map((item: Players, position_id) => (
                               <div
-                                key={position_id}
-                                className="p-3 mx-auto mt-5 space-x-6 transition duration-500 transform rounded shadow-md cursor-pointer hover:scale-105"
-                              >
-                                <div className="-mt-[4rem] ">
-                                  <svg
-                                    viewBox="0 0 52 51"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="z-0 h-8 mx-auto sm:h-12"
-                                  >
-                                    <path
-                                      d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
-                                      fill="#276556"
-                                    />
-                                    <path
-                                      d="M10.5718 25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60399 6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599C42.3641 4.73599 45.1693 7.53798 46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839ZM10.5718 25.2839V22.4819"
-                                      stroke="white"
-                                      strokeWidth="0.5"
-                                    />
-                                    <path
-                                      d="M27.0071 19.5599L25.6397 19.5599V24.9746L20.2188 24.9746V26.3404L25.6397 26.3404V31.7551L27.0071 31.7551L27.0071 26.3404H32.4279V24.9746H27.0071L27.0071 19.5599Z"
-                                      fill="white"
-                                    />
-                                  </svg>
-                                </div>
-
-                                <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1  px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
-                                  </h1>
+                              key={position_id}
+                              className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                            >
+                              {/* <div className="-mt-[4rem] ">
+                                <svg
+                                  viewBox="0 0 52 51"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="z-0 h-8 mx-auto sm:h-12"
+                                >
+                                  <path
+                                    d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
+                                    fill="#276556"
+                                  />
+                                  <path
+                                    d="M10.5718 25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60399 6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599C42.3641 4.73599 45.1693 7.53798 46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839ZM10.5718 25.2839V22.4819"
+                                    stroke="white"
+                                    strokeWidth="0.5"
+                                  />
+                                  <path
+                                    d="M27.0071 19.5599L25.6397 19.5599V24.9746L20.2188 24.9746V26.3404L25.6397 26.3404V31.7551L27.0071 31.7551L27.0071 26.3404H32.4279V24.9746H27.0071L27.0071 19.5599Z"
+                                    fill="white"
+                                  />
+                                </svg>
+                              </div> */}
+                              <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                <div className=" h-24 w-20 rounded-full mx-auto">
+                                  <img
+                                    className="rounded-full object-cover object-center"
+                                    src={item.image_path}
+                                    alt={item.player_name}
+                                    title={item.player_name}
+                                  />
                                 </div>
                               </div>
+
+                              <div>
+                                <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  {item.player_name}
+                                </h1>
+                              </div>
+                            </div>
                             ))}
                         </div>
                       </div>
