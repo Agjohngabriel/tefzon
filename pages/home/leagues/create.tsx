@@ -28,7 +28,7 @@ const CreateLeague = () => {
     setIsSubmitting(true);
     try {
       const user = await axios.post(
-        `${process.env.BACKEND_URL}leagues`,
+        `${process.env.BACKEND_URL}/leagues`,
         {
           name: name,
           participants: pat,

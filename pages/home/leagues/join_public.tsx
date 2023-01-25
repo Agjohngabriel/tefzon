@@ -16,7 +16,7 @@ const JoinPublic = () => {
   const { data: session }: any = useSession();
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}public-leagues`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}/public-leagues`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
