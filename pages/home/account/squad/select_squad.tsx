@@ -366,8 +366,8 @@ const SquadSelection = () => {
                                 </div>
 
                                 <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                    {item.player_name.split(' ',1)}
                                   </h1>
                                 </div>
                               </div>
@@ -418,8 +418,8 @@ const SquadSelection = () => {
                                 </div>
 
                                 <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  {item.player_name.split(' ',1)}
                                   </h1>
                                 </div>
                               </div>
@@ -470,8 +470,8 @@ const SquadSelection = () => {
                                 </div>
 
                                 <div>
-                                  <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  {item.player_name.split(' ',1)}
                                   </h1>
                                 </div>
                               </div>
@@ -485,10 +485,10 @@ const SquadSelection = () => {
                             )
                             .map((item: Players, position_id) => (
                               <div
-                              key={position_id}
-                              className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
-                            >
-                              {/* <div className="-mt-[4rem] ">
+                                key={position_id}
+                                className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                              >
+                                {/* <div className="-mt-[4rem] ">
                                 <svg
                                   viewBox="0 0 52 51"
                                   fill="none"
@@ -510,23 +510,23 @@ const SquadSelection = () => {
                                   />
                                 </svg>
                               </div> */}
-                              <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                <div className=" h-24 w-20 rounded-full mx-auto">
-                                  <img
-                                    className="rounded-full object-cover object-center"
-                                    src={item.image_path}
-                                    alt={item.player_name}
-                                    title={item.player_name}
-                                  />
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-24 w-20 rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
+                                    />
+                                  </div>
+                                </div>
+
+                                <div>
+                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  {item.player_name.split(' ',1)}
+                                  </h1>
                                 </div>
                               </div>
-
-                              <div>
-                                <h1 className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name}
-                                </h1>
-                              </div>
-                            </div>
                             ))}
                         </div>
                       </div>
