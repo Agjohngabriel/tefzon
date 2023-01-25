@@ -689,7 +689,7 @@ const SquadSelection = () => {
                 ""
               )}
 
-              {players.slice(0, 70).map((item: Players, index) => (
+              {players.map((item: Players, index) => (
                 <button
                   onClick={() => addToSquad(item.player_id)}
                   className="px-1 pt-3 "

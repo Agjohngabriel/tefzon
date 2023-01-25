@@ -41,7 +41,7 @@ const SelectVice = () => {
     try {
       setLoading(1);
       const res = await axios.get(
-        `${process.env.BACKEND_URL}select/vice-captain/${id}`,
+        `${process.env.BACKEND_URL}/select/vice-captain/${id}`,
         {
           headers: {
             Authorization: `Bearer ${session?.data.token}`,
@@ -66,7 +66,7 @@ const SelectVice = () => {
   };
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
@@ -84,7 +84,7 @@ const SelectVice = () => {
     getFavourites();
   }, [session]);
   const fetchAll = async () => {
-    const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",
@@ -102,7 +102,7 @@ const SelectVice = () => {
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
-      <form>
+      <form className="py-2">
         <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
             <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">

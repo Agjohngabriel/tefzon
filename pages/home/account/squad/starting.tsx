@@ -238,7 +238,7 @@ const Starting = () => {
                           )}
                         </div>
 
-                        <div className="flex   py-8 mx-auto">
+                        <div className="flex   pt-16 mx-auto">
                           {teams.defenders.map(
                             (item: Players, player_id: number) => (
                               <div
