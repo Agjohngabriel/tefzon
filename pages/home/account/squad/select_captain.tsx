@@ -41,7 +41,7 @@ const SelectCaptain = () => {
     try {
       setLoading(1);
       const res = await axios.get(
-        `${process.env.BACKEND_URL}select/captain/${id}`,
+        `${process.env.BACKEND_URL}/select/captain/${id}`,
         {
           headers: {
             Authorization: `Bearer ${session?.data.token}`,
@@ -66,7 +66,7 @@ const SelectCaptain = () => {
   };
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
+      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
         headers: {
           Authorization: `Bearer ${session?.data.token}`,
           "content-type": "application/json",
@@ -84,7 +84,7 @@ const SelectCaptain = () => {
     getFavourites();
   }, [session]);
   const fetchAll = async () => {
-    const res = await axios.get(`${process.env.BACKEND_URL}get/my/squad`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",
@@ -102,7 +102,7 @@ const SelectCaptain = () => {
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
-      <form>
+      <form className=" py-2">
         <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
             <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
@@ -243,7 +243,7 @@ const SelectCaptain = () => {
               </div>
 
               <div className="flex   py-10 sm:mx-auto -mx-3 sm:w-3/4">
-                {teams.forwards.map((item: Players, player_id: number) => (
+                {teams.midfielders.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
                     type="button"
@@ -287,7 +287,7 @@ const SelectCaptain = () => {
               </div>
 
               <div className="flex   py-10 mx-auto sm:w-1/2">
-                {teams.subs.map((item: Players, player_id: number) => (
+                {teams.forwards.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
                     type="button"
@@ -331,7 +331,7 @@ const SelectCaptain = () => {
               </div>
               <hr className="my-6 rounded-lg border-b border-white mx-4 lg:mx-28" />
               <div className="flex   py-10 sm:mx-auto -mx-3 sm:w-3/4">
-                {teams.forwards.map((item: Players, player_id: number) => (
+                {teams.subs.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
                     type="button"
