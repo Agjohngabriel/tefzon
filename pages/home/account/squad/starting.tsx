@@ -234,7 +234,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -242,7 +242,7 @@ const Starting = () => {
                           )}
                         </div>
 
-                        <div className="flex   pt-16 mx-16">
+                        <div className="flex   pt-16 mx-12">
                           {teams.defenders.map(
                             (item: Players, player_id: number) => (
                               <div
@@ -262,7 +262,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -290,7 +290,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -318,7 +318,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name}
+                                  {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -486,7 +486,7 @@ const Starting = () => {
                           tabIndex={0}
                           className="focus:outline-none  text-md font-arcon leading-5 border-l  text-white"
                         >
-                          {item.starting}
+                          {item.rating}
                         </p>
                       </div>
                     </div>

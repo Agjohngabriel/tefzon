@@ -129,7 +129,7 @@ const SelectVice = () => {
         </div>
 
         <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-4 lg:mx-28" />
-        <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-5  w-auto">
+        <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-3xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-4  w-auto">
           <div
             className="rounded-2xl border shadow-xl py-20 sm:px-5 w-full "
             style={{
@@ -214,7 +214,7 @@ const SelectVice = () => {
                 ))}
               </div>
 
-              <div className="flex   py-10 mx-auto sm:w-1/2">
+              <div className="flex   py-10 mx-auto sm:w-3/4">
                 {teams.defenders.map((item: Players, player_id: number) => (
                   <button
                   key={player_id}

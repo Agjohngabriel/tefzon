@@ -1,5 +1,7 @@
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MainLayout from "../../../../components/MainLayout";
 
 interface Players {
@@ -20,6 +22,111 @@ interface Players {
 
 const SaveTeam = () => {
   const [openTab, setOpenTab] = useState(1);
+  const [message, setMessage] = useState("");
+  const { data: session }: any = useSession();
+  const [teams, setTeams] = useState({
+    subs: [],
+    goalkeepers: [],
+    midfielders: [],
+    forwards: [],
+    defenders: [],
+  });
+  const [isLoading, setLoading] = useState(0);
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState({
+    message: "",
+  });
+
+  const selectCap = async (id: number) => {
+    try {
+      setLoading(1);
+      const res = await axios.get(
+        `${process.env.BACKEND_URL}/select/captain/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
+      const response = await res.data;
+      setMessage(response);
+      setError(false);
+      getFavourites();
+      setLoading(0);
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setMessage("");
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
+
+  const selectViceCap = async (id: number) => {
+    try {
+      setLoading(1);
+      const res = await axios.get(
+        `${process.env.BACKEND_URL}/select/vice-captain/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
+      const response = await res.data;
+      setMessage(response);
+      setError(false);
+      getFavourites();
+      setLoading(0);
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setMessage("");
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
+  useEffect(() => {
+    const fetchAll = async () => {
+      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
+        headers: {
+          Authorization: `Bearer ${session?.data.token}`,
+          "content-type": "application/json",
+        },
+      });
+      const response = await res.data;
+      console.log(response);
+      return response;
+    };
+
+    const getFavourites = async () => {
+      const FavouritesFromApi = await fetchAll();
+      setTeams(FavouritesFromApi);
+    };
+    getFavourites();
+  }, [session]);
+  const fetchAll = async () => {
+    const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
+      headers: {
+        Authorization: `Bearer ${session?.data.token}`,
+        "content-type": "application/json",
+      },
+    });
+    const response = await res.data;
+    return response;
+  };
+
+  const getFavourites = async () => {
+    const FavouritesFromApi = await fetchAll();
+    setTeams(FavouritesFromApi);
+    console.log(teams);
+  };
   return (
     <MainLayout>
       <form className="py-2">
