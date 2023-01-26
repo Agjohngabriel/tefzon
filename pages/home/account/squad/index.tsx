@@ -10,7 +10,7 @@ const SaveTeam = () => {
         <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
             <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
-              Save Your Team
+              MY SQUAD
             </h1>
           </div>
           <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
