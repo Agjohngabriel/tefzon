@@ -2,11 +2,27 @@ import Link from "next/link";
 import { useState } from "react";
 import MainLayout from "../../../../components/MainLayout";
 
+interface Players {
+  display_name: string;
+  image_path: string;
+  short_team_name: string;
+  position_id: number;
+  player_id: number;
+  id: number;
+  rating: string;
+  player_position: string;
+  team: string;
+  player_name: string;
+  starting: string;
+  is_captain: boolean;
+  is_vice_captain: boolean;
+}
+
 const SaveTeam = () => {
   const [openTab, setOpenTab] = useState(1);
   return (
     <MainLayout>
-      <form>
+      <form className="py-2">
         <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
             <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
@@ -15,7 +31,7 @@ const SaveTeam = () => {
           </div>
           <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
             <div>
-              <Link href="/home/account/squad/select_squad">
+              <Link href="/home">
                 <a
                   className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
@@ -34,7 +50,7 @@ const SaveTeam = () => {
 
         <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-4 lg:mx-28" />
 
-        <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-5  w-auto">
+        <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-2xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20 px-2 py-2 w-auto">
           <div
             className="rounded-2xl border shadow-xl py-20 px-5 w-full "
             style={{
@@ -44,7 +60,7 @@ const SaveTeam = () => {
               backgroundPosition: "center center",
             }}
           >
-            <p className="text-sm text-gray-100 font-arcon text-center  max-w-3xl mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
+            <p className="text-sm text-gray-100 font-arcon text-center  max-w-lg mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
               Tiger FC
             </p>
 

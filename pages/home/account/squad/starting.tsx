@@ -125,7 +125,11 @@ const Starting = () => {
     console.log(teams);
   };
 
-  const eleven = teams.goalkeepers.length + teams.midfielders.length + teams.forwards.length + teams.defenders.length; 
+  const eleven =
+    teams.goalkeepers.length +
+    teams.midfielders.length +
+    teams.forwards.length +
+    teams.defenders.length;
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
@@ -172,7 +176,7 @@ const Starting = () => {
           <div
             className="container  lg:max-w-4xl h-3/4  md:w-4/5 sm:ml-4 lg:ml-24 mt-10 mb-20  px-2 py-6 lg:px-10  w-auto "
             style={{
-              backgroundImage: 'url("/img/pitch-md.png")',
+              backgroundImage: 'url("/img/pitch-lg.png")',
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center center",
@@ -230,7 +234,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name.split(" ", 1)}
+                                    {item.player_name}
                                   </h1>
                                 </div>
                               </div>
@@ -238,7 +242,7 @@ const Starting = () => {
                           )}
                         </div>
 
-                        <div className="flex   pt-16 mx-auto">
+                        <div className="flex   pt-16 mx-16">
                           {teams.defenders.map(
                             (item: Players, player_id: number) => (
                               <div
@@ -258,7 +262,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name.split(" ", 1)}
+                                    {item.player_name}
                                   </h1>
                                 </div>
                               </div>
@@ -271,7 +275,7 @@ const Starting = () => {
                             (item: Players, player_id: number) => (
                               <div
                                 key={player_id}
-                                className="p-1  rounded mt-5 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                                className="p-1  rounded mt-10 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                               >
                                 <div className="mt-[0rem] -mb-16 -translate-y-1/2 transform mx-auto">
                                   <div className=" h-24 w-20 rounded-full mx-auto">
@@ -286,7 +290,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name.split(" ", 1)}
+                                    {item.player_name}
                                   </h1>
                                 </div>
                               </div>
@@ -294,7 +298,7 @@ const Starting = () => {
                           )}
                         </div>
 
-                        <div className="flex   py-10 mx-auto">
+                        <div className="flex   pt-10 pb-2 mx-9">
                           {teams.forwards.map(
                             (item: Players, player_id: number) => (
                               <div
@@ -314,7 +318,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name.split(" ", 1)}
+                                    {item.player_name}
                                   </h1>
                                 </div>
                               </div>
@@ -418,7 +422,17 @@ const Starting = () => {
               ) : (
                 ""
               )}
-
+              <div className="flex items-center border-b border-gray-300 w-full">
+                <div className="flex items-start justify-end  ">
+                  <div className=" w-full flex">
+                    <div className="pl-2  w-[8rem] mb-2">
+                      <p className="focus:outline-none text-lg font-bold leading-normal  text-white">
+                        Substitution
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               {teams.subs.map((item: Players, index: number) => (
                 <button
                   onClick={() => addToSquad(item.player_id)}
@@ -467,10 +481,10 @@ const Starting = () => {
                         </div>
                       </div>
 
-                      <div className=" ml-2 py-2 border-l text-right  flex-auto w-24">
+                      <div className=" ml-2 py-2  flex-auto w-24">
                         <p
                           tabIndex={0}
-                          className="focus:outline-none  text-md font-arcon leading-5  px-4 text-white"
+                          className="focus:outline-none  text-md font-arcon leading-5 border-l  text-white"
                         >
                           {item.starting}
                         </p>
