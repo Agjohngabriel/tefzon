@@ -140,6 +140,7 @@ const SquadSelection = () => {
       setErrorMsg(errorMessage);
     }
   };
+
   useEffect(() => {
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
@@ -158,8 +159,28 @@ const SquadSelection = () => {
     };
     getFavourites();
   }, [session]);
+
+  // useEffect(() => {
+  //   const fetchAll = async () => {
+  //     const res = await axios.get(`${process.env.BACKEND_URL}/get/team/squad/18369/53`, {
+  //       headers: {
+  //         Authorization: `Bearer ${session?.data.token}`,
+  //         "content-type": "application/json",
+  //       },
+  //     });
+  //     const response = await res.data;
+  //     return response.subs;
+  //   };
+
+  //   const getFavourites = async () => {
+  //     const FavouritesFromApi = await fetchAll();
+  //     setTeams(FavouritesFromApi);
+  //   };
+  //   getFavourites();
+  // }, [session]);
+
   const fetchAll = async () => {
-    const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
+    const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad   `, {
       headers: {
         Authorization: `Bearer ${session?.data.token}`,
         "content-type": "application/json",
@@ -689,7 +710,7 @@ const SquadSelection = () => {
                 ""
               )}
 
-              {players.slice(0, 70).map((item: Players, index) => (
+              {players.map((item: Players, index) => (
                 <button
                   onClick={() => addToSquad(item.player_id)}
                   className="px-1 pt-3 "

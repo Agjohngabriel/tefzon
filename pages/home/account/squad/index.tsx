@@ -18,9 +18,10 @@ interface Players {
   player_name: string;
   starting: string;
   is_captain: boolean;
+  is_vice_captain: boolean;
 }
 
-const SelectCaptain = () => {
+const SaveTeam = () => {
   const [openTab, setOpenTab] = useState(1);
   const [message, setMessage] = useState("");
   const { data: session }: any = useSession();
@@ -36,12 +37,44 @@ const SelectCaptain = () => {
   const [errorMsg, setErrorMsg] = useState({
     message: "",
   });
+  const [active, setActive] = useState(false);
+  const playerDetails = () => {
+    setActive(!active);
+  };
 
   const selectCap = async (id: number) => {
     try {
       setLoading(1);
       const res = await axios.get(
         `${process.env.BACKEND_URL}/select/captain/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
+      const response = await res.data;
+      setMessage(response);
+      setError(false);
+      getFavourites();
+      setLoading(0);
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setMessage("");
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
+
+  const selectViceCap = async (id: number) => {
+    try {
+      setLoading(1);
+      const res = await axios.get(
+        `${process.env.BACKEND_URL}/select/vice-captain/${id}`,
         {
           headers: {
             Authorization: `Bearer ${session?.data.token}`,
@@ -102,16 +135,16 @@ const SelectCaptain = () => {
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
-      <form className=" py-2">
+      <form className="py-2">
         <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
             <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
-              Select Your Captain
+              MY SQUAD
             </h1>
           </div>
           <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
             <div>
-              <Link href="/home/account/squad/select_vice_captain">
+              <Link href="/home">
                 <a
                   className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
@@ -120,7 +153,7 @@ const SelectCaptain = () => {
                                     transition"
                 >
                   <span className="font-montserrat text-sm text-black-150">
-                    Next
+                    Save
                   </span>
                 </a>
               </Link>
@@ -129,9 +162,10 @@ const SelectCaptain = () => {
         </div>
 
         <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-4 lg:mx-28" />
-        <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-3xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-4   w-auto">
+
+        <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-2xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20 px-2 py-2 w-auto">
           <div
-            className="rounded-2xl border shadow-xl py-20 sm:px-5 w-full "
+            className="rounded-2xl border shadow-xl py-20 px-5 w-full "
             style={{
               backgroundImage: 'url("/img/pitch-lg.png")',
               backgroundRepeat: "no-repeat",
@@ -139,8 +173,8 @@ const SelectCaptain = () => {
               backgroundPosition: "center center",
             }}
           >
-            <p className="text-sm text-gray-100 font-arcon text-center  max-w-3xl mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
-              Your Captain's point will be doubled
+            <p className="text-sm text-gray-100 font-arcon text-center  max-w-lg mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
+              Tiger FC
             </p>
             {error === true && (
               <p className="text-sm font-arcon text-red-0 text-center max-w-3xl -mb-8 py-3 mx-auto tracking-wider px-2  lg:px-1 ">
@@ -159,7 +193,7 @@ const SelectCaptain = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={() => selectCap(item.id)}
+                    onClick={playerDetails}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -179,7 +213,7 @@ const SelectCaptain = () => {
                         tabIndex={0}
                         className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex"
                       >
-                        {item.player_name}
+                        {item.player_name.split(" ", 1)}
                         <svg
                           viewBox="0 0 53 51"
                           fill="none"
@@ -188,7 +222,13 @@ const SelectCaptain = () => {
                         >
                           <path
                             d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={item.is_captain ? "#ff6c37" : "#03A9F4"}
+                            fill={
+                              item.is_captain
+                                ? "#ff6c37"
+                                : item.is_vice_captain
+                                ? "#fdd663"
+                                : "#03A9F4"
+                            }
                           />
                           <path
                             d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
@@ -201,20 +241,20 @@ const SelectCaptain = () => {
                         tabIndex={0}
                         className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                       >
-                        11.9
+                        {item.rating}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex mt-[2rem]  py-10 mx-auto">
+              <div className="flex   py-10 mx-auto sm:w-3/4">
                 {teams.defenders.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
                     type="button"
-                    onClick={() => selectCap(item.id)}
-                    className="p-3  rounded mt-2 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                    onClick={playerDetails}
+                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
                       <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
@@ -233,7 +273,7 @@ const SelectCaptain = () => {
                         tabIndex={0}
                         className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex"
                       >
-                        {item.player_name}
+                        {item.player_name.split(" ", 1)}
                         <svg
                           viewBox="0 0 53 51"
                           fill="none"
@@ -242,7 +282,13 @@ const SelectCaptain = () => {
                         >
                           <path
                             d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={item.is_captain ? "#ff6c37" : "#03A9F4"}
+                            fill={
+                              item.is_captain
+                                ? "#ff6c37"
+                                : item.is_vice_captain
+                                ? "#fdd663"
+                                : "#03A9F4"
+                            }
                           />
                           <path
                             d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
@@ -255,20 +301,20 @@ const SelectCaptain = () => {
                         tabIndex={0}
                         className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                       >
-                        11.9
+                        {item.rating}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex mt-[2rem] py-10 sm:mx-auto -mx-3 sm:w-3/4">
+              <div className="flex   py-10 sm:mx-auto -mx-3 sm:w-3/4">
                 {teams.midfielders.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
                     type="button"
-                    onClick={() => selectCap(item.id)}
-                    className="p-3  rounded mt-2 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                    onClick={playerDetails}
+                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
                       <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
@@ -287,7 +333,7 @@ const SelectCaptain = () => {
                         tabIndex={0}
                         className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex"
                       >
-                        {item.player_name}
+                        {item.player_name.split(" ", 1)}
                         <svg
                           viewBox="0 0 53 51"
                           fill="none"
@@ -296,7 +342,13 @@ const SelectCaptain = () => {
                         >
                           <path
                             d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={item.is_captain ? "#ff6c37" : "#03A9F4"}
+                            fill={
+                              item.is_captain
+                                ? "#ff6c37"
+                                : item.is_vice_captain
+                                ? "#fdd663"
+                                : "#03A9F4"
+                            }
                           />
                           <path
                             d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
@@ -309,119 +361,225 @@ const SelectCaptain = () => {
                         tabIndex={0}
                         className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
                       >
-                        11.9
+                        {item.rating}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex mt-[2rem] py-10 mx-auto sm:w-1/2">
+              <div className="flex   pt-10 mx-auto sm:w-3/4">
                 {teams.forwards.map((item: Players, player_id: number) => (
                   <button
-                  key={player_id}
-                  type="button"
-                  onClick={() => selectCap(item.id)}
-                  className="p-3  rounded mt-2 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
-                >
-                  <div className="-mt-[3rem] ">
-                    <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                      <div className=" h-24 w-20 rounded-full mx-auto">
-                        <img
-                          className="rounded-full object-cover object-center"
-                          src={item.image_path}
-                          alt={item.player_name}
-                          title={item.player_name}
-                        />
+                    key={player_id}
+                    type="button"
+                    onClick={playerDetails}
+                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                  >
+                    <div className="-mt-[3rem] ">
+                      <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                        <div className=" h-24 w-20 rounded-full mx-auto">
+                          <img
+                            className="rounded-full object-cover object-center"
+                            src={item.image_path}
+                            alt={item.player_name}
+                            title={item.player_name}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="w-full mx-auto -mt-1    mb-1">
-                    <p
-                      tabIndex={0}
-                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex"
-                    >
-                      {item.player_name}
-                      <svg
-                        viewBox="0 0 53 51"
-                        fill="none"
-                        className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                        xmlns="http://www.w3.org/2000/svg"
+                    <div className="w-full mx-auto -mt-1    mb-1">
+                      <p
+                        tabIndex={0}
+                        className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex"
                       >
-                        <path
-                          d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                          fill={item.is_captain ? "#ff6c37" : "#03A9F4"}
-                        />
-                        <path
-                          d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                          stroke="white"
-                          strokeWidth="0.5"
-                        />
-                      </svg>
-                    </p>
-                    <p
-                      tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
-                    >
-                      11.9
-                    </p>
-                  </div>
-                </button>
+                        {item.player_name.split(" ", 1)}
+                        <svg
+                          viewBox="0 0 53 51"
+                          fill="none"
+                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
+                            fill={
+                              item.is_captain
+                                ? "#ff6c37"
+                                : item.is_vice_captain
+                                ? "#fdd663"
+                                : "#03A9F4"
+                            }
+                          />
+                          <path
+                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
+                            stroke="white"
+                            strokeWidth="0.5"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        tabIndex={0}
+                        className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      >
+                        {item.rating}
+                      </p>
+                    </div>
+                  </button>
                 ))}
               </div>
-              <hr className="my-10 rounded-lg border-b border-white mx-4 lg:mx-28" />
+              <hr className="mt-6  rounded-lg border-b border-white mx-4 lg:mx-28" />
+              <p className="text-sm text-gray-100 font-arcon font-bold text-center  max-w-lg my-3 tracking-wider px-2 mx-auto lg:px-1 ">
+                Substitution
+              </p>
+              <hr className="mb-6 rounded-lg border-b border-white mx-4 lg:mx-28" />
               <div className="flex   py-10 sm:mx-auto -mx-3 sm:w-3/4">
                 {teams.subs.map((item: Players, player_id: number) => (
                   <button
-                  key={player_id}
-                  type="button"
-                  onClick={() => selectCap(item.id)}
-                  className="p-3  rounded mt-2 mx-auto  h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
-                >
-                  <div className="-mt-[3rem] ">
-                    <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                      <div className=" h-24 w-20 rounded-full mx-auto">
-                        <img
-                          className="rounded-full object-cover object-center"
-                          src={item.image_path}
-                          alt={item.player_name}
-                          title={item.player_name}
-                        />
+                    key={player_id}
+                    type="button"
+                    onClick={playerDetails}
+                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                  >
+                    <div className="-mt-[3rem] ">
+                      <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                        <div className=" h-24 w-20 rounded-full mx-auto">
+                          <img
+                            className="rounded-full object-cover object-center"
+                            src={item.image_path}
+                            alt={item.player_name}
+                            title={item.player_name}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="w-full mx-auto -mt-1    mb-1">
-                    <p
-                      tabIndex={0}
-                      className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex"
-                    >
-                      {item.player_name}
-                      <svg
-                        viewBox="0 0 53 51"
-                        fill="none"
-                        className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                        xmlns="http://www.w3.org/2000/svg"
+                    <div className="w-full mx-auto -mt-1    mb-1">
+                      <p
+                        tabIndex={0}
+                        className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex"
                       >
-                        <path
-                          d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                          fill={item.is_captain ? "#ff6c37" : "#03A9F4"}
-                        />
-                        <path
-                          d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                          stroke="white"
-                          strokeWidth="0.5"
-                        />
-                      </svg>
-                    </p>
-                    <p
-                      tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
-                    >
-                      11.9
-                    </p>
-                  </div>
-                </button>
+                        {item.player_name.split(" ", 1)}
+                        <svg
+                          viewBox="0 0 53 51"
+                          fill="none"
+                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
+                            fill={
+                              item.is_captain
+                                ? "#ff6c37"
+                                : item.is_vice_captain
+                                ? "#fdd663"
+                                : "#03A9F4"
+                            }
+                          />
+                          <path
+                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
+                            stroke="white"
+                            strokeWidth="0.5"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        tabIndex={0}
+                        className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                      >
+                        {item.rating}
+                      </p>
+                    </div>
+                  </button>
                 ))}
+              </div>
+            </div>
+
+            <div className={`${active ? "" : "hidden"}`}></div>
+
+            <div className="flex justify-between items-center mb-3 bg-gray-800/90 sm:w-[30rem] rounded-3xl mx-auto mt-12">
+              <div
+                className={`inline-flex rounded-3xl ${
+                  openTab === 1
+                    ? "text-gray-800 bg-white "
+                    : "text-white bg-gray-800/20"
+                } `}
+              >
+                <input
+                  type="radio"
+                  name="room_type"
+                  id="fixtures"
+                  // checked
+                  hidden
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenTab(1);
+                  }}
+                  data-toggle="tab"
+                  role="tablist"
+                />
+                <label
+                  htmlFor="fixtures"
+                  className={
+                    "radio text-center  self-center py-2 sm:py-3 px-4 sm:px-12 cursor-pointer  hover:opacity-75 "
+                  }
+                >
+                  Pitch View
+                </label>
+              </div>
+              <div
+                className={`inline-flex rounded-3xl ${
+                  openTab === 2
+                    ? "text-gray-800 bg-white "
+                    : "text-white bg-gray-800/20"
+                } -ml-1`}
+              >
+                <input
+                  type="radio"
+                  name="room_type"
+                  id="fdr"
+                  hidden
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenTab(2);
+                  }}
+                  data-toggle="tab"
+                  role="tablist"
+                />
+                <label
+                  htmlFor="fdr"
+                  className={
+                    "radio text-center  self-center py-2 sm:py-3 px-4 sm:px-12 cursor-pointer   hover:opacity-75 "
+                  }
+                >
+                  List View
+                </label>
+              </div>
+              <div
+                className={`inline-flex rounded-3xl ${
+                  openTab === 3
+                    ? "text-gray-800 bg-white "
+                    : "text-white bg-gray-800/20"
+                } -ml-1`}
+              >
+                <input
+                  type="radio"
+                  name="room_type"
+                  id="date"
+                  hidden
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenTab(3);
+                  }}
+                  data-toggle="tab"
+                  role="tablist"
+                />
+                <label
+                  htmlFor="date"
+                  className={
+                    "radio text-center  self-center py-2 sm:py-3 px-8 sm:px-12 cursor-pointer   hover:opacity-75 "
+                  }
+                >
+                  Date
+                </label>
               </div>
             </div>
           </div>
@@ -431,4 +589,4 @@ const SelectCaptain = () => {
   );
 };
 
-export default SelectCaptain;
+export default SaveTeam;

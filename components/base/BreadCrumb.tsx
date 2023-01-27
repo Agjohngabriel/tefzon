@@ -50,16 +50,20 @@ function BreadCrumb() {
         </div>
       </div>
       {isLoading && <Loader />}
-      <div className="absolute z-50 w-[20rem] sm:w-full mx-6 md:mx-0 flex justify-between  overflow-x-auto md:px-5 lg:px-5 -mt-14 md:-mt-9 scrollbar-hide ">
-        <BreadCrumbButton
+      <div className="absolute z-50 w-[20rem] sm:w-full mx-6 md:mx-0  flex justify-between  overflow-x-auto md:px-44 -mt-14 md:-mt-9 scrollbar-hide ">
+        {/* <BreadCrumbButton
           title="Public League"
           link="/home/leagues/join_public"
         />
         <BreadCrumbButton
           title="Private League"
           link="/home/leagues/join_private"
+        /> */}
+        <BreadCrumbButton
+          title="Squad"
+          link="/home/account/squad"
         />
-        <BreadCrumbButton title="Create League" link="/home/leagues/create" />
+        <BreadCrumbButton title="Leagues" link="/home/leagues" />
         <BreadCrumbButton
           title="Pick Team"
           link="/home/account/squad/select_squad"
