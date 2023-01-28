@@ -58,9 +58,7 @@ const FavouriteLeague = (props: {
   const [active, setActive] = useState(false);
   const handleClick = () => {
     setActive(!active);
-
   };
-
 
   return (
     <div className={`sm:p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
@@ -69,8 +67,8 @@ const FavouriteLeague = (props: {
           Your Favourite League
         </h1>
         <p className="w-5/6 text-sm text-center text-gray-500 animate-fade-in-down">
-          Select a league to choose favourite team and click to continue. You can't edit these details
-          once you submit the form.
+          Select a league to choose favourite team and click to continue. You
+          can't edit these details once you submit the form.
         </p>
       </div>
       {isLoading && <Loader />}
@@ -212,7 +210,7 @@ const FavouriteLeague = (props: {
                       setActive(!active);
                       window.scrollTo({
                         top: document.documentElement.scrollHeight,
-                        behavior: 'smooth',
+                        behavior: "smooth",
                       });
                     }}
                     type="button"

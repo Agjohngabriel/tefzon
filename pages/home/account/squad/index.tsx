@@ -33,15 +33,13 @@ const SaveTeam = () => {
     forwards: [],
     defenders: [],
   });
+  const [details, setDetails] = useState([]);
   const [isLoading, setLoading] = useState(0);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState({
     message: "",
   });
   const [active, setActive] = useState(false);
-  const playerDetails = () => {
-    setActive(!active);
-  };
 
   const selectCap = async (id: number) => {
     try {
@@ -132,6 +130,7 @@ const SaveTeam = () => {
     const FavouritesFromApi = await fetchAll();
     setTeams(FavouritesFromApi);
   };
+
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
@@ -173,16 +172,13 @@ const SaveTeam = () => {
               backgroundPosition: "center center",
             }}
           >
-            <p className="text-sm text-gray-100 font-arcon text-center  max-w-lg mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
-              Tiger FC
-            </p>
             {error === true && (
-              <p className="text-sm font-arcon text-red-0 text-center max-w-3xl -mb-8 py-3 mx-auto tracking-wider px-2  lg:px-1 ">
+              <p className="text-sm text-gray-100 font-arcon text-center  max-w-lg mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
                 {errorMsg.message}
               </p>
             )}
             {message !== "" && (
-              <p className="text-sm font-arcon text-white text-center max-w-3xl -mb-8 py-3  mx-auto tracking-wider px-2  lg:px-1 ">
+              <p className="text-sm text-gray-100 font-arcon text-center  max-w-lg mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
                 {message}
               </p>
             )}
@@ -193,7 +189,23 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={playerDetails}
+                    onClick={async () => {
+                      setLoading(1);
+                      const respo = await axios.get(
+                        `${process.env.BACKEND_URL}/get/player/${item.player_id}`,
+                        {
+                          headers: {
+                            Authorization: `Bearer ${session?.data.token}`,
+                            "content-type": "application/json",
+                          },
+                        }
+                      );
+                      const response = await respo.data;
+                      setLoading(0);
+                      setDetails(response);
+                      setActive(!active);
+                      console.log(details);
+                    }}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -253,7 +265,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={playerDetails}
+                    // onClick={playerDetails}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -313,7 +325,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={playerDetails}
+                    // onClick={playerDetails}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -373,7 +385,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={playerDetails}
+                    // onClick={playerDetails}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -437,7 +449,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={playerDetails}
+                    // onClick={playerDetails}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -501,115 +513,112 @@ const SaveTeam = () => {
               <div className="relative w-full max-w-md px-4 h-full  mx-auto sm:mt-8">
                 {!isLoading && (
                   <>
-                    {teams.forwards.map(
-                      (item: Players, player_id: number) => (
-                        <div
-                          key={player_id}
-                          className=" flex flex-col bg-white mb-4 px- rounded-3xl  relative "
-                        >
-                          <div className="flex  rounded-3xl bg-gray-100 dark:bg-gray-700  flex-col items-center py-4">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setActive(!active);
-                              }}
-                              className="text-gray-400 bg-gray-200 hover:bg-gray-500 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto mr-3 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                              data-modal-toggle="default-modal"
+                    {details.map((detail: Players, player_id: number) => (
+                      <div
+                        key={player_id}
+                        className=" flex flex-col bg-white mb-4 px- rounded-3xl  relative "
+                      >
+                        <div className="flex  rounded-3xl bg-gray-100 dark:bg-gray-700  flex-col items-center py-4">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setActive(!active);
+                            }}
+                            className="text-gray-400 bg-gray-200 hover:bg-gray-500 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto mr-3 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-toggle="default-modal"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
                             >
-                              <svg
-                                className="w-5 h-5"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                  clipRule="evenodd"
-                                ></path>
-                              </svg>
-                            </button>
+                              <path
+                                fillRule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                              ></path>
+                            </svg>
+                          </button>
 
-                            <div className="-mt-4 h-[12rem] w-[12rem] rounded-full border-2 border-white shadow-md mx-auto">
-                              <img
-                                className="rounded-full object-cover object-center"
-                                // src="https://api.lorem.space/image/face?w=260&h=260&hash=bart89fe"
-                                // alt="Kobe Bryant"
-                                // title="Kobe Bryant"
-                                src={item.image_path}
-                                alt={item.player_name}
-                                title={item.player_name}
-                              />
-                            </div>
-
-                            <span className="font-oswald mt-2">Michele</span>
+                          <div className="-mt-4 h-[12rem] w-[12rem] rounded-full border-2 border-white shadow-md mx-auto">
+                            <img
+                              className="rounded-full object-cover object-center"
+                              src={detail.image_path}
+                              alt={detail.player_name}
+                              title={detail.player_name}
+                            />
                           </div>
 
-                          <div className="flex mt-2  justify-between px-6">
-                            <button
-                              onClick={() => selectCap(item.id)}
-                              className="flex items-center justify-between px-4 py-4 border cursor-pointer rounded-xl dark:border-gray-700"
-                            >
-                              <div className="flex flex-col items-center ">
-                                <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
-                                  Make Captain
-                                </h2>
-                              </div>
-                            </button>
+                          <span className="font-oswald mt-2">
+                            {detail.player_name}
+                          </span>
+                        </div>
 
-                            <button
-                              onClick={() => selectViceCap(item.id)}
-                              className="flex items-center justify-between px-4 py-4 border dark:border-gray-700 cursor-pointer rounded-xl"
-                            >
+                        <div className="flex mt-2  justify-between px-6">
+                          <button
+                            onClick={() => selectCap(detail.id)}
+                            className="flex items-center justify-between px-4 py-4 border cursor-pointer rounded-xl dark:border-gray-700"
+                          >
+                            <div className="flex flex-col items-center ">
                               <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
-                                Make Vice Captain
+                                Make Captain
                               </h2>
-                            </button>
+                            </div>
+                          </button>
 
-                            <button className="flex items-center justify-between px-4 py-4 border cursor-pointer rounded-xl dark:border-gray-700">
-                              <div className="flex flex-col items-center space-y-1">
-                                <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
-                                  Remove
-                                </h2>
-                              </div>
-                            </button>
+                          <button
+                            onClick={() => selectViceCap(detail.id)}
+                            className="flex items-center justify-between px-4 py-4 border dark:border-gray-700 cursor-pointer rounded-xl"
+                          >
+                            <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
+                              Make Vice Captain
+                            </h2>
+                          </button>
+
+                          <button className="flex items-center justify-between px-4 py-4 border cursor-pointer rounded-xl dark:border-gray-700">
+                            <div className="flex flex-col items-center space-y-1">
+                              <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
+                                Remove
+                              </h2>
+                            </div>
+                          </button>
+                        </div>
+
+                        <div className="p-8 mt-2 space-y-3 bg-gray-100 dark:bg-gray-800 rounded-xl">
+                          <div className="flex items-center justify-between text-gray-800 dark:text-gray-200 ">
+                            <p className="textlg sm:text-xl">Position</p>
+
+                            <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
+                              Free
+                            </h2>
+                          </div>
+                          <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
+                            <p className="textlg sm:text-xl">Rating</p>
+
+                            <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
+                              Free
+                            </h2>
                           </div>
 
-                          <div className="p-8 mt-2 space-y-3 bg-gray-100 dark:bg-gray-800 rounded-xl">
-                            <div className="flex items-center justify-between text-gray-800 dark:text-gray-200 ">
-                              <p className="textlg sm:text-xl">Position</p>
+                          <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
+                            <p className="textlg sm:text-xl">Value</p>
 
-                              <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                                Free
-                              </h2>
-                            </div>
-                            <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
-                              <p className="textlg sm:text-xl">Rating</p>
+                            <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
+                              Free
+                            </h2>
+                          </div>
 
-                              <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                                Free
-                              </h2>
-                            </div>
+                          <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
+                            <p className="textlg sm:text-xl">Nationality</p>
 
-                            <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
-                              <p className="textlg sm:text-xl">Value</p>
-
-                              <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                                Free
-                              </h2>
-                            </div>
-
-                            <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
-                              <p className="textlg sm:text-xl">Nationality</p>
-
-                              <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                                Free
-                              </h2>
-                            </div>
+                            <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
+                              Free
+                            </h2>
                           </div>
                         </div>
-                      )
-                    )}
+                      </div>
+                    ))}
                   </>
                 )}
               </div>
