@@ -111,7 +111,7 @@ const SelectVice = () => {
           </div>
           <div className="sm:mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
             <div>
-              <Link href="/home/account/squad/name_team">
+              <Link href="/home/account/squad">
                 <a
                   className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
