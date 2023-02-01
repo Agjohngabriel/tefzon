@@ -32,7 +32,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
           rel="stylesheet"
         />
-        <link rel="stylesheet" href="https://widgets.sportmonks.com/css/app.css"></link>
+        <link
+          rel="stylesheet"
+          href="https://widgets.sportmonks.com/css/app.css"
+        ></link>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"
           rel="stylesheet"

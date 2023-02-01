@@ -59,19 +59,16 @@ function BreadCrumb() {
           title="Private League"
           link="/home/leagues/join_private"
         /> */}
-        <BreadCrumbButton
-          title="Squad"
-          link="/home/account/squad"
-        />
+        <BreadCrumbButton title="Squad" link="/home/account/squad" />
         <BreadCrumbButton title="Leagues" link="/home/leagues" />
-        <BreadCrumbButton
+        {/* <BreadCrumbButton
           title="Pick Team"
           link="/home/account/squad/select_squad"
-        />
+        /> */}
         <BreadCrumbButton title="Transfer" link="/home/transfer" />
         <BreadCrumbButton title="Fixtures" link="/home/fixtures" />
         <BreadCrumbButton title="Wallet" link="/home/account/wallet" />
-        <BreadCrumbButton title="Stats" link="/home/statistics" />
+        <BreadCrumbButton title="Stats" link="#" />
         <button onClick={logOut}>
           <div
             className={`font-montserrat bg-green text-white
