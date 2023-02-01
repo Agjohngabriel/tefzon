@@ -513,7 +513,7 @@ const SaveTeam = () => {
               <div className="relative w-full max-w-md px-4 h-full  mx-auto sm:mt-8">
                 {!isLoading && (
                   <>
-                    {details.map((detail: Players, player_id: number) => (
+                    {/* {details.map((detail: Players, player_id: number) => (
                       <div
                         key={player_id}
                         className=" flex flex-col bg-white mb-4 px- rounded-3xl  relative "
@@ -618,7 +618,7 @@ const SaveTeam = () => {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    ))} */}
                   </>
                 )}
               </div>
