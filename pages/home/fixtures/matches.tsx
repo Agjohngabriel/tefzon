@@ -4,9 +4,9 @@ import Layout from "../../../components/Layouts";
 const Matches = () => {
   return (
     <Layout>
-      <div className="py-5">
+      <div className="md:py-5">
         <div className="inline-flex rounded -ml-1">
-          <Link href="/fixtures" passHref>
+          <Link href="/home/fixtures" passHref>
             <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 my-10 px-2   ">
               Home
             </a>
@@ -52,41 +52,67 @@ const Matches = () => {
                 </div>
               </button>
             </div>
-            <div className="flex flex-col items-center w-full mx-auto sm:flex-row py-2 sm:py-10">
+            <div className="flex  items-center w-full mx-auto sm:flex-row py-2 sm:py-10">
               <div className="sm:w-full mx-2 flex-1 svelte-1l8159u">
                 <button
-                  className="text-base  hover:scale-110 focus:outline-none flex justify-center px-5 py-2 rounded font-bold cursor-pointer 
+                  className="text-base  hover:scale-110 focus:outline-none flex justify-center px-3 lg:px-5 py-2 rounded font-bold cursor-pointer 
                         
                         hover:bg-blue-500 
-                        bg-violet-400 text-gray-200
+                        bg-indigo-400 text-gray-200
                          duration-200 ease-in-out 
                          transition"
                 >
-                  <div className="flex font-arcon text-xs font-semibold ">
-                    <span className=" material-icons hover:text-white">
-                      arrow_backward
-                    </span>
-                    <span className="pt-1">Previous</span>
+                  <div className="flex items-center -mx-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 sm:w-6 h-6 mx-1 rtl:-scale-x-100"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M7 16l-4-4m0 0l4-4m-4 4h18"
+                      />
+                    </svg>
+
+                    <span className="mx-1  text-xs sm:text-sm">previous</span>
                   </div>
                 </button>
               </div>
-              <h1 className="font-bold text-xs sm:text-sm text-center text-gray-700 w-4/6 py-3 px-5 ">
-                Gameweek 20 - Tue 26 Jan 17:30
+              <h1 className="font-bold text-xs sm:text-xl text-center text-gray-100 w-4/6 sm:w-full py-3 px-2 shadow-xl shadow-[#4f38a4] bg-[#6E4BEC]/50">
+                Gameweek 27:
+                <span className="pl-3 font-normal">Sat 6 Mar 12:00</span>
               </h1>
+             
               <div className="sm:w-full mx-2 flex-1 svelte-1l8159u">
                 <button
-                  className="text-base  hover:scale-110 focus:outline-none flex justify-center px-5 py-2 rounded font-bold cursor-pointer 
+                  className="text-base  hover:scale-110 focus:outline-none flex justify-center px-3 lg:px-5 py-2 rounded font-bold cursor-pointer 
                         
                         hover:bg-blue-500 
-                        bg-violet-400 text-gray-200
+                        bg-indigo-400 text-gray-200
                          duration-200 ease-in-out 
                          transition"
                 >
-                  <div className="flex font-arcon text-xs font-semibold px-5">
-                    <span className="pt-1"> Next</span>
-                    <span className="ml-20 material-icons hover:text-white ">
-                      arrow_forward
-                    </span>
+                  <div className="flex items-center -mx-1">
+                    <span className="mx-1 text-xs sm:text-sm">Next</span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 sm:w-6 h-6 mx-1 rtl:-scale-x-100"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
                   </div>
                 </button>
               </div>

@@ -68,7 +68,7 @@ function BreadCrumb() {
         <BreadCrumbButton title="Transfer" link="/home/transfer" />
         <BreadCrumbButton title="Fixtures" link="/home/fixtures" />
         <BreadCrumbButton title="Wallet" link="/home/account/wallet" />
-        <BreadCrumbButton title="Stats" link="#" />
+        <BreadCrumbButton title="Stats" link="/home/statistics" />
         <button onClick={logOut}>
           <div
             className={`font-montserrat bg-green text-white

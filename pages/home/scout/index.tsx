@@ -1,239 +1,2080 @@
+import Link from "next/link";
+import { useState } from "react";
 import Layout from "../../../components/Layouts";
 
 const Index = () => {
+  const [openTab, setOpenTab] = useState(1);
   return (
     <Layout>
-      <div className=" py-6">
-        <div className="xl:container mx-auto px-3 sm:px-4 xl:px-2">
-          <div className="flex flex-row flex-wrap">
-            <div className="flex-shrink max-w-full w-full lg:w-1/2 pb-1 lg:pb-0 lg:pr-1">
-              <div className="relative hover-img max-h-98 overflow-hidden">
-                <a href="#">
-                  <img
-                    className="max-w-full w-full mx-auto h-auto"
-                    src="https://tailnews.tailwindtemplate.net/src/img/dummy/img1.jpg"
-                    alt="Image description"
+      <div className="inline-flex rounded -ml-1 ">
+        <Link href="/home" passHref>
+          <a className="font-montserrat text-sm text-[#240155] ml-3 md:ml-5 lg:ml-24 mt-10 px-2 ">
+            Home
+          </a>
+        </Link>
+        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
+          navigate_next
+        </span>
+
+        <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
+          Scout
+        </h1>
+      </div>
+      <div className="container lg:max-w-7xl flex flex-wrap     mx-auto   px-auto py-2  lg:py-8 lg:px-10 ">
+        <section className="container px-4 mx-auto">
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <div>
+              <div className="flex items-center gap-x-3">
+                <h1 className="font-semibold text-xl sm:text-3xl text-[#33175A]  text-center">
+                  The Scout
+                </h1>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 md:flex md:items-center md:justify-between ">
+            <div className="inline-flex overflow-hidden bg-white border divide-x rounded-lg dark:bg-gray-900 rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenTab(1);
+                }}
+                className={
+                  "px-5 py-2 text-xs font-medium text-[#33175A] transition-colors duration-200 sm:text-sm " +
+                  (openTab === 1 ? "bg-gray-100 " : "bg-white ")
+                }
+              >
+                News
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenTab(2);
+                }}
+                className={
+                  "px-5 py-2 text-xs font-medium text-[#33175A] transition-colors duration-200 sm:text-sm " +
+                  (openTab === 2 ? "bg-gray-100 " : "bg-white ")
+                }
+              >
+                Set-Pieces
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenTab(3);
+                }}
+                className={
+                  "px-5 py-2 text-xs font-medium text-[#33175A] transition-colors duration-200 sm:text-sm " +
+                  (openTab === 3 ? "bg-gray-100 " : "bg-white ")
+                }
+              >
+                Availability
+              </button>
+            </div>
+
+            <div
+              className={
+                openTab === 1
+                  ? "block relative flex items-center mt-4 md:mt-0"
+                  : "hidden"
+              }
+            >
+              <span className="absolute">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                   />
-                </a>
-                <div className="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                  <a href="#">
-                    <h2 className="text-3xl font-bold capitalize text-white mb-3">
-                      Amazon Shoppers Are Ditching Designer Belts for This
-                      Best-Selling
-                    </h2>
-                  </a>
-                  <p className="text-gray-100 hidden sm:inline-block">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This very helpfull for
-                    generate default content..
-                  </p>
-                  <div className="pt-2">
-                    <div className="text-gray-100">
-                      <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                      Europe
+                </svg>
+              </span>
+
+              <input
+                type="text"
+                value=""
+                placeholder="Search"
+                className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
+          </div>
+          {/* News */}
+          <div className={openTab === 1 ? "block mx-auto " : "hidden"}>
+            <div className="py-8">
+              <div className=" py-6">
+                <div className="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                  <div className="flex flex-row flex-wrap">
+                    <div className="flex-shrink max-w-full w-full lg:w-1/2 pb-1 lg:pb-0 lg:pr-1">
+                      <div className="relative hover-img max-h-98 overflow-hidden">
+                        <a href="#">
+                          <img
+                            className="max-w-full w-full mx-auto h-auto"
+                            src="https://tailnews.tailwindtemplate.net/src/img/dummy/img1.jpg"
+                            alt="Image description"
+                          />
+                        </a>
+                        <div className="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
+                          <a href="#">
+                            <h2 className="text-3xl font-bold capitalize text-white mb-3">
+                              Amazon Shoppers Are Ditching Designer Belts for
+                              This Best-Selling
+                            </h2>
+                          </a>
+                          <p className="text-gray-100 hidden sm:inline-block">
+                            This is a wider card with supporting text below as a
+                            natural lead-in to additional content. This very
+                            helpfull for generate default content..
+                          </p>
+                          <div className="pt-2">
+                            <div className="text-gray-100">
+                              <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
+                              Europe
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex-shrink max-w-full w-full lg:w-1/2">
+                      <div className="box-one  flex flex-row flex-wrap">
+                        <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
+                          <div className="relative hover-img max-h-48 overflow-hidden">
+                            <a href="#">
+                              <img
+                                className="max-w-full w-full mx-auto h-auto"
+                                src="https://tailnews.tailwindtemplate.net/src/img/dummy/img2.jpg"
+                                alt="Image description"
+                              />
+                            </a>
+                            <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                              <a href="#">
+                                <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
+                                  News magazines are becoming obsolete, replaced
+                                  by gadgets
+                                </h2>
+                              </a>
+                              <div className="pt-1">
+                                <div className="text-gray-100">
+                                  <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
+                                  Techno
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                        <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
+                          <div className="relative hover-img max-h-48 overflow-hidden">
+                            <a href="#">
+                              <img
+                                className="max-w-full w-full mx-auto h-auto"
+                                src="https://tailnews.tailwindtemplate.net/src/img/dummy/img3.jpg"
+                                alt="Image description"
+                              />
+                            </a>
+                            <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                              <a href="#">
+                                <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
+                                  Minimalist designs are starting to be popular
+                                  with the next generation
+                                </h2>
+                              </a>
+                              <div className="pt-1">
+                                <div className="text-gray-100">
+                                  <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
+                                  Architecture
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                        <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
+                          <div className="relative hover-img max-h-48 overflow-hidden">
+                            <a href="#">
+                              <img
+                                className="max-w-full w-full mx-auto h-auto"
+                                src="https://tailnews.tailwindtemplate.net/src/img/dummy/img4.jpg"
+                                alt="Image description"
+                              />
+                            </a>
+                            <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                              <a href="#">
+                                <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
+                                  Tips for decorating the interior of the living
+                                  room
+                                </h2>
+                              </a>
+                              <div className="pt-1">
+                                <div className="text-gray-100">
+                                  <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
+                                  Interior
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                        <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
+                          <div className="relative hover-img max-h-48 overflow-hidden">
+                            <a href="#">
+                              <img
+                                className="max-w-full w-full mx-auto h-auto"
+                                src="https://tailnews.tailwindtemplate.net/src/img/dummy/img5.jpg"
+                                alt="Image description"
+                              />
+                            </a>
+                            <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                              <a href="#">
+                                <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
+                                  Online taxi users are increasing drastically
+                                  ahead of the new year
+                                </h2>
+                              </a>
+                              <div className="pt-1">
+                                <div className="text-gray-100">
+                                  <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
+                                  Lifestyle
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex-shrink max-w-full w-full lg:w-1/2">
-              <div className="box-one  flex flex-row flex-wrap">
-                <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
-                  <div className="relative hover-img max-h-48 overflow-hidden">
-                    <a href="#">
+              <section className=" dark:bg-gray-900">
+                <div className="container px-6 py-10 mx-auto">
+                  <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
+                    Latest on Scout
+                  </h1>
+
+                  <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+                    <div className="lg:flex">
                       <img
-                        className="max-w-full w-full mx-auto h-auto"
-                        src="https://tailnews.tailwindtemplate.net/src/img/dummy/img2.jpg"
-                        alt="Image description"
+                        className="object-cover w-full h-56 rounded-lg lg:w-64"
+                        src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                        alt=""
                       />
-                    </a>
-                    <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
-                          News magazines are becoming obsolete, replaced by
-                          gadgets
-                        </h2>
-                      </a>
-                      <div className="pt-1">
-                        <div className="text-gray-100">
-                          <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                          Techno
-                        </div>
+
+                      <div className="flex flex-col justify-between py-6 lg:mx-6">
+                        <a
+                          href="#"
+                          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                        >
+                          How to use sticky note for problem solving
+                        </a>
+
+                        <span className="text-sm text-gray-500 dark:text-gray-300">
+                          On: 20 October 2019
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="lg:flex">
+                      <img
+                        className="object-cover w-full h-56 rounded-lg lg:w-64"
+                        src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                        alt=""
+                      />
+
+                      <div className="flex flex-col justify-between py-6 lg:mx-6">
+                        <a
+                          href="#"
+                          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                        >
+                          How to use sticky note for problem solving
+                        </a>
+
+                        <span className="text-sm text-gray-500 dark:text-gray-300">
+                          On: 20 October 2019
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="lg:flex">
+                      <img
+                        className="object-cover w-full h-56 rounded-lg lg:w-64"
+                        src="https://images.unsplash.com/photo-1544654803-b69140b285a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                        alt=""
+                      />
+
+                      <div className="flex flex-col justify-between py-6 lg:mx-6">
+                        <a
+                          href="#"
+                          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                        >
+                          Morning routine to boost your mood
+                        </a>
+
+                        <span className="text-sm text-gray-500 dark:text-gray-300">
+                          On: 25 November 2020
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="lg:flex">
+                      <img
+                        className="object-cover w-full h-56 rounded-lg lg:w-64"
+                        src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80"
+                        alt=""
+                      />
+
+                      <div className="flex flex-col justify-between py-6 lg:mx-6">
+                        <a
+                          href="#"
+                          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                        >
+                          All the features you want to know
+                        </a>
+
+                        <span className="text-sm text-gray-500 dark:text-gray-300">
+                          On: 30 September 2020
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="lg:flex">
+                      <img
+                        className="object-cover w-full h-56 rounded-lg lg:w-64"
+                        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80"
+                        alt=""
+                      />
+
+                      <div className="flex flex-col justify-between py-6 lg:mx-6">
+                        <a
+                          href="#"
+                          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                        >
+                          Minimal workspace for your inspirations
+                        </a>
+
+                        <span className="text-sm text-gray-500 dark:text-gray-300">
+                          On: 13 October 2019
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="lg:flex">
+                      <img
+                        className="object-cover w-full h-56 rounded-lg lg:w-64"
+                        src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                        alt=""
+                      />
+
+                      <div className="flex flex-col justify-between py-6 lg:mx-6">
+                        <a
+                          href="#"
+                          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                        >
+                          What do you want to know about Blockchane
+                        </a>
+
+                        <span className="text-sm text-gray-500 dark:text-gray-300">
+                          On: 20 October 2019
+                        </span>
                       </div>
                     </div>
                   </div>
-                </article>
-                <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
-                  <div className="relative hover-img max-h-48 overflow-hidden">
-                    <a href="#">
-                      <img
-                        className="max-w-full w-full mx-auto h-auto"
-                        src="https://tailnews.tailwindtemplate.net/src/img/dummy/img3.jpg"
-                        alt="Image description"
-                      />
-                    </a>
-                    <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
-                          Minimalist designs are starting to be popular with the
-                          next generation
-                        </h2>
-                      </a>
-                      <div className="pt-1">
-                        <div className="text-gray-100">
-                          <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                          Architecture
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-                <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
-                  <div className="relative hover-img max-h-48 overflow-hidden">
-                    <a href="#">
-                      <img
-                        className="max-w-full w-full mx-auto h-auto"
-                        src="https://tailnews.tailwindtemplate.net/src/img/dummy/img4.jpg"
-                        alt="Image description"
-                      />
-                    </a>
-                    <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
-                          Tips for decorating the interior of the living room
-                        </h2>
-                      </a>
-                      <div className="pt-1">
-                        <div className="text-gray-100">
-                          <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                          Interior
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-                <article className="flex-shrink max-w-full w-full p-1 sm:w-1/2">
-                  <div className="relative hover-img max-h-48 overflow-hidden">
-                    <a href="#">
-                      <img
-                        className="max-w-full w-full mx-auto h-auto"
-                        src="https://tailnews.tailwindtemplate.net/src/img/dummy/img5.jpg"
-                        alt="Image description"
-                      />
-                    </a>
-                    <div className="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 className="text-lg font-bold capitalize leading-tight text-white mb-1">
-                          Online taxi users are increasing drastically ahead of
-                          the new year
-                        </h2>
-                      </a>
-                      <div className="pt-1">
-                        <div className="text-gray-100">
-                          <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-                          Lifestyle
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          {/* all players statistics */}
+          <div className={openTab === 2 ? "block mx-auto " : "hidden"}>
+            <div className="py-8">
+              <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                  <table className="min-w-full leading-normal">
+                    <thead>
+                      <tr>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          #
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Players
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          M.
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden lg:table-cell">
+                          W.
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden lg:table-cell">
+                          D.
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden lg:table-cell">
+                          L.
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden lg:table-cell">
+                          NW
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden lg:table-cell">
+                          G.
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden lg:table-cell">
+                          A.
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden md:table-cell">
+                          +/-.
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Pts.
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden xl:table-cell">
+                          L1
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden xl:table-cell">
+                          L2
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden xl:table-cell">
+                          L3
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden xl:table-cell">
+                          L4
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider hidden xl:table-cell">
+                          L5
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            10
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            0
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            18
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            7
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            11
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            26
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            L
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            D
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            10
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            0
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            18
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            7
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            11
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            26
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            L
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            D
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            10
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            0
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            18
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            7
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            11
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            26
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            L
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            D
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            10
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            0
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            18
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            7
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            11
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            26
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            L
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            D
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            10
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            0
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            18
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            7
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            11
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            26
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            L
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            D
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            10
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            0
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            18
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            7
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            11
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            26
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            L
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            D
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            10
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            0
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            18
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            7
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            11
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            26
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            L
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            D
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            10
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            0
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            18
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden lg:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            7
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden md:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            11
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            26
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            L
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            D
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm hidden xl:table-cell">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            W
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          {/* Ranks Statistics */}
+          <div
+            className={
+              openTab === 3
+                ? "block container lg:max-w-7xl flex flex-wrap  justify-between   mx-auto mt-1 mb-2"
+                : "hidden"
+            }
+          >
+            <div className="py-1 w-full sm:max-w-lg xl:max-w-xl">
+              <div className="mx-auto sm:-mx-4 sm:px-4 py-4 overflow-x-auto">
+                <h1 className="font-montserrat text-xl sm:text-2xl  px-2 text-[#33175A] w-4/6 py-3">
+                  Top Scorers
+                </h1>
+                <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                  <table className="w-full leading-normal">
+                    <thead>
+                      <tr className="rounded-2xl">
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          #Rank
+                        </th>
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Name
+                        </th>
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Team Name
+                        </th>
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Goals
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div className="py-1 w-full sm:max-w-lg xl:max-w-xl">
+              <div className="mx-auto sm:-mx-4 sm:px-4 py-4 overflow-x-auto">
+                <h1 className="font-montserrat text-xl sm:text-2xl  px-2 text-[#33175A] w-4/6 py-3">
+                  Assists
+                </h1>
+                <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                  <table className="min-w-full leading-normal">
+                    <thead>
+                      <tr className="rounded-2xl">
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          #Rank
+                        </th>
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Name
+                        </th>
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Team Name
+                        </th>
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Assists
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º{" "}
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          1º
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8 Goals
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div className="py-1 max-w-xl sm:max-w-2xl xl:max-w-3xl  ">
+              <div className="mx-auto sm:-mx-4 sm:px-4 py-4 overflow-x-auto">
+                <h1 className="font-montserrat text-xl sm:text-2xl  px-2 text-[#33175A] w-4/6 py-3">
+                  Cards
+                </h1>
+                <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                  <table className="min-w-full leading-normal">
+                    <thead>
+                      <tr className="rounded-2xl">
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Name
+                        </th>
+                        <th className="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Team Name
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Yellow Card
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-[#33175A] uppercase tracking-wider">
+                          Red card
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            A.Banabas
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 w-10 h-10">
+                              <img
+                                className="w-full h-full rounded-full"
+                                src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
+                                alt=""
+                              />
+                            </div>
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Funny Team
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            2
+                          </p>
+                        </td>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 whitespace-no-wrap text-center">
+                            8
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-
-      <main className="py-12 md:px-20 sm:px-14 px-6">
-        <div className="sm:flex items-center shadow-md">
-          <div className="md:px-10 sm:px-5">
-            <h1 className="text-gray-800 font-bold text-2xl my-2">
-              long established
-            </h1>
-            <p className="text-gray-700 mb-2 md:mb-6">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that....
-            </p>
-            <div className="flex justify-between mb-2">
-              <span className="font-thin text-sm">May 20th 2020</span>
-              <span className="sm:block hidden mb-2 text-gray-800 font-bold">
-                Read more
-              </span>
-            </div>
-          </div>
-          <div>
-            <img
-              className="bg-cover"
-              src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-              alt=""
-            />
-          </div>
-        </div>
-        <div className="mt-6 md:flex space-x-6">
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-              alt=""
-            />
-            <div>
-              <h1 className="mt-3 text-gray-800 text-2xl font-bold my-2">
-                long established
-              </h1>
-              <p className="text-gray-700 mb-2">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that....
-              </p>
-              <div className="flex justify-between mt-4">
-                <span className="font-thin text-sm">May 20th 2020</span>
-                <span className="mb-2 text-gray-800 font-bold">Read more</span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-              alt=""
-            />
-            <div>
-              <h1 className="mt-3 text-gray-800 text-2xl font-bold my-2">
-                long established
-              </h1>
-              <p className="text-gray-700 mb-2">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that....
-              </p>
-              <div className="flex justify-between mt-4">
-                <span className="font-thin text-sm">May 20th 2020</span>
-                <span className="mb-2 text-gray-800 font-bold">Read more</span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-              alt=""
-            />
-            <div>
-              <h1 className="mt-3 text-gray-800 text-2xl font-bold my-2">
-                long established
-              </h1>
-              <p className="text-gray-700 mb-2">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that....
-              </p>
-              <div className="flex justify-between mt-4">
-                <span className="font-thin text-sm">May 20th 2020</span>
-                <span className="mb-2 text-gray-800 font-bold">Read more</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div></div>
-      </main>
 
       <div className="container mx-auto pb-1 px-12">
         <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">

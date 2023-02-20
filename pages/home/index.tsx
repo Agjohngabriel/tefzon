@@ -32,28 +32,6 @@ const Index = () => {
   const [details, setDetails] = useState([]);
   const [profile, setProfile] = useState([]);
 
-  useEffect(() => {
-    const fetchProfile = async (id: number) => {
-      setIsLoading(true);
-      const res = await axios.get(`${process.env.BACKEND_URL}/gamers/${id}`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.token}`,
-          "content-type": "application/json",
-        },
-      });
-      const response = await res.data.data;
-      setIsLoading(false);
-      return response;
-    };
-
-    const getProfile = async () => {
-      const ProfileFromApi = await fetchProfile(1);
-      console.log(ProfileFromApi);
-      setProfile(ProfileFromApi);
-    };
-
-    getProfile();
-  }, [session]);
 
   async function logOut() {
     try {
@@ -95,7 +73,8 @@ const Index = () => {
     const getDetails = async () => {
       const DetailsFromApi = await fetchDetails();
       console.log(DetailsFromApi);
-      setDetails(DetailsFromApi);
+      setProfile(DetailsFromApi.user)
+      setDetails(DetailsFromApi.user.accountdetails);
     };
     getDetails();
   }, [session]);

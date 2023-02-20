@@ -8,28 +8,52 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [profile, setProfile] = useState([]);
   const [details, setDetails] = useState([]);
+  // useEffect(() => {
+  //   const fetchProfile = async (id: number) => {
+  //     setIsLoading(true);
+  //     const res = await axios.get(`${process.env.BACKEND_URL}/gamers/${id}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${session?.data.token}`,
+  //         "content-type": "application/json",
+  //       },
+  //     });
+  //     const response = await res.data.data;
+  //     setIsLoading(false);
+  //     return response;
+  //   };
+
+  //   const getProfile = async () => {
+  //     const ProfileFromApi = await fetchProfile(1);
+  //     console.log(ProfileFromApi);
+  //     setProfile(ProfileFromApi);
+  //   };
+
+  //   getProfile();
+
+  //   const fetchDetails = async () => {
+  //     setIsLoading(true);
+  //     const respo = await axios.get(
+  //       `${process.env.BACKEND_URL}/get-account-details`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${session?.data.token}`,
+  //           "content-type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     const response = await respo.data;
+  //     setIsLoading(false);
+  //     return response;
+  //   };
+  //   const getDetails = async () => {
+  //     const DetailsFromApi = await fetchDetails();
+  //     console.log(DetailsFromApi);
+  //     setDetails(DetailsFromApi);
+  //   };
+  //   getDetails();
+  // }, [session]);
+
   useEffect(() => {
-    const fetchProfile = async (id: number) => {
-      setIsLoading(true);
-      const res = await axios.get(`${process.env.BACKEND_URL}/gamers/${id}`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.token}`,
-          "content-type": "application/json",
-        },
-      });
-      const response = await res.data.data;
-      setIsLoading(false);
-      return response;
-    };
-
-    const getProfile = async () => {
-      const ProfileFromApi = await fetchProfile(1);
-      console.log(ProfileFromApi);
-      setProfile(ProfileFromApi);
-    };
-
-    getProfile();
-
     const fetchDetails = async () => {
       setIsLoading(true);
       const respo = await axios.get(
@@ -48,13 +72,64 @@ const Index = () => {
     const getDetails = async () => {
       const DetailsFromApi = await fetchDetails();
       console.log(DetailsFromApi);
-      setDetails(DetailsFromApi);
+      setProfile(DetailsFromApi.user)
+      setDetails(DetailsFromApi.user.accountdetails);
+      
     };
     getDetails();
   }, [session]);
 
-  const profiledetails = profile;
-  const account = details;
+
+  const [userName, setUserName] = useState(profile["user_name" as any]);
+  const [email, setEmail] = useState(profile["email" as any]);
+  const [firstName, setFirstName] = useState(
+    profile["first_name" as any]
+  );
+  const [lastName, setLastName] = useState(profile["last_name" as any]);
+  const [phone, setPhone] = useState(profile["phone" as any]);
+  const [gender, setGender] = useState(profile["gender" as any]);
+  const [dob, setDob] = useState(profile["dob" as any]);
+  const [country, setCountry] = useState(profile["country" as any]);
+  const [accountName, setAccountName] = useState(
+    details["account_name" as any]
+  );
+  const [accountNo, setAccountNo] = useState(details["account_no" as any]);
+  const [accountBank, setAccountBank] = useState(
+    details["account_bank" as any]
+  );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(false);
+
+   async function handleSubmit(e: React.SyntheticEvent) {
+     e.preventDefault();
+     if (isSubmitting) {
+       return;
+     }
+    setIsSubmitting(true);
+    // try {
+    //   const user = await client.post("register", formData);
+    //   if (user) {
+    //     setIsSubmitting(false);
+    //     MySwal.fire({
+    //       title: "Registration was Successful",
+    //       confirmButtonText: "Proceed to Login",
+    //       showLoaderOnConfirm: true,
+    //     })
+    //   }
+    // } catch (e: any) {
+    //   setIsSubmitting(false);
+    //   const errorMessage = e.response.data.errors;
+    //   MySwal.fire({
+    //     title: `${errorMessage}`,
+    //     confirmButtonText: "Proceed to Login",
+    //     showLoaderOnConfirm: true,
+    //   })
+    //   console.log(errorMessage)
+      
+    //   setError(true);
+    // }
+  }
+  console.log(profile)
 
   return (
     <MainLayout>
@@ -74,7 +149,7 @@ const Index = () => {
             </div>
           </div>
           <div className="flex-auto px-4 lg:px-10 py-10  pt-0">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h6 className="text-blueGray-400 text-sm mt-3 sm:mt-8 mb-6 lg:ml-3 font-bold uppercase">
                 User Information
               </h6>
@@ -90,7 +165,8 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={profiledetails["user_name" as any]}
+                      value={userName}
+                      onChange={(e) => setUserName(e.target.value as any)}
                     />
                   </div>
                 </div>
@@ -105,7 +181,8 @@ const Index = () => {
                     <input
                       type="email"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={profiledetails["email" as any]}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value as any)}
                     />
                   </div>
                 </div>
@@ -120,7 +197,8 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={profiledetails["first_name" as any]}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value as any)}
                     />
                   </div>
                 </div>
@@ -135,7 +213,8 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={profiledetails["last_name" as any]}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value as any)}
                     />
                   </div>
                 </div>
@@ -150,7 +229,8 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={profiledetails["phone" as any]}
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value as any)}
                     />
                   </div>
                 </div>
@@ -167,13 +247,11 @@ const Index = () => {
                     </label>
 
                     <select
-                      // onChange={(e) =>
-                      //   props.updateFormData({ gender: e.currentTarget.value })
-                      // }
+                      onChange={(e) => setGender(e.target.value as any)}
                       className="border-0 px-3 py-3.5 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       required
                     >
-                      <option>{profiledetails["gender" as any]}</option>
+                      <option>{gender} </option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
@@ -190,7 +268,8 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={profiledetails["dob" as any]}
+                      value={dob}
+                      onChange={(e) => setDob(e.target.value as any)}
                     />
                   </div>
                 </div>
@@ -204,13 +283,11 @@ const Index = () => {
                     </label>
 
                     <select
-                      // onChange={(e) =>
-                      //   props.updateFormData({ gender: e.currentTarget.value })
-                      // }
+                      onChange={(e) => setCountry(e.target.value as any)}
                       className="border-0 px-3 py-3.5 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       required
                     >
-                      <option>{profiledetails["country" as any]}</option>
+                      <option>{country}</option>
                       <option value="Afghanistan">Afghanistan</option>
                       <option value="Aland Islands">Aland Islands</option>
                       <option value="Albania">Albania</option>
@@ -573,7 +650,8 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={account["account_name" as any]}
+                      value={accountName}
+                      onChange={(e) => setAccountName(e.target.value as any)}
                     />
                   </div>
                 </div>
@@ -588,7 +666,8 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={account["account_no" as any]}
+                      value={accountNo}
+                      onChange={(e) => setAccountNo(e.target.value as any)}
                     />
                   </div>
                 </div>
@@ -603,7 +682,8 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={account["account_bank" as any]}
+                      value={accountBank}
+                      onChange={(e) => setAccountBank(e.target.value as any)}
                     />
                   </div>
                 </div>

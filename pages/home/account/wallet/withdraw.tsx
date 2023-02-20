@@ -30,13 +30,16 @@ const WalletWithdraw = () => {
     };
     const getDetails = async () => {
       const DetailsFromApi = await fetchDetails();
-      console.log(DetailsFromApi);
-      setDetails(DetailsFromApi);
+      setDetails(DetailsFromApi.user.accountdetails);
     };
     getDetails();
   }, [session]);
 
-  const account = details;
+  async function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    
+  }
+
   return (
     <MainLayout>
       <div className="inline-flex rounded -ml-1">
@@ -94,17 +97,17 @@ const WalletWithdraw = () => {
                   </div>
                   <div className="pt-4">
                     <p className="font-montserrat tracking-more-wider text-2xl">
-                      ₦ {account["balance" as any]}
+                      ₦ {details["balance" as any]} .00
                     </p>
                   </div>
                   <div className="pt-2 pr-6">
                     <div className="flex justify-between">
                       <div className="">
                         <p className="font-light text-xs">
-                          {account["account_name" as any]}
+                          {details["account_name" as any]}
                         </p>
                         <p className="font-medium tracking-wider text-sm">
-                          {account["account_no" as any]}
+                          {details["account_no" as any]}
                         </p>
                       </div>
                     </div>
@@ -120,7 +123,7 @@ const WalletWithdraw = () => {
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                     <select className="form-select w-full px-3 py-2 text-sm  font-arcon text-black-150 opacity-100 rounded-md focus:outline-none bg-white focus:border-indigo-500 transition-colors cursor-pointer border border-gray-100">
                       <option value="">Select Bank</option>
-                      <option value={account["bank_name" as any]}>{account["bank_name" as any]}</option>
+                      <option value={details["bank_name" as any]}>{details["bank_name" as any]}</option>
                     </select>
                   </div>
                 </div>
@@ -165,7 +168,7 @@ const WalletWithdraw = () => {
 
           <div className="container max-w-sm bg-[#6544DE]  border-inherit rounded-xl shadow-lg shadow-indigo-500/50  mx-2 md:w-3/5 ml-4 sm:ml-10  xl:ml-24 mt-10 mb-20  px-4 py-6 lg:px-5  w-auto">
             <div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
-              <div className="md:flex">
+              <form className="md:flex" onClick={handleSubmit}>
                 <div className="w-full">
                   <div className="relative">
                     <i className="absolute fa fa-search text-gray-400 top-3 left-4"></i>
@@ -177,7 +180,7 @@ const WalletWithdraw = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
 
             <div className="w-full  ">

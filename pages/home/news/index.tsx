@@ -1,211 +1,134 @@
 import Layout from "../../../components/Layouts";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Index = () => {
   return (
     <Layout>
       {/* News */}
-      <main className="mt-10 px-2 sm:px-10 lg:px-20 mx-auto">
-        <div className="block flex flex-col md:flex-row md:space-x-2 px-2 lg:p-0">
-          <a
-            className="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block h-[14em] lg:h-[24em] "
-            href="news"
-          >
-            <div
-              className="absolute left-0 bottom-0 w-full h-full z-10"
-              style={{
-                ["background-image" as any]:
-                  "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
-              }}
-            ></div>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH71wcIXi2rjtErIquFlztPXoZEK7YXns3gw&usqp=CAU"
-              className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
-              alt=""
-            />
-            <div className="p-4 absolute bottom-0 left-0 z-20">
-              <h2 className="text-xl  lg:text-3xl font-semibold text-gray-100 leading-tight">
-                Pellentesque a consectetur velit, ac molestie ipsum. Donec
-                sodales, massa et auctor.
-              </h2>
-              <div className="flex mt-3">
-                <div>
-                  <p className="font-semibold text-gray-200 text-sm">
-                    {" "}
-                    Mike Sullivan{" "}
-                  </p>
-                  <p className="font-semibold text-gray-400 text-xs">
-                    {" "}
-                    14 Aug{" "}
-                  </p>
-                </div>
+
+      <section className="bg-white dark:bg-gray-900">
+        <div className="inline-flex rounded -ml-1 ">
+          <Link href="/home" passHref>
+            <a className="font-montserrat text-sm text-[#240155] ml-3 md:ml-5 lg:ml-14 mt-10 px-2 ">
+              Home
+            </a>
+          </Link>
+          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
+            navigate_next
+          </span>
+
+          <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
+            News
+          </h1>
+        </div>
+        <div className="container px-6 py-10 mx-auto">
+          <div className="sm:flex sm:items-center sm:justify-between pb-5">
+            <div>
+              <div className="flex items-center gap-x-3">
+                <h1 className="font-semibold text-xl sm:text-3xl text-[#33175A]  text-center">
+                  News
+                </h1>
               </div>
             </div>
-          </a>
-
-          <a
-            className="w-full md:w-1/3 relative rounded  h-[14em] lg:h-[24em] "
-            href="news"
-          >
-            <div
-              className="absolute left-0 top-0 w-full h-full z-10"
-              style={{
-                ["background-image" as any]:
-                  "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
-              }}
-            >
+          </div>
+          <div className="lg:flex lg:-mx-6">
+            <div className="lg:w-3/4 lg:px-6">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjQdAW5NZJYumPzuko_vFu_5gObIiYZDSzZw&usqp=CAU"
-                className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
+                className="object-cover object-center w-full h-80 xl:h-[28rem] rounded-xl"
+                src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 alt=""
               />
-              <div className="p-4 absolute bottom-0 left-0 z-20">
-                <h2 className="text-xl md:text-sm lg:text-2xl  font-semibold text-gray-100 leading-tight">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                </h2>
-                <div className="flex mt-3">
-                  <div>
-                    <p className="font-semibold text-gray-200 text-sm">
-                      {" "}
-                      Chrishell Staus{" "}
-                    </p>
-                    <p className="font-semibold text-gray-400 text-xs">
-                      {" "}
-                      15 Aug{" "}
+
+              <div>
+                <p className="mt-6 text-sm text-blue-500 uppercase">
+                  Want to know
+                </p>
+
+                <h1 className="max-w-lg mt-4 text-2xl font-semibold leading-tight text-gray-800 dark:text-white">
+                  What do you want to know about UI
+                </h1>
+
+                <div className="flex items-center mt-6">
+                  <img
+                    className="object-cover object-center w-10 h-10 rounded-full"
+                    src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                    alt=""
+                  />
+
+                  <div className="mx-4">
+                    <h1 className="text-sm text-gray-700 dark:text-gray-200">
+                      Amelia. Anderson
+                    </h1>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      Lead Developer
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </a>
-        </div>
 
-        <div className="block sm:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10 ">
-          {/* <!-- post cards --> */}
-          <div className="w-full  lg:w-2/3">
-            <a
-              className="block rounded w-full lg:flex mb-10"
-              href="./blog-single-1.html"
-            >
-              <div
-                className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
-                style={{
-                  ["background-image" as any]:
-                    "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQi6JWYdxOxusw0CB9sYcqJ6uM5wlb_OEmZg&usqp=CAU')",
-                }}
-                title="deit is very important"
-              ></div>
-              <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
-                <div>
-                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-xl lg:text-2xl mb-2">
-                    Aliquam venenatis nisl id purus.
-                  </div>
-                  <p className="text-gray-700 text-base">
-                    Duis euismod est quis lacus elementum, eu laoreet dolor
-                    consectetur. Pellentesque sed neque vel tellus lacinia
-                    elementum. Proin consequat ullamcorper eleifend.
-                  </p>
-                </div>
-                <div className="flex mt-3">
-                  <div>
-                    <p className="font-semibold text-gray-700 text-sm capitalize">
-                      {" "}
-                      eduard franz{" "}
-                    </p>
-                    <p className="text-gray-600 text-xs"> 14 Aug </p>
-                  </div>
-                </div>
+            <div className="mt-8 lg:w-1/4 lg:mt-0 lg:px-6">
+              <div>
+                <h3 className="text-blue-500 capitalize">Design instument</h3>
+
+                <a
+                  href="#"
+                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 "
+                >
+                  How to raise $100k+ by using blox ui kit on your design
+                </a>
               </div>
-            </a>
-          </div>
 
-          {/* <!-- right sidebar --> */}
-          <div className="w-full sm:w-3/5 lg:w-1/3 pl-3  ">
-            {/* <!-- topics --> */}
-            <div className="py-8 shadow px-3">
-              <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
-                Top Headlines
-              </h5>
-              <ul>
-                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
-                    Emery appointed as new Aston Villa manager
-                  </a>
-                </li>
-                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base  transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
-                    Pep jokes Haaland must lay off carbs during WC
-                  </a>
-                </li>
-                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
-                    Man Utd legend Carrick named new 'Boro boss
-                  </a>
-                </li>
-                <li className="px-1 py-2 border-b border-t border-white hover:border-gray-200 text-sm lg:text-base transition duration-300">
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-600 cursor-pointer"
-                  >
-                    <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
-                    Ukraine's top club want Iran out of World Cup
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <hr className="my-6 border-gray-200 dark:border-gray-700" />
 
-            {/* <!-- divider --> */}
-            <div className="border border-dotted"></div>
-          </div>
-        </div>
-      </main>
+              <div>
+                <h3 className="text-blue-500 capitalize">UI Resource</h3>
 
-      <main className="py-12 md:px-20 sm:px-14 px-6">
-        <div className="sm:flex items-center shadow-md">
-          <div className="md:px-10 sm:px-5">
-            <h1 className="text-gray-800 font-bold text-2xl my-2">
-              long established
-            </h1>
-            <p className="text-gray-700 mb-2 md:mb-6">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that....
-            </p>
-            <div className="flex justify-between mb-2">
-              <span className="font-thin text-sm">May 20th 2020</span>
-              <span className="sm:block hidden mb-2 text-gray-800 font-bold">
-                Read more
-              </span>
+                <a
+                  href="#"
+                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 "
+                >
+                  Should you creat UI Product by using Blox?
+                </a>
+              </div>
+
+              <hr className="my-6 border-gray-200 dark:border-gray-700" />
+
+              <div>
+                <h3 className="text-blue-500 capitalize">Premium Collection</h3>
+
+                <a
+                  href="#"
+                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 "
+                >
+                  Top 10 Blocks you can get on Blox's collection.
+                </a>
+              </div>
+
+              <hr className="my-6 border-gray-200 dark:border-gray-700" />
+
+              <div>
+                <h3 className="text-blue-500 capitalize">Premium kits</h3>
+
+                <a
+                  href="#"
+                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 "
+                >
+                  Top 10 Ui kit you can get on Blox's collection.
+                </a>
+              </div>
             </div>
           </div>
-          <div>
-            <img
-              className="bg-cover"
-              src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-              alt=""
-            />
-          </div>
         </div>
-      </main>
+      </section>
 
       {/* <!-- recent posts --> */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="mx-auto sm:px-10 lg:px-20"
+        className="mx-auto sm:px-10 lg:px-20 bg-white "
       >
         {/* <!-- recent posts --> */}
 
@@ -289,10 +212,9 @@ const Index = () => {
         {/* <!-- end recent posts --> */}
       </motion.div>
 
-
       {/* Get app */}
-      <div className="container mx-auto px-2 lg:px-12 ">
-        <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-4 lg:p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">
+      <div className="bg-white  mx-auto px-2 lg:px-12 ">
+        <div className="rounded-lg bg-[#6E4BEC]/60 text-white p-4 lg:p-8  mb-10 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden">
           {/* <!-- LEFT PART --> */}
           <div className="flex flex-col lg:ml-10 max-w-sm lg:max-w-xl z-10">
             <div className="hero-text  pt-5">
@@ -381,7 +303,7 @@ const Index = () => {
           {/* <!-- RIGHT PART --> */}
           <div className="pt-8 md:pt-0 justify-center lg:ml-auto z-10 animate-fade-in-down">
             <div className="hero-image ">
-            <svg
+              <svg
                 width="327"
                 height="227"
                 viewBox="0 0 327 227"
@@ -1094,8 +1016,6 @@ const Index = () => {
           <div className="absolute bg-[#6E4BEC] opacity-60 w-96 h-96 -top-10 -right-16 md:w-[800px] md:h-[800px] md:left-[45%] md:top-[-150%] rounded-full shadow-2xl z-0"></div>
         </div>
       </div>
-
-     
     </Layout>
   );
 };

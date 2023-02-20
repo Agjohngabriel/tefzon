@@ -96,6 +96,34 @@ const SaveTeam = () => {
       setErrorMsg(errorMessage);
     }
   };
+
+  const remove = async (id: number) => {
+    try {
+      setLoading(1);
+      const res = await axios.get(
+        `${process.env.BACKEND_URL}/remove/player/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
+      const response = await res.data;
+      setMessage(response);
+      setError(false);
+      getFavourites();
+      setLoading(0);
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setMessage("");
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
   useEffect(() => {
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
@@ -177,11 +205,15 @@ const SaveTeam = () => {
                 {errorMsg.message}
               </p>
             )}
-            {message !== "" && (
+            {message !== "" ? (
               <p className="text-sm text-gray-100 font-arcon text-center  max-w-lg mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
                 {message}
               </p>
-            )}
+            ) : (
+              <p className="text-xs text-gray-100 font-arcon text-center  max-w-2xl mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
+             To change your captain use the menu which appears when clicking on the players's shirt
+            </p>
+            ) }
 
             <div className={openTab === 1 ? "block" : "hidden"}>
               <div className="flex mt-[5rem]  py-10 mx-auto">
@@ -576,7 +608,7 @@ const SaveTeam = () => {
                             </h2>
                           </button>
 
-                          <button className="flex items-center justify-between px-4 py-4 border cursor-pointer rounded-xl dark:border-gray-700">
+                          <button  onClick={() => remove(player_id)} className="flex items-center justify-between px-4 py-4 border cursor-pointer rounded-xl dark:border-gray-700">
                             <div className="flex flex-col items-center space-y-1">
                               <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
                                 Remove
@@ -590,14 +622,14 @@ const SaveTeam = () => {
                             <p className="textlg sm:text-xl">Position</p>
 
                             <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                              Free
+                              {player.position}
                             </h2>
                           </div>
                           <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
                             <p className="textlg sm:text-xl">Rating</p>
 
                             <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                              Free
+                              {player.rating}
                             </h2>
                           </div>
 
@@ -605,7 +637,7 @@ const SaveTeam = () => {
                             <p className="textlg sm:text-xl">Value</p>
 
                             <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                              Free
+                              {player.value}
                             </h2>
                           </div>
 
@@ -613,7 +645,7 @@ const SaveTeam = () => {
                             <p className="textlg sm:text-xl">Nationality</p>
 
                             <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                              Free
+                              {player.nationality}
                             </h2>
                           </div>
                         </div>
@@ -625,422 +657,404 @@ const SaveTeam = () => {
             </div>
 
             <div className={openTab === 2 ? "block" : "hidden"}>
-              <div className="mx-auto ">
-                <div className="pt-4">
-                  <div className="px-1 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8 scrollbar-hide">
-                    <div className="inline-block min-w-full shadow rounded-lg h-[42rem]">
-                      <table className="min-w-full leading-normal">
-                        <thead>
-                          <tr className="bg-red-700">
-                            <th className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon">
+              <div className="flex flex-col mt-6">
+                <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                  <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8 scrollbar-hide">
+                    <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg h-[42rem]">
+                      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                        <thead className="bg-red-700 dark:bg-gray-800 leading-normal">
+                          <tr>
+                            <th
+                              scope="col"
+                              className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon"
+                            >
                               Squad Members
                             </th>
                             <th className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon">
                               ₦
                             </th>
-                            <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
+
+                            <th className="hidden px-5 py-3 text-xs tracking-wider text-left text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
                               SB
                             </th>
-                            <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
+                            <th className="hidden px-5 py-3 text-xs tracking-wider text-left text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
                               TP
                             </th>
-                            <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
+                            <th className="hidden px-5 py-3 text-xs tracking-wider text-left text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
                               Fix
+                            </th>
+                            <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
+                              Action
                             </th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900 w-full">
                           {teams.goalkeepers.map(
                             (item: Players, player_id: number) => (
-                              <tr key={player_id} className="">
-                                <td
-                                  key={player_id}
-                                  className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200"
-                                >
-                                  <div className="flex w-full ">
-                                    <p
-                                      tabIndex={0}
-                                      className="flex text-xs leading-normal text-left text-gray-500 align-middle focus:outline-none"
-                                    >
-                                      <span className="text-2xl text-green align-middle material-icons">
-                                        info_outline
-                                      </span>
-
-                                      <span className="flex-shrink-0 w-10 h-10 mb-2 ml-4">
-                                        <div className="mt-[2.5rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                          <div className=" h-20 w-12 rounded-full mx-auto">
-                                            <img
-                                              className="rounded-full object-cover object-center"
-                                              src={item.image_path}
-                                              alt={item.player_name}
-                                              title={item.player_name}
-                                            />
-                                          </div>
-                                        </div>
-                                      </span>
-                                    </p>
-
-                                    <div className="pl-3 mb-2 ml-5">
-                                      <p
-                                        tabIndex={0}
-                                        className="text-sm leading-5 text-gray-900 focus:outline-none font-arcon"
-                                      >
-                                        {item.player_name}
-                                      </p>
-                                      <p
-                                        tabIndex={0}
-                                        className="text-xs leading-normal text-gray-900 focus:outline-none"
-                                      >
-                                        {item.team}
-                                        <span className="ml-4">
-                                          {item.player_position ===
-                                            "GoalKeeper" && "GK"}
-                                          {item.player_position ===
-                                            "Defender" && "DEF"}
-                                          {item.player_position ===
-                                            "Midfielder" && "MID"}
-                                          {item.player_position === "Forward" &&
-                                            "FWD"}
-                                        </span>
-                                      </p>
+                              <tr key={player_id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center gap-x-3">
+                                    <div className="flex items-center gap-x-2">
+                                      <img
+                                        className="object-cover w-10 h-10 rounded-full"
+                                        src={item.image_path}
+                                        alt={item.player_name}
+                                        title={item.player_name}
+                                      />
+                                      <div>
+                                        <h2 className="font-medium text-gray-800 dark:text-white ">
+                                          {item.player_name}
+                                        </h2>
+                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
+                                          {item.team}
+                                          <span className="ml-4">
+                                            {item.player_position ===
+                                              "GoalKeeper" && "GK"}
+                                            {item.player_position ===
+                                              "Defender" && "DEF"}
+                                            {item.player_position ===
+                                              "Midfielder" && "MID"}
+                                            {item.player_position ===
+                                              "Forward" && "FWD"}
+                                          </span>
+                                        </p>
+                                      </div>
                                     </div>
                                   </div>
                                 </td>
-                                <td className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200">
-                                  <p className="py-2 text-center text-gray-900 whitespace-no-wrap px-1 border-gray-400">
-                                    5.4
-                                  </p>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
+                                    <h2 className="text-sm font-normal text-emerald-500">
+                                      54,200
+                                    </h2>
+                                  </div>
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    15.4
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  15.4
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    84
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  84
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    AVL (H)
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  AVL (H)
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                  <div className="flex items-center gap-x-2">
+                                    <button
+                                      onClick={() => selectCap(player_id)}
+                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
+                                    >
+                                      Make Captain
+                                    </button>
+                                    <button
+                                      onClick={() => selectViceCap(player_id)}
+                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
+                                    >
+                                      Make vice Captain
+                                    </button>
+                                    <button
+                                      onClick={() => remove(player_id)}
+                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
+                                    >
+                                      Remove
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             )
                           )}
                           {teams.defenders.map(
                             (item: Players, player_id: number) => (
-                              <tr key={player_id} className="">
-                                <td
-                                  key={player_id}
-                                  className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200"
-                                >
-                                  <div className="flex w-full ">
-                                    <p
-                                      tabIndex={0}
-                                      className="flex text-xs leading-normal text-left text-gray-500 align-middle focus:outline-none"
-                                    >
-                                      <span className="text-2xl text-green align-middle material-icons">
-                                        info_outline
-                                      </span>
-
-                                      <span className="flex-shrink-0 w-10 h-10 mb-2 ml-4">
-                                        <div className="mt-[2.5rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                          <div className=" h-20 w-12 rounded-full mx-auto">
-                                            <img
-                                              className="rounded-full object-cover object-center"
-                                              src={item.image_path}
-                                              alt={item.player_name}
-                                              title={item.player_name}
-                                            />
-                                          </div>
-                                        </div>
-                                      </span>
-                                    </p>
-
-                                    <div className="pl-3 mb-2 ml-5">
-                                      <p
-                                        tabIndex={0}
-                                        className="text-sm leading-5 text-gray-900 focus:outline-none font-arcon"
-                                      >
-                                        {item.player_name}
-                                      </p>
-                                      <p
-                                        tabIndex={0}
-                                        className="text-xs leading-normal text-gray-900 focus:outline-none"
-                                      >
-                                        {item.team}
-                                        <span className="ml-4">
-                                          {item.player_position ===
-                                            "GoalKeeper" && "GK"}
-                                          {item.player_position ===
-                                            "Defender" && "DEF"}
-                                          {item.player_position ===
-                                            "Midfielder" && "MID"}
-                                          {item.player_position === "Forward" &&
-                                            "FWD"}
-                                        </span>
-                                      </p>
+                              <tr key={player_id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center gap-x-3">
+                                    <div className="flex items-center gap-x-2">
+                                      <img
+                                        className="object-cover w-10 h-10 rounded-full"
+                                        src={item.image_path}
+                                        alt={item.player_name}
+                                        title={item.player_name}
+                                      />
+                                      <div>
+                                        <h2 className="font-medium text-gray-800 dark:text-white ">
+                                          {item.player_name}
+                                        </h2>
+                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
+                                          {item.team}
+                                          <span className="ml-4">
+                                            {item.player_position ===
+                                              "GoalKeeper" && "GK"}
+                                            {item.player_position ===
+                                              "Defender" && "DEF"}
+                                            {item.player_position ===
+                                              "Midfielder" && "MID"}
+                                            {item.player_position ===
+                                              "Forward" && "FWD"}
+                                          </span>
+                                        </p>
+                                      </div>
                                     </div>
                                   </div>
                                 </td>
-                                <td className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200">
-                                  <p className="py-2 text-center text-gray-900 whitespace-no-wrap px-1 border-gray-400">
-                                    5.4
-                                  </p>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
+                                    <h2 className="text-sm font-normal text-emerald-500">
+                                      54,200
+                                    </h2>
+                                  </div>
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    15.4
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  15.4
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    84
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  84
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    AVL (H)
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  AVL (H)
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                  <div className="flex items-center gap-x-2">
+                                    <button
+                                      onClick={() => selectCap(player_id)}
+                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
+                                    >
+                                      Make Captain
+                                    </button>
+                                    <button
+                                      onClick={() => selectViceCap(player_id)}
+                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
+                                    >
+                                      Make vice Captain
+                                    </button>
+                                    <button
+                                      onClick={() => remove(player_id)}
+                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
+                                    >
+                                      Remove
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             )
                           )}
                           {teams.midfielders.map(
                             (item: Players, player_id: number) => (
-                              <tr key={player_id} className="">
-                                <td
-                                  key={player_id}
-                                  className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200"
-                                >
-                                  <div className="flex w-full ">
-                                    <p
-                                      tabIndex={0}
-                                      className="flex text-xs leading-normal text-left text-gray-500 align-middle focus:outline-none"
-                                    >
-                                      <span className="text-2xl text-green align-middle material-icons">
-                                        info_outline
-                                      </span>
-
-                                      <span className="flex-shrink-0 w-10 h-10 mb-2 ml-4">
-                                        <div className="mt-[2.5rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                          <div className=" h-20 w-12 rounded-full mx-auto">
-                                            <img
-                                              className="rounded-full object-cover object-center"
-                                              src={item.image_path}
-                                              alt={item.player_name}
-                                              title={item.player_name}
-                                            />
-                                          </div>
-                                        </div>
-                                      </span>
-                                    </p>
-
-                                    <div className="pl-3 mb-2 ml-5">
-                                      <p
-                                        tabIndex={0}
-                                        className="text-sm leading-5 text-gray-900 focus:outline-none font-arcon"
-                                      >
-                                        {item.player_name}
-                                      </p>
-                                      <p
-                                        tabIndex={0}
-                                        className="text-xs leading-normal text-gray-900 focus:outline-none"
-                                      >
-                                        {item.team}
-                                        <span className="ml-4">
-                                          {item.player_position ===
-                                            "GoalKeeper" && "GK"}
-                                          {item.player_position ===
-                                            "Defender" && "DEF"}
-                                          {item.player_position ===
-                                            "Midfielder" && "MID"}
-                                          {item.player_position === "Forward" &&
-                                            "FWD"}
-                                        </span>
-                                      </p>
+                              <tr key={player_id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center gap-x-3">
+                                    <div className="flex items-center gap-x-2">
+                                      <img
+                                        className="object-cover w-10 h-10 rounded-full"
+                                        src={item.image_path}
+                                        alt={item.player_name}
+                                        title={item.player_name}
+                                      />
+                                      <div>
+                                        <h2 className="font-medium text-gray-800 dark:text-white ">
+                                          {item.player_name}
+                                        </h2>
+                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
+                                          {item.team}
+                                          <span className="ml-4">
+                                            {item.player_position ===
+                                              "GoalKeeper" && "GK"}
+                                            {item.player_position ===
+                                              "Defender" && "DEF"}
+                                            {item.player_position ===
+                                              "Midfielder" && "MID"}
+                                            {item.player_position ===
+                                              "Forward" && "FWD"}
+                                          </span>
+                                        </p>
+                                      </div>
                                     </div>
                                   </div>
                                 </td>
-                                <td className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200">
-                                  <p className="py-2 text-center text-gray-900 whitespace-no-wrap px-1 border-gray-400">
-                                    5.4
-                                  </p>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
+                                    <h2 className="text-sm font-normal text-emerald-500">
+                                      54,200
+                                    </h2>
+                                  </div>
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    15.4
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  15.4
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    84
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  84
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    AVL (H)
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  AVL (H)
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                  <div className="flex items-center gap-x-2">
+                                    <button
+                                      onClick={() => selectCap(player_id)}
+                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
+                                    >
+                                      Make Captain
+                                    </button>
+                                    <button
+                                      onClick={() => selectViceCap(player_id)}
+                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
+                                    >
+                                      Make vice Captain
+                                    </button>
+                                    <button
+                                      onClick={() => remove(player_id)}
+                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
+                                    >
+                                      Remove
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             )
                           )}
                           {teams.forwards.map(
                             (item: Players, player_id: number) => (
-                              <tr key={player_id} className="">
-                                <td
-                                  key={player_id}
-                                  className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200"
-                                >
-                                  <div className="flex w-full ">
-                                    <p
-                                      tabIndex={0}
-                                      className="flex text-xs leading-normal text-left text-gray-500 align-middle focus:outline-none"
-                                    >
-                                      <span className="text-2xl text-green align-middle material-icons">
-                                        info_outline
-                                      </span>
-
-                                      <span className="flex-shrink-0 w-10 h-10 mb-2 ml-4">
-                                        <div className="mt-[2.5rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                          <div className=" h-20 w-12 rounded-full mx-auto">
-                                            <img
-                                              className="rounded-full object-cover object-center"
-                                              src={item.image_path}
-                                              alt={item.player_name}
-                                              title={item.player_name}
-                                            />
-                                          </div>
-                                        </div>
-                                      </span>
-                                    </p>
-
-                                    <div className="pl-3 mb-2 ml-5">
-                                      <p
-                                        tabIndex={0}
-                                        className="text-sm leading-5 text-gray-900 focus:outline-none font-arcon"
-                                      >
-                                        {item.player_name}
-                                      </p>
-                                      <p
-                                        tabIndex={0}
-                                        className="text-xs leading-normal text-gray-900 focus:outline-none"
-                                      >
-                                        {item.team}
-                                        <span className="ml-4">
-                                          {item.player_position ===
-                                            "GoalKeeper" && "GK"}
-                                          {item.player_position ===
-                                            "Defender" && "DEF"}
-                                          {item.player_position ===
-                                            "Midfielder" && "MID"}
-                                          {item.player_position === "Forward" &&
-                                            "FWD"}
-                                        </span>
-                                      </p>
+                              <tr key={player_id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center gap-x-3">
+                                    <div className="flex items-center gap-x-2">
+                                      <img
+                                        className="object-cover w-10 h-10 rounded-full"
+                                        src={item.image_path}
+                                        alt={item.player_name}
+                                        title={item.player_name}
+                                      />
+                                      <div>
+                                        <h2 className="font-medium text-gray-800 dark:text-white ">
+                                          {item.player_name}
+                                        </h2>
+                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
+                                          {item.team}
+                                          <span className="ml-4">
+                                            {item.player_position ===
+                                              "GoalKeeper" && "GK"}
+                                            {item.player_position ===
+                                              "Defender" && "DEF"}
+                                            {item.player_position ===
+                                              "Midfielder" && "MID"}
+                                            {item.player_position ===
+                                              "Forward" && "FWD"}
+                                          </span>
+                                        </p>
+                                      </div>
                                     </div>
                                   </div>
                                 </td>
-                                <td className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200">
-                                  <p className="py-2 text-center text-gray-900 whitespace-no-wrap px-1 border-gray-400">
-                                    5.4
-                                  </p>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
+                                    <h2 className="text-sm font-normal text-emerald-500">
+                                      54,200
+                                    </h2>
+                                  </div>
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    15.4
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  15.4
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    84
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  84
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    AVL (H)
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  AVL (H)
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                  <div className="flex items-center gap-x-2">
+                                    <button
+                                      onClick={() => selectCap(player_id)}
+                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
+                                    >
+                                      Make Captain
+                                    </button>
+                                    <button
+                                      onClick={() => selectViceCap(player_id)}
+                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
+                                    >
+                                      Make vice Captain
+                                    </button>
+                                    <button
+                                      onClick={() => remove(player_id)}
+                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
+                                    >
+                                      Remove
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             )
                           )}
                           {teams.subs.map(
                             (item: Players, player_id: number) => (
-                              <tr key={player_id} className="">
-                                <td
-                                  key={player_id}
-                                  className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200"
-                                >
-                                  <div className="flex w-full ">
-                                    <p
-                                      tabIndex={0}
-                                      className="flex text-xs leading-normal text-left text-gray-500 align-middle focus:outline-none"
-                                    >
-                                      <span className="text-2xl  align-middle material-icons">
-                                        info_outline
-                                      </span>
-
-                                      <span className="flex-shrink-0 w-10 h-10 mb-2 ml-4">
-                                        <div className="mt-[2.5rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                          <div className=" h-20 w-12 rounded-full mx-auto">
-                                            <img
-                                              className="rounded-full object-cover object-center"
-                                              src={item.image_path}
-                                              alt={item.player_name}
-                                              title={item.player_name}
-                                            />
-                                          </div>
-                                        </div>
-                                      </span>
-                                    </p>
-
-                                    <div className="pl-3 mb-2 ml-5">
-                                      <p
-                                        tabIndex={0}
-                                        className="text-sm leading-5 text-gray-900 focus:outline-none font-arcon"
-                                      >
-                                        {item.player_name}
-                                      </p>
-                                      <p
-                                        tabIndex={0}
-                                        className="text-xs leading-normal text-gray-900 focus:outline-none"
-                                      >
-                                        {item.team}
-                                        <span className="ml-4">
-                                          {item.player_position ===
-                                            "GoalKeeper" && "GK"}
-                                          {item.player_position ===
-                                            "Defender" && "DEF"}
-                                          {item.player_position ===
-                                            "Midfielder" && "MID"}
-                                          {item.player_position === "Forward" &&
-                                            "FWD"}
-                                        </span>
-                                      </p>
+                              <tr key={player_id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center gap-x-3">
+                                    <div className="flex items-center gap-x-2">
+                                      <img
+                                        className="object-cover w-10 h-10 rounded-full"
+                                        src={item.image_path}
+                                        alt={item.player_name}
+                                        title={item.player_name}
+                                      />
+                                      <div>
+                                        <h2 className="font-medium text-gray-800 dark:text-white ">
+                                          {item.player_name}
+                                        </h2>
+                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
+                                          {item.team}
+                                          <span className="ml-4">
+                                            {item.player_position ===
+                                              "GoalKeeper" && "GK"}
+                                            {item.player_position ===
+                                              "Defender" && "DEF"}
+                                            {item.player_position ===
+                                              "Midfielder" && "MID"}
+                                            {item.player_position ===
+                                              "Forward" && "FWD"}
+                                          </span>
+                                        </p>
+                                      </div>
                                     </div>
                                   </div>
                                 </td>
-                                <td className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200">
-                                  <p className="py-2 text-center text-gray-900 whitespace-no-wrap px-1 border-gray-400">
-                                    5.4
-                                  </p>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
+                                    <h2 className="text-sm font-normal text-emerald-500">
+                                      54,200
+                                    </h2>
+                                  </div>
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    15.4
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  15.4
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    84
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  84
                                 </td>
-                                <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                  <p className="text-center text-gray-900 whitespace-no-wrap">
-                                    AVL (H)
-                                  </p>
+                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                  AVL (H)
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                  <div className="flex items-center gap-x-2">
+                                    <button
+                                      onClick={() => selectCap(player_id)}
+                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
+                                    >
+                                      Make Captain
+                                    </button>
+                                    <button
+                                      onClick={() => selectViceCap(player_id)}
+                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
+                                    >
+                                      Make vice Captain
+                                    </button>
+                                    <button
+                                      onClick={() => remove(player_id)}
+                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
+                                    >
+                                      Remove
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             )
