@@ -9,29 +9,57 @@ const TransferNews = () => {
   return (
     <MainLayout>
       <section className="bg-white dark:bg-gray-900">
-      <div className="inline-flex rounded -ml-1 ">
-        <Link href="/home" passHref>
-          <a className="font-montserrat text-sm text-[#240155] ml-3 md:ml-5 lg:ml-14 mt-10 px-2 ">
-            Home
-          </a>
-        </Link>
-        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-          navigate_next
-        </span>
-        <Link href="/home/transfer" passHref>
-          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-            Transfer
-          </a>
-        </Link>
-        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-          navigate_next
-        </span>
+        <div className="ml-3 md:ml-5 lg:ml-14  flex items-center py-8 overflow-x-auto whitespace-nowrap">
+          <Link href="/home" passHref>
+            <a className="text-[#240155] dark:text-gray-200">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
+            </a>
+          </Link>
+          <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </span>
 
-        <h1 className="font-montserrat  -ml-2 text-sm text-gray-600  mt-10 px-2 ">
-          Transfer News
-        </h1>
-      </div>
-        <div className="container px-6 py-10 mx-auto">
+          <Link href="/home/transfer" passHref>
+            <a className="text-[#240155] dark:text-gray-200 ">Transfer</a>
+          </Link>
+
+          <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </span>
+
+          <h1 className="text-gray-600 dark:text-blue-400">Transfer News</h1>
+        </div>
+
+        <div className="container px-6 py-5 mx-auto">
           <div className="sm:flex sm:items-center sm:justify-between pb-5">
             <div>
               <div className="flex items-center gap-x-3">
@@ -69,7 +97,7 @@ const TransferNews = () => {
                     <h1 className="text-sm text-gray-700 dark:text-gray-200">
                       Amelia. Anderson
                     </h1>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-[#8139E6] dark:text-gray-400">
                       Lead Developer
                     </p>
                   </div>
@@ -83,7 +111,7 @@ const TransferNews = () => {
 
                 <a
                   href="#"
-                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 "
+                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-[#8139E6] dark:text-gray-400 "
                 >
                   How to raise $100k+ by using blox ui kit on your design
                 </a>
@@ -96,7 +124,7 @@ const TransferNews = () => {
 
                 <a
                   href="#"
-                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 "
+                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-[#8139E6] dark:text-gray-400 "
                 >
                   Should you creat UI Product by using Blox?
                 </a>
@@ -109,7 +137,7 @@ const TransferNews = () => {
 
                 <a
                   href="#"
-                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 "
+                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-[#8139E6] dark:text-gray-400 "
                 >
                   Top 10 Blocks you can get on Blox's collection.
                 </a>
@@ -122,7 +150,7 @@ const TransferNews = () => {
 
                 <a
                   href="#"
-                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 "
+                  className="block mt-2 font-medium text-gray-700 hover:underline hover:text-[#8139E6] dark:text-gray-400 "
                 >
                   Top 10 Ui kit you can get on Blox's collection.
                 </a>

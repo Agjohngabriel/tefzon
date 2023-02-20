@@ -8,20 +8,6 @@ const Index = () => {
       {/* News */}
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="inline-flex rounded -ml-1 ">
-          <Link href="/home" passHref>
-            <a className="font-montserrat text-sm text-[#240155] ml-3 md:ml-5 lg:ml-14 mt-10 px-2 ">
-              Home
-            </a>
-          </Link>
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
-
-          <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
-            News
-          </h1>
-        </div>
         <div className="container px-6 py-10 mx-auto">
           <div className="sm:flex sm:items-center sm:justify-between pb-5">
             <div>

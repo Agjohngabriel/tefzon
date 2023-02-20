@@ -7,20 +7,6 @@ const Index = () => {
   return (
     <Layout>
       <div className="py-10">
-        <div className="inline-flex rounded -ml-1 ">
-          <Link href="/home" passHref>
-            <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
-              Home
-            </a>
-          </Link>
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
-
-          <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
-            Terms
-          </h1>
-        </div>
         <div className=" container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto my-10 px-4 py-6 lg:px-10  w-auto">
           <div className="w-full md:w-5/5 mx-auto p-2">
             <h3 className="text-xl font-bold text-gray-800">
@@ -58,7 +44,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-one"
                 >
                   YOUR USE OF THE WEBSITE IF YOU ARE UNDER 18
@@ -94,7 +80,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-two"
                 >
                   CHANGES TO THESE TERMS OF USE
@@ -116,7 +102,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   CHANGES TO THE WEBSITE
@@ -141,7 +127,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   INTELLECTUAL PROPERTY RIGHTS
@@ -209,7 +195,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   NO RELIANCE ON INFORMATION
@@ -235,7 +221,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   EXTERNAL LINKS
@@ -269,7 +255,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   VIRUSES
@@ -296,7 +282,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   YOUR LAWFUL USE OF THE WEBSITE
@@ -327,7 +313,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   LIMITATION OF LIABILITY
@@ -347,7 +333,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   GOVERNING LAW
@@ -369,7 +355,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block bg-white p-5 leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   CONTACT

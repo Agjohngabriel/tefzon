@@ -6,20 +6,7 @@ const Index = () => {
   const [openTab, setOpenTab] = useState(1);
   return (
     <Layout>
-      <div className="inline-flex rounded -ml-1 ">
-        <Link href="/home" passHref>
-          <a className="font-montserrat text-sm text-[#240155] ml-3 md:ml-5 lg:ml-24 mt-10 px-2 ">
-            Home
-          </a>
-        </Link>
-        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-          navigate_next
-        </span>
-
-        <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
-          Scout
-        </h1>
-      </div>
+      
       <div className="container lg:max-w-7xl flex flex-wrap     mx-auto   px-auto py-2  lg:py-8 lg:px-10 ">
         <section className="container px-4 mx-auto">
           <div className="sm:flex sm:items-center sm:justify-between">
