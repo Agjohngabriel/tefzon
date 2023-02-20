@@ -68,38 +68,61 @@ const CreateLeague = () => {
   }
   return (
     <MainLayout>
-      <div className=" justify-center sm:py-5  mx-auto  px-4 pt-2 pb-20  bg-[#E4ECFB] shadow-inner w-auto">
-        <div className="inline-flex rounded -ml-1 mb-5">
-          <Link href="/home" passHref>
-            <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
-              Home
-            </a>
-          </Link>
+      <div className=" justify-center py-4 sm:py-10  mx-auto  px-4  pb-20  bg-[#E4ECFB] shadow-inner w-auto">
+        <div className=" max-w-sm sm:max-w-3xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto lg:mx-20 px-2 sm:px-5 py-2 sm:py-5  w-auto">
+          <div className="bg-white rounded-2xl p-5 sm:p-10   ">
+            <div className=" flex items-center  overflow-x-auto whitespace-nowrap">
+              <Link href="/home" passHref>
+                <a className="text-[#240155] dark:text-gray-200">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                  </svg>
+                </a>
+              </Link>
+              <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </span>
 
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
+              <Link href="/home/leagues" passHref>
+                <a className="text-[#240155] dark:text-gray-200 ">Leagues</a>
+              </Link>
 
-          <Link href="/home/leagues" passHref>
-            <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-              Leagues
-            </a>
-          </Link>
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
+              <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </span>
 
-          <Link href="/home/leagues" passHref>
-            <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-              Create
-            </a>
-          </Link>
-        </div>
-        <div className=" max-w-sm sm:max-w-3xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto lg:mx-20 mx px-5  py-5  w-auto">
-          <div className="bg-white rounded-2xl p-10   ">
+              <h1 className="text-gray-600 dark:text-blue-400">Create</h1>
+            </div>
             <form autoComplete="off" onSubmit={handleSubmit}>
               <div className="flex flex-col  pt-10 space-y-4 max-w-lg mx-2">
-                <h1 className="font-montserrat text-2xl sm:text-3xl text-black-150 w-4/6 ">
+                <h1 className="font-montserrat text-xl sm:text-3xl text-black-150 w-4/6 ">
                   Create a League
                 </h1>
                 <p className="font-arcon text-sm text-[#222222]/60  sm:w-5/6">

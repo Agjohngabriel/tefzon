@@ -13,34 +13,57 @@ const Join = () => {
 
   return (
     <MainLayout>
-   
       <div className="py-2">
-        <div className="inline-flex rounded -ml-1">
-          <Link href="/home/account/status" passHref>
-            <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2  ">
-              Home
-            </a>
-          </Link>
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
-
-          <Link href="/home/leagues" passHref>
-            <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-              Leagues
-            </a>
-          </Link>
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
-
-          <Link href="/home/leagues" passHref>
-            <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-              Join
-            </a>
-          </Link>
-        </div>
         <div className=" container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  sm:px-4 py-6 lg:px-10  w-auto">
+          <div className="ml-3 md:ml-5   flex items-center py-2 overflow-x-auto whitespace-nowrap">
+            <Link href="/home" passHref>
+              <a className="text-[#240155] dark:text-gray-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+              </a>
+            </Link>
+            <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+
+            <Link href="/home/leagues" passHref>
+              <a className="text-[#240155] dark:text-gray-200 ">Leagues</a>
+            </Link>
+
+            <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+
+            <h1 className="text-gray-600 dark:text-blue-400">Join</h1>
+          </div>
           <div className="flex">
             <div className="  ">
               <div className="  py-2 md:py-5 px-1 w-full">
@@ -57,7 +80,7 @@ const Join = () => {
                   <div className="col-span-12 sm:col-span-12 md:col-span-12  px-2 py-2">
                     {/* <!-- Start Card List --> */}
                     <div className="rounded-xl ">
-                      <div className="grid grid-cols-1 gap-6   grid-cols-2 mt-6">
+                      <div className="">
                         {/* <!-- Start Navitem --> */}
                         <button
                           onClick={goToPrivate}
@@ -71,7 +94,7 @@ const Join = () => {
                           </div>
                           <p className="text-xs lg:text-sm mt-3 text-center font-semibold">
                             <div className="font-montserrat flex items-center text-black-150 rounded  focus:outline-none">
-                            Join private league
+                              Join private league
                               <span className="ml-2 material-icons text-[#6E4BEC] hover:text-green-500">
                                 arrow_forward
                               </span>

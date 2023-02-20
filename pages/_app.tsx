@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       ></Script>
       <Script src="https://widgets.sportmonks.com/js/app.js"></Script>
-      <Script src="https://kit.fontawesome.com/a076d05399.js"></Script>
+      <Script src="http://kit.fontawesome.com/a076d05399.js"></Script>
       <SessionProvider session={session} refetchInterval={5 * 60}>
         <Component {...pageProps} />
       </SessionProvider>

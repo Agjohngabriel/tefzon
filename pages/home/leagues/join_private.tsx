@@ -77,34 +77,77 @@ const JoinPrivate = () => {
   }, [session]);
   return (
     <MainLayout>
-      <div className="py-2">
+      <div className="py-4">
         {isLoading === 1 && <Loader />}
-        <div className="inline-flex rounded -ml-1">
-          <Link href="/home" passHref>
-            <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
-              Home
-            </a>
-          </Link>
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
-
-          <Link href="/home/leagues" passHref>
-            <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-              Leagues
-            </a>
-          </Link>
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
-
-          <Link href="/home/leagues" passHref>
-            <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-              Join Private
-            </a>
-          </Link>
-        </div>
+     
         <div className="max-w-sm sm:max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-5 sm:px-10 py-5 my-5 items-center justify-center w-auto">
+        <div className="flex items-center py-2 overflow-x-auto whitespace-nowrap">
+            <Link href="/home" passHref>
+              <a className="text-[#240155] dark:text-gray-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+              </a>
+            </Link>
+            <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+
+            <Link href="/home/leagues" passHref>
+              <a className="text-[#240155] dark:text-gray-200 ">Leagues</a>
+            </Link>
+
+            <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+            <Link href="/home/leagues/join" passHref>
+              <a className="text-[#240155] dark:text-gray-200 ">Join</a>
+            </Link>
+
+            <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+
+            <h1 className="text-gray-600 dark:text-blue-400">Join Private</h1>
+          </div>
           <div className="   py-1 px-1 w-full">
             <div className="flex flex-col space-y-4 mb-5">
               <h1 className="font-montserrat sm:mt-5 text-xl sm:text-3xl font-bold text-black-150 w-4/6 ">

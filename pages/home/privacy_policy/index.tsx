@@ -7,20 +7,8 @@ const Index = () => {
   return (
     <Layout>
       <div className="py-10">
-        <div className="inline-flex rounded -ml-1">
-          <Link href="/home" passHref>
-            <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2 ">
-              Home
-            </a>
-          </Link>
-          <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-            navigate_next
-          </span>
-
-          <h1 className="font-montserrat  -ml-2 text-sm text-[#240155]  mt-10 px-2 ">
-            Privacy Policy
-          </h1>
-        </div>
+      
+      
         <div className=" container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  px-4 py-6 lg:px-10  w-auto">
           <div className="w-full md:w-5/5 mx-auto p-2">
             <h3 className="text-xl font-bold text-gray-800">PRIVACY POLICY</h3>
@@ -71,7 +59,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block p-5 bg-white leading-normal cursor-pointer"
                   htmlFor="tab-multi-one"
                 >
                   How We Collect Your Personal Data
@@ -146,7 +134,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block p-5 bg-white leading-normal cursor-pointer"
                   htmlFor="tab-multi-two"
                 >
                   Disclosure of Your Personal Data
@@ -244,7 +232,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block p-5 bg-white leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   Security of Your Personal Data
@@ -285,7 +273,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block p-5 bg-white leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   Links to Other Sites
@@ -311,7 +299,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block p-5 bg-white leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   Data Retention
@@ -365,7 +353,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block p-5 bg-white leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   Your Rights
@@ -462,7 +450,7 @@ const Index = () => {
                   name="tabs"
                 />
                 <label
-                  className="block p-5 leading-normal cursor-pointer"
+                  className="block p-5 bg-white leading-normal cursor-pointer"
                   htmlFor="tab-multi-three"
                 >
                   Contact Us

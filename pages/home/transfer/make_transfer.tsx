@@ -126,29 +126,57 @@ const Index = () => {
   };
   return (
     <MainLayout>
-      <div className="inline-flex rounded -ml-1 ">
-        <Link href="/home" passHref>
-          <a className="font-montserrat text-sm text-[#240155] ml-3 md:ml-5 lg:ml-14 mt-10 px-2 ">
-            Home
-          </a>
-        </Link>
-        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-          navigate_next
-        </span>
-        <Link href="/home/transfer" passHref>
-          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-            Transfer
-          </a>
-        </Link>
-        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-          navigate_next
-        </span>
+       <div className="ml-3 md:ml-5 lg:ml-14  flex items-center py-8 overflow-x-auto whitespace-nowrap">
+          <Link href="/home" passHref>
+            <a className="text-[#240155] dark:text-gray-200">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
+            </a>
+          </Link>
+          <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </span>
 
-        <h1 className="font-montserrat  -ml-2 text-sm  text-gray-600  mt-10 px-2 ">
-          Transfer player
-        </h1>
-      </div>
-      <div className="container  mx-auto  pt-10  lg:px-2 lg:flex">
+          <Link href="/home/transfer" passHref>
+            <a className="text-[#240155] dark:text-gray-200 ">Transfer</a>
+          </Link>
+
+          <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </span>
+
+          <h1 className="text-gray-600 dark:text-blue-400">Transfer Player</h1>
+        </div>
+
+      <div className="container  mx-auto   lg:px-2 lg:flex">
         <div className="container max-w-4xl mt-4 ">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
             <h1 className="font-semibold ml-5 text-xl sm:text-3xl text-gray-700  text-center">
@@ -669,7 +697,7 @@ const Index = () => {
                     type="text"
                     value=""
                     placeholder="Search"
-                    className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-[#33175A]  rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-[#33175A]  rounded-lg  placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
               </div>
@@ -678,7 +706,7 @@ const Index = () => {
                 <label className="text-gray-700 font-medium text-sm my-2 ">
                   Sorted by
                 </label>
-                <div className="bg-white my-2 p-1 flex border border-[#33175A] rounded svelte-1l8159u">
+                <div className="bg-white my-2 p-1 flex rounded svelte-1l8159u">
                   <select className="form-select w-full px-3 py-2   rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                     <option value="">Total Point</option>
                     <option value="02">Goals</option>
@@ -689,13 +717,13 @@ const Index = () => {
               </div>
 
               <div className="w-full  flex-1 svelte-1l8159u">
-                <label className="text-gray-700 font-medium text-sm mb-2 ">
+                <label className="text-gray-700 font-medium  text-sm mb-2 ">
                   Max cost{" "}
                   <span className="block font-normal text-gray-500">
                     Between 3.8 and 12.5
                   </span>
                 </label>
-                <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                <div className="bg-white my-2 p-1 flex  rounded svelte-1l8159u">
                   <select className="form-select w-full px-3 py-2   rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                     <option value="">12.5</option>
                     <option value="02">Goals</option>
