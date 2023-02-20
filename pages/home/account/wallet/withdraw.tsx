@@ -37,40 +37,64 @@ const WalletWithdraw = () => {
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-    
   }
 
   return (
     <MainLayout>
-      <div className="inline-flex rounded -ml-1">
-        <Link href="/home" passHref>
-          <a className="font-montserrat text-sm text-[#240155] ml-5 md:ml-10 lg:ml-24 mt-10 px-2  ">
-            Home
-          </a>
-        </Link>
-        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-          navigate_next
-        </span>
-
-        <Link href="/home/account/wallet" passHref>
-          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-            Wallet
-          </a>
-        </Link>
-        <span className="material-icons mt-[2.1rem] text-2xl text-[#8139E6]">
-          navigate_next
-        </span>
-
-        <Link href="/home/account/wallet/withdraw" passHref>
-          <a className="font-montserrat text-sm text-[#240155] mt-10 px-2 ">
-            Withdraw
-          </a>
-        </Link>
-      </div>
-      <div className="container">
+    
+      <div className="container py-2">
         <div className="md:flex">
           <div className="container max-w-3xl h-3/4  bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 md:w-3/5 sm:ml-4 lg:ml-24 mt-10 mb-20  px-2 py-6 lg:px-10  w-auto">
-            <div className="flex flex-col  pt-10 space-y-4 max-w-2xl mx-2">
+            <div className="ml-3   flex items-center py-2 overflow-x-auto whitespace-nowrap">
+              <Link href="/home" passHref>
+                <a className="text-[#240155] dark:text-gray-200">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                  </svg>
+                </a>
+              </Link>
+              <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </span>
+
+              <Link href="/home/account/wallet" passHref>
+                <a className="font-montserrat text-sm text-[#240155] dark:text-gray-200 ">Wallet</a>
+              </Link>
+
+              <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </span>
+
+              <h1 className="font-montserrat text-sm text-gray-600 dark:text-blue-400">Withdraw</h1>
+            </div>
+            <div className="flex flex-col  pt-5 space-y-4 max-w-2xl mx-2">
               <h1 className="font-montserrat text-2xl font-medium text-[#333333] w-4/6 ">
                 Withdraw Money
               </h1>
@@ -123,7 +147,9 @@ const WalletWithdraw = () => {
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                     <select className="form-select w-full px-3 py-2 text-sm  font-arcon text-black-150 opacity-100 rounded-md focus:outline-none bg-white focus:border-indigo-500 transition-colors cursor-pointer border border-gray-100">
                       <option value="">Select Bank</option>
-                      <option value={details["bank_name" as any]}>{details["bank_name" as any]}</option>
+                      <option value={details["bank_name" as any]}>
+                        {details["bank_name" as any]}
+                      </option>
                     </select>
                   </div>
                 </div>
