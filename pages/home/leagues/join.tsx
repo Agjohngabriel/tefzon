@@ -14,8 +14,8 @@ const Join = () => {
   return (
     <MainLayout>
       <div className="py-2">
-        <div className=" container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20  sm:px-4 py-6 lg:px-10  w-auto">
-          <div className="ml-3 md:ml-5   flex items-center py-2 overflow-x-auto whitespace-nowrap">
+        <div className=" container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20 px-2 sm:px-4 py-6 lg:px-10  w-auto">
+          <div className="ml-5 flex items-center py-2 overflow-x-auto whitespace-nowrap">
             <Link href="/home" passHref>
               <a className="text-[#240155] dark:text-gray-200">
                 <svg
@@ -68,10 +68,10 @@ const Join = () => {
             <div className="  ">
               <div className="  py-2 md:py-5 px-1 w-full">
                 <div className="flex flex-col space-y-4 mb-5 pl-4">
-                  <h1 className="font-montserrat text-2xl sm:text-3xl  font-bold text-black-150 md:w-4/6  ">
+                  <h1 className="font-montserrat px-1 text-xl sm:text-3xl  font-bold text-black-150 md:w-4/6  ">
                     Choose a league type to join
                   </h1>
-                  <p className="font-arcon text-xs sm:px-3   text-black-0  w-full">
+                  <p className="font-arcon text-xs px-1 sm:px-3   text-black-0  w-full">
                     Join a private or public league to compete against friends
                     and other game players.
                   </p>
@@ -80,7 +80,7 @@ const Join = () => {
                   <div className="col-span-12 sm:col-span-12 md:col-span-12  px-2 py-2">
                     {/* <!-- Start Card List --> */}
                     <div className="rounded-xl ">
-                      <div className="grid grid-cols-1 gap-6   grid-cols-2 mt-6">
+                      <div className="grid grid-cols-1 gap-6   sm:grid-cols-2 mt-6">
                         {/* <!-- Start Navitem --> */}
                         <button
                           onClick={goToPrivate}

@@ -28,7 +28,7 @@ const Index = () => {
                   <div className="col-span-12 sm:col-span-12 md:col-span-12  px-2 py-2">
                     {/* <!-- Start Card List --> */}
                     <div className="rounded-xl ">
-                      <div className="grid grid-cols-1 gap-6   grid-cols-2 mt-6">
+                      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 mt-6">
                         {/* <!-- Start Navitem --> */}
                         <button
                           onClick={goToJoin}

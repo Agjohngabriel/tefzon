@@ -163,8 +163,10 @@ const Index = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -254,8 +256,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -345,8 +349,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -436,8 +442,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -527,8 +535,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -618,8 +628,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -709,8 +721,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -800,8 +814,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -957,8 +973,10 @@ const Index = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -1048,8 +1066,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -1139,8 +1159,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -1230,8 +1252,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -1321,8 +1345,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -1412,8 +1438,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -1503,8 +1531,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -1594,8 +1624,10 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">1º</p>
+                        <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
+                            arrow_drop_up
+                          </span>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
@@ -1724,7 +1756,6 @@ const Index = () => {
                     <tbody>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -1759,7 +1790,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -1794,7 +1824,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -1829,7 +1858,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -1864,7 +1892,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -1899,7 +1926,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -1934,7 +1960,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -1969,7 +1994,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -2033,7 +2057,6 @@ const Index = () => {
                     <tbody>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º{" "}
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -2068,7 +2091,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -2103,7 +2125,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -2138,7 +2159,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -2173,7 +2193,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -2208,7 +2227,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -2243,7 +2261,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
@@ -2278,7 +2295,6 @@ const Index = () => {
                       </tr>
                       <tr>
                         <td className="px-2 sm:px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          1º
                           <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                             arrow_drop_up
                           </span>
