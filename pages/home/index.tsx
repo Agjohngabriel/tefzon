@@ -22,7 +22,7 @@ const Index = () => {
     Router.push("/home/fixtures");
   };
   const goToPoints = () => {
-    Router.push("/home/points");
+    Router.push("/home/statistics");
   };
   const goToUpdateProfile = () => {
     Router.push("/home/account/update");
@@ -88,10 +88,10 @@ const Index = () => {
       <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
         <div className=" container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto   px-4 py-6  w-auto">
           <div className="grid grid-cols-12 gap-0">
-            <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-8 xxl:col-span-8 px-6 py-2">
+            <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-8 xxl:col-span-8 px-2 sm:px-6 py-2">
               {/* <!-- Start Card List --> */}
               <div className="rounded-xl ">
-                <div className="grid grid-cols-1 gap-6   grid-cols-2 mt-6">
+                <div className="grid grid-cols-1 gap-6   grid-cols-2 sm:mt-6">
                   {/* <!-- Start Navitem --> */}
                   <button
                     onClick={goToSquad}
@@ -183,7 +183,7 @@ const Index = () => {
               {/* <!-- End Card List --> */}
             </div>
 
-            <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-6 py-6">
+            <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-2 sm:px-6 py-6">
               {/* <!-- Start profile Card --> */}
               <div className="bg-white rounded-xl p-4 shadow-xl">
                 <div className="flex flex-col justify-center items-center">
