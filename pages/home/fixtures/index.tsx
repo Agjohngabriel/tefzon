@@ -5,11 +5,16 @@ import { Loader } from "../../../components/base/Loader";
 import Layout from "../../../components/Layouts";
 
 interface Fixtures {
+  data: any;
+  time: any;
+  scores: any;
   round_id: number;
   logo_path: string;
   name: string;
   localTeam: string;
   visitorTeam: string;
+
+  ft_score: string;
 }
 
 const Index = () => {
@@ -182,7 +187,7 @@ const Index = () => {
                   key={round_id}
                   className="px-5 py-3 sm:py-5 border-b border-gray-300 text-xs  sm:text-sm  flex justify-center mx-auto"
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-center ">
                     <div className="mr-3">
                       <p className="text-gray-900 whitespace-no-wrap">
                         {item.localTeam.data.name}
@@ -197,7 +202,7 @@ const Index = () => {
                     </div>
                   </div>
                   <p className="mx-2 sm:mx-16 tracking-tight px-2 sm:px-8 text-gray-600 whitespace-no-wrap text-center border  py-2 sm:py-3 border-gray-300">
-                    {item.scores.ft_score}
+                    {item.scores.ft_score === null ? item.time.starting_at.date_time  : item.scores.ft_score  }
                   </p>
                   <div className="flex items-center float-right">
                     <div className="flex-shrink-0 w-8 sm:w-10 h-8 sm:h-10  sm:table-cell mr-3">
