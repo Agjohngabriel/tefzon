@@ -8,9 +8,38 @@ import SlashScreen from "../components/SlashScreen";
 import { motion } from "framer-motion";
 import axios from "axios";
 
+interface Fixtures {
+  time: any;
+  scores: any;
+  round_id: number;
+  localTeam: string;
+  visitorTeam: string;
+
+}
+
 const Home: NextPage = () => {
   // Loading state
   const [isLoading, setIsLoading] = useState(true);
+  const [fixtures, setFixtures] = useState([]);
+
+  useEffect(() => {
+    const fetchAll = async () => {
+      setIsLoading(true);
+      const res = await axios.get(`${process.env.BACKEND_URL}/get-fixtures`);
+
+      const response = await res.data;
+      setIsLoading(false);
+      return response;
+    };
+
+    const getFixtures = async () => {
+      const FavouritesFromApi = await fetchAll();
+      console.log(FavouritesFromApi);
+      setFixtures(FavouritesFromApi);
+    };
+
+    getFixtures();
+  }, []);
 
   useEffect(() => {
     // Wait for 3 seconds
@@ -18,21 +47,21 @@ const Home: NextPage = () => {
       setIsLoading(false);
     }, 3000);
 
-      const fetchAll = async () => {
-        // setIsLoading(true);
-        const news = await axios.get(
-          `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
-        );
-        const response = await news.data;
-        // for fixtures
-        // const fixture = await axios.get(
-        //   `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
-        // );
-        // const fixts = await fixture.data;
-        setIsLoading(false);
-        console.log(response);
-        // console.log(fixts);
-      };
+    const fetchAll = async () => {
+      // setIsLoading(true);
+      const news = await axios.get(
+        `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+      );
+      const response = await news.data;
+      // for fixtures
+      // const fixture = await axios.get(
+      //   `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+      // );
+      // const fixts = await fixture.data;
+      setIsLoading(false);
+      console.log(response);
+      // console.log(fixts);
+    };
   }, []);
 
   const goToRegister = () => {
@@ -120,7 +149,7 @@ const Home: NextPage = () => {
             className="absolute top-0 w-full h-full rounded-2xl bg-white shadow-xl transition duration-500 group-hover:scale-105 lg:group-hover:scale-10"
           ></div>
 
-          <div className="relative p-6 space-y-6 lg:p-8">
+          <div className="relative p-6 space-y-6">
             <div className="container  ">
               <div className="flex flex-col  pt-6 space-y-4 max-w-3xl mx-auto">
                 <div className="mx-auto flex-1 svelte-1l8159u ">
@@ -133,226 +162,57 @@ const Home: NextPage = () => {
               </div>
 
               <div className="pt-5 ">
-                <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
+                {/* <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
                   2022-23 English Premier League
-                </p>
+                </p> */}
 
                 <div className="w-full leading-normal ">
-                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
-                    <div className="flex items-center">
-                      <div className="mr-2">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          lookester city
-                        </p>
+                  {fixtures.slice(45, 55).map((item: Fixtures, round_id) => (
+                    <div
+                      key={round_id}
+                      className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto"
+                    >
+                      <div className="flex items-center">
+                        <div className="mr-2">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {item.localTeam["data" as any]["name" as any]}
+                          </p>
+                        </div>
+                        <div className="flex-shrink-0 w-6 sm:w-6 h-6 sm:h-6  sm:table-cell">
+                          <img
+                            className="w-full h-full rounded-full"
+                            src={
+                              item.localTeam["data" as any]["logo_path" as any]
+                            }
+                            alt={item.localTeam["data" as any]["name" as any]}
+                          />
+                        </div>
                       </div>
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
-                      19:00
-                    </p>
-                    <div className="flex items-center float-right">
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap text-right">
-                          Teamchester city
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="px-1 py-3 border-b border-gray-300  text-xs flex justify-center mx-auto">
-                    <div className="flex items-center">
-                      <div className="mr-2">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          lookester city
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
+                      <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-1  border-gray-300">
+                        {item.scores.ft_score === null
+                          ? item.time.starting_at.date
+                          : item.scores.ft_score}
+                      </p>
+                      <div className="flex items-center float-right">
+                        <div className="flex-shrink-0 w-6 sm:w-6 h-6 sm:h-6  sm:table-cell mr-2">
+                          <img
+                            className="w-full h-full rounded-full"
+                            src={
+                              item.visitorTeam["data" as any][
+                                "logo_path" as any
+                              ]
+                            }
+                            alt={item.visitorTeam["data" as any]["name" as any]}
+                          />
+                        </div>
+                        <div className="">
+                          <p className="text-gray-900 whitespace-no-wrap text-right">
+                            {item.visitorTeam["data" as any]["name" as any]}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
-                      19:00
-                    </p>
-                    <div className="flex items-center float-right">
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap text-right">
-                          Teamchester city
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-5 ">
-                <p className="text-xs text-gray-800 font-arcon text-center   py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
-                  2022-23 Italian Serie A
-                </p>
-
-                <div className="w-full leading-normal ">
-                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
-                    <div className="flex items-center">
-                      <div className="mr-2">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          lookester city
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
-                      19:00
-                    </p>
-                    <div className="flex items-center float-right">
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap text-right">
-                          Teamchester city
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
-                    <div className="flex items-center">
-                      <div className="mr-2">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          lookester city
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
-                      19:00
-                    </p>
-                    <div className="flex items-center float-right">
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap text-right">
-                          Teamchester city
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="pt-5 ">
-                <p className="text-xs text-gray-900 font-arcon  text-center  py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
-                  2022-23 Spanish LaLiga
-                </p>
-
-                <div className="w-full leading-normal ">
-                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
-                    <div className="flex items-center">
-                      <div className="mr-2">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          lookester city
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
-                      19:00
-                    </p>
-                    <div className="flex items-center float-right">
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap text-right">
-                          Teamchester city
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto">
-                    <div className="flex items-center">
-                      <div className="mr-2">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          lookester city
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
-                      19:00
-                    </p>
-                    <div className="flex items-center float-right">
-                      <div className="flex-shrink-0 w-6 sm:w-9 h-6 sm:h-9  sm:table-cell mr-3">
-                        <img
-                          className="w-full h-full rounded-full"
-                          src="https://images.unsplash.com/photo-1601046668428-94ea13437736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap text-right">
-                          Teamchester city
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -706,8 +566,6 @@ const Home: NextPage = () => {
             </div>
           </a>
         </div>
-
-        
       </main>
 
       {/* <!-- recent posts --> */}
@@ -738,7 +596,6 @@ const Home: NextPage = () => {
               <h2 className="font-bold text-base lg:text-xl text-gray-800">
                 Put all speaking her delicate recurred possible.
               </h2>
-           
             </div>
           </div>
 
@@ -766,7 +623,6 @@ const Home: NextPage = () => {
                 As dissuade cheerful overcame so of friendly he indulged
                 unpacked.
               </h2>
-              
             </div>
           </div>
           <div className="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0">
@@ -780,13 +636,11 @@ const Home: NextPage = () => {
                 As dissuade cheerful overcame so of friendly he indulged
                 unpacked.
               </h2>
-              
             </div>
           </div>
         </div>
         {/* <!-- end recent posts --> */}
       </motion.div>
-      
 
       {/* video */}
       <div className="py-10 flex  items-center justify-center">

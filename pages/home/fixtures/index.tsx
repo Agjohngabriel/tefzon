@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 import { Loader } from "../../../components/base/Loader";
 import Layout from "../../../components/Layouts";
 
+
 interface Fixtures {
+  time: any;
+  scores: any;
   round_id: number;
-  logo_path: string;
-  name: string;
   localTeam: string;
   visitorTeam: string;
-}
 
+}
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [fixtures, setFixtures] = useState([]);
@@ -171,45 +172,49 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="pt-10 ">
-            <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
+          <div className=" ">
+            {/* <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
               Sunday 21 February 2022
-            </p>
+            </p> */}
 
-            <div className="w-full leading-normal ">
+            <div className="w-full leading-normal cursor-pointer">
               {fixtures.map((item: Fixtures, round_id) => (
                 <div
                   key={round_id}
-                  className="px-5 py-3 sm:py-5 border-b border-gray-300 text-xs  sm:text-sm  flex justify-center mx-auto"
+                  className="px-5 py-3  border-b border-gray-300 text-xs  sm:text-sm  flex justify-center mx-auto"
                 >
-                  <div className="flex items-center">
-                    <div className="mr-3">
+                  <div className="flex items-center ">
+                    <div className="mr-1">
                       <p className="text-gray-900 whitespace-no-wrap">
-                        {item.localTeam.data.name}
+                        {item.localTeam["data" as any]["name" as any]}
                       </p>
                     </div>
-                    <div className="flex-shrink-0 w-8 sm:w-10 h-8 sm:h-10  sm:table-cell">
+                    <div className="flex-shrink-0 w-5 sm:w-7 h-5 sm:h-7  sm:table-cell">
                       <img
                         className="w-full h-full rounded-full"
-                        src={item.localTeam.data.logo_path}
-                        alt={item.localTeam.data.name}
+                        src={item.localTeam["data" as any]["logo_path" as any]}
+                        alt={item.localTeam["data" as any]["name" as any]}
                       />
                     </div>
                   </div>
-                  <p className="mx-2 sm:mx-16 tracking-tight px-2 sm:px-8 text-gray-600 whitespace-no-wrap text-center border  py-2 sm:py-3 border-gray-300">
-                    {item.scores.ft_score}
+                  <p className="mx-2 sm:mx-4 tracking-tight px-2 sm:px-4 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
+                    {item.scores.ft_score === null
+                      ? item.time.starting_at.date
+                      : item.scores.ft_score}
                   </p>
                   <div className="flex items-center float-right">
-                    <div className="flex-shrink-0 w-8 sm:w-10 h-8 sm:h-10  sm:table-cell mr-3">
+                    <div className="flex-shrink-0 w-5 sm:w-7 h-5 sm:h-7  sm:table-cell mr-1">
                       <img
                         className="w-full h-full rounded-full"
-                        src={item.visitorTeam.data.logo_path}
-                        alt={item.visitorTeam.data.name}
+                        src={
+                          item.visitorTeam["data" as any]["logo_path" as any]
+                        }
+                        alt={item.visitorTeam["data" as any]["name" as any]}
                       />
                     </div>
                     <div className="">
                       <p className="text-gray-900 whitespace-no-wrap text-right">
-                        {item.visitorTeam.data.name}
+                        {item.visitorTeam["data" as any]["name" as any]}
                       </p>
                     </div>
                   </div>
