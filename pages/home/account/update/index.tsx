@@ -71,20 +71,19 @@ const Index = () => {
     };
     const getDetails = async () => {
       const DetailsFromApi = await fetchDetails();
-      console.log(DetailsFromApi);
-      setProfile(DetailsFromApi.user)
-      setDetails(DetailsFromApi.user.accountdetails);
-      
+      // console.log(DetailsFromApi);
+      setProfile(DetailsFromApi.user);
+      // setDetails(DetailsFromApi.user.accountdetails);
     };
     getDetails();
   }, [session]);
 
 
-  const [userName, setUserName] = useState(profile["user_name" as any]);
-  const [email, setEmail] = useState(profile["email" as any]);
-  const [firstName, setFirstName] = useState(
-    profile["first_name" as any]
+  const [userName, setUserName] = useState(
+    // {user: profile["user_name" as any]}
   );
+  const [email, setEmail] = useState(profile["email" as any]);
+  const [firstName, setFirstName] = useState(profile["first_name" as any]);
   const [lastName, setLastName] = useState(profile["last_name" as any]);
   const [phone, setPhone] = useState(profile["phone" as any]);
   const [gender, setGender] = useState(profile["gender" as any]);
@@ -100,11 +99,11 @@ const Index = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(false);
 
-   async function handleSubmit(e: React.SyntheticEvent) {
-     e.preventDefault();
-     if (isSubmitting) {
-       return;
-     }
+  async function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    if (isSubmitting) {
+      return;
+    }
     setIsSubmitting(true);
     // try {
     //   const user = await client.post("register", formData);
@@ -125,11 +124,12 @@ const Index = () => {
     //     showLoaderOnConfirm: true,
     //   })
     //   console.log(errorMessage)
-      
+
     //   setError(true);
     // }
   }
-  console.log(profile)
+  console.log(profile);
+  console.log(userName);
 
   return (
     <MainLayout>
@@ -165,7 +165,7 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={userName}
+                      // value={userName}
                       onChange={(e) => setUserName(e.target.value as any)}
                     />
                   </div>

@@ -195,7 +195,7 @@ const Index = () => {
                     />
                   </div>
                   <p className="font-semibold text-xl mt-1">
-                    Hi {profiledetails["first_name" as any]}
+                    Hi {profiledetails["username" as any]}
                   </p>
 
                   <div

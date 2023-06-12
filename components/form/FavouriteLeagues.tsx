@@ -48,7 +48,7 @@ const FavouriteLeague = (props: {
 
     const getFavourites = async () => {
       const FavouritesFromApi = await fetchAll();
-      // console.log(FavouritesFromApi);
+      console.log(FavouritesFromApi);
       setLeagues(FavouritesFromApi);
     };
 
