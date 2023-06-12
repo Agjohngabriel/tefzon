@@ -44,14 +44,14 @@ const Signup = () => {
       }
     } catch (e: any) {
       setIsSubmitting(false);
-      const errorMessage = e.response.data.errors;
+      const errorMessage = e.response.data.errors.password;
       MySwal.fire({
         title: `${errorMessage}`,
         confirmButtonText: "Proceed to Login",
         showLoaderOnConfirm: true,
-      })
-      console.log(errorMessage)
-      
+      });
+      console.log(errorMessage);
+
       setError(true);
       setRegError(errorMessage);
       setFormStep(0);
@@ -91,7 +91,7 @@ const Signup = () => {
                     </svg>
                   </div>
                 </div>
-                 {/* First Stepper */}
+                {/* First Stepper */}
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
                     formStep >= 0 ? "border-[#240155]/50" : "border-gray-300"
@@ -122,7 +122,7 @@ const Signup = () => {
                   </div>
                 </div>
                 {/* second stepper */}
-               
+
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
                     formStep >= 2 ? "border-[#240155]/50" : "border-gray-300"
@@ -176,7 +176,7 @@ const Signup = () => {
                   nextFormStep={nextFormStep}
                 />
               )}
-              
+
               {/* <Button
             Onclick={() => nextFormStep}
               title="Next"

@@ -14,7 +14,6 @@ interface Fixtures {
   round_id: number;
   localTeam: string;
   visitorTeam: string;
-
 }
 
 const Home: NextPage = () => {
@@ -161,58 +160,98 @@ const Home: NextPage = () => {
                 </div>
               </div>
 
-              <div className="pt-5 ">
+              <div className=" ">
                 {/* <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-gradient-to-r from-violet-500 via-indigo-200 to-indigo-400  mx-auto tracking-wider">
                   2022-23 English Premier League
                 </p> */}
 
                 <div className="w-full leading-normal ">
-                  {fixtures.slice(45, 55).map((item: Fixtures, round_id) => (
-                    <div
-                      key={round_id}
-                      className="px-1 py-3 border-b border-gray-300  text-xs  flex justify-center mx-auto"
-                    >
-                      <div className="flex items-center">
-                        <div className="mr-2">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {item.localTeam["data" as any]["name" as any]}
-                          </p>
-                        </div>
-                        <div className="flex-shrink-0 w-6 sm:w-6 h-6 sm:h-6  sm:table-cell">
-                          <img
-                            className="w-full h-full rounded-full"
-                            src={
-                              item.localTeam["data" as any]["logo_path" as any]
-                            }
-                            alt={item.localTeam["data" as any]["name" as any]}
-                          />
-                        </div>
-                      </div>
-                      <p className="mx-2 sm:mx-5 tracking-tight px-2 sm:px-3 text-gray-600 whitespace-no-wrap text-center border  py-1  border-gray-300">
-                        {item.scores.ft_score === null
-                          ? item.time.starting_at.date
-                          : item.scores.ft_score}
-                      </p>
-                      <div className="flex items-center float-right">
-                        <div className="flex-shrink-0 w-6 sm:w-6 h-6 sm:h-6  sm:table-cell mr-2">
-                          <img
-                            className="w-full h-full rounded-full"
-                            src={
-                              item.visitorTeam["data" as any][
-                                "logo_path" as any
-                              ]
-                            }
-                            alt={item.visitorTeam["data" as any]["name" as any]}
-                          />
-                        </div>
-                        <div className="">
-                          <p className="text-gray-900 whitespace-no-wrap text-right">
-                            {item.visitorTeam["data" as any]["name" as any]}
-                          </p>
+                  <section className="container bg-[#FFFFFF] lg:bg-transparent rounded mx-auto">
+                    <div className="flex flex-col">
+                      <div className="lg:-mx-4 -my-2 overflow-x-auto scrollbar-hide sm:-mx-6 lg:-mx-8 ">
+                        <div className="inline-block min-w-full py-2 align-middle">
+                          <div className="overflow-hidden md:rounded-lg">
+                            <table className="min-w-full ">
+                              <tbody className="  ">
+                                {fixtures
+                                  .slice(1, 9)
+                                  .map((item: Fixtures, round_id) => (
+                                    <tr
+                                      key={round_id}
+                                      className="border-b border-gray-300"
+                                    >
+                                      <td className="px-3 py-4 text-sm text-gray-500  whitespace-nowrap w-[8rem]">
+                                        <div className="flex items-center justify-end">
+                                          <div className="mr-2">
+                                            <p className="text-gray-900 whitespace-no-wrap">
+                                              {
+                                                item.localTeam["data" as any][
+                                                  "name" as any
+                                                ]
+                                              }
+                                            </p>
+                                          </div>
+                                          <div className="flex-shrink-0 w-6 sm:w-6 h-6 sm:h-6  sm:table-cell">
+                                            <img
+                                              className="w-full h-full rounded-full"
+                                              src={
+                                                item.localTeam["data" as any][
+                                                  "logo_path" as any
+                                                ]
+                                              }
+                                              alt={
+                                                item.localTeam["data" as any][
+                                                  "name" as any
+                                                ]
+                                              }
+                                            />
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td className="px-3 py-4 text-sm text-gray-500  whitespace-nowrap w-[5rem]">
+                                        <p className=" tracking-tight  text-gray-600 whitespace-no-wrap text-center border px-2  py-1  border-gray-300">
+                                          {item.scores.ft_score === null
+                                            ? item.time.starting_at.date
+                                            : item.scores.ft_score}
+                                        </p>
+                                      </td>
+                                      <td className="px-3 py-4 text-sm text-gray-500  whitespace-nowrap w-[8rem]">
+                                        <div className="flex items-center">
+                                          <div className="flex-shrink-0 w-6 sm:w-6 h-6 sm:h-6  sm:table-cell mr-2">
+                                            <img
+                                              className="w-full h-full rounded-full"
+                                              src={
+                                                item.visitorTeam["data" as any][
+                                                  "logo_path" as any
+                                                ]
+                                              }
+                                              alt={
+                                                item.visitorTeam["data" as any][
+                                                  "name" as any
+                                                ]
+                                              }
+                                            />
+                                          </div>
+                                          <div className="">
+                                            <p className="text-gray-900 whitespace-no-wrap text-right">
+                                              {
+                                                item.visitorTeam["data" as any][
+                                                  "name" as any
+                                                ]
+                                              }
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  ))}
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  ))}
+                  </section>
                 </div>
               </div>
             </div>
