@@ -95,12 +95,12 @@ const PersonalDetails = (props: {
             >
               <input
                 placeholder="Username"
-                type="email"
+                type="text"
                 onInput={(e) =>
                   props.updateFormData({ username: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
-                autoComplete="email"
+                autoComplete="text"
                 required
               />{" "}
             </div>
@@ -920,7 +920,7 @@ const PersonalDetails = (props: {
         </div>
 
         {/* <div className="flex justify-center p-2 mt-4"> */}
-          {/* <button
+        {/* <button
             className="flex justify-center px-10 py-2 text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded-lg shadow-inner cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500 bg-violet-500"
           >
             <div className="px-10 text-sm font-semibold font-montserrat">

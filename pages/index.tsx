@@ -689,7 +689,7 @@ const Home: NextPage = () => {
               <div className="relative">
                 <iframe
                   className="w-full aspect-video ... rounded-lg h-auto"
-                  src="https://cc.sporttube.com/embed/5ZXCCCG"
+                  src="https://static.vecteezy.com/system/resources/previews/011/440/388/mp4/aerial-view-of-amateur-football-field-amateur-football-match-free-video.mp4"
                 ></iframe>
 
                 <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
