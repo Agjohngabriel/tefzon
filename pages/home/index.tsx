@@ -88,7 +88,7 @@ const Index = () => {
             <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-8 xxl:col-span-8 px-2 sm:px-6 py-2">
               {/* <!-- Start Card List --> */}
               <div className="rounded-xl ">
-                <div className="grid grid-cols-1 gap-6   grid-cols-2 sm:mt-6">
+                <div className="grid grid-cols-1 gap-6   grid-cols-2 lg:grid-cols-3 sm:mt-6">
                   {/* <!-- Start Navitem --> */}
                   <button
                     onClick={goToSquad}

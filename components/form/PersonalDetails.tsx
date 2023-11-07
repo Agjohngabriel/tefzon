@@ -37,7 +37,7 @@ const PersonalDetails = (props: {
         <h1 className="w-4/6 text-lg text-center text-gray-700 font-montserrat">
           Personal Details
         </h1>
-        <p className="w-5/6 text-sm text-center text-gray-500 font-arcon">
+        <p className="w-[28rem] text-sm text-center text-gray-500 font-arcon">
           Please type carefully and fill out the form with Personal details. You
           can't edit these details once you submit the form.
         </p>
@@ -45,12 +45,12 @@ const PersonalDetails = (props: {
 
       <div className=" md:px-10 lg:px-20 py-4 animate-fade-in-down">
         <div className="flex flex-col md:flex-row">
-          <div className="flex-1 w-full mx-auto md:mx-2 svelte-1l8159u">
-            <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
+          <div className="flex-1 w-full mx-auto md:mx-2 ">
+            <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
               <input
-                placeholder="First Name"
+                placeholder="Full Name"
                 onInput={(e) =>
-                  props.updateFormData({ first_name: e.currentTarget.value })
+                  props.updateFormData({ full_name: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
                 required
@@ -58,28 +58,12 @@ const PersonalDetails = (props: {
             </div>
             {/* <span>{props.errors.email}</span> */}
           </div>
-          <div className="flex-1 w-full mx-auto md:mx-2 svelte-1l8159u">
-            <div
-              className={`bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u`}
-            >
-              <input
-                placeholder="Last Name"
-                onInput={(e) =>
-                  props.updateFormData({ last_name: e.currentTarget.value })
-                }
-                className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
-                required
-              />{" "}
-            </div>
-          </div>
-        </div>
 
-        <div className="flex flex-col lg:pt-8 md:flex-row">
-          <div className="flex-1 w-full mx-auto md:mx-2 svelte-1l8159u">
+          <div className="flex-1 w-full mx-auto md:mx-2 ">
             <div
               className={`bg-white my-2 p-1 flex border ${
                 "email" in props.errors ? "border-red-500" : "border-gray-200"
-              } rounded svelte-1l8159u`}
+              } rounded `}
             >
               <input
                 placeholder="E-mail"
@@ -88,7 +72,8 @@ const PersonalDetails = (props: {
                   props.updateFormData({ email: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
-                autoComplete="email" required
+                autoComplete="email"
+                required
               />{" "}
             </div>
             <span className="text-red-600 opacity-40">
@@ -97,15 +82,44 @@ const PersonalDetails = (props: {
                 : ""}
             </span>
           </div>
-          <div className="flex-1 w-full mx-auto md:mx-2 svelte-1l8159u">
+        </div>
+
+        <div className="flex flex-col lg:pt-5 md:flex-row">
+          <div className="flex-1 w-full mx-auto md:mx-2 ">
+            <div
+              className={`bg-white my-2 p-1 flex border ${
+                "username" in props.errors
+                  ? "border-red-500"
+                  : "border-gray-200"
+              } rounded `}
+            >
+              <input
+                placeholder="Username"
+                type="email"
+                onInput={(e) =>
+                  props.updateFormData({ username: e.currentTarget.value })
+                }
+                className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
+                autoComplete="email"
+                required
+              />{" "}
+            </div>
+            <span className="text-red-600 opacity-40">
+              {"username" in props.errors
+                ? "The username has already been taken"
+                : ""}
+            </span>
+          </div>
+
+          <div className="flex-1 w-full mx-auto md:mx-2 ">
             {/* <div className="h-6 mt-3 text-xs font-bold leading-8 text-gray-600 uppercase"> Your Email</div> */}
-            <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
+            <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
               <input
                 placeholder="password"
                 onInput={(e) =>
                   props.updateFormData({ password: e.currentTarget.value })
                 }
-                className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
+                className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
                 required
                 type={passwordType}
               />
@@ -132,38 +146,12 @@ const PersonalDetails = (props: {
           </div>
         </div>
 
-        <div className="flex flex-col lg:pt-4 md:flex-row">
-          <div className="flex-1 w-full mx-auto md:mx-2 svelte-1l8159u">
-            <label className="mb-2 ml-1 text-sm font-normal text-gray-600"></label>
-            <div
-              className={`bg-white md:my-2 p-1 flex border ${
-                "username" in props.errors
-                  ? "border-red-500"
-                  : "border-gray-200"
-              } rounded svelte-1l8159u`}
-            >
-              <input
-                placeholder="Username"
-                type="text"
-                onInput={(e) =>
-                  props.updateFormData({ username: e.currentTarget.value })
-                }
-                className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
-                required
-              />{" "}
-            </div>
-            <span className="text-red-600 opacity-40">
-              {"username" in props.errors
-                ? "The username has already been taken"
-                : ""}
-            </span>
-          </div>
-
-          <div className="flex-1 w-full md:mx-2 mt-2 svelte-1l8159u">
+        <div className="flex flex-col lg:pt-1 md:flex-row">
+          <div className="flex-1 w-full md:mx-2 mt-2 ">
             <label className="ml-1 text-sm font-normal text-gray-600 mb-9">
               Date of birth <span className="text-[0.5rem]">(optional)</span>
             </label>
-            <div className="bg-white svelte-1l8159u">
+            <div className="bg-white ">
               <div className="items-end -mb-1 sm:flex">
                 <div className="sm:w-1/3">
                   <div>
@@ -284,11 +272,11 @@ const PersonalDetails = (props: {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:pt-7">
+        <div className="flex flex-col lg:flex-row lg:pt-2">
           <div className="items-end -mb-1 sm:flex lg:w-1/2">
-            <div className="flex-1 w-full mx-auto md:mx-2 svelte-1l8159u">
+            <div className="flex-1 w-full mx-auto md:mx-2 ">
               <label className="md:mb-2 ml-1 text-sm font-normal text-gray-600"></label>
-              <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
+              <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
                 <select
                   onChange={(e) =>
                     props.updateFormData({ gender: e.currentTarget.value })
@@ -302,9 +290,9 @@ const PersonalDetails = (props: {
                 </select>
               </div>
             </div>
-            <div className="flex-1 w-full mx-auto md:mx-2 svelte-1l8159u">
+            <div className="flex-1 w-full mx-auto md:mx-2 ">
               <label className="md:mb-2 ml-1 text-sm font-normal text-gray-600"></label>
-              <div className="flex p-1 md:my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
+              <div className="flex p-1 md:my-2 bg-white border border-gray-200 rounded ">
                 <select
                   onChange={(e) =>
                     props.updateFormData({ country: e.currentTarget.value })
@@ -642,14 +630,14 @@ const PersonalDetails = (props: {
               </div>
             </div>
           </div>
-          <div className="flex-1 mt-2  svelte-1l8159u">
-            <div className="flex-1 w-full mx-auto md:mx-2 mt-2 svelte-1l8159u">
+          <div className="flex-1 mt-2  ">
+            <div className="flex-1 w-full mx-auto md:mx-2 mt-2 ">
               <label className="ml-1 text-sm font-normal text-gray-600 mb-9">
                 Phone Number
               </label>
-              <div className="bg-white svelte-1l8159u">
-                <div className="flex items-end -mb-1 ">
-                  <div className="sm:w-16 mr-1 sm:w-1/4 sm:mr-2">
+              <div className="bg-white ">
+                <div className="flex items-end  ">
+                  <div className="sm:w-28 ">
                     <div>
                       <select
                         onChange={handlePhoneChange}
@@ -913,8 +901,8 @@ const PersonalDetails = (props: {
                       </select>
                     </div>
                   </div>
-                  <div className="sm:w-48 sm:mr-5 sm:w-3/4">
-                    <div className="bg-white my-2 p-1.5 flex border border-gray-200 rounded svelte-1l8159u">
+                  <div className="sm:w-full px-4">
+                    <div className="bg-white my-2 p-2 flex border border-gray-200 rounded ">
                       <input
                         placeholder="Enter Phone Number"
                         type="phone"
@@ -931,7 +919,7 @@ const PersonalDetails = (props: {
           </div>
         </div>
 
-        <div className="flex justify-center p-2 mt-4">
+        {/* <div className="flex justify-center p-2 mt-4"> */}
           {/* <button
             className="flex justify-center px-10 py-2 text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded-lg shadow-inner cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500 bg-violet-500"
           >
@@ -939,7 +927,7 @@ const PersonalDetails = (props: {
               Next
             </div>
           </button> */}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

@@ -39,7 +39,7 @@ export default function GuestFooter() {
       </div>
       <div>
         <span className="font-poppins text-[0.70rem]">
-          © 2022 All Simple Rights Reserved
+          © 2023 All Simple Rights Reserved
         </span>
       </div>
     </div>
