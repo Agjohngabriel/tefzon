@@ -3,9 +3,11 @@ import Link from "next/link";
 
 export default function MainFooter() {
   return (
-    <footer className="
+    <footer
+      className="
     // bg-violet-500 
-    bg-gradient-to-r from-violet-500  via-indigo-600  to-violet-500  pt-20 lg:pt-[120px]  relative z-10">
+    bg-gradient-to-r from-violet-500  via-indigo-600  to-violet-500  pt-16   relative z-10"
+    >
       <div className="flex flex-wrap mx-auto md:mx-5 lg:mx-12">
         <div className="w-full sm:w-3/12 lg:w-3/12 px-4">
           <div className="w-full mb-10">
@@ -19,13 +21,15 @@ export default function MainFooter() {
 
         <div className="flex flex-wrap w-full sm:w-3/12 lg:w-3/12 px-4">
           <div className="w-1/2 mb-10">
-            <h4 className="text-white text-lg  font-montserrat mb-9">Pages</h4>
+            <h4 className=" font-montserrat text-white text-lg  font-semibold mb-9">
+              Pages
+            </h4>
             <ul>
               <li>
                 <Link href="/home" passHref>
                   <span
                     className="
-                    font-arcon
+                    font-inter
                             inline-block
                             text-base text-white
                             hover:text-primary
@@ -41,7 +45,7 @@ export default function MainFooter() {
                 <Link href="/" passHref>
                   <span
                     className="
-                    font-arcon
+                    font-inter
                             inline-block
                             text-base text-white
                             hover:text-primary
@@ -58,7 +62,7 @@ export default function MainFooter() {
                 <Link href="/" passHref>
                   <span
                     className="
-                    font-arcon
+                    font-inter
                             inline-block
                             text-base text-white
                             hover:text-primary
@@ -94,7 +98,7 @@ export default function MainFooter() {
                 <Link href="/home/fixtures" passHref>
                   <span
                     className="
-                    font-arcon
+                    font-inter
                             inline-block
                             text-base text-white
                             hover:text-primary
@@ -110,7 +114,7 @@ export default function MainFooter() {
                 <Link href="/home/statistics" passHref>
                   <span
                     className="
-                    font-arcon
+                    font-inter
                             inline-block
                             text-base text-white
                             hover:text-primary
@@ -137,7 +141,7 @@ export default function MainFooter() {
                   <Link href="/home/privacy_policy" passHref>
                     <span
                       className="
-                    font-arcon
+                    font-inter
                             inline-block
                             text-base text-white
                             hover:text-primary
@@ -153,7 +157,7 @@ export default function MainFooter() {
                   <Link href="/home/terms" passHref>
                     <span
                       className="
-                    font-arcon
+                    font-inter
                             inline-block
                             text-base text-white
                             hover:text-primary
@@ -169,7 +173,7 @@ export default function MainFooter() {
                   <Link href="##" passHref>
                     <span
                       className="
-                    font-arcon
+                    font-inter
                             inline-block
                             text-base text-white
                             hover:text-primary
@@ -189,7 +193,7 @@ export default function MainFooter() {
               <h4 className="font-montserrat text-white text-lg  font-semibold mb-9">
                 Follow Us
               </h4>
-              <p className="text-base font-arcon text-white mb-7">
+              <p className="text-base font-inter text-white mb-7">
                 Find exclusive contents on our social networks
               </p>
               <div className="flex items-center mb-6">
@@ -286,7 +290,7 @@ export default function MainFooter() {
       </div>
 
       <span className="font-arcon bg-white block text-sm text-gray-700 sm:text-center dark:text-gray-400 py-5 -pb-5 px-5">
-        All Rights Reserved © 2022 Tefzon Fantasy.
+        All Rights Reserved © 2023 Tefzon Fantasy.
       </span>
 
       <div>

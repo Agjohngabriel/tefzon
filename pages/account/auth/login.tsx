@@ -31,6 +31,7 @@ const Login = () => {
       setEmail(errormail); // To prefill the email after redirect
     }
   }, [router]);
+  
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     if (isSubmitting) {
