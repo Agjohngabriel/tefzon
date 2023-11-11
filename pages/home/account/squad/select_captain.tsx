@@ -44,7 +44,7 @@ const SelectCaptain = () => {
         `${process.env.BACKEND_URL}/select/captain/${id}`,
         {
           headers: {
-            Authorization: `Bearer ${session?.data.token}`,
+            Authorization: `Bearer ${session?.data.data.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -68,7 +68,7 @@ const SelectCaptain = () => {
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
         headers: {
-          Authorization: `Bearer ${session?.data.token}`,
+          Authorization: `Bearer ${session?.data.data.token}`,
           "content-type": "application/json",
         },
       });
@@ -86,7 +86,7 @@ const SelectCaptain = () => {
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {
-        Authorization: `Bearer ${session?.data.token}`,
+        Authorization: `Bearer ${session?.data.data.token}`,
         "content-type": "application/json",
       },
     });

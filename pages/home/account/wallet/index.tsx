@@ -19,7 +19,7 @@ const Index = () => {
         `${process.env.BACKEND_URL}/get-account-details`,
         {
           headers: {
-            Authorization: `Bearer ${session?.data.token}`,
+            Authorization: `Bearer ${session?.data.data.token}`,
             "content-type": "application/json",
           },
         }
@@ -30,8 +30,7 @@ const Index = () => {
     };
     const getDetails = async () => {
       const DetailsFromApi = await fetchDetails();
-      console.log(DetailsFromApi.user);
-      setDetails(DetailsFromApi.user.accountdetails);
+      setDetails(DetailsFromApi.data);
     };
     getDetails();
   }, [session]);

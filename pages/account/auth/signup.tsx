@@ -7,7 +7,7 @@ import GuestLayout from "../../../components/GuestLayout";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { client } from "../../../libs/axiosClient";
-import FavouriteLeague from "../../../components/form/FavouriteLeagues";
+// import FavouriteLeague from "../../../components/form/FavouriteLeagues";
 const Signup = () => {
   const [formStep, setFormStep] = useState(0);
   const [formData, setFormData] = useState({});
@@ -44,7 +44,7 @@ const Signup = () => {
       }
     } catch (e: any) {
       setIsSubmitting(false);
-      const errorMessage = e.response.data.errors.password;
+      const errorMessage = e.response.data.errors;
       MySwal.fire({
         title: `${errorMessage}`,
         confirmButtonText: "Proceed to Login",
@@ -94,10 +94,10 @@ const Signup = () => {
                 {/* First Stepper */}
                 <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
-                    formStep >= 0 ? "border-[#240155]/50" : "border-gray-300"
+                    formStep >= 1 ? "border-[#240155]/50" : "border-gray-300"
                   } `}
                 ></div>
-                <div className="flex items-center text-gray-500 relative">
+                {/* <div className="flex items-center text-gray-500 relative">
                   <div
                     className={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 ${
                       formStep >= 1
@@ -120,18 +120,18 @@ const Signup = () => {
                       <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                     </svg>
                   </div>
-                </div>
+                </div> */}
                 {/* second stepper */}
 
-                <div
+                {/* <div
                   className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
                     formStep >= 2 ? "border-[#240155]/50" : "border-gray-300"
                   }`}
-                ></div>
+                ></div> */}
                 <div className="flex items-center text-gray-500 relative">
                   <div
                     className={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 ${
-                      formStep >= 3
+                      formStep >= 1
                         ? "bg-[#240155]/100 border-[#240155]/100"
                         : "border-gray-300"
                     }`}
@@ -162,14 +162,14 @@ const Signup = () => {
                   nextFormStep={nextFormStep}
                 />
               )}
-              {formStep >= 1 && (
+              {/* {formStep >= 1 && (
                 <FavouriteLeague
                   updateFormData={updateFormData}
                   formStep={formStep}
                   nextFormStep={nextFormStep}
                 />
-              )}
-              {formStep >= 2 && (
+              )} */}
+              {formStep >= 1 && (
                 <Agreement
                   updateFormData={updateFormData}
                   formStep={formStep}
@@ -187,15 +187,13 @@ const Signup = () => {
             /> */}
 
               <div className=" pb-10 mt-2 justify-center">
-                {formStep == 2 ? (
+                {formStep == 1 ? (
                   <button
                     type="submit"
                     disabled={isSubmitting}
                     className={`text-base hover:scale-110 focus:outline-none flex justify-center p-3.5 font-bold cursor-pointer                                 
-                                            hover:bg-blue-500 shadow-inner rounded-lg
-                                            bg-violet-500 text-gray-200
-                                            duration-200 ease-in-out 
-                                            transition mx-auto w-52 sm:w-72`}
+                   hover:bg-blue-500 shadow-inner rounded-lg bg-violet-500 text-gray-200
+                   duration-200 ease-in-out transition mx-auto w-52 sm:w-72`}
                   >
                     {isSubmitting ? "Loadin..." : "Complete Registration"}
                   </button>
@@ -204,10 +202,8 @@ const Signup = () => {
                     onClick={nextFormStep}
                     type="button"
                     className={`text-base hover:scale-110 focus:outline-none flex justify-center p-3.5 font-bold cursor-pointer                                 
-                                            hover:bg-blue-500 shadow-inner rounded-lg
-                                            bg-violet-500 text-gray-200
-                                            duration-200 ease-in-out 
-                                            transition mx-auto w-52 sm:w-72`}
+                  hover:bg-blue-500 shadow-inner rounded-lg bg-violet-500 text-gray-200 duration-200 ease-in-out 
+                  transition mx-auto w-52 sm:w-72`}
                   >
                     Next
                   </a>
@@ -223,14 +219,14 @@ const Signup = () => {
                       arrow_backward
                     </span>
                     {formStep == 1 && <span>Back to Personal Details</span>}
-                    {formStep == 2 && <span>Back to favourites</span>}
+                    {/* {formStep == 2 && <span>Back to favourites</span>} */}
                   </button>
                 )}
               </div>
             </form>
           </div>
         </div>
-        {}
+       
       </div>
     </GuestLayout>
   );

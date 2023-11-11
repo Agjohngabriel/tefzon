@@ -48,7 +48,7 @@ const Starting = () => {
       `${process.env.BACKEND_URL}/get/all/players/${id}`,
       {
         headers: {
-          Authorization: `Bearer ${session?.data.token}`,
+          Authorization: `Bearer ${session?.data.data.token}`,
           "content-type": "application/json",
         },
       }
@@ -69,7 +69,7 @@ const Starting = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${session?.data.token}`,
+            Authorization: `Bearer ${session?.data.data.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -93,7 +93,7 @@ const Starting = () => {
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
         headers: {
-          Authorization: `Bearer ${session?.data.token}`,
+          Authorization: `Bearer ${session?.data.data.token}`,
           "content-type": "application/json",
         },
       });
@@ -111,7 +111,7 @@ const Starting = () => {
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {
-        Authorization: `Bearer ${session?.data.token}`,
+        Authorization: `Bearer ${session?.data.data.token}`,
         "content-type": "application/json",
       },
     });

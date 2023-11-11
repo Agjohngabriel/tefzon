@@ -19,7 +19,7 @@ const WalletWithdraw = () => {
         `${process.env.BACKEND_URL}/get-account-details`,
         {
           headers: {
-            Authorization: `Bearer ${session?.data.token}`,
+            Authorization: `Bearer ${session?.data.data.token}`,
             "content-type": "application/json",
           },
         }
@@ -30,7 +30,7 @@ const WalletWithdraw = () => {
     };
     const getDetails = async () => {
       const DetailsFromApi = await fetchDetails();
-      setDetails(DetailsFromApi.user.accountdetails);
+      setDetails(DetailsFromApi.data);
     };
     getDetails();
   }, [session]);

@@ -7,7 +7,7 @@ export const Agreement = (props: {
   updateFormData: any;
 }) => {
   return (
-    <div className={`p-2 sm:p-5 ${props.formStep === 2 ? "" : "hidden"}`}>
+    <div className={`p-2 sm:p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center pt-10 space-y-4 max-w-lg mx-auto">
         
 
