@@ -8,83 +8,60 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [profile, setProfile] = useState([]);
   const [details, setDetails] = useState([]);
-  // useEffect(() => {
-  //   const fetchProfile = async (id: number) => {
-  //     setIsLoading(true);
-  //     const res = await axios.get(`${process.env.BACKEND_URL}/gamers/${id}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${session?.data.token}`,
-  //         "content-type": "application/json",
-  //       },
-  //     });
-  //     const response = await res.data.data;
-  //     setIsLoading(false);
-  //     return response;
-  //   };
-
-  //   const getProfile = async () => {
-  //     const ProfileFromApi = await fetchProfile(1);
-  //     console.log(ProfileFromApi);
-  //     setProfile(ProfileFromApi);
-  //   };
-
-  //   getProfile();
-
-  //   const fetchDetails = async () => {
-  //     setIsLoading(true);
-  //     const respo = await axios.get(
-  //       `${process.env.BACKEND_URL}/get-account-details`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${session?.data.token}`,
-  //           "content-type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     const response = await respo.data;
-  //     setIsLoading(false);
-  //     return response;
-  //   };
-  //   const getDetails = async () => {
-  //     const DetailsFromApi = await fetchDetails();
-  //     console.log(DetailsFromApi);
-  //     setDetails(DetailsFromApi);
-  //   };
-  //   getDetails();
-  // }, [session]);
 
   useEffect(() => {
-    const fetchDetails = async () => {
-      setIsLoading(true);
-      const respo = await axios.get(
-        `${process.env.BACKEND_URL}/get-account-details`,
-        {
-          headers: {
-            Authorization: `Bearer ${session?.data.token}`,
-            "content-type": "application/json",
-          },
-        }
-      );
-      const response = await respo.data;
-      setIsLoading(false);
-      return response;
-    };
-    const getDetails = async () => {
-      const DetailsFromApi = await fetchDetails();
-      // console.log(DetailsFromApi);
-      setProfile(DetailsFromApi.user);
-      // setDetails(DetailsFromApi.user.accountdetails);
-    };
-    getDetails();
+    if (session) {
+      const fetchDetails = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/get-account-details`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await respo.data;
+        setIsLoading(false);
+        return response;
+      };
+      const getDetails = async () => {
+        const DetailsFromApi = await fetchDetails();
+        setDetails(DetailsFromApi.data);
+      };
+      getDetails();
+
+      const fetchProfile = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/user/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const res = await respo.data;
+        setIsLoading(false);
+        return res;
+      };
+      const getProfile = async () => {
+        const ProfileFromApi = await fetchProfile();
+        setProfile(ProfileFromApi.data);
+      };
+      getProfile();
+    }
   }, [session]);
 
+  console.log(profile);
 
-  const [userName, setUserName] = useState(
+  const [userName, setUserName] =
+    useState();
     // {user: profile["user_name" as any]}
-  );
   const [email, setEmail] = useState(profile["email" as any]);
-  const [firstName, setFirstName] = useState(profile["first_name" as any]);
-  const [lastName, setLastName] = useState(profile["last_name" as any]);
+  const [name, setName] = useState(profile["name" as any]);
   const [phone, setPhone] = useState(profile["phone" as any]);
   const [gender, setGender] = useState(profile["gender" as any]);
   const [dob, setDob] = useState(profile["dob" as any]);
@@ -128,8 +105,6 @@ const Index = () => {
     //   setError(true);
     // }
   }
-  console.log(profile);
-  console.log(userName);
 
   return (
     <MainLayout>
@@ -165,7 +140,7 @@ const Index = () => {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      // value={userName}
+                      value={userName}
                       onChange={(e) => setUserName(e.target.value as any)}
                     />
                   </div>
@@ -192,32 +167,17 @@ const Index = () => {
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      First Name
+                      Full Name
                     </label>
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value as any)}
+                      value={name}
+                      onChange={(e) => setName(e.target.value as any)}
                     />
                   </div>
                 </div>
-                <div className="w-full lg:w-6/12 px-4">
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                      htmlFor="grid-password"
-                    >
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value as any)}
-                    />
-                  </div>
-                </div>
+
                 <div className="w-full lg:w-6/12 px-4">
                   <div className="relative w-full mb-3">
                     <label

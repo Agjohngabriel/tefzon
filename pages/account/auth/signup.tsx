@@ -226,7 +226,7 @@ const Signup = () => {
             </form>
           </div>
         </div>
-        {}
+       
       </div>
     </GuestLayout>
   );

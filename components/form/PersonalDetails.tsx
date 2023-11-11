@@ -16,7 +16,7 @@ const PersonalDetails = (props: {
       .value;
     const year: string = (document.getElementById("year") as HTMLInputElement)
       .value;
-    const date = `${day}/${month}/${year}`;
+    const date = `${year}-${month}-${day}`;
     props.updateFormData({ dob: date });
   };
   const handlePhoneChange = () => {

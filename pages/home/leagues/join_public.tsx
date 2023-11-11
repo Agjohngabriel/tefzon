@@ -25,7 +25,7 @@ const JoinPublic = () => {
     const fetchAll = async () => {
       const res = await axios.get(`${process.env.BACKEND_URL}/public-leagues`, {
         headers: {
-          Authorization: `Bearer ${session?.data.token}`,
+          Authorization: `Bearer ${session?.data.data.token}`,
           "content-type": "application/json",
         },
       });
@@ -52,7 +52,7 @@ const JoinPublic = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${session?.data.token}`,
+            Authorization: `Bearer ${session?.data.data.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },

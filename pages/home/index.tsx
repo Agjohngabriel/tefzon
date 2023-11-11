@@ -36,7 +36,7 @@ const Index = () => {
     try {
       setIsLoading(true);
       const out = await axios.get(
-        `${process.env.BACKEND_URL}/logout/${session?.data.user.id}`,
+        `${process.env.BACKEND_URL}/logout/${profile["id" as any]}`,
         {
           headers: {
             accept: "*/*",
@@ -52,34 +52,52 @@ const Index = () => {
       return null;
     }
   }
-
   useEffect(() => {
-    const fetchDetails = async () => {
-      setIsLoading(true);
-      const respo = await axios.get(
-        `${process.env.BACKEND_URL}/get-account-details`,
-        {
-          headers: {
-            Authorization: `Bearer ${session?.data.token}`,
-            "content-type": "application/json",
-          },
-        }
-      );
-      const response = await respo.data;
-      setIsLoading(false);
-      return response;
-    };
-    const getDetails = async () => {
-      const DetailsFromApi = await fetchDetails();
-      console.log(DetailsFromApi);
-      setProfile(DetailsFromApi.user);
-      setDetails(DetailsFromApi.user.accountdetails);
-    };
-    getDetails();
+    if (session) {
+      const fetchDetails = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/get-account-details`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await respo.data;
+        setIsLoading(false);
+        return response;
+      };
+      const getDetails = async () => {
+        const DetailsFromApi = await fetchDetails();
+        setDetails(DetailsFromApi.data);
+      };
+      getDetails();
+
+      const fetchProfile = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/user/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const res = await respo.data;
+        setIsLoading(false);
+        return res;
+      };
+      const getProfile = async () => {
+        const ProfileFromApi = await fetchProfile();
+        setProfile(ProfileFromApi.data);
+      };
+      getProfile();
+    }
   }, [session]);
 
-  const profiledetails = profile;
-  const account = details;
   return (
     <MainLayout>
       <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
@@ -344,7 +362,7 @@ const Index = () => {
                     />
                   </div>
                   <p className="font-semibold text-xl mt-1">
-                    Hi {profiledetails["username" as any]}
+                    Hi {profile["username" as any]}
                   </p>
 
                   <div
@@ -361,7 +379,7 @@ const Index = () => {
                           Account Balance:
                         </h3>
                         <h3 className="text-center text-white text-3xl  font-bold">
-                          ₦ {account["balance" as any]}.00
+                          ₦ {details["balance" as any]}.00
                         </h3>
                       </div>
                     </div>
@@ -372,7 +390,7 @@ const Index = () => {
                       <div>
                         <div className="font-bold text-2xl">
                           {" "}
-                          {account["wins" as any]}
+                          {details["wins" as any]}
                         </div>
                         <div className="font-bold text-xs">Wins</div>
                       </div>
@@ -382,7 +400,7 @@ const Index = () => {
                       <div>
                         <div className="font-bold text-2xl text-center">
                           {" "}
-                          {account["draw" as any]}
+                          {details["draw" as any]}
                         </div>
                         <div className="font-bold text-xs">Draws</div>
                       </div>
@@ -391,7 +409,7 @@ const Index = () => {
                       <div className="flex justify-between w-full"></div>
                       <div>
                         <div className="font-bold text-2xl text-center">
-                          {account["loss" as any]}
+                          {details["loss" as any]}
                         </div>
                         <div className="font-bold text-xs">Loss</div>
                       </div>
@@ -399,7 +417,7 @@ const Index = () => {
                     <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-green-300">
                       <div>
                         <div className="font-bold text-2xl text-center">
-                          {account["cancelled" as any]}
+                          {details["cancelled" as any]}
                         </div>
                         <div className="font-bold text-xs">Cancelled</div>
                       </div>

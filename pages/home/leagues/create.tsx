@@ -43,7 +43,7 @@ const CreateLeague = () => {
           headers: {
             accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${session?.data.token}`,
+            Authorization: `Bearer ${session?.data.data.token}`,
           },
         }
       );
