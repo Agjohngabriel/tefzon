@@ -50,7 +50,7 @@ const PersonalDetails = (props: {
               <input
                 placeholder="Full Name"
                 onInput={(e) =>
-                  props.updateFormData({ full_name: e.currentTarget.value })
+                  props.updateFormData({ name: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
                 required

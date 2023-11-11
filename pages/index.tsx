@@ -689,7 +689,7 @@ const Home: NextPage = () => {
               <div className="relative">
                 <iframe
                   className="w-full aspect-video ... rounded-lg h-auto"
-                  src="https://static.vecteezy.com/system/resources/previews/011/440/388/mp4/aerial-view-of-amateur-football-field-amateur-football-match-free-video.mp4"
+                  src="https://static.vecteezy.com/system/resources/previews/011/440/388/mp4/aerial-view-of-amateur-football-field-amateur-football-match-free-video.mp4  "
                 ></iframe>
 
                 <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
@@ -701,7 +701,7 @@ const Home: NextPage = () => {
                 <div className="flex flex-col">
                   <a href="#">
                     <p className="text-indigo-500 text-sm font-semibold">
-                      Learn CSS Box Model in 8 Minutes
+                       8 Minutes Clip
                     </p>
                   </a>
 

@@ -61,7 +61,7 @@ const FavouriteLeague = (props: {
   };
 
   return (
-    <div className={`sm:p-5 ${props.formStep === 1 ? "" : "hidden"}`}>
+    <div className={`sm:p-5 ${props.formStep === 3 ? "" : "hidden"}`}>
       <div className="flex flex-col items-center max-w-lg  mx-auto space-y-4">
         <h1 className="w-4/6 text-lg font-bold text-center text-gray-700 animate-fade-in-up">
           Your Favourite League
