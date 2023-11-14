@@ -2,8 +2,8 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Loader } from "../../../components/base/Loader";
-import Layout from "../../../components/Layouts";
+import { Loader } from "../../../../components/base/Loader";
+import Layout from "../../../../components/Layouts";
 
 interface Fixtures {
   time: any;
