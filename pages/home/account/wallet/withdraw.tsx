@@ -13,26 +13,28 @@ const WalletWithdraw = () => {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    const fetchDetails = async () => {
-      setIsLoading(true);
-      const respo = await axios.get(
-        `${process.env.BACKEND_URL}/get-account-details`,
-        {
-          headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
-            "content-type": "application/json",
-          },
-        }
-      );
-      const response = await respo.data;
-      setIsLoading(false);
-      return response;
-    };
-    const getDetails = async () => {
-      const DetailsFromApi = await fetchDetails();
-      setDetails(DetailsFromApi.data);
-    };
-    getDetails();
+    if (session) {
+      const fetchDetails = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/get-account-details`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await respo.data;
+        setIsLoading(false);
+        return response;
+      };
+      const getDetails = async () => {
+        const DetailsFromApi = await fetchDetails();
+        setDetails(DetailsFromApi.data);
+      };
+      getDetails();
+    }
   }, [session]);
 
   async function handleSubmit(e: React.SyntheticEvent) {
@@ -41,7 +43,6 @@ const WalletWithdraw = () => {
 
   return (
     <MainLayout>
-    
       <div className="container py-2">
         <div className="md:flex">
           <div className="container max-w-3xl h-3/4  bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-lg shadow-indigo-500/50 md:w-3/5 sm:ml-4 lg:ml-24 mt-10 mb-20  px-2 py-6 lg:px-10  w-auto">
@@ -74,7 +75,9 @@ const WalletWithdraw = () => {
               </span>
 
               <Link href="/home/account/wallet" passHref>
-                <a className="font-montserrat text-sm text-[#240155] dark:text-gray-200 ">Wallet</a>
+                <a className="font-montserrat text-sm text-[#240155] dark:text-gray-200 ">
+                  Wallet
+                </a>
               </Link>
 
               <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
@@ -92,7 +95,9 @@ const WalletWithdraw = () => {
                 </svg>
               </span>
 
-              <h1 className="font-montserrat text-sm text-gray-600 dark:text-blue-400">Withdraw</h1>
+              <h1 className="font-montserrat text-sm text-gray-600 dark:text-blue-400">
+                Withdraw
+              </h1>
             </div>
             <div className="flex flex-col  pt-5 space-y-4 max-w-2xl mx-2">
               <h1 className="font-montserrat text-2xl font-medium text-[#333333] w-4/6 ">

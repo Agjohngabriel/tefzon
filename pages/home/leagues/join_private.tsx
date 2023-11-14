@@ -7,8 +7,8 @@ import MainLayout from "../../../components/MainLayout";
 
 interface Team {
   name: string;
-  entry_type: string;
-  type: string;
+  winner_type: string;
+  participants: string;
   start: string;
   id: number;
   code: number;
@@ -17,6 +17,7 @@ interface Team {
 const JoinPrivate = () => {
   const [leagues, setLeagues] = useState([]);
   const { data: session }: any = useSession();
+  const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState({
     message: "",
@@ -42,7 +43,7 @@ const JoinPrivate = () => {
       );
       const response = await res.data;
       console.log(response);
-      // setMessage(response.message);
+      setMessage(response.message);
       // getFavourites();
     } catch (e: any) {
       setLoading(0);
@@ -54,34 +55,36 @@ const JoinPrivate = () => {
   };
 
   useEffect(() => {
-    const fetchAll = async () => {
-      const res = await axios.get(
-        `${process.env.BACKEND_URL}/private-leagues`,
-        {
-          headers: {
-            Authorization: `Bearer ${session?.data.token}`,
-            "content-type": "application/json",
-          },
-        }
-      );
-      const response = await res.data;
-      console.log(response);
-      return response;
-    };
+    if (session) {
+      const fetchAll = async () => {
+        const res = await axios.get(
+          `${process.env.BACKEND_URL}/private-leagues`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await res.data;
+        console.log(response);
+        return response;
+      };
 
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setLeagues(FavouritesFromApi);
-    };
-    getFavourites();
+      const getFavourites = async () => {
+        const FavouritesFromApi = await fetchAll();
+        setLeagues(FavouritesFromApi);
+      };
+      getFavourites();
+    }
   }, [session]);
   return (
     <MainLayout>
       <div className="py-4">
         {isLoading === 1 && <Loader />}
-     
+
         <div className="max-w-sm sm:max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-5 sm:px-10 py-5 my-5 items-center justify-center w-auto">
-        <div className="flex items-center py-2 overflow-x-auto whitespace-nowrap">
+          <div className="flex items-center py-2 overflow-x-auto whitespace-nowrap">
             <Link href="/home" passHref>
               <a className="text-[#240155] dark:text-gray-200">
                 <svg
@@ -160,7 +163,13 @@ const JoinPrivate = () => {
                   </h1>
                 </div>
               )}
-
+              {message && (
+                <div className="bg-indigo-400 w-1/2 text-center rounded shadow-md">
+                  <h1 className="font-montserrat text-lg py-2 text-black-150  ">
+                    {message}
+                  </h1>
+                </div>
+              )}
               <div className="flex flex-col md:flex-row pt-2">
                 <div className="w-full sm:mx-2 flex-1 svelte-1l8159u">
                   <label className="text-black-150 font-montserrat text-[1rem] mb-2 ml-1">
@@ -168,7 +177,6 @@ const JoinPrivate = () => {
                   </label>
                   <div className=" my-2  flex  rounded svelte-1l8159u">
                     <form className=" flex w-full">
-                    
                       <div className="relative w-full">
                         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none ">
                           <svg
@@ -210,7 +218,7 @@ const JoinPrivate = () => {
                   </label>
                   <div className=" my-2  flex  svelte-1l8159u">
                     <form className=" flex w-full">
-                    <div className="relative w-full">
+                      <div className="relative w-full">
                         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none ">
                           <svg
                             className="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -260,20 +268,20 @@ const JoinPrivate = () => {
                     className="flex flex-col p-3 sm:p-6 bg-white shadow-md hover:shodow-lg rounded-2xl"
                   >
                     <div className="flex flex-col sm:flex-row items-center justify-between">
-                      <div className="flex justify-between justify-center space-x-3 py-2 sm:space-x-9  items-center">
+                      <div className="flex justify-between justify-center space-x-3  sm:space-x-6  items-center">
                         <p className="rounded-2xl  px-3 border border-blue-100 text-blue-400 bg-blue-50 -rotate-90">
-                          {item.entry_type}
+                          {item.winner_type}
                         </p>
 
                         <div className="flex flex-col">
-                          <div className="font-medium leading-none">
+                          <div className=" font-medium leading-none">
                             {item.name}
                           </div>
                         </div>
 
                         <div className="flex flex-col ">
-                          <div className="font-medium leading-none">
-                            {item.type}
+                          <div className="text-sm font-medium leading-none">
+                            {item.participants} Players
                           </div>
                         </div>
                         <div className="flex flex-col ">
@@ -295,12 +303,12 @@ const JoinPrivate = () => {
                 ))}
               </div>
 
-              <button
+              {/* <button
                 type="button"
                 className="flex items-center font-montserrat text-sm  text-[#240155] rounded  focus:outline-none"
               >
                 See more
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

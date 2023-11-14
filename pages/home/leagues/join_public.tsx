@@ -6,8 +6,8 @@ import MainLayout from "../../../components/MainLayout";
 
 interface Team {
   name: string;
-  entry_type: string;
-  type: string;
+  winner_type: string;
+  participants: string;
   start: string;
   id: number;
   code: number;
@@ -15,6 +15,7 @@ interface Team {
 
 const JoinPublic = () => {
   const [leagues, setLeagues] = useState([]);
+  const [message, setMessage] = useState("");
   const { data: session }: any = useSession();
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState({
@@ -22,34 +23,36 @@ const JoinPublic = () => {
   });
   const [isLoading, setLoading] = useState(0);
   useEffect(() => {
-    const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}/public-leagues`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
-          "content-type": "application/json",
-        },
-      });
-      const response = await res.data;
-      console.log(response);
-      return response;
-    };
+    if (session) {
+      const fetchAll = async () => {
+        const res = await axios.get(
+          `${process.env.BACKEND_URL}/public-leagues`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await res.data.data;
+        console.log(response);
+        return response;
+      };
 
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setLeagues(FavouritesFromApi);
-    };
-    getFavourites();
+      const getFavourites = async () => {
+        const FavouritesFromApi = await fetchAll();
+        setLeagues(FavouritesFromApi);
+      };
+      getFavourites();
+    }
   }, [session]);
 
   const joinLeague = async ({ id, code }: any) => {
     try {
       setLoading(1);
-      const res = await axios.post(
-        `${process.env.BACKEND_URL}/join/public/league`,
-        {
-          id: id,
-          code: code,
-        },
+      const res = await axios.get(
+        `${process.env.BACKEND_URL}/join/public/league/${id}`,
+
         {
           headers: {
             Authorization: `Bearer ${session?.data.data.token}`,
@@ -60,7 +63,8 @@ const JoinPublic = () => {
       );
       const response = await res.data;
       console.log(response);
-      // setMessage(response.message);
+
+      setMessage(response.message);
       // getFavourites();
     } catch (e: any) {
       setLoading(0);
@@ -151,6 +155,13 @@ const JoinPublic = () => {
                 <div className="bg-red-800 w-1/2 text-center rounded shadow-md">
                   <h1 className="font-montserrat text-lg py-2 text-black-150  ">
                     {errorMsg.message}
+                  </h1>
+                </div>
+              )}
+              {message && (
+                <div className="bg-indigo-400 w-1/2 text-center rounded shadow-md">
+                  <h1 className="font-montserrat text-lg py-2 text-black-150  ">
+                    {message}
                   </h1>
                 </div>
               )}
@@ -255,7 +266,7 @@ const JoinPublic = () => {
                     <div className="flex flex-col sm:flex-row items-center justify-between">
                       <div className="flex justify-between justify-center space-x-3 py-2 sm:space-x-9  items-center">
                         <p className="rounded-2xl  px-3 border border-blue-100 text-blue-400 bg-blue-50 -rotate-90">
-                          {item.entry_type}
+                          {item.winner_type}
                         </p>
 
                         <div className="flex flex-col">
@@ -266,7 +277,7 @@ const JoinPublic = () => {
 
                         <div className="flex flex-col ">
                           <div className="font-medium leading-none">
-                            {item.type}
+                            {item.participants} Players
                           </div>
                         </div>
                         <div className="flex flex-col ">
@@ -288,12 +299,12 @@ const JoinPublic = () => {
                 ))}
               </div>
 
-              <button
+              {/* <button
                 type="button"
                 className="flex items-center font-montserrat text-sm  text-[#240155] rounded  focus:outline-none"
               >
                 See more
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

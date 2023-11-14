@@ -125,22 +125,24 @@ const SaveTeam = () => {
     }
   };
   useEffect(() => {
-    const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
-          "content-type": "application/json",
-        },
-      });
-      const response = await res.data;
-      return response;
-    };
+    if (session) {
+      const fetchAll = async () => {
+        const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+          },
+        });
+        const response = await res.data;
+        return response;
+      };
 
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setTeams(FavouritesFromApi);
-    };
-    getFavourites();
+      const getFavourites = async () => {
+        const FavouritesFromApi = await fetchAll();
+        setTeams(FavouritesFromApi);
+      };
+      getFavourites();
+    }
   }, [session]);
 
   const fetchAll = async () => {
@@ -211,9 +213,10 @@ const SaveTeam = () => {
               </p>
             ) : (
               <p className="text-xs text-gray-100 font-arcon text-center  max-w-2xl mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
-             To change your captain use the menu which appears when clicking on the players's shirt
-            </p>
-            ) }
+                To change your captain use the menu which appears when clicking
+                on the players's shirt
+              </p>
+            )}
 
             <div className={openTab === 1 ? "block" : "hidden"}>
               <div className="flex mt-[5rem]  py-10 mx-auto">
