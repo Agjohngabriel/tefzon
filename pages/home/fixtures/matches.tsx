@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Layout from "../../../../components/Layouts";
+import Layout from "../../../components/Layouts";
 
 const Matches = () => {
   return (

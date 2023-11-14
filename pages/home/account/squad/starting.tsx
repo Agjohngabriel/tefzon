@@ -90,23 +90,25 @@ const Starting = () => {
     }
   };
   useEffect(() => {
-    const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
-          "content-type": "application/json",
-        },
-      });
-      const response = await res.data;
-      console.log(response);
-      return response;
-    };
+    if (session) {
+      const fetchAll = async () => {
+        const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+          },
+        });
+        const response = await res.data;
+        console.log(response);
+        return response;
+      };
 
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setTeams(FavouritesFromApi);
-    };
-    getFavourites();
+      const getFavourites = async () => {
+        const FavouritesFromApi = await fetchAll();
+        setTeams(FavouritesFromApi);
+      };
+      getFavourites();
+    }
   }, [session]);
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
@@ -234,7 +236,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name.split(" ", 1)}
+                                    {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -262,7 +264,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name.split(" ", 1)}
+                                    {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -290,7 +292,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name.split(" ", 1)}
+                                    {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>
@@ -318,7 +320,7 @@ const Starting = () => {
 
                                 <div>
                                   <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name.split(" ", 1)}
+                                    {item.player_name.split(" ", 1)}
                                   </h1>
                                 </div>
                               </div>

@@ -142,22 +142,24 @@ const SquadSelection = () => {
   };
 
   useEffect(() => {
-    const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
-          "content-type": "application/json",
-        },
-      });
-      const response = await res.data;
-      return response.subs;
-    };
+    if (session) {
+      const fetchAll = async () => {
+        const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+          },
+        });
+        const response = await res.data;
+        return response.subs;
+      };
 
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setTeams(FavouritesFromApi);
-    };
-    getFavourites();
+      const getFavourites = async () => {
+        const FavouritesFromApi = await fetchAll();
+        setTeams(FavouritesFromApi);
+      };
+      getFavourites();
+    }
   }, [session]);
 
   // useEffect(() => {
@@ -405,7 +407,6 @@ const SquadSelection = () => {
                                 key={position_id}
                                 className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
-                                
                                 <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
                                   <div className=" h-24 w-20 rounded-full mx-auto">
                                     <img
@@ -436,7 +437,6 @@ const SquadSelection = () => {
                                 key={position_id}
                                 className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
-                               
                                 <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
                                   <div className=" h-24 w-20 rounded-full mx-auto">
                                     <img
@@ -467,7 +467,6 @@ const SquadSelection = () => {
                                 key={position_id}
                                 className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                               >
-                                
                                 <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
                                   <div className=" h-24 w-20 rounded-full mx-auto">
                                     <img

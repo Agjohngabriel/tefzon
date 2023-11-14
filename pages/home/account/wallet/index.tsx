@@ -13,26 +13,28 @@ const Index = () => {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    const fetchDetails = async () => {
-      setIsLoading(true);
-      const respo = await axios.get(
-        `${process.env.BACKEND_URL}/get-account-details`,
-        {
-          headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
-            "content-type": "application/json",
-          },
-        }
-      );
-      const response = await respo.data;
-      setIsLoading(false);
-      return response;
-    };
-    const getDetails = async () => {
-      const DetailsFromApi = await fetchDetails();
-      setDetails(DetailsFromApi.data);
-    };
-    getDetails();
+    if (session) {
+      const fetchDetails = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/get-account-details`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await respo.data;
+        setIsLoading(false);
+        return response;
+      };
+      const getDetails = async () => {
+        const DetailsFromApi = await fetchDetails();
+        setDetails(DetailsFromApi.data);
+      };
+      getDetails();
+    }
   }, [session]);
 
   return (
@@ -53,7 +55,7 @@ const Index = () => {
                   </svg>
                 </a>
               </Link>
-           
+
               <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -2,8 +2,9 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Loader } from "../../../../components/base/Loader";
-import Layout from "../../../../components/Layouts";
+import { Loader } from "../../../components/base/Loader";
+
+import MainLayout from "../../../components/MainLayout";
 
 interface Fixtures {
   time: any;
@@ -17,31 +18,33 @@ const Index = () => {
   const [fixtures, setFixtures] = useState([]);
   const { data: session }: any = useSession();
   useEffect(() => {
-    const fetchAll = async () => {
-      setIsLoading(true);
-      const res = await axios.get(`${process.env.BACKEND_URL}/get-fixtures`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
-          "content-type": "application/json",
-        },
-      });
+    if (session) {
+      const fetchAll = async () => {
+        setIsLoading(true);
+        const res = await axios.get(`${process.env.BACKEND_URL}/get-fixtures`, {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+          },
+        });
 
-      const response = await res.data;
-      setIsLoading(false);
-      return response;
-    };
+        const response = await res.data;
+        setIsLoading(false);
+        return response;
+      };
 
-    const getFixtures = async () => {
-      const FavouritesFromApi = await fetchAll();
-      console.log(FavouritesFromApi);
-      setFixtures(FavouritesFromApi);
-    };
+      const getFixtures = async () => {
+        const FavouritesFromApi = await fetchAll();
+        console.log(FavouritesFromApi);
+        setFixtures(FavouritesFromApi);
+      };
 
-    getFixtures();
+      getFixtures();
+    }
   }, []);
 
   return (
-    <Layout>
+    <MainLayout>
       <div className="py-5">
         <div className="ml-5 sm:ml-20 flex items-center py-2 overflow-x-auto whitespace-nowrap mb-1 sm:mb-4">
           <Link href="/home" passHref>
@@ -334,7 +337,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </MainLayout>
   );
 };
 
