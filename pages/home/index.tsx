@@ -368,7 +368,7 @@ const Index = () => {
                   <div
                     className="relative  p-4 rounded-lg shadow-xl w-full bg-cover bg-center h-20 mt-4"
                     style={{
-                      ["background-image" as any]:
+                      ["backgroundImage" as any]:
                         "url('https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')",
                     }}
                   >
