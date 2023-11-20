@@ -24,8 +24,8 @@ const Index = () => {
   const goToPoints = () => {
     Router.push("/home/statistics");
   };
-  const goToUpdateProfile = () => {
-    Router.push("/home/account/update");
+  const goToProfile = () => {
+    Router.push("/home/account/profile");
   };
   const { data: session }: any = useSession();
   const [isLoading, setIsLoading] = useState(false);
@@ -100,7 +100,7 @@ const Index = () => {
 
   return (
     <MainLayout>
-      <div className="flex items-center justify-center sm:py-20  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
+      <div className="flex items-center justify-center sm:py-10  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
         <div className=" container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto   px-4 py-6  w-auto">
           <div className="grid grid-cols-12 gap-0">
             <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-8 xxl:col-span-8 px-2 sm:px-6 py-2">
@@ -352,7 +352,7 @@ const Index = () => {
 
             <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-2 sm:px-6 py-6">
               {/* <!-- Start profile Card --> */}
-              <div className="bg-white rounded-xl p-4 shadow-xl">
+              <div className="bg-white rounded-xl p-4 shadow-xl w-[20rem]">
                 <div className="flex flex-col justify-center items-center">
                   <div className="w-32 h-32 rounded-full bg-gray-300 border-2 border-white mt-2">
                     <img
@@ -384,45 +384,7 @@ const Index = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 gap-1   grid-cols-4 mt-6">
-                    {/* <!-- Start Navitem --> */}
-                    <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-blue-300">
-                      <div>
-                        <div className="font-bold text-2xl">
-                          {" "}
-                          {details["wins" as any]}
-                        </div>
-                        <div className="font-bold text-xs">Wins</div>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-purple-300">
-                      <div className="flex justify-between w-full"></div>
-                      <div>
-                        <div className="font-bold text-2xl text-center">
-                          {" "}
-                          {details["draw" as any]}
-                        </div>
-                        <div className="font-bold text-xs">Draws</div>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-red-300">
-                      <div className="flex justify-between w-full"></div>
-                      <div>
-                        <div className="font-bold text-2xl text-center">
-                          {details["loss" as any]}
-                        </div>
-                        <div className="font-bold text-xs">Loss</div>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap flex-row sm:flex-col justify-center items-center w-full  p-1 bg-white rounded-md shadow-xl border-l-4 border-green-300">
-                      <div>
-                        <div className="font-bold text-2xl text-center">
-                          {details["cancelled" as any]}
-                        </div>
-                        <div className="font-bold text-xs">Cancelled</div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
               {/* <!-- End profile Card -->
@@ -443,7 +405,7 @@ const Index = () => {
                 </div>
 
                 <button
-                  onClick={goToUpdateProfile}
+                  onClick={goToProfile}
                   className="flex space-x-2 items-center"
                 >
                   <div className="bg-gray-300 rounded-md p-2 flex items-center">

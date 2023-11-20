@@ -1,9 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-function GuestHeader() {
+function MainHeader() {
   const [active, setActive] = useState(false);
 
   const handleClick = () => {
@@ -76,11 +75,7 @@ function GuestHeader() {
               <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
-          {/* <Link href="" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
-            Price
-            </a>
-          </Link> */}
+       
           <Link href="/home/news" passHref>
             <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               News
@@ -88,12 +83,7 @@ function GuestHeader() {
             </a>
           </Link>
 
-          {/* <Link href="/home/scout" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
-              Scout
-              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
-            </a>
-          </Link> */}
+          
           <Link href="/home/help" passHref>
             <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Help
@@ -106,11 +96,39 @@ function GuestHeader() {
               <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
-         
+          <Link href="/home/profile" passHref>
+            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="15" cy="15" r="15" fill="#6E4BEC" />
+                <path
+                  d="M23 24V22C23 19.7909 21.2091 18 19 18H11C8.79086 18 7 19.7909 7 22V24"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M15 14C17.2091 14 19 12.2091 19 10C19 7.79086 17.2091 6 15 6C12.7909 6 11 7.79086 11 10C11 12.2091 12.7909 14 15 14Z"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </Link>
         </div>
       </motion.div>
     </nav>
   );
 }
 
-export default GuestHeader;
+export default MainHeader;

@@ -34,29 +34,23 @@ function BreadCrumb() {
   return (
     <div className="bg-violet-500  lg:pt-[20px] md:pt-[5px] pt-3 justify-between ">
       <div className="flex  ">
-        <div className="w-1/2 mt-6 ml-5 sm:ml-20 sm:mt-16">
+        <div className="w-1/10 mt-6 ml-5 sm:ml-20 sm:mt-16">
           <h2 className="text-2xl font-bold leading-tight tracking-tighter text-gray-100 font-oswald sm:text-2xl lg:text-5xl animate-fade-in-up">
             Tefzon Fantasy
           </h2>
           {isLoading && <Loader />}
           <div className="pt-[2.3rem] lg:pt-[4.4rem] w-[22rem] sm:w-full md:mx-0  flex justify-between  overflow-x-auto  scrollbar-hide ">
-            <BreadCrumbButton title="Pick Team" link="/home/account/squad" />
+            <BreadCrumbButton title="Squad" link="/home/account/squad" />
+            <BreadCrumbButton title="Pick Team" link="/home/account/squad/select_squad" />
             <BreadCrumbButton title="Transfer" link="/home/transfer" />
             <BreadCrumbButton title="Leagues" link="/home/leagues" />
             <BreadCrumbButton title="Fixtures" link="/home/fixtures" />
             <BreadCrumbButton title="Wallet" link="/home/account/wallet" />
             <BreadCrumbButton title="History" link="/home/statistics" />
-            {/* <button onClick={logOut}>
-          <div
-            className={`font-montserrat bg-green text-white
-            md:inline-block text-xs md:text-sm  px-1 w-32 py-2 mx-1 text-center sm:mx-1 leading-none rounded cursor-pointer hover:text-gray-700 md:font-semibold hover:bg-gray-100 mt-7 md:mt-0`}
-          >
-            Sign Out
-          </div>
-        </button> */}
+            
           </div>
         </div>
-        <div className="justify-end sm:w-1/2 ">
+        <div className="justify-end sm:w-1/10 ">
           <div className="sm:mt-3 sm:ml-20 animate-pulse animate-fade-in-down">
             <img
               src="/img/Header Image.png"
