@@ -21,24 +21,24 @@ const Home: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [fixtures, setFixtures] = useState([]);
 
-  useEffect(() => {
-    const fetchAll = async () => {
-      setIsLoading(true);
-      const res = await axios.get(`${process.env.BACKEND_URL}/get-fixtures`);
+  // useEffect(() => {
+  //   const fetchAll = async () => {
+  //     setIsLoading(true);
+  //     const res = await axios.get(`${process.env.BACKEND_URL}/get-fixtures`);
 
-      const response = await res.data;
-      setIsLoading(false);
-      return response;
-    };
+  //     const response = await res.data;
+  //     setIsLoading(false);
+  //     return response;
+  //   };
 
-    const getFixtures = async () => {
-      const FavouritesFromApi = await fetchAll();
-      console.log(FavouritesFromApi);
-      setFixtures(FavouritesFromApi);
-    };
+  //   const getFixtures = async () => {
+  //     const FavouritesFromApi = await fetchAll();
+  //     console.log(FavouritesFromApi);
+  //     setFixtures(FavouritesFromApi);
+  //   };
 
-    getFixtures();
-  }, []);
+  //   getFixtures();
+  // }, []);
 
   useEffect(() => {
     // Wait for 3 seconds
@@ -46,21 +46,21 @@ const Home: NextPage = () => {
       setIsLoading(false);
     }, 3000);
 
-    const fetchAll = async () => {
-      // setIsLoading(true);
-      const news = await axios.get(
-        `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
-      );
-      const response = await news.data;
-      // for fixtures
-      // const fixture = await axios.get(
-      //   `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
-      // );
-      // const fixts = await fixture.data;
-      setIsLoading(false);
-      console.log(response);
-      // console.log(fixts);
-    };
+    // const fetchAll = async () => {
+    //   // setIsLoading(true);
+    //   const news = await axios.get(
+    //     `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+    //   );
+    //   const response = await news.data;
+    //   // for fixtures
+    //   // const fixture = await axios.get(
+    //   //   `${process.env.SPORTS_URL}/news/fixtures?api_token=${process.env.SPORTS_APIKEY}`
+    //   // );
+    //   // const fixts = await fixture.data;
+    //   setIsLoading(false);
+    //   console.log(response);
+    //   // console.log(fixts);
+    // };
   }, []);
 
   const goToRegister = () => {
