@@ -205,7 +205,7 @@ const SquadSelection = () => {
       <div className="container flex flex-wrap items-center justify-between px-6 pt-10 mx-auto lg:px-20">
         <div className="flex items-center flex-shrink-0 mr-6 text-gray-600">
           <h1 className="text-xl text-center font-oswald sm:text-4xl text-black-0">
-            Squad Selection
+            Team Selection
           </h1>
         </div>
         <div className="items-center flex-grow block mx-7 sm:w-full md:flex md:justify-end md:w-auto">
@@ -214,7 +214,7 @@ const SquadSelection = () => {
               <a
                 className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
-                                    bg-[#4AAE75] text-gray-200
+                                    bg-[#795DE0] text-gray-200
                                     duration-200 ease-in-out 
                                     transition"
               >
@@ -277,85 +277,28 @@ const SquadSelection = () => {
           <div
             className="container w-auto px-2 py-6 mt-10 mb-20 lg:max-w-4xl h-4/4 md:w-4/5 sm:ml-4 lg:ml-24 lg:px-10 "
             style={{
-              backgroundImage: 'url("/img/pitch-md.png")',
+              backgroundImage: 'url("/img/pitch-lg.png")',
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center center",
             }}
           >
-            <div className="flex items-center justify-center mx-auto mt-12 mb-3">
-              <div className="inline-flex border border-red-800 rounded">
-                <input
-                  type="radio"
-                  name="room_type"
-                  id="fixtures"
-                  hidden
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(1);
-                  }}
-                  data-toggle="tab"
-                  role="tablist"
-                />
-                <label
-                  htmlFor="fixtures"
-                  className={
-                    "radio text-center text-sm font-arcon  self-center py-3 px-12 border cursor-pointer  hover:opacity-75 " +
-                    (openTab === 1
-                      ? "text-[#A7030A] bg-white border-[#A7030A]"
-                      : "text-white bg-[#A7030A] border-[#A7030A]")
-                  }
-                >
-                  Pitch View
-                </label>
-              </div>
-              <div className="inline-flex -ml-1 border border-red-800 rounded">
-                <input
-                  type="radio"
-                  name="room_type"
-                  id="fdr"
-                  hidden
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(2);
-                  }}
-                  data-toggle="tab"
-                  role="tablist"
-                />
-                <label
-                  htmlFor="fdr"
-                  className={
-                    "radio text-center text-sm font-arcon  self-center py-3 px-12 border cursor-pointer  hover:opacity-75 " +
-                    (openTab === 2
-                      ? "text-[#A7030A] bg-white border-[#A7030A]"
-                      : "text-white bg-[#A7030A] border-[#A7030A]")
-                  }
-                >
-                  List View
-                </label>
-              </div>
-            </div>
-
             <div className="flex flex-wrap">
               <div className="w-full">
                 <div className="relative flex flex-col w-full min-w-0 break-words rounded">
                   <div className="flex-auto px-4">
                     <div className="tab-content tab-space">
-                      <div
-                        className={openTab === 1 ? "block" : "hidden"}
-                        id="link1"
-                      >
-                        <div className="flex py-10 mx-32">
-                          {teams
-                            .filter(
-                              (e: Players) => e.player_position === "GoalKeeper"
-                            )
-                            .map((item: Players, position_id) => (
-                              <div
-                                key={position_id}
-                                className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
-                              >
-                                {/* <div className="-mt-[4rem] ">
+                      <div className="flex py-10 mx-32">
+                        {teams
+                          .filter(
+                            (e: Players) => e.player_position === "GoalKeeper"
+                          )
+                          .map((item: Players, position_id) => (
+                            <div
+                              key={position_id}
+                              className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                            >
+                              {/* <div className="-mt-[4rem] ">
                                   <svg
                                     viewBox="0 0 52 51"
                                     fill="none"
@@ -377,228 +320,114 @@ const SquadSelection = () => {
                                     />
                                   </svg>
                                 </div> */}
-                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                  <div className=" h-24 w-20 rounded-full mx-auto">
-                                    <img
-                                      className="rounded-full object-cover object-center"
-                                      src={item.image_path}
-                                      alt={item.player_name}
-                                      title={item.player_name}
-                                    />
-                                  </div>
-                                </div>
-
-                                <div>
-                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name.split(" ", 1)}
-                                  </h1>
+                              <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                <div className=" h-24 w-20 rounded-full mx-auto">
+                                  <img
+                                    className="rounded-full object-cover object-center"
+                                    src={item.image_path}
+                                    alt={item.player_name}
+                                    title={item.player_name}
+                                  />
                                 </div>
                               </div>
-                            ))}
-                        </div>
 
-                        <div className="flex py-10 mx-auto">
-                          {teams
-                            .filter(
-                              (e: Players) => e.player_position === "Defender"
-                            )
-                            .map((item: Players, position_id) => (
-                              <div
-                                key={position_id}
-                                className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
-                              >
-                                <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                  <div className=" h-24 w-20 rounded-full mx-auto">
-                                    <img
-                                      className="rounded-full object-cover object-center"
-                                      src={item.image_path}
-                                      alt={item.player_name}
-                                      title={item.player_name}
-                                    />
-                                  </div>
-                                </div>
-
-                                <div>
-                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name.split(" ", 1)}
-                                  </h1>
-                                </div>
-                              </div>
-                            ))}
-                        </div>
-
-                        <div className="flex py-10 mx-auto">
-                          {teams
-                            .filter(
-                              (e: Players) => e.player_position === "Midfielder"
-                            )
-                            .map((item: Players, position_id) => (
-                              <div
-                                key={position_id}
-                                className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
-                              >
-                                <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                  <div className=" h-24 w-20 rounded-full mx-auto">
-                                    <img
-                                      className="rounded-full object-cover object-center"
-                                      src={item.image_path}
-                                      alt={item.player_name}
-                                      title={item.player_name}
-                                    />
-                                  </div>
-                                </div>
-
-                                <div>
-                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name.split(" ", 1)}
-                                  </h1>
-                                </div>
-                              </div>
-                            ))}
-                        </div>
-
-                        <div className="flex py-10 mx-auto">
-                          {teams
-                            .filter(
-                              (e: Players) => e.player_position === "Forward"
-                            )
-                            .map((item: Players, position_id) => (
-                              <div
-                                key={position_id}
-                                className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
-                              >
-                                <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                  <div className=" h-24 w-20 rounded-full mx-auto">
-                                    <img
-                                      className="rounded-full object-cover object-center"
-                                      src={item.image_path}
-                                      alt={item.player_name}
-                                      title={item.player_name}
-                                    />
-                                  </div>
-                                </div>
-
-                                <div>
-                                  <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                    {item.player_name.split(" ", 1)}
-                                  </h1>
-                                </div>
-                              </div>
-                            ))}
-                        </div>
-                      </div>
-                      <div
-                        className={openTab === 2 ? "block" : "hidden"}
-                        id="link2"
-                      >
-                        <div className="mx-auto ">
-                          <div className="pt-4">
-                            <div className="px-1 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8 scrollbar-hide">
-                              <div className="inline-block min-w-full shadow rounded-lg h-[42rem]">
-                                <table className="min-w-full leading-normal">
-                                  <thead>
-                                    <tr className="bg-red-700">
-                                      <th className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon">
-                                        Squad Members
-                                      </th>
-                                      <th className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon">
-                                        ₦
-                                      </th>
-                                      <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
-                                        SB
-                                      </th>
-                                      <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
-                                        TP
-                                      </th>
-                                      <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
-                                        Fix
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {teams.map((item: Players, position_id) => (
-                                      <tr key={position_id} className="">
-                                        <td
-                                          key={position_id}
-                                          className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200"
-                                        >
-                                          <div className="flex w-full ">
-                                            <p
-                                              tabIndex={0}
-                                              className="flex text-xs leading-normal text-left text-gray-500 align-middle focus:outline-none"
-                                            >
-                                              <span className="text-2xl text-green align-middle material-icons">
-                                                info_outline
-                                              </span>
-
-                                              <span className="flex-shrink-0 w-10 h-10 mb-2 ml-4">
-                                                <div className="mt-[2.5rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                                  <div className=" h-20 w-12 rounded-full mx-auto">
-                                                    <img
-                                                      className="rounded-full object-cover object-center"
-                                                      src={item.image_path}
-                                                      alt={item.player_name}
-                                                      title={item.player_name}
-                                                    />
-                                                  </div>
-                                                </div>
-                                              </span>
-                                            </p>
-
-                                            <div className="pl-3 mb-2 ml-5">
-                                              <p
-                                                tabIndex={0}
-                                                className="text-sm leading-5 text-gray-900 focus:outline-none font-arcon"
-                                              >
-                                                {item.player_name}
-                                              </p>
-                                              <p
-                                                tabIndex={0}
-                                                className="text-xs leading-normal text-gray-900 focus:outline-none"
-                                              >
-                                                {item.team}
-                                                <span className="ml-4">
-                                                  {item.player_position ===
-                                                    "GoalKeeper" && "GK"}
-                                                  {item.player_position ===
-                                                    "Defender" && "DEF"}
-                                                  {item.player_position ===
-                                                    "Midfielder" && "MID"}
-                                                  {item.player_position ===
-                                                    "Forward" && "FWD"}
-                                                </span>
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td className="px-5 py-2 text-sm align-middle bg-white border-b border-gray-200">
-                                          <p className="py-2 text-center text-gray-900 whitespace-no-wrap px-1 border-gray-400">
-                                            5.4
-                                          </p>
-                                        </td>
-                                        <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                          <p className="text-center text-gray-900 whitespace-no-wrap">
-                                            15.4
-                                          </p>
-                                        </td>
-                                        <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                          <p className="text-center text-gray-900 whitespace-no-wrap">
-                                            84
-                                          </p>
-                                        </td>
-                                        <td className="hidden px-5 py-2 text-sm align-middle bg-white border-b border-gray-200 lg:table-cell">
-                                          <p className="text-center text-gray-900 whitespace-no-wrap">
-                                            AVL (H)
-                                          </p>
-                                        </td>
-                                      </tr>
-                                    ))}
-                                  </tbody>
-                                </table>
+                              <div>
+                                <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  {item.player_name.split(" ", 1)}
+                                </h1>
                               </div>
                             </div>
-                          </div>
-                        </div>
+                          ))}
+                      </div>
+
+                      <div className="flex py-10 mx-auto">
+                        {teams
+                          .filter(
+                            (e: Players) => e.player_position === "Defender"
+                          )
+                          .map((item: Players, position_id) => (
+                            <div
+                              key={position_id}
+                              className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                            >
+                              <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                <div className=" h-24 w-20 rounded-full mx-auto">
+                                  <img
+                                    className="rounded-full object-cover object-center"
+                                    src={item.image_path}
+                                    alt={item.player_name}
+                                    title={item.player_name}
+                                  />
+                                </div>
+                              </div>
+
+                              <div>
+                                <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  {item.player_name.split(" ", 1)}
+                                </h1>
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+
+                      <div className="flex py-10 mx-auto">
+                        {teams
+                          .filter(
+                            (e: Players) => e.player_position === "Midfielder"
+                          )
+                          .map((item: Players, position_id) => (
+                            <div
+                              key={position_id}
+                              className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                            >
+                              <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                <div className=" h-24 w-20 rounded-full mx-auto">
+                                  <img
+                                    className="rounded-full object-cover object-center"
+                                    src={item.image_path}
+                                    alt={item.player_name}
+                                    title={item.player_name}
+                                  />
+                                </div>
+                              </div>
+
+                              <div>
+                                <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  {item.player_name.split(" ", 1)}
+                                </h1>
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+
+                      <div className="flex py-10 mx-auto">
+                        {teams
+                          .filter(
+                            (e: Players) => e.player_position === "Forward"
+                          )
+                          .map((item: Players, position_id) => (
+                            <div
+                              key={position_id}
+                              className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
+                            >
+                              <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                <div className=" h-24 w-20 rounded-full mx-auto">
+                                  <img
+                                    className="rounded-full object-cover object-center"
+                                    src={item.image_path}
+                                    alt={item.player_name}
+                                    title={item.player_name}
+                                  />
+                                </div>
+                              </div>
+
+                              <div>
+                                <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
+                                  {item.player_name.split(" ", 1)}
+                                </h1>
+                              </div>
+                            </div>
+                          ))}
                       </div>
                     </div>
                   </div>
@@ -615,8 +444,7 @@ const SquadSelection = () => {
                     <div className="w-full">
                       <div className="relative flex">
                         <input
-                          type="text"
-                          className="w-full h-10 px-2 mt-2 mr-3 text-xs bg-white font-arcon focus:outline-none hover:cursor-pointer"
+                          className="w-full h-10 px-2  mr-3 text-xs bg-white font-arcon focus:outline-none hover:cursor-pointer"
                           name="search"
                           onChange={() => fetchByName(name)}
                           value={name}
@@ -625,20 +453,20 @@ const SquadSelection = () => {
                         />
 
                         <button
-                          className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-2   mb-2 cursor-pointer                                 
+                          className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-2   cursor-pointer                                 
                                 hover:bg-blue-500 
                                 text-[#240155] border border-[#8139E6]
                                  duration-200 ease-in-out 
                                  transition"
                         >
-                          <div className="text-sm font-arcon">Search</div>
+                          <div className="text-sm font-arcon">Reset</div>
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex py-10 mx-auto md:flex-row ">
+                <div className="flex py-7 mx-auto md:flex-row ">
                   <div className="flex-1 svelte-1l8159u">
                     <button
                       onClick={() => fetchByPos(1)}
@@ -675,29 +503,33 @@ const SquadSelection = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row">
-                  <div className="flex-1 w-full lg:mx-2 svelte-1l8159u">
+                <div className="flex flex-col md:flex-row gap-1">
+                  <div className="flex-1 w-full svelte-1l8159u">
                     <label className="mb-2 ml-1 text-sm text-gray-600 font-arcon">
-                      Sort by
+                      Club
                     </label>
-                    <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
-                      <select className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select font-arcon focus:outline-none focus:border-indigo-500">
-                        <option value="">Total Point</option>
-                        <option value="02">Goals</option>
+                    <div className="flex p-1 my-2   rounded svelte-1l8159u">
+                      <select className="form-select bg-white w-full px-1 py-3 mb-2 border border-gray-100 rounded-md focus:outline-none focus:border-indigo-500  text-gray-400 transition-colors cursor-pointer">
+                        <option value="">Arsenal FC</option>
+                        <option value="">Barcelona </option>
+                        <option value="">Chelsea</option>
+                        <option value="">PSG</option>
                       </select>
                     </div>
                   </div>
-                  {/* <div className="flex-1 w-full mx-2 svelte-1l8159u">
-                    <label className="mb-2 ml-1 text-sm text-gray-600 font-arcon">
-                      Max Cost
+                  <div className="flex-1 w-full  svelte-1l8159u">
+                    <label className=" text-sm text-gray-600 font-arcon">
+                      Country
                     </label>
-                    <div className="flex p-1 my-2 bg-white border border-gray-200 rounded svelte-1l8159u">
-                      <select className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select font-arcon focus:outline-none focus:border-indigo-500">
-                        <option value="">3.00</option>
-                        <option value="02">Free</option>
+                    <div className="flex p-1 my-2 rounded svelte-1l8159u">
+                      <select className="form-select bg-white w-full px-1 py-3 mb-2 border border-gray-100 rounded-md focus:outline-none focus:border-indigo-500  text-gray-400 transition-colors cursor-pointer">
+                        <option value="">England</option>
+                        <option value="02">France</option>
+                        <option value="02">Belgium </option>
+                        <option value="02">Netherlands </option>
                       </select>
                     </div>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>

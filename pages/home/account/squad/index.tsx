@@ -24,6 +24,7 @@ interface Players {
 
 const SaveTeam = () => {
   const [openTab, setOpenTab] = useState(1);
+  const [detail, setDetail] = useState(false);
   const [message, setMessage] = useState("");
   const { data: session }: any = useSession();
   const [teams, setTeams] = useState({
@@ -218,7 +219,7 @@ const SaveTeam = () => {
               </p>
             )}
 
-            <div className={openTab === 1 ? "block" : "hidden"}>
+            <div>
               <div className="flex mt-[5rem]  py-10 mx-auto">
                 {teams.goalkeepers.map((item: Players, player_id: number) => (
                   <button
@@ -539,627 +540,114 @@ const SaveTeam = () => {
                 ))}
               </div>
             </div>
-
-            <div
-              className={`${
-                active ? "" : "hidden"
-              } overflow-x-hidden overflow-y-auto fixed h-modal top-3 left-0 right-0 md:inset-0 z-50 justify-center bg-gray-500/50  items-center`}
-            >
-              <div className="relative w-full max-w-md px-4 h-full  mx-auto sm:mt-8">
-                {!isLoading && (
-                  <>
-                    {/* {details.map((detail: Players, player_id: number) => (
-                      <div
-                        key={player_id}
-                        className=" flex flex-col bg-white mb-4 px- rounded-3xl  relative "
-                      >
-                        <div className="flex  rounded-3xl bg-gray-100 dark:bg-gray-700  flex-col items-center py-4">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setActive(!active);
-                            }}
-                            className="text-gray-400 bg-gray-200 hover:bg-gray-500 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto mr-3 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-toggle="default-modal"
-                          >
-                            <svg
-                              className="w-5 h-5"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                              ></path>
-                            </svg>
-                          </button>
-
-                          <div className="-mt-4 h-[12rem] w-[12rem] rounded-full border-2 border-white shadow-md mx-auto">
-                            <img
-                              className="rounded-full object-cover object-center"
-                              src={detail.image_path}
-                              alt={detail.player_name}
-                              title={detail.player_name}
-                            />
-                          </div>
-
-                          <span className="font-oswald mt-2">
-                            {detail.player_name}
-                          </span>
-                        </div>
-
-                        <div className="flex mt-2  justify-between px-6">
-                          <button
-                            onClick={() => selectCap(detail.id)}
-                            className="flex items-center justify-between px-4 py-4 border cursor-pointer rounded-xl dark:border-gray-700"
-                          >
-                            <div className="flex flex-col items-center ">
-                              <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
-                                Make Captain
-                              </h2>
-                            </div>
-                          </button>
-
-                          <button
-                            onClick={() => selectViceCap(detail.id)}
-                            className="flex items-center justify-between px-4 py-4 border dark:border-gray-700 cursor-pointer rounded-xl"
-                          >
-                            <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
-                              Make Vice Captain
-                            </h2>
-                          </button>
-
-                          <button  onClick={() => remove(player_id)} className="flex items-center justify-between px-4 py-4 border cursor-pointer rounded-xl dark:border-gray-700">
-                            <div className="flex flex-col items-center space-y-1">
-                              <h2 className="text-sm font-medium text-gray-700  dark:text-gray-200">
-                                Remove
-                              </h2>
-                            </div>
-                          </button>
-                        </div>
-
-                        <div className="p-8 mt-2 space-y-3 bg-gray-100 dark:bg-gray-800 rounded-xl">
-                          <div className="flex items-center justify-between text-gray-800 dark:text-gray-200 ">
-                            <p className="textlg sm:text-xl">Position</p>
-
-                            <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                              {player.position}
-                            </h2>
-                          </div>
-                          <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
-                            <p className="textlg sm:text-xl">Rating</p>
-
-                            <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                              {player.rating}
-                            </h2>
-                          </div>
-
-                          <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
-                            <p className="textlg sm:text-xl">Value</p>
-
-                            <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                              {player.value}
-                            </h2>
-                          </div>
-
-                          <div className="flex items-center justify-between text-gray-800 dark:text-gray-200">
-                            <p className="textlg sm:text-xl">Nationality</p>
-
-                            <h2 className="text-xl font-semibold text-gray-500  dark:text-gray-300">
-                              {player.nationality}
-                            </h2>
-                          </div>
-                        </div>
-                      </div>
-                    ))} */}
-                  </>
-                )}
-              </div>
-            </div>
-
-            <div className={openTab === 2 ? "block" : "hidden"}>
-              <div className="flex flex-col mt-6">
-                <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8 scrollbar-hide">
-                    <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg h-[42rem]">
-                      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                        <thead className="bg-red-700 dark:bg-gray-800 leading-normal">
-                          <tr>
-                            <th
-                              scope="col"
-                              className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon"
-                            >
-                              Squad Members
-                            </th>
-                            <th className="px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon">
-                              ₦
-                            </th>
-
-                            <th className="hidden px-5 py-3 text-xs tracking-wider text-left text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
-                              SB
-                            </th>
-                            <th className="hidden px-5 py-3 text-xs tracking-wider text-left text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
-                              TP
-                            </th>
-                            <th className="hidden px-5 py-3 text-xs tracking-wider text-left text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
-                              Fix
-                            </th>
-                            <th className="hidden px-5 py-3 text-xs tracking-wider text-center text-white uppercase border-b-2 border-gray-200 font-arcon lg:table-cell">
-                              Action
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900 w-full">
-                          {teams.goalkeepers.map(
-                            (item: Players, player_id: number) => (
-                              <tr key={player_id}>
-                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center gap-x-3">
-                                    <div className="flex items-center gap-x-2">
-                                      <img
-                                        className="object-cover w-10 h-10 rounded-full"
-                                        src={item.image_path}
-                                        alt={item.player_name}
-                                        title={item.player_name}
-                                      />
-                                      <div>
-                                        <h2 className="font-medium text-gray-800 dark:text-white ">
-                                          {item.player_name}
-                                        </h2>
-                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
-                                          {item.team}
-                                          <span className="ml-4">
-                                            {item.player_position ===
-                                              "GoalKeeper" && "GK"}
-                                            {item.player_position ===
-                                              "Defender" && "DEF"}
-                                            {item.player_position ===
-                                              "Midfielder" && "MID"}
-                                            {item.player_position ===
-                                              "Forward" && "FWD"}
-                                          </span>
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
-                                    <h2 className="text-sm font-normal text-emerald-500">
-                                      54,200
-                                    </h2>
-                                  </div>
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  15.4
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  84
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  AVL (H)
-                                </td>
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                  <div className="flex items-center gap-x-2">
-                                    <button
-                                      onClick={() => selectCap(player_id)}
-                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
-                                    >
-                                      Make Captain
-                                    </button>
-                                    <button
-                                      onClick={() => selectViceCap(player_id)}
-                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
-                                    >
-                                      Make vice Captain
-                                    </button>
-                                    <button
-                                      onClick={() => remove(player_id)}
-                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            )
-                          )}
-                          {teams.defenders.map(
-                            (item: Players, player_id: number) => (
-                              <tr key={player_id}>
-                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center gap-x-3">
-                                    <div className="flex items-center gap-x-2">
-                                      <img
-                                        className="object-cover w-10 h-10 rounded-full"
-                                        src={item.image_path}
-                                        alt={item.player_name}
-                                        title={item.player_name}
-                                      />
-                                      <div>
-                                        <h2 className="font-medium text-gray-800 dark:text-white ">
-                                          {item.player_name}
-                                        </h2>
-                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
-                                          {item.team}
-                                          <span className="ml-4">
-                                            {item.player_position ===
-                                              "GoalKeeper" && "GK"}
-                                            {item.player_position ===
-                                              "Defender" && "DEF"}
-                                            {item.player_position ===
-                                              "Midfielder" && "MID"}
-                                            {item.player_position ===
-                                              "Forward" && "FWD"}
-                                          </span>
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
-                                    <h2 className="text-sm font-normal text-emerald-500">
-                                      54,200
-                                    </h2>
-                                  </div>
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  15.4
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  84
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  AVL (H)
-                                </td>
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                  <div className="flex items-center gap-x-2">
-                                    <button
-                                      onClick={() => selectCap(player_id)}
-                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
-                                    >
-                                      Make Captain
-                                    </button>
-                                    <button
-                                      onClick={() => selectViceCap(player_id)}
-                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
-                                    >
-                                      Make vice Captain
-                                    </button>
-                                    <button
-                                      onClick={() => remove(player_id)}
-                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            )
-                          )}
-                          {teams.midfielders.map(
-                            (item: Players, player_id: number) => (
-                              <tr key={player_id}>
-                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center gap-x-3">
-                                    <div className="flex items-center gap-x-2">
-                                      <img
-                                        className="object-cover w-10 h-10 rounded-full"
-                                        src={item.image_path}
-                                        alt={item.player_name}
-                                        title={item.player_name}
-                                      />
-                                      <div>
-                                        <h2 className="font-medium text-gray-800 dark:text-white ">
-                                          {item.player_name}
-                                        </h2>
-                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
-                                          {item.team}
-                                          <span className="ml-4">
-                                            {item.player_position ===
-                                              "GoalKeeper" && "GK"}
-                                            {item.player_position ===
-                                              "Defender" && "DEF"}
-                                            {item.player_position ===
-                                              "Midfielder" && "MID"}
-                                            {item.player_position ===
-                                              "Forward" && "FWD"}
-                                          </span>
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
-                                    <h2 className="text-sm font-normal text-emerald-500">
-                                      54,200
-                                    </h2>
-                                  </div>
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  15.4
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  84
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  AVL (H)
-                                </td>
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                  <div className="flex items-center gap-x-2">
-                                    <button
-                                      onClick={() => selectCap(player_id)}
-                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
-                                    >
-                                      Make Captain
-                                    </button>
-                                    <button
-                                      onClick={() => selectViceCap(player_id)}
-                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
-                                    >
-                                      Make vice Captain
-                                    </button>
-                                    <button
-                                      onClick={() => remove(player_id)}
-                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            )
-                          )}
-                          {teams.forwards.map(
-                            (item: Players, player_id: number) => (
-                              <tr key={player_id}>
-                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center gap-x-3">
-                                    <div className="flex items-center gap-x-2">
-                                      <img
-                                        className="object-cover w-10 h-10 rounded-full"
-                                        src={item.image_path}
-                                        alt={item.player_name}
-                                        title={item.player_name}
-                                      />
-                                      <div>
-                                        <h2 className="font-medium text-gray-800 dark:text-white ">
-                                          {item.player_name}
-                                        </h2>
-                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
-                                          {item.team}
-                                          <span className="ml-4">
-                                            {item.player_position ===
-                                              "GoalKeeper" && "GK"}
-                                            {item.player_position ===
-                                              "Defender" && "DEF"}
-                                            {item.player_position ===
-                                              "Midfielder" && "MID"}
-                                            {item.player_position ===
-                                              "Forward" && "FWD"}
-                                          </span>
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
-                                    <h2 className="text-sm font-normal text-emerald-500">
-                                      54,200
-                                    </h2>
-                                  </div>
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  15.4
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  84
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  AVL (H)
-                                </td>
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                  <div className="flex items-center gap-x-2">
-                                    <button
-                                      onClick={() => selectCap(player_id)}
-                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
-                                    >
-                                      Make Captain
-                                    </button>
-                                    <button
-                                      onClick={() => selectViceCap(player_id)}
-                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
-                                    >
-                                      Make vice Captain
-                                    </button>
-                                    <button
-                                      onClick={() => remove(player_id)}
-                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            )
-                          )}
-                          {teams.subs.map(
-                            (item: Players, player_id: number) => (
-                              <tr key={player_id}>
-                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center gap-x-3">
-                                    <div className="flex items-center gap-x-2">
-                                      <img
-                                        className="object-cover w-10 h-10 rounded-full"
-                                        src={item.image_path}
-                                        alt={item.player_name}
-                                        title={item.player_name}
-                                      />
-                                      <div>
-                                        <h2 className="font-medium text-gray-800 dark:text-white ">
-                                          {item.player_name}
-                                        </h2>
-                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
-                                          {item.team}
-                                          <span className="ml-4">
-                                            {item.player_position ===
-                                              "GoalKeeper" && "GK"}
-                                            {item.player_position ===
-                                              "Defender" && "DEF"}
-                                            {item.player_position ===
-                                              "Midfielder" && "MID"}
-                                            {item.player_position ===
-                                              "Forward" && "FWD"}
-                                          </span>
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 dark:bg-gray-800">
-                                    <h2 className="text-sm font-normal text-emerald-500">
-                                      54,200
-                                    </h2>
-                                  </div>
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  15.4
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  84
-                                </td>
-                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                  AVL (H)
-                                </td>
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                  <div className="flex items-center gap-x-2">
-                                    <button
-                                      onClick={() => selectCap(player_id)}
-                                      className="px-3 py-2 text-xs text-emerald-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
-                                    >
-                                      Make Captain
-                                    </button>
-                                    <button
-                                      onClick={() => selectViceCap(player_id)}
-                                      className="px-3 py-2 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
-                                    >
-                                      Make vice Captain
-                                    </button>
-                                    <button
-                                      onClick={() => remove(player_id)}
-                                      className="px-3 py-2 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            )
-                          )}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center  bg-gray-800/90 sm:w-[21rem] rounded-3xl mx-auto mt-6">
-              <div
-                className={`inline-flex rounded-3xl ${
-                  openTab === 1
-                    ? "text-gray-800 bg-white "
-                    : "text-white bg-gray-800/20"
-                } `}
-              >
-                <input
-                  type="radio"
-                  name="room_type"
-                  id="fixtures"
-                  // checked
-                  hidden
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(1);
-                  }}
-                  data-toggle="tab"
-                  role="tablist"
-                />
-                <label
-                  htmlFor="fixtures"
-                  className={
-                    "radio text-center  self-center py-2 sm:py-3 px-4 sm:px-12 cursor-pointer  hover:opacity-75 "
-                  }
-                >
-                  Pitch View
-                </label>
-              </div>
-              <div
-                className={`inline-flex rounded-3xl ${
-                  openTab === 2
-                    ? "text-gray-800 bg-white "
-                    : "text-white bg-gray-800/20"
-                } -ml-1`}
-              >
-                <input
-                  type="radio"
-                  name="room_type"
-                  id="fdr"
-                  hidden
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(2);
-                  }}
-                  data-toggle="tab"
-                  role="tablist"
-                />
-                <label
-                  htmlFor="fdr"
-                  className={
-                    "radio text-center  self-center py-2 sm:py-3 px-4 sm:px-12 cursor-pointer   hover:opacity-75 "
-                  }
-                >
-                  List View
-                </label>
-              </div>
-              {/* <div
-                className={`inline-flex rounded-3xl ${
-                  openTab === 3
-                    ? "text-gray-800 bg-white "
-                    : "text-white bg-gray-800/20"
-                } -ml-1`}
-              >
-                <input
-                  type="radio"
-                  name="room_type"
-                  id="date"
-                  hidden
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(3);
-                  }}
-                  data-toggle="tab"
-                  role="tablist"
-                />
-                <label
-                  htmlFor="date"
-                  className={
-                    "radio text-center  self-center py-2 sm:py-3 px-8 sm:px-12 cursor-pointer   hover:opacity-75 "
-                  }
-                >
-                  Date
-                </label>
-              </div> */}
-            </div>
           </div>
         </div>
       </form>
+
+      
+      {details && (
+      <div className="fixed inset-0 z-[150] overflow-y-auto bg-[#000000]/50 ">
+        <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+          <span className="hidden sm:inline-block sm:h-screen sm:align-middle">
+            &#8203;
+          </span>
+
+          <div className="relative inline-block  pt-5 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  sm:my-8 w-full sm:max-w-lg sm:p-6 md:p-8 sm:align-middle">
+            <div className="flex items-end justify-end">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setDetail(false);
+                }}
+                type="button"
+                className="text-gray-900 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 mx-2 inline-flex items-center "
+                data-modal-toggle="default-modal"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex py-3 px-2  ">
+              <h2 className="text-3xl px-5 font-bold text-[#240155]  leading-5 ">
+                Aaron Ramsdale
+              </h2>
+            </div>
+
+            {/* table */}
+            <section className="py-3">
+              <img
+                src="data:image/jpeg;base64,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"
+                alt=""
+                className="mx-auto w-[7rem] lg:w-[8rem] mt-5 rounded-full"
+              />
+              <div className="flex justify-between items-center mx-auto px-20 w-[25rem] mt-4">
+                <div className="flex gap-1 items-center">
+                  <img src="" alt="size" className="w-screen lg:w-full px-3" />
+                  Arsenal
+                </div>
+
+                <button className="bg-[#F0F0F0] py-1 px-2 rounded-md text-xs">
+                  Goalkeeper
+                </button>
+              </div>
+              <button
+                className="my-7 bg-[#9783E3] text-[#fff] text-center hover:bg-gay-200 font-light text-xs px-4 py-2 sm:py-4  rounded shadow hover:shadow-md outline-none focus:outline-none   w-full ease-linear transition-all duration-150"
+                type="button"
+              >
+                Make Captain
+              </button>
+
+              <div className="flex justify-between items-center mx-auto  w-full mt-4">
+                <h2 className="font-semibold">Upcoming Fixtures</h2>
+
+                <button className="flex gap-x-2 items-center py-1 px-2 rounded-md text-xs">
+                  See all
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M13.2008 5.82902L19.2008 12.0004M19.2008 12.0004L13.2008 18.1719M19.2008 12.0004L4.80078 12.0004"
+                      stroke="#240155"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="flex gap-x-3">
+                <div className="text-xs items-center">
+                  <img src="" alt="size" className="w-screen lg:w-full px-3" />
+                  Arsenal
+                </div>
+                <div className="text-xs items-center">
+                  <img src="" alt="size" className="w-screen lg:w-full px-3" />
+                  Arsenal
+                </div>
+                <div className="text-xs items-center">
+                  <img src="" alt="size" className="w-screen lg:w-full px-3" />
+                  Arsenal
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      )}
     </MainLayout>
   );
 };

@@ -828,7 +828,7 @@ const Home: NextPage = () => {
                   <div className="text">
                     <p
                       className=" text-xs text-gray-600"
-                      style={{ ["font-size" as any]: "0.5rem" }}
+                      style={{ ["fontSize" as any]: "0.5rem" }}
                     >
                       Download on the
                     </p>
@@ -869,7 +869,7 @@ const Home: NextPage = () => {
                   <div className="text">
                     <p
                       className="text-xs text-gray-600"
-                      style={{ ["font-size" as any]: "0.5rem" }}
+                      style={{ ["fontSize" as any]: "0.5rem" }}
                     >
                       Download it from
                     </p>

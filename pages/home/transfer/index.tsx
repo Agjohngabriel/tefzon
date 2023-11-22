@@ -90,28 +90,30 @@ const Index = () => {
     }
   };
   useEffect(() => {
-    const fetchAll = async () => {
-      const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.token}`,
-          "content-type": "application/json",
-        },
-      });
-      const response = await res.data;
-      console.log(response);
-      return response;
-    };
+    if (session) {
+      const fetchAll = async () => {
+        const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+          },
+        });
+        const response = await res.data;
+        console.log(response);
+        return response;
+      };
 
-    const getFavourites = async () => {
-      const FavouritesFromApi = await fetchAll();
-      setTeams(FavouritesFromApi);
-    };
-    getFavourites();
+      const getFavourites = async () => {
+        const FavouritesFromApi = await fetchAll();
+        setTeams(FavouritesFromApi);
+      };
+      getFavourites();
+    }
   }, [session]);
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {
-        Authorization: `Bearer ${session?.data.token}`,
+        Authorization: `Bearer ${session?.data.data.token}`,
         "content-type": "application/json",
       },
     });
