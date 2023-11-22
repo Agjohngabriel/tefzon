@@ -543,7 +543,9 @@ const SaveTeam = () => {
           </div>
         </div>
       </form>
-      {/* {details && ( */}
+
+      
+      {details && (
       <div className="fixed inset-0 z-[150] overflow-y-auto bg-[#000000]/50 ">
         <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
           <span className="hidden sm:inline-block sm:h-screen sm:align-middle">
@@ -645,7 +647,7 @@ const SaveTeam = () => {
           </div>
         </div>
       </div>
-      {/* )} */}
+      )}
     </MainLayout>
   );
 };

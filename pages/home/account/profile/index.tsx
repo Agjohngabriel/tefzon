@@ -111,16 +111,18 @@ const Index = () => {
 
   return (
     <ProfileLayout>
-      <div className="bg-violet-500  lg:py-12 md:pt-[5px] pt-3 justify-between px-20 font-Oswald">
+      <div className="bg-violet-500  lg:py-12 md:pt-[5px] py-3 justify-between px-5 md:px-20 font-[Oswald]">
         <h2 className="text-2xl font-semibold leading-tight tracking-tighter text-gray-100  sm:text-2xl lg:text-5xl animate-fade-in-up">
           My Profile
         </h2>
-        <div className="flex gap-x-5 pt-10">
-          <div className="bg-[#F8F8F8] font-bold text-5xl  py-3 px-6 rounded-lg">
-            G
+        <div className="flex gap-x-3 md:gap-x-5 pt-3 md:pt-10">
+          <div className="bg-[#F8F8F8] font-bold text-4xl w-[4rem] overflow-hidden py-3 px-6 rounded-lg">
+            <h2 className="w-[1.2rem] overflow-hidden">
+              {profile["name" as any]}
+            </h2>
           </div>
           <div className="text-[#fff]">
-            <h1 className="font-bold text-xl ">{profile["name" as any]}</h1>
+            <h1 className="font-bold sm:text-xl ">{profile["name" as any]}</h1>
             <h1 className="text-xs ">@{profile["username" as any]}</h1>
             <div className="flex gap-x-2 pt-1">
               <svg
@@ -142,7 +144,7 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="container w-full  px-10 mx-auto py-6">
+      <div className="container w-full px-2 md:px-10 mx-auto py-6">
         <button
           onClick={goToHome}
           className="flex items-center gap-x-2 bg-[#F0F0F0] text-[#333333] active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -221,7 +223,7 @@ const Index = () => {
           </button>
         </div>
         <div className={openTab === 1 ? "block animate-fade-in-up" : "hidden"}>
-          <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-3xl border shadow-2xl p-2 sm:p-10 pb-5 max-w-4xl h-[35rem]">
+          <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-3xl border shadow-2xl px-2 sm:p-10 py-5 max-w-4xl  md:h-[35rem]">
             <form className="animate-fade-in-down">
               <div className="flex flex-col md:flex-row">
                 <div className="flex-1 w-full mx-auto md:mx-2 ">
@@ -457,10 +459,10 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col lg:flex-row lg:pt-2">
+              <div className="flex flex-col lg:flex-row items-center align-baseline">
                 <div className="flex-1 w-full mx-auto md:mx-2 ">
-                  <label className="md:mb-4 ml-1 text-sm font-normal text-gray-600"></label>
-                  <div className="flex p-1 md:my-2 rounded ">
+                  <label className="md:mb-4 text-sm font-normal text-gray-600"></label>
+                  <div className="flex p-1 md:mt-6 rounded ">
                     <select
                       id="cd"
                       className="form-select bg-white w-full px-1 py-2.5 mb-2 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500  text-gray-400 transition-colors cursor-pointer"
@@ -809,13 +811,12 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex-1 ">
-                  <div className="flex-1 w-full mx-auto md:mx-2 mt-2 ">
-                    <label className="ml-1 text-sm font-normal text-gray-600">
+                  <div className=" w-full mx-auto md:mx-2 mt-2 sm:mt-0 ">
+                    <label className=" text-sm font-normal text-gray-600">
                       Phone Number
                     </label>
-                    <div className=" ">
-                      <div className="flex items-end  ">
-                        <div className="sm:w-28 ">
+                    <div className="flex items-end  ">
+                        <div className="w-28 ">
                           <div>
                             <select
                               onChange={handlePhoneChange}
@@ -1079,7 +1080,7 @@ const Index = () => {
                             </select>
                           </div>
                         </div>
-                        <div className="sm:w-full px-4">
+                        <div className="w-full px-4">
                           <div className="bg-white my-2 p-2 flex border border-gray-200 rounded ">
                             <input
                               placeholder="Enter Phone Number"
@@ -1092,12 +1093,11 @@ const Index = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
                   </div>
                 </div>
               </div>
               <button
-                className="my-7 bg-[#9783E3] text-[#fff] text-center active:bg-gay-200 font-light text-xs px-4 py-2 sm:py-4 sm:w-[30rem] rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                className="my-7 bg-[#9783E3] text-[#fff] text-center active:bg-gay-200 font-light text-xs px-4 py-3 sm:py-4 w- sm:w-[30rem] rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                 type="button"
               >
                 Update changes
@@ -1146,7 +1146,6 @@ const Index = () => {
                   <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
                     <input
                       placeholder="New Password"
-                      
                       className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
                       required
                       type={passwordType}
@@ -1215,7 +1214,6 @@ const Index = () => {
             </form>
           </div>
         </div>
-       
       </div>
     </ProfileLayout>
   );

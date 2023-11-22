@@ -96,7 +96,7 @@ function MainHeader() {
               <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
-          <Link href="/home/profile" passHref>
+          <Link href="/home/account/profile" passHref>
             <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               <svg
                 width="30"

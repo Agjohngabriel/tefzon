@@ -46,7 +46,7 @@ function BreadCrumb() {
             <BreadCrumbButton title="Leagues" link="/home/leagues" />
             <BreadCrumbButton title="Fixtures" link="/home/fixtures" />
             <BreadCrumbButton title="Wallet" link="/home/account/wallet" />
-            <BreadCrumbButton title="History" link="/home/statistics" />
+            <BreadCrumbButton title="History" link="/home/history" />
             
           </div>
         </div>
