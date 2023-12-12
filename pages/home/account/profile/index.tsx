@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import ProfileLayout from "../../../../components/ProfileLayout";
 import Router, { useRouter } from "next/router";
@@ -83,7 +83,7 @@ const Index = () => {
     }
   }, [session]);
 
-  console.log(profile);
+
 
   const [passwordType, setPasswordType] = useState("password");
   const handleDateChange = () => {
@@ -136,7 +136,7 @@ const Index = () => {
     setIsSubmitting(true);
     const id = profile["id" as any];
     try {
-      const res = await axios.post(
+      const res = await axios.put(
         `${process.env.BACKEND_URL}/user/profile/${id}`,
         updateProfile,
         {
@@ -201,6 +201,26 @@ const Index = () => {
     }
   }
 
+  async function logOut() {
+    try {
+      setIsLoading(true);
+      const out = await axios.get(
+        `${process.env.BACKEND_URL}logout/${session?.data.user.id}`,
+        {
+          headers: {
+            accept: "*/*",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (out) {
+        setIsLoading(false);
+        signOut();
+      }
+    } catch (e) {
+      return null;
+    }
+  }
   const goToHome = () => {
     Router.push("/home");
   };
@@ -305,15 +325,8 @@ const Index = () => {
             </span>
           </button>
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              setOpenTab(3);
-            }}
-            className={`w-[3rem]   text-xs font-medium ${
-              openTab === 3
-                ? "border-b-2 py-2 border-[#264A83] font-bold text-gray-900 "
-                : "text-gray-600"
-            } transition-colors duration-200    hover:bg-gray-100`}
+            onClick={logOut}
+            className={`w-[4rem]   text-xs font-medium  py-2 font-bold text-gray-900 transition-colors duration-200    hover:bg-gray-100`}
           >
             <span className=" text-center">Log out</span>
           </button>

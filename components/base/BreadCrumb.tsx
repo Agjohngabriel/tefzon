@@ -8,29 +8,10 @@ import Button from "./Button";
 import { useState } from "react";
 import { Loader } from "./Loader";
 function BreadCrumb() {
-  const { data: session }: any = useSession();
+  
   const [isLoading, setIsLoading] = useState(false);
   const Router = useRouter();
-  async function logOut() {
-    try {
-      setIsLoading(true);
-      const out = await axios.get(
-        `${process.env.BACKEND_URL}logout/${session?.data.user.id}`,
-        {
-          headers: {
-            accept: "*/*",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (out) {
-        setIsLoading(false);
-        signOut();
-      }
-    } catch (e) {
-      return null;
-    }
-  }
+ 
   return (
     <div className="bg-violet-500  lg:pt-[20px] md:pt-[5px] pt-3 justify-between ">
       <div className="flex  ">

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Router from "next/router";
 import MainLayout from "../../../components/MainLayout";
 
@@ -11,59 +10,45 @@ const Join = () => {
     Router.push("/home/leagues/join_public");
   };
 
+  const goBack = () => {
+    Router.push("/home/leagues");
+  };
+
   return (
     <MainLayout>
       <div className="py-2">
-        <div className=" container max-w-4xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20 px-2 sm:px-4 py-6 lg:px-10  w-auto">
-          <div className="ml-5 flex items-center py-2 overflow-x-auto whitespace-nowrap">
-            <Link href="/home" passHref>
-              <a className="text-[#240155] dark:text-gray-200">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                </svg>
-              </a>
-            </Link>
-            <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
+        <div className=" container max-w-5xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20 px-2 sm:px-4 py-6 lg:px-10  w-auto">
+          <button
+            onClick={goBack}
+            className="flex items-center gap-x-2 bg-[#F0F0F0] text-[#333333] active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ml-5 ease-linear transition-all duration-150"
+            type="button"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clipPath="url(#clip0_432_19217)">
                 <path
-                  fillRule="evenodd"
-                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                  clipRule="evenodd"
+                  d="M-3.35782e-07 12.0028L3.84095 15.8438L3.84095 12.7588L24 12.7588L24 11.2468L3.84095 11.2468L3.84095 8.16179L-3.35782e-07 12.0028Z"
+                  fill="#333333"
                 />
-              </svg>
-            </span>
-
-            <Link href="/home/leagues" passHref>
-              <a className="text-[#240155] dark:text-gray-200 ">Leagues</a>
-            </Link>
-
-            <span className="mx-2 text-[#8139E6] dark:text-gray-300 rtl:-scale-x-100">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </span>
-
-            <h1 className="text-gray-600 dark:text-blue-400">Join</h1>
-          </div>
+              </g>
+              <defs>
+                <clipPath id="clip0_432_19217">
+                  <rect
+                    width="24"
+                    height="24"
+                    fill="white"
+                    transform="translate(24 24) rotate(180)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+            Back
+          </button>
           <div className="flex">
             <div className="  ">
               <div className="  py-2 md:py-5 px-1 w-full">
