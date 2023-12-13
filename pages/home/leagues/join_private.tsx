@@ -56,31 +56,6 @@ const JoinPrivate = () => {
     }
   };
 
-  useEffect(() => {
-    if (session) {
-      const fetchAll = async () => {
-        const res = await axios.get(
-          `${process.env.BACKEND_URL}/private-leagues`,
-          {
-            headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
-              "content-type": "application/json",
-            },
-          }
-        );
-        const response = await res.data;
-        console.log(response);
-        return response;
-      };
-
-      const getFavourites = async () => {
-        const FavouritesFromApi = await fetchAll();
-        setLeagues(FavouritesFromApi);
-      };
-      getFavourites();
-    }
-  }, [session]);
-
   const goBack = () => {
     Router.push("/home/leagues/join");
   };
@@ -223,98 +198,6 @@ const JoinPrivate = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="flex">
-            <div className="w-full sm:w-3/4 ">
-              {/* <h1 className="font-montserrat text-[1rem]  text-black-0 w-4/6 tracking-tighter">
-                List of live leagues
-              </h1> */}
-              <div className=" md:rounded-r-2xl  ">
-                <table className="w-full">
-                  <thead className="w-full bg-gradient-to-r from-[#F0F0F0] bg-[#F0F0F0">
-                    <tr>
-                      <th
-                        className="p-2 text-left text-sm  text-black-0"
-                        title="position"
-                      >
-                        League Name
-                      </th>
-                      <th
-                        className="p-1 text-left text-sm  text-black-0"
-                        title="club"
-                      >
-                        Entry Fee
-                      </th>
-                      <th
-                        className="p-1 text-center text-sm  text-black-0"
-                        title="played"
-                      >
-                        No. of Managers
-                      </th>
-                      <th
-                        className="p-1 text-center  text-sm   text-black-0"
-                        title="Goal Different"
-                      >
-                        Date Created
-                      </th>
-                      <th
-                        className="p-1 text-center text-sm pr-4  text-black-0"
-                        title="points"
-                      ></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {leagues.map((item: Team, index) => (
-                      <tr
-                        key={index}
-                        className="border-b border-gray-300 py-3 "
-                      >
-                        <td className="pl-4 text-sm text-[#222222CC] font-normal">
-                          <p
-                            tabIndex={0}
-                            className="focus:outline-none text-sm  leading-5 "
-                          >
-                            {item.name}
-                          </p>
-                        </td>
-                        <td className="p-1 text-left ">
-                          <p
-                            tabIndex={0}
-                            className="focus:outline-none text-sm text-[#222222CC] leading-5 "
-                          >
-                            {item.entry_fee !== "0" ? "Free" : item.entry_fee}
-                          </p>
-                        </td>
-                        <td className="p-1 text-center text-sm text-[#222222CC]">
-                          {item.participants}
-                        </td>
-                        <td className="p-1 text-center text-sm text-[#222222CC]">
-                          {item.created_at}
-                        </td>
-                        <td className="p-1 text-center text-sm text-[#222222CC]">
-                          <button
-                            onClick={() =>
-                              joinLeague({ id: item.id, code: item.code })
-                            }
-                            className="flex-no-shrink border border-[#6E4BEC] px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider  text-[#6E4BEC] rounded-lg"
-                          >
-                            Join League
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* <button
-                type="button"
-                className="flex items-center font-montserrat text-sm  text-[#240155] rounded  focus:outline-none"
-              >
-                See more
-              </button> */}
             </div>
           </div>
         </div>

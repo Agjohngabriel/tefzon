@@ -31,37 +31,7 @@ const Index = () => {
   const [errorMsg, setErrorMsg] = useState({
     message: "",
   });
-  const [isLoading, setLoading] = useState(0);
 
-  const joinLeague = async ({ id, code }: any) => {
-    try {
-      setLoading(1);
-      const res = await axios.post(
-        `${process.env.BACKEND_URL}/join/private/league`,
-        {
-          id: id,
-          code: code,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
-            "content-type": "application/json",
-            accept: "application/json",
-          },
-        }
-      );
-      const response = await res.data;
-      console.log(response);
-      setMessage(response.message);
-      // getFavourites();
-    } catch (e: any) {
-      setLoading(0);
-      const errorMessage = e.response.data;
-      console.log(errorMessage);
-      setError(true);
-      setErrorMsg(errorMessage);
-    }
-  };
 
   useEffect(() => {
     if (session) {
@@ -190,7 +160,7 @@ const Index = () => {
                           <div className="flex flex-col sm:flex-row items-center justify-between ">
                             <div className="flex justify-between justify-center space-x-3  sm:space-x-4  items-center">
                               <p className="rounded-lg font-[Oswald] text-2xl  p-2  text-[#240155] bg-[#795DE029]">
-                                BG
+                              {item.name.split(' ').map(i => i.charAt(0))}
                               </p>
 
                               <div className="flex flex-col">
@@ -259,7 +229,7 @@ const Index = () => {
                           <div className="flex flex-col sm:flex-row items-center justify-between ">
                             <div className="flex justify-between justify-center space-x-3  sm:space-x-4  items-center">
                               <p className="rounded-lg font-[Oswald] text-2xl  p-2  text-[#240155] bg-[#795DE029]">
-                                BG
+                              {item.name.split(' ').map(i => i.charAt(0))}
                               </p>
 
                               <div className="flex flex-col">
