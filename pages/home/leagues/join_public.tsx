@@ -207,14 +207,7 @@ const JoinPublic = () => {
                           {item.created_at}
                         </td>
                         <td className="p-4 text-center text-sm text-[#222222CC]">
-                          {/* <button
-                            onClick={() =>
-                              joinLeague({ id: item.id, code: item.code })
-                            }
-                            className="flex-no-shrink border border-[#6E4BEC] px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider  text-[#6E4BEC] rounded-lg"
-                          >
-                            Join League
-                          </button> */}
+                          
                           <Link
                             href={{
                               pathname: "/home/leagues/details",
