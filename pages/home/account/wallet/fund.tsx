@@ -104,8 +104,8 @@ const Fund = () => {
       });
 
       setIsSubmitting(false);
-      console.log(res.data.status);
-      // window.location.href = `${res.data.link}`;
+      // console.log(res.data.status);
+      window.location.href = `${res.data.link}`;
     } catch (e: any) {
       setIsSubmitting(false);
       const errorMessage = e.response.data.errors;
