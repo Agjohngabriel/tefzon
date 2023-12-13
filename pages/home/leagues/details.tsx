@@ -1,9 +1,114 @@
 import MainLayout from "../../../components/MainLayout";
-import Router from "next/router";
-import { useState } from "react";
+import Router, { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import Swal from "sweetalert2";
+
+interface Manager {
+  name: string;
+  userName: string;
+  IsOwner: string;
+  id: number;
+}
 
 function Details() {
   const [modal, setModal] = useState(false);
+
+  const router = useRouter();
+  const { id: leaugeId } = router.query;
+
+  const [message, setMessage] = useState("");
+  const { data: session }: any = useSession();
+  const [details, setDetails] = useState([]);
+  const [managers, setManagers] = useState([]);
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState({
+    message: "",
+  });
+  const [isLoading, setLoading] = useState(0);
+  useEffect(() => {
+    if (session) {
+      const fetchAll = async () => {
+        const res = await axios.get(
+          `${process.env.BACKEND_URL}/user/league/${leaugeId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await res.data.data;
+        return response;
+      };
+
+      const getDetails = async () => {
+        const DetailsFromApi = await fetchAll();
+        setDetails(DetailsFromApi);
+      };
+      getDetails();
+    }
+  }, [session, leaugeId]);
+
+  const joinLeague = async () => {
+    try {
+      setLoading(1);
+      const res = await axios.get(
+        `${process.env.BACKEND_URL}/join/public/league/${leaugeId}`,
+
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
+      const response = await res.data;
+      setMessage(response.message);
+      // getDetails();
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
+
+  const getManagers = async () => {
+    try {
+      setLoading(1);
+      const res = await axios.post(
+        `${process.env.BACKEND_URL}/get-players-in-league`,
+        {
+          id: leaugeId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
+      const response = await res.data;
+      setMessage(response.message);
+      setManagers(response.data);
+      if (response.statusCode === 200) {
+        setModal(true);
+      }
+      // getDetails();
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
+
   return (
     <MainLayout>
       <div className="py-2">
@@ -47,13 +152,27 @@ function Details() {
               <p className="font-inter text-xs px-1    text-[#808080]  w-full">
                 Play in public leagues and compete with other fans at Tefzon
               </p>
+              {error === true && (
+                <div className="bg-red-800 text-center rounded shadow-md my-3">
+                  <h1 className="font-montserrat text-base py-2 text-black-150  ">
+                    {errorMsg.message}
+                  </h1>
+                </div>
+              )}
+              {message && (
+                <div className="bg-indigo-400   text-center rounded shadow-md my-3">
+                  <h1 className="font-montserrat text-base py-2 text-black-150  ">
+                    {message}
+                  </h1>
+                </div>
+              )}
 
               <div className="flex justify-between items-center py-3">
                 <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
                   League Name:
                 </h1>
                 <p className="font-inter text-xs px-1 text-[#808080] ">
-                  Tefzon Classic
+                  {details["name" as any]}
                 </p>
               </div>
 
@@ -62,21 +181,23 @@ function Details() {
                   Entry Fee:
                 </h1>
                 <p className="font-inter text-xs px-1 text-[#808080] ">
-                  ₦ 5,000
+                  ₦ {details["entry_fee" as any]}
                 </p>
               </div>
               <div className="flex justify-between items-center py-3">
                 <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
                   Number of Managers:
                 </h1>
-                <p className="font-inter text-xs px-1 text-[#808080] ">12</p>
+                <p className="font-inter text-xs px-1 text-[#808080] ">
+                  {details["participants" as any]}
+                </p>
               </div>
               <div className="flex justify-between items-center py-3">
                 <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
                   Start Date:
                 </h1>
                 <p className="font-inter text-xs px-1    text-[#808080] ">
-                  28/10/2023
+                  {details["start" as any]}
                 </p>
               </div>
               <div className="flex justify-between items-center py-3">
@@ -84,7 +205,7 @@ function Details() {
                   End Date:
                 </h1>
                 <p className="font-inter text-xs px-1    text-[#808080] ">
-                  30/10/2023
+                  {details["end" as any]}
                 </p>
               </div>
               <div className="flex justify-between items-center py-3">
@@ -92,39 +213,86 @@ function Details() {
                   Prize Distribution:
                 </h1>
                 <p className="font-inter text-xs px-1    text-[#808080] ">
-                  1 winner (1st - 100%)
+                  {details["name" as any]}
                 </p>
               </div>
 
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  setModal(true);
-                }}
-                className="my-5 shadow-sm shadow-indigo-500/50 hover:scale-110 focus:outline-none flex  items-center lg:px-32 py-4 rounded  cursor-pointer	hover:bg-[#F8F8F0] 
+              {details["allow_view_participants" as any] === 0 ? (
+                <button
+                  onClick={(e) => {
+                    Swal.fire({
+                      text: "Not allowed to view Managers in League",
+                      showClass: {
+                        popup: `
+                          animate__animated
+                          animate__fadeInUp
+                          animate__faster
+                        `,
+                      },
+                      hideClass: {
+                        popup: `
+                          animate__animated
+                          animate__fadeOutDown
+                          animate__faster
+                        `,
+                      },
+                    });
+                  }}
+                  className="my-5 shadow-sm shadow-indigo-500/50 hover:scale-110 focus:outline-none flex  items-center lg:px-32 py-4 rounded  cursor-pointer	hover:bg-[#F8F8F0] 
 										bg-[#F8F8F8] text-[#795DE0]	duration-200 ease-in-out transition"
-              >
-                <div className="font-inter text-xs font-medium ">
-                  View managers
-                </div>{" "}
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M10 17L14.58 11.9992L10 7"
-                    stroke="#795DE0"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+                  <div className="font-inter text-xs font-medium ">
+                    View managers
+                  </div>{" "}
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 17L14.58 11.9992L10 7"
+                      stroke="#795DE0"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              ) : (
+                <button
+                  // onClick={(e) => {
+                  //   e.preventDefault();
+                  //   setModal(true);
+                  // }}
+                  onClick={() => getManagers()}
+                  className="my-5 shadow-sm shadow-indigo-500/50 hover:scale-110 focus:outline-none flex  items-center lg:px-32 py-4 rounded  cursor-pointer	hover:bg-[#F8F8F0] 
+										bg-[#F8F8F8] text-[#795DE0]	duration-200 ease-in-out transition"
+                >
+                  <div className="font-inter text-xs font-medium ">
+                    View managers
+                  </div>{" "}
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 17L14.58 11.9992L10 7"
+                      stroke="#795DE0"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              )}
 
               <button
+                onClick={() => joinLeague()}
                 className="my-5 shadow-sm shadow-indigo-500/50 hover:scale-110 focus:outline-none flex  justify-center lg:px-36 py-5 rounded  cursor-pointer	hover:bg-blue-500 
 										bg-violet-500 text-gray-200	duration-200 ease-in-out transition"
               >
@@ -150,7 +318,7 @@ function Details() {
               <div className="flex items-start justify-between ">
                 <div className=" flex justify-between font-semibold py-2">
                   <p className="text-lg  text-[#3A3A3A] ">
-                    5 Managers - 1 winner
+                    {managers.length} Managers - 1 winner
                   </p>
                 </div>
                 <button
@@ -178,21 +346,29 @@ function Details() {
               </div>
 
               <div className="">
-                <div className="flex  space-x-3  sm:space-x-4  items-center">
-                  <p className="rounded-lg font-[Oswald] text-2xl px-4 py-2  text-[#240155] bg-[#795DE029]">
-                    {/* {item.name.split(' ').map(i => i.charAt(0))} */} G
-                  </p>
+                {managers.map((item: Manager, index) => (
+                  <div
+                    key={index}
+                    className="flex  space-x-3  sm:space-x-4  items-center"
+                  >
+                    <p className="rounded-lg font-[Oswald] text-2xl px-4 py-2  text-[#240155] bg-[#795DE029]">
+                      {item.name.split(" ").map((i) => i.charAt(0))}
+                    </p>
 
-                  <div className="text-left ">
-                    <div className="text-[#3A3A3A] font-normal pb-1 leading-none">
-                      {/* {item.name} */}@Gabby{" "}
-                      <span className="bg-[#795DE029] text-[#795DE0] font-regular rounded ml-2 text-sm p-1">
-                        Creator
-                      </span>
+                    <div className="text-left ">
+                      <div className="text-[#3A3A3A] font-normal pb-1 leading-none">
+                        {item.userName}
+
+                        {item.IsOwner === (1 as any) && (
+                          <span className="bg-[#795DE029] text-[#795DE0] font-regular rounded ml-2 text-sm p-1">
+                            Creator
+                          </span>
+                        )}
+                      </div>
+                      <h2 className="text-xs text-[#94A3B8]">{item.name}</h2>
                     </div>
-                    <h2 className="text-xs text-[#94A3B8]">Gabriel John</h2>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

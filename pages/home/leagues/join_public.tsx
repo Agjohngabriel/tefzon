@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import Router from "next/router";
 import { useState, useEffect } from "react";
 import MainLayout from "../../../components/MainLayout";
@@ -122,7 +123,7 @@ const JoinPublic = () => {
                 Join public league
               </h1>
               <p className="text-xs text-[#808080]  w-4/6 ">
-              Play in public leagues and compete with other fans at Tefzon
+                Play in public leagues and compete with other fans at Tefzon
               </p>
               {error === true && (
                 <div className="bg-red-800 w-1/2 text-center rounded shadow-md">
@@ -136,8 +137,6 @@ const JoinPublic = () => {
                   <h1 className=" text-lg py-2 text-black-150  ">{message}</h1>
                 </div>
               )}
-
-             
             </div>
           </div>
           <div className="flex font-inter">
@@ -207,15 +206,25 @@ const JoinPublic = () => {
                         <td className="p-1 text-center text-sm text-[#222222CC]">
                           {item.created_at}
                         </td>
-                        <td className="p-1 text-center text-sm text-[#222222CC]">
-                          <button
+                        <td className="p-4 text-center text-sm text-[#222222CC]">
+                          {/* <button
                             onClick={() =>
                               joinLeague({ id: item.id, code: item.code })
                             }
                             className="flex-no-shrink border border-[#6E4BEC] px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider  text-[#6E4BEC] rounded-lg"
                           >
                             Join League
-                          </button>
+                          </button> */}
+                          <Link
+                            href={{
+                              pathname: "/home/leagues/details",
+                              query: { id: item.id },
+                            }}
+                          >
+                            <a className="flex-no-shrink border border-[#6E4BEC] px-5 ml-4 py-2  text-sm shadow-sm hover:shadow-lg font-medium tracking-wider  text-[#6E4BEC] rounded-lg">
+                              Join League
+                            </a>
+                          </Link>
                         </td>
                       </tr>
                     ))}

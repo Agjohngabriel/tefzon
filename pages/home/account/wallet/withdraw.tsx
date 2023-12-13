@@ -4,6 +4,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import MainLayout from "../../../../components/MainLayout";
 
+interface Transaction {
+  detail: string;
+  type: string;
+  created_at: string;
+  amount: number;
+}
+
 const WalletWithdraw = () => {
   const { data: session }: any = useSession();
   // const [account, setAccount] = useState({
@@ -11,6 +18,7 @@ const WalletWithdraw = () => {
   // });
   const [isLoading, setIsLoading] = useState(false);
   const [details, setDetails] = useState([]);
+  const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     if (session) {
@@ -34,6 +42,27 @@ const WalletWithdraw = () => {
         setDetails(DetailsFromApi.data);
       };
       getDetails();
+
+      const fetchTransactions = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/get-transaction-history`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await respo.data;
+        setIsLoading(false);
+        return response;
+      };
+      const getTransactions = async () => {
+        const TransactionsFromApi = await fetchTransactions();
+        setTransactions(TransactionsFromApi.data);
+      };
+      getTransactions();
     }
   }, [session]);
 
@@ -160,6 +189,14 @@ const WalletWithdraw = () => {
                 </div>
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
                   <label className="font-arcon text-black-150 opacity-60 text-xs mb-2 ml-1">
+                    Account Name
+                  </label>
+                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                    <input className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700" />{" "}
+                  </div>
+                </div>
+                <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                  <label className="font-arcon text-black-150 opacity-60 text-xs mb-2 ml-1">
                     Account number
                   </label>
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -169,13 +206,10 @@ const WalletWithdraw = () => {
 
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
                   <label className="font-arcon text-black-150 opacity-60 text-xs mb-2 ml-1">
-                    Amount
+                    Bank Code
                   </label>
 
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <span className="font-arcon text-black-150 opacity-100 pl-2">
-                      (₦)
-                    </span>
                     <input className="px-2 appearance-none outline-none w-full text-sm text-gray-700 py-1" />{" "}
                   </div>
                 </div>
@@ -189,7 +223,7 @@ const WalletWithdraw = () => {
 										transition"
                   >
                     <div className="font-sans text-sm font-semibold px-10">
-                      Withdraw Money
+                     Submit
                     </div>
                   </button>
                 </div>
@@ -224,98 +258,31 @@ const WalletWithdraw = () => {
                     <div className="flex-none sm:flex">
                       <div className="flex-auto justify-evenly">
                         <div className="border-b border-dashed border-b-2 my-3"></div>
+
                         {/* Transaction History */}
-                        <div className="details">
-                          <div className="flex items-center py-1 px-2 text-sm">
-                            <div className="flex flex-col">
-                              <span className="text-sm">Deposit</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" ">To: Tefzone wallet</span>
-                              </div>
-                            </div>
-                            <div className="flex flex-col ml-auto text-right">
-                              <span className="text-sm">₦5,000</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" "> 10/08/2021</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="border-b border-dashed border-b-2 my-1 ">
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
-                          </div>
-                        </div>
 
-                        <div className="details">
-                          <div className="flex items-center py-1 px-2 text-sm">
-                            <div className="flex flex-col">
-                              <span className="text-sm">Deposit</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" ">To: Tefzone wallet</span>
+                        {transactions.map((item: Transaction, index) => (
+                          <div key={index} className="details">
+                            <div className="flex items-center py-1 px-2 text-sm">
+                              <div className="flex flex-col">
+                                <span className="text-sm">{item.type}</span>
+                                <div className="flex-auto text-xs text-gray-400 my-1">
+                                  <span className=" ">To: {item.detail}</span>
+                                </div>
+                              </div>
+                              <div className="flex flex-col ml-auto text-right">
+                                <span className="text-sm">₦{item.amount}</span>
+                                <div className="flex-auto text-xs text-gray-400 my-1">
+                                  <span className=" "> {item.created_at}</span>
+                                </div>
                               </div>
                             </div>
-                            <div className="flex flex-col ml-auto text-right">
-                              <span className="text-sm">₦5,000</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" "> 10/08/2021</span>
-                              </div>
+                            <div className="border-b border-dashed border-b-2 my-1 ">
+                              <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
+                              <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
                             </div>
                           </div>
-                          <div className="border-b border-dashed border-b-2 my-1 ">
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
-                          </div>
-                        </div>
-                        <div className="details">
-                          <div className="flex items-center py-1 px-2 text-sm">
-                            <div className="flex flex-col">
-                              <span className="text-sm">Deposit</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" ">To: Tefzone wallet</span>
-                              </div>
-                            </div>
-                            <div className="flex flex-col ml-auto text-right">
-                              <span className="text-sm">₦5,000</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" "> 10/08/2021</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="border-b border-dashed border-b-2 my-1 ">
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
-                          </div>
-                        </div>
-                        <div className="details">
-                          <div className="flex items-center py-1 px-2 text-sm">
-                            <div className="flex flex-col">
-                              <span className="text-sm">Deposit</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" ">To: Tefzone wallet</span>
-                              </div>
-                            </div>
-                            <div className="flex flex-col ml-auto text-right">
-                              <span className="text-sm">₦5,000</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" "> 10/08/2021</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="border-b border-dashed border-b-2 my-1 ">
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
-                          </div>
-                        </div>
-
-                        <button
-                          type="button"
-                          className="flex items-center text-[#4D44B5] text-md font-medium font-montserrat rounded  py-5 focus:outline-none"
-                        >
-                          Load more
-                          <span className="ml-2 material-icons hover:text-blue-500">
-                            arrow_forward
-                          </span>
-                        </button>
+                        ))}
                       </div>
                     </div>
                   </div>
