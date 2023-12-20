@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { Loader } from "../../../../components/base/Loader";
+import Router from "next/router";
 
 interface Players {
   display_name: string;
@@ -15,15 +16,26 @@ interface Players {
   player_position: string;
   team: string;
   player_name: string;
+  team_short_code: string;
+}
+
+interface LiveLeague {
+  id: number;
+  player_id: number;
+  name: string;
+  current_season_id: string;
 }
 
 const SquadSelection = () => {
-  const [openTab, setOpenTab] = useState(1);
-  const [name, setName] = useState("");
+  const [dropDown1, setDropDown1] = useState(false);
+  const [league, setLeague] = useState("All League");
   const [players, setPlayers] = useState([]);
+  const [leagues, setLeagues] = useState([]);
+  const [clubs, setClubs] = useState([]);
   const { data: session }: any = useSession();
   const [isFetching, setIsFetching] = useState(0);
   const [message, setMessage] = useState("");
+  const [seasonId, setSeasonId] = useState("");
   const [teams, setTeams] = useState([]);
   const [isLoading, setLoading] = useState(0);
   const [error, setError] = useState(false);
@@ -31,11 +43,31 @@ const SquadSelection = () => {
     message: "",
   });
 
+  const fetchClubs = async (seasonId: String) => {
+    setLoading(1);
+    setIsFetching(1);
+    const res = await axios.get(
+      `${process.env.SPORTS_URL}/teams/seasons/${seasonId}?api_token=${process.env.SPORTS_APIKEY}`,
+      {
+        headers: {
+          Authorization: `Bearer ${session?.data.data.token}`,
+          "content-type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    const response = await res.data.data;
+    console.log(response);
+    setClubs(response);
+    setIsFetching(0);
+    setLoading(0);
+  };
+
   const fetchByPos = async (id: number) => {
     setLoading(1);
     setIsFetching(1);
     const res = await axios.get(
-      `${process.env.BACKEND_URL}/get/all/players/${id}`,
+      `${process.env.BACKEND_URL}/get/all/players/season/${seasonId}/team/:team_id/players/${id}`,
       {
         headers: {
           Authorization: `Bearer ${session?.data.data.token}`,
@@ -43,7 +75,7 @@ const SquadSelection = () => {
         },
       }
     );
-    const response = await res.data;
+    const response = await res.data.data;
     console.log(response);
     setPlayers(response);
     setIsFetching(0);
@@ -62,7 +94,7 @@ const SquadSelection = () => {
         },
       }
     );
-    const response = await res.data;
+    const response = await res.data.data;
     console.log(response);
     setPlayers(response);
     setIsFetching(0);
@@ -83,6 +115,7 @@ const SquadSelection = () => {
     setTeams([]);
     setLoading(0);
   };
+
   const autoComplete = async () => {
     try {
       setLoading(1);
@@ -96,7 +129,7 @@ const SquadSelection = () => {
           },
         }
       );
-      const response = await res.data;
+      const response = await res.data.data;
       setMessage(response.message);
       setError(false);
       getFavourites();
@@ -110,6 +143,7 @@ const SquadSelection = () => {
       setErrorMsg(errorMessage);
     }
   };
+
   const addToSquad = async (id: number) => {
     try {
       setLoading(1);
@@ -150,7 +184,7 @@ const SquadSelection = () => {
             "content-type": "application/json",
           },
         });
-        const response = await res.data;
+        const response = await res.data.data;
         return response.subs;
       };
 
@@ -162,24 +196,29 @@ const SquadSelection = () => {
     }
   }, [session]);
 
-  // useEffect(() => {
-  //   const fetchAll = async () => {
-  //     const res = await axios.get(`${process.env.BACKEND_URL}/get/team/squad/18369/53`, {
-  //       headers: {
-  //         Authorization: `Bearer ${session?.data.data.token}`,
-  //         "content-type": "application/json",
-  //       },
-  //     });
-  //     const response = await res.data;
-  //     return response.subs;
-  //   };
+  useEffect(() => {
+    if (session) {
+      const fetchAllLeague = async () => {
+        const res = await axios.get(
+          `${process.env.BACKEND_URL}/get/leagues/live`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await res.data;
+        return response.data;
+      };
 
-  //   const getFavourites = async () => {
-  //     const FavouritesFromApi = await fetchAll();
-  //     setTeams(FavouritesFromApi);
-  //   };
-  //   getFavourites();
-  // }, [session]);
+      const getFetchAllLeague = async () => {
+        const LeaguesFromApi = await fetchAllLeague();
+        setLeagues(LeaguesFromApi);
+      };
+      getFetchAllLeague();
+    }
+  }, [session]);
 
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad   `, {
@@ -188,7 +227,7 @@ const SquadSelection = () => {
         "content-type": "application/json",
       },
     });
-    const response = await res.data;
+    const response = await res.data.data;
     return response.subs;
   };
 
@@ -198,7 +237,10 @@ const SquadSelection = () => {
     console.log(teams);
   };
 
-  // const [openTab, setOpenTab] = useState(1);
+  const goToSelectCaptain = () => {
+    Router.push("/home/account/squad/select_captain");
+  };
+
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
@@ -210,19 +252,21 @@ const SquadSelection = () => {
         </div>
         <div className="items-center flex-grow block mx-7 sm:w-full md:flex md:justify-end md:w-auto">
           <div>
-            <Link href="/home/account/squad/starting">
-              <a
-                className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
+            <button
+              onClick={() => {
+                
+                goToSelectCaptain;
+              }}
+              className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
                                     bg-[#795DE0] text-gray-200
                                     duration-200 ease-in-out 
                                     transition"
-              >
-                <span className="text-sm font-montserrat text-black-150">
-                  Next
-                </span>
-              </a>
-            </Link>
+            >
+              <span className="text-sm font-montserrat text-black-150">
+                Next
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -238,7 +282,7 @@ const SquadSelection = () => {
         <div className="items-center flex-grow block sm:w-full md:flex md:justify-end md:w-auto">
           <div>
             <button
-              onClick={autoComplete}
+              // onClick={autoComplete}
               className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-3   cursor-pointer                                 
                                 hover:bg-blue-500 
                                 text-white/80 border border-[#E3EBFA]
@@ -252,7 +296,7 @@ const SquadSelection = () => {
           </div>
           <div>
             <button
-              onClick={clear}
+              // onClick={clear}
               className="flex justify-center px-6 py-3 ml-5 transition duration-200 ease-in-out cursor-pointer hover:scale-110 focus:outline-none hover:bg-white/20  text-white/50"
             >
               <div className="text-sm text-white font-arcon">Clear Team</div>
@@ -288,7 +332,7 @@ const SquadSelection = () => {
                 <div className="relative flex flex-col w-full min-w-0 break-words rounded">
                   <div className="flex-auto px-4">
                     <div className="tab-content tab-space">
-                      <div className="flex py-10 mx-32">
+                      <div className="flex py-6 mx-32">
                         {teams
                           .filter(
                             (e: Players) => e.player_position === "GoalKeeper"
@@ -320,21 +364,31 @@ const SquadSelection = () => {
                                     />
                                   </svg>
                                 </div> */}
-                              <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                <div className=" h-24 w-20 rounded-full mx-auto">
-                                  <img
-                                    className="rounded-full object-cover object-center"
-                                    src={item.image_path}
-                                    alt={item.player_name}
-                                    title={item.player_name}
-                                  />
+                              <div className="mt-[3rem] ">
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-
-                              <div>
-                                <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name.split(" ", 1)}
-                                </h1>
+                              <div className="w-full mx-auto mb-1">
+                                <p
+                                  tabIndex={0}
+                                  className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                                >
+                                  {item.player_name}
+                                </p>
+                                <p
+                                  tabIndex={0}
+                                  className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
+                                >
+                                  {item.team_short_code}
+                                </p>
                               </div>
                             </div>
                           ))}
@@ -350,21 +404,31 @@ const SquadSelection = () => {
                               key={position_id}
                               className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                             >
-                              <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                <div className=" h-24 w-20 rounded-full mx-auto">
-                                  <img
-                                    className="rounded-full object-cover object-center"
-                                    src={item.image_path}
-                                    alt={item.player_name}
-                                    title={item.player_name}
-                                  />
+                              <div className="mt-[3rem] ">
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-
-                              <div>
-                                <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name.split(" ", 1)}
-                                </h1>
+                              <div className="w-full mx-auto mb-1">
+                                <p
+                                  tabIndex={0}
+                                  className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                                >
+                                  {item.player_name}
+                                </p>
+                                <p
+                                  tabIndex={0}
+                                  className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
+                                >
+                                  {item.team_short_code}
+                                </p>
                               </div>
                             </div>
                           ))}
@@ -380,27 +444,37 @@ const SquadSelection = () => {
                               key={position_id}
                               className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                             >
-                              <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                <div className=" h-24 w-20 rounded-full mx-auto">
-                                  <img
-                                    className="rounded-full object-cover object-center"
-                                    src={item.image_path}
-                                    alt={item.player_name}
-                                    title={item.player_name}
-                                  />
+                              <div className="mt-[2rem] ">
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-
-                              <div>
-                                <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name.split(" ", 1)}
-                                </h1>
+                              <div className="w-full mx-auto mb-1">
+                                <p
+                                  tabIndex={0}
+                                  className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                                >
+                                  {item.player_name}
+                                </p>
+                                <p
+                                  tabIndex={0}
+                                  className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
+                                >
+                                  {item.team_short_code}
+                                </p>
                               </div>
                             </div>
                           ))}
                       </div>
 
-                      <div className="flex py-10 mx-auto">
+                      <div className="flex py-16 mx-auto">
                         {teams
                           .filter(
                             (e: Players) => e.player_position === "Forward"
@@ -410,21 +484,31 @@ const SquadSelection = () => {
                               key={position_id}
                               className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                             >
-                              <div className="mt-[2rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                                <div className=" h-24 w-20 rounded-full mx-auto">
-                                  <img
-                                    className="rounded-full object-cover object-center"
-                                    src={item.image_path}
-                                    alt={item.player_name}
-                                    title={item.player_name}
-                                  />
+                              <div className="mt-[2rem] ">
+                                <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
+                                  <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
+                                    <img
+                                      className="rounded-full object-cover object-center"
+                                      src={item.image_path}
+                                      alt={item.player_name}
+                                      title={item.player_name}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-
-                              <div>
-                                <h1 className="focus:outline-none text-center text-[.65rem] sm:text-xs font-arcon py-1 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A]">
-                                  {item.player_name.split(" ", 1)}
-                                </h1>
+                              <div className="w-full mx-auto mb-1">
+                                <p
+                                  tabIndex={0}
+                                  className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                                >
+                                  {item.player_name}
+                                </p>
+                                <p
+                                  tabIndex={0}
+                                  className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
+                                >
+                                  {item.team_short_code}
+                                </p>
                               </div>
                             </div>
                           ))}
@@ -436,7 +520,7 @@ const SquadSelection = () => {
             </div>
           </div>
 
-          <div className="container w-auto max-w-sm px-1 mt-10 mb-20 shadow-indigo-500/50 md:w-3/5 sm:ml-5 xl:ml-8 lg:px-5">
+          <div className="container w-auto max-w-sm px-1 mt-10 mb-20 shadow-indigo-500/50 md:w-3/5 sm:ml-5  lg:px-5">
             <div className="px-1">
               <div className="w-full px-2 py-5 pb-10 bg-gray-100 border rounded-sm shadow-xl lg:p-5 ">
                 <div className="max-w-md mx-auto overflow-hidden md:max-w-xl">
@@ -446,9 +530,9 @@ const SquadSelection = () => {
                         <input
                           className="w-full h-10 px-2  mr-3 text-xs bg-white font-arcon focus:outline-none hover:cursor-pointer"
                           name="search"
-                          onChange={() => fetchByName(name)}
-                          value={name}
-                          onInput={(e) => setName(e.currentTarget.value)}
+                          // onChange={() => fetchByName(name)}
+                          // value={name}
+                          // onInput={(e) => setName(e.currentTarget.value)}
                           placeholder="Search"
                         />
 
@@ -469,7 +553,7 @@ const SquadSelection = () => {
                 <div className="flex py-7 mx-auto md:flex-row ">
                   <div className="flex-1 svelte-1l8159u">
                     <button
-                      onClick={() => fetchByPos(1)}
+                      onClick={() => fetchByPos(24)}
                       className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
                       <div className="text-sm font-arcon">GK</div>
@@ -477,7 +561,7 @@ const SquadSelection = () => {
                   </div>
                   <div className="flex-1 svelte-1l8159u">
                     <button
-                      onClick={() => fetchByPos(2)}
+                      onClick={() => fetchByPos(25)}
                       className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
                       <div className="text-sm font-arcon">DEF</div>
@@ -486,7 +570,7 @@ const SquadSelection = () => {
 
                   <div className="flex-1 w-full svelte-1l8159u">
                     <button
-                      onClick={() => fetchByPos(3)}
+                      onClick={() => fetchByPos(26)}
                       className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
                       <div className="text-sm font-arcon">MID</div>
@@ -495,7 +579,7 @@ const SquadSelection = () => {
 
                   <div className="flex-1 w-full svelte-1l8159u">
                     <button
-                      onClick={() => fetchByPos(4)}
+                      onClick={() => fetchByPos(27)}
                       className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
                       <div className="text-sm font-arcon">FWD</div>
@@ -504,30 +588,107 @@ const SquadSelection = () => {
                 </div>
 
                 <div className="flex flex-col md:flex-row gap-1">
-                  <div className="flex-1 w-full svelte-1l8159u">
-                    <label className="mb-2 ml-1 text-sm text-gray-600 font-arcon">
-                      Club
-                    </label>
-                    <div className="flex p-1 my-2   rounded svelte-1l8159u">
-                      <select className="form-select bg-white w-full px-1 py-3 mb-2 border border-gray-100 rounded-md focus:outline-none focus:border-indigo-500  text-gray-400 transition-colors cursor-pointer">
-                        <option value="">Arsenal FC</option>
-                        <option value="">Barcelona </option>
-                        <option value="">Chelsea</option>
-                        <option value="">PSG</option>
-                      </select>
+                  <div className="flex-1 w-full  svelte-1l8159u">
+                    <h1 className=" text-base text-gray-600 ">League</h1>
+
+                    <div className="relative inline-block group  my-2 w-full">
+                      <button
+                        type="button"
+                        // className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-100 py-2.5"
+                        className="flex items-center justify-between w-full px-2 py-3 text-xs font-regular text-gray-400 transition-colors cursor-pointer bg-white border border-gray-100 rounded-md shadow-sm text-left"
+                      >
+                        {league}
+                        <svg
+                          className="h-5 w-5 flex-none text-gray-400"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                      {/* <!-- Dropdown menu --> */}
+
+                      <div className=" hidden group-hover:block absolute lg:-right-7 z-[100] lg:w-48 font-[Lato] p-2  origin-top-right bg-white rounded-md shadow-xl">
+                        <input
+                          id="search-input"
+                          className="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none"
+                          type="text"
+                          placeholder="Search items"
+                          autoComplete="off"
+                        />
+                        <div className=" h-[12rem] overflow-hidden overflow-y-auto scrollbar-hide">
+                          {leagues.map((item: LiveLeague) => (
+                            <button
+                              key={item.id}
+                              onClick={() => {
+                                setLeague(item.name);
+                                setSeasonId(item.current_season_id);
+                                const seasonId = item.current_season_id;
+                                fetchClubs(seasonId);
+                              }}
+                              className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
+                            >
+                              {item.name}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="flex-1 w-full  svelte-1l8159u">
-                    <label className=" text-sm text-gray-600 font-arcon">
-                      Country
-                    </label>
-                    <div className="flex p-1 my-2 rounded svelte-1l8159u">
-                      <select className="form-select bg-white w-full px-1 py-3 mb-2 border border-gray-100 rounded-md focus:outline-none focus:border-indigo-500  text-gray-400 transition-colors cursor-pointer">
-                        <option value="">England</option>
-                        <option value="02">France</option>
-                        <option value="02">Belgium </option>
-                        <option value="02">Netherlands </option>
-                      </select>
+                    <h1 className=" text-base text-gray-600 "> Club</h1>
+
+                    <div className="relative inline-block group  my-2 w-full">
+                      <button
+                        type="button"
+                        // className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-100 py-2.5"
+                        className="flex items-center justify-between w-full px-2 py-3 text-xs font-regular text-gray-400 transition-colors cursor-pointer bg-white border border-gray-100 rounded-md shadow-sm text-left"
+                      >
+                        {clubs}
+                        <svg
+                          className="h-5 w-5 flex-none text-gray-400"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                      {/* <!-- Dropdown menu --> */}
+
+                      <div className=" hidden group-hover:block absolute lg:-right-7 z-[100] lg:w-48 font-[Lato] p-2  origin-top-right bg-white rounded-md shadow-xl">
+                        <input
+                          id="search-input"
+                          className="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none"
+                          type="text"
+                          placeholder="Search items"
+                          autoComplete="off"
+                        />
+                        <div className=" h-[12rem] overflow-hidden overflow-y-auto scrollbar-hide">
+                          {clubs.map((item: LiveLeague) => (
+                            <button
+                              key={item.id}
+                              onClick={() => {
+                                setLeague(item.name);
+                                const seasonId = item.current_season_id;
+                                fetchClubs(seasonId);
+                              }}
+                              className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
+                            >
+                              {item.name}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -20,6 +20,7 @@ interface Players {
   is_captain: boolean;
   is_vice_captain: boolean;
 }
+
 const SelectVice = () => {
   const [openTab, setOpenTab] = useState(1);
   const [message, setMessage] = useState("");
@@ -64,6 +65,7 @@ const SelectVice = () => {
       setErrorMsg(errorMessage);
     }
   };
+
   useEffect(() => {
     if (session) {
       const fetchAll = async () => {
@@ -85,6 +87,7 @@ const SelectVice = () => {
       getFavourites();
     }
   }, [session]);
+  
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {

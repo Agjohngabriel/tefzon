@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MainLayout from "../../../../components/MainLayout";
-import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import Swal from "sweetalert2";
 
 interface Config {
   public_key: string;
@@ -22,35 +22,21 @@ interface Config {
     logo: string;
   };
 }
+
+interface Transaction {
+  detail: string;
+  type: string;
+  created_at: string;
+  amount: number;
+}
+
 const Fund = () => {
   const { data: session }: any = useSession();
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [details, setDetails] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   const [amount, setAmount] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-
-  const config = {
-    public_key: "FLWPUBK-20bc86a58e3cf35f497d634bc7b91c24-X",
-    tx_ref: Date.now(),
-    amount: amount,
-    currency: "NGN",
-    payment_options: "card,mobilemoney,ussd",
-    customer: {
-      email: email,
-      phone_number: phone,
-      name: name,
-    },
-    customizations: {
-      title: "Fund Wallet",
-      description: "Fund your tefzon wallet",
-      logo: "https://tefzon.com/brand.png",
-    },
-  };
-
-  const handleFlutterPayment = useFlutterwave(config as any);
 
   useEffect(() => {
     if (session) {
@@ -74,8 +60,62 @@ const Fund = () => {
         setDetails(DetailsFromApi.data);
       };
       getDetails();
+
+      const fetchTransactions = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/get-transaction-history`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await respo.data;
+        setIsLoading(false);
+        return response;
+      };
+      const getTransactions = async () => {
+        const TransactionsFromApi = await fetchTransactions();
+        setTransactions(TransactionsFromApi.data);
+      };
+      getTransactions();
     }
   }, [session]);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(false);
+
+  async function handlePayment(e: React.SyntheticEvent) {
+    e.preventDefault();
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true);
+
+    try {
+      const res = await axios.post(`${process.env.BACKEND_URL}/pay`, amount, {
+        headers: {
+          Authorization: `Bearer ${session?.data.data.token}`,
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+      });
+
+      setIsSubmitting(false);
+      // console.log(res.data.status);
+      window.location.href = `${res.data.link}`;
+    } catch (e: any) {
+      setIsSubmitting(false);
+      const errorMessage = e.response.data.errors;
+      Swal.fire({
+        title: `${errorMessage}`,
+      });
+      console.log(errorMessage);
+      setError(true);
+    }
+  }
 
   return (
     <MainLayout>
@@ -180,7 +220,7 @@ const Fund = () => {
                 </div>
               </div>
 
-              <div className="lg:w-2/3 md:w-4/5 pt-2">
+              <form onSubmit={handlePayment} className="lg:w-2/3 md:w-4/5 pt-2">
                 <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
                   <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
                     Amount
@@ -197,59 +237,9 @@ const Fund = () => {
                   </div>
                 </div>
 
-                <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
-                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
-                    Email
-                  </label>
-                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <input
-                      value={email}
-                      onInput={(e) => setEmail(e.currentTarget.value)}
-                      required
-                      className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700"
-                    />{" "}
-                  </div>
-                </div>
-
-                <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
-                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
-                    Name
-                  </label>
-                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <input
-                      value={name}
-                      onInput={(e) => setName(e.currentTarget.value)}
-                      required
-                      className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700"
-                    />{" "}
-                  </div>
-                </div>
-
-                <div className="w-full xl:mx-2 flex-1 svelte-1l8159u">
-                  <label className="text-black-150 opacity-60 font-arcon text-xs mb-2 ml-1">
-                    Phone Number
-                  </label>
-                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <input
-                      value={phone}
-                      onInput={(e) => setPhone(e.currentTarget.value)}
-                      required
-                      className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700"
-                    />{" "}
-                  </div>
-                </div>
-
                 <div className="w-full mx-2  py-5 flex-1 svelte-1l8159u">
                   <button
-                    onClick={() =>
-                      handleFlutterPayment({
-                        callback: (response) => {
-                          console.log(response);
-                          closePaymentModal();
-                        },
-                        onClose: () => {},
-                      })
-                    }
+                    type="submit"
                     className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center sm:w-full py-2 rounded font-bold cursor-pointer 
                                 opacity-50
 										hover:bg-blue-500 
@@ -262,7 +252,7 @@ const Fund = () => {
                     </div>
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
 
@@ -296,97 +286,28 @@ const Fund = () => {
                       <div className="flex-auto justify-evenly">
                         <div className="border-b border-dashed border-b-2 my-3"></div>
                         {/* Transaction History */}
-                        <div className="details">
-                          <div className="flex items-center py-1 px-2 text-sm">
-                            <div className="flex flex-col">
-                              <span className="text-sm">Deposit</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" ">To: Tefzone wallet</span>
+                        {transactions.map((item: Transaction, index) => (
+                          <div key={index} className="details">
+                            <div className="flex items-center py-1 px-2 text-sm">
+                              <div className="flex flex-col">
+                                <span className="text-sm">{item.type}</span>
+                                <div className="flex-auto text-xs text-gray-400 my-1">
+                                  <span className=" ">To: {item.detail}</span>
+                                </div>
+                              </div>
+                              <div className="flex flex-col ml-auto text-right">
+                                <span className="text-sm">₦{item.amount}</span>
+                                <div className="flex-auto text-xs text-gray-400 my-1">
+                                  <span className=" "> {item.created_at}</span>
+                                </div>
                               </div>
                             </div>
-                            <div className="flex flex-col ml-auto text-right">
-                              <span className="text-sm">₦5,000</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" "> 10/08/2021</span>
-                              </div>
+                            <div className="border-b border-dashed border-b-2 my-1 ">
+                              <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
+                              <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
                             </div>
                           </div>
-                          <div className="border-b border-dashed border-b-2 my-1 ">
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
-                          </div>
-                        </div>
-
-                        <div className="details">
-                          <div className="flex items-center py-1 px-2 text-sm">
-                            <div className="flex flex-col">
-                              <span className="text-sm">Deposit</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" ">To: Tefzone wallet</span>
-                              </div>
-                            </div>
-                            <div className="flex flex-col ml-auto text-right">
-                              <span className="text-sm">₦5,000</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" "> 10/08/2021</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="border-b border-dashed border-b-2 my-1 ">
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
-                          </div>
-                        </div>
-                        <div className="details">
-                          <div className="flex items-center py-1 px-2 text-sm">
-                            <div className="flex flex-col">
-                              <span className="text-sm">Deposit</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" ">To: Tefzone wallet</span>
-                              </div>
-                            </div>
-                            <div className="flex flex-col ml-auto text-right">
-                              <span className="text-sm">₦5,000</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" "> 10/08/2021</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="border-b border-dashed border-b-2 my-1 ">
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
-                          </div>
-                        </div>
-                        <div className="details">
-                          <div className="flex items-center py-1 px-2 text-sm">
-                            <div className="flex flex-col">
-                              <span className="text-sm">Deposit</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" ">To: Tefzone wallet</span>
-                              </div>
-                            </div>
-                            <div className="flex flex-col ml-auto text-right">
-                              <span className="text-sm">₦5,000</span>
-                              <div className="flex-auto text-xs text-gray-400 my-1">
-                                <span className=" "> 10/08/2021</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="border-b border-dashed border-b-2 my-1 ">
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -left-1.5"></div>
-                            <div className="absolute rounded-full w-3 h-3 bg-blue-900 -mt-1 -right-1.5"></div>
-                          </div>
-                        </div>
-
-                        <button
-                          type="button"
-                          className="flex items-center text-[#4D44B5] text-md font-medium font-montserrat rounded  py-5 focus:outline-none"
-                        >
-                          Load more
-                          <span className="ml-2 material-icons hover:text-blue-500">
-                            arrow_forward
-                          </span>
-                        </button>
+                        ))}
                       </div>
                     </div>
                   </div>

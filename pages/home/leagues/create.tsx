@@ -5,21 +5,23 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 
 const CreateLeague = () => {
   const { data: session }: any = useSession();
   const [name, setName] = useState("");
   const [type, setType] = useState("");
-  const [duration, setDuration] = useState("");
   const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
   const [fee, setFee] = useState("");
   const [winner, setWinner] = useState("");
-  const [entry, setEntry] = useState("");
+  const [enabled, setEnabled] = useState(false);
   const [pat, setPat] = useState("");
   const [error, setError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const MySwal = withReactContent(Swal);
 
+  const router = useRouter()
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     if (isSubmitting) {
@@ -33,11 +35,11 @@ const CreateLeague = () => {
           name: name,
           participants: pat,
           type: type,
-          duration: duration,
           start: start,
+          end: end,
           entry_fee: fee,
           winner_type: winner,
-          entry_type: entry,
+          allow_view_participants: enabled,
         },
         {
           headers: {
@@ -55,7 +57,7 @@ const CreateLeague = () => {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            // router.push('/account/auth/login')
+            router.push('/home/leagues')
           }
         });
       }
@@ -125,52 +127,58 @@ const CreateLeague = () => {
                 <h1 className="font-montserrat text-xl sm:text-3xl text-black-150 w-4/6 ">
                   Create a League
                 </h1>
-                <p className="font-arcon text-sm text-[#222222]/60  sm:w-5/6">
+                <p className="font-inter text-sm text-[#222222]/60  sm:w-5/6">
                   Please type carefully and fill out the form with Personal
                   details. You can't edit these details once you submit the
                   form.
                 </p>
               </div>
 
+              {error === true && (
+                <div className="bg-red-800 w-1/2 text-center rounded shadow-md">
+                  <h1 className="font-montserrat text-lg py-2 text-black-150  ">
+                    {error}
+                  </h1>
+                </div>
+              )}
+
               <div className="mt-8 p-1">
                 <div>
                   <div className="flex flex-col md:flex-row">
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
                         League type
                       </label>
-                      <div className="font-arcon bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                      <div className="font-inter bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                         <select
                           onChange={(e) => setType(e.currentTarget.value)}
                           required
-                          className="font-arcon fill-white form-select w-full px-3 py-2  bg-white  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                          className="font-inter fill-white form-select w-full px-3 py-2  bg-white  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
                         >
-                          <option value="public">Public</option>
-                          <option value="private">Private</option>
+                          <option value="0">Public</option>
+                          <option value="1">Private</option>
                         </select>
                       </div>
                     </div>
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                        Entry Type
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                        Entry Fee (N)
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                        <select
-                          onChange={(e) => setEntry(e.currentTarget.value)}
+                        <input
+                          onInput={(e) => setFee(e.currentTarget.value)}
+                          name="fee"
+                          className="p-2 px-2 appearance-none outline-none w-full text-gray-700"
                           required
-                          className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
-                        >
-                          <option value="paid">Paid</option>
-                          <option value="free">Free</option>
-                        </select>
+                        />{" "}
                       </div>
                     </div>
                   </div>
 
                   <div className="flex flex-col md:flex-row pt-2">
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                        League title
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                        League Name
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                         <input
@@ -181,61 +189,23 @@ const CreateLeague = () => {
                         />{" "}
                       </div>
                     </div>
-
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                        Duration
-                      </label>
-                      <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                        <select
-                          onChange={(e) => setDuration(e.currentTarget.value)}
-                          name="duration"
-                          required
-                          className="form-select w-full px-3 py-2  bg-white rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
-                        >
-                          <option value="daily">Daily</option>
-                          <option value="weekly">Weekly</option>
-                          <option value="monthly">Monthly</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col md:flex-row pt-2">
-                    <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                        Amount
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                        No. of Players
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                         <input
-                          onInput={(e) => setFee(e.currentTarget.value)}
-                          name="entry_fee"
+                          name="pat"
+                          onInput={(e) => setPat(e.currentTarget.value)}
+                          required
                           className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
                         />{" "}
                       </div>
                     </div>
-
-                    <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                        Winning type
-                      </label>
-                      <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                        <select
-                          onChange={(e) => setWinner(e.currentTarget.value)}
-                          name="winner_type"
-                          className="form-select w-full px-3 py-2 bg-white  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
-                        >
-                          <option value="single">Single</option>
-                          <option value="double">Double</option>
-                          <option value="triple">Triple</option>
-                        </select>
-                      </div>
-                    </div>
                   </div>
-
                   <div className="flex flex-col md:flex-row pt-2">
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
                         Start Date
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -244,36 +214,85 @@ const CreateLeague = () => {
                           name="start"
                           type="date"
                           className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                          required
                         />{" "}
                       </div>
                     </div>
-
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-arcon text-[#222222]/60 text-sm mb-2 ml-1">
-                        Participants
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                        End Date
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                         <input
-                          onInput={(e) => setPat(e.currentTarget.value)}
-                          name="participants"
-                          type="number"
+                          onInput={(e) => setEnd(e.currentTarget.value)}
+                          name="end"
+                          type="date"
                           className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
+                          required
                         />{" "}
                       </div>
                     </div>
                   </div>
-                  <div className="w-full mx-auto  py-5 flex-1 svelte-1l8159u">
+
+                  <div className="flex flex-col md:flex-row pt-2">
+                    <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                        Winning type
+                      </label>
+                      <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                        <select
+                          onChange={(e) => setWinner(e.currentTarget.value)}
+                          name="winner_type"
+                          required
+                          className="form-select w-full px-3 py-2 bg-white  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                        >
+                          <option value="single">1 winner (1st - 100%)</option>
+                          <option value="double">
+                            2 winners (1st - 60%, 2nd - 40%)
+                          </option>
+                          <option value="triple">
+                            3 winners (1st - 60%, 2nd - 30%, 3rd - 10%)
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-x-2 items-center pt-2">
+                    <p className="font-inter text-xs text-[#222222]/60 ">
+                      Allow participants to view each other’s selected players
+                    </p>
+                    <div className="relative flex flex-col items-center justify-center overflow-hidden">
+                      <div className="flex">
+                        <label className="inline-flex relative items-center mr-3 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            className="sr-only peer"
+                            checked={enabled}
+                            readOnly
+                          />
+                          <div
+                            onClick={() => {
+                              setEnabled(!enabled);
+                            }}
+                            className="w-9 h-5 border border-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:bg-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-gray-300 after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#67D74B]"
+                          ></div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full  py-5 flex-1 svelte-1l8159u">
                     <button
                       type="submit"
-                      className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex mx-auto justify-center lg:px-28 py-2 rounded font-bold cursor-pointer 
+                      className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex  justify-center lg:px-28 py-4 rounded font-bold cursor-pointer 
                                 
 										hover:bg-blue-500 
 										bg-violet-500 text-gray-200
 										duration-200 ease-in-out 
 										transition"
                     >
-                      <div className="font-arcon text-xs font-medium px-10">
-                        {isSubmitting ? "Loading..." : "Create"}
+                      <div className="font-inter text-xs font-medium px-10">
+                        {isSubmitting ? "Loading..." : "Create Leauge"}
                       </div>
                     </button>
                   </div>

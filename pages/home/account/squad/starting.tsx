@@ -53,7 +53,7 @@ const Starting = () => {
         },
       }
     );
-    const response = await res.data;
+    const response = await res.data.data;
     setPlayers(response);
     console.log(players);
     setIsFetching(0);
@@ -98,7 +98,7 @@ const Starting = () => {
             "content-type": "application/json",
           },
         });
-        const response = await res.data;
+        const response = await res.data.data;
         console.log(response);
         return response;
       };
@@ -117,7 +117,7 @@ const Starting = () => {
         "content-type": "application/json",
       },
     });
-    const response = await res.data;
+    const response = await res.data.data;
     return response;
   };
 

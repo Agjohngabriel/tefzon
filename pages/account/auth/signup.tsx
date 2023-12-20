@@ -1,4 +1,4 @@
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Agreement } from "../../../components/form/Agreement";
 import PersonalDetails from "../../../components/form/PersonalDetails";
@@ -47,8 +47,6 @@ const Signup = () => {
       const errorMessage = e.response.data.errors;
       MySwal.fire({
         title: `${errorMessage}`,
-        confirmButtonText: "Proceed to Login",
-        showLoaderOnConfirm: true,
       });
       console.log(errorMessage);
 
@@ -226,7 +224,6 @@ const Signup = () => {
             </form>
           </div>
         </div>
-       
       </div>
     </GuestLayout>
   );
