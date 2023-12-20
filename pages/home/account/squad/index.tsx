@@ -17,6 +17,7 @@ interface Players {
   player_position: string;
   team: string;
   player_name: string;
+  team_short_code: string;
   starting: string;
   is_captain: boolean;
   is_vice_captain: boolean;
@@ -134,7 +135,7 @@ const SaveTeam = () => {
             "content-type": "application/json",
           },
         });
-        const response = await res.data;
+        const response = await res.data.data;
         return response;
       };
 
@@ -153,7 +154,7 @@ const SaveTeam = () => {
         "content-type": "application/json",
       },
     });
-    const response = await res.data;
+    const response = await res.data.data;
     return response;
   };
 
@@ -161,7 +162,7 @@ const SaveTeam = () => {
     const FavouritesFromApi = await fetchAll();
     setTeams(FavouritesFromApi);
   };
-
+  console.log(teams);
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
@@ -169,10 +170,10 @@ const SaveTeam = () => {
         <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
             <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
-              MY SQUAD
+              Your Squad
             </h1>
           </div>
-          <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
+          {/* <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
             <div>
               <Link href="/home">
                 <a
@@ -188,7 +189,7 @@ const SaveTeam = () => {
                 </a>
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-4 lg:mx-28" />
@@ -246,7 +247,7 @@ const SaveTeam = () => {
                   >
                     <div className="-mt-[3rem] ">
                       <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-24 w-24 rounded-full mx-auto">
+                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
                           <img
                             className="rounded-full object-cover object-center"
                             src={item.image_path}
@@ -256,13 +257,13 @@ const SaveTeam = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-full mx-auto -mt-1    mb-1">
+                    <div className="w-full mx-auto mb-1">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex text-center"
+                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
                       >
-                        {item.player_name.split(" ", 1)}
-                        <svg
+                        {item.player_name}
+                        {/* <svg
                           viewBox="0 0 53 51"
                           fill="none"
                           className=" h-2 sm:h-4 px-1 mx-auto z-0"
@@ -283,20 +284,20 @@ const SaveTeam = () => {
                             stroke="white"
                             strokeWidth="0.5"
                           />
-                        </svg>
+                        </svg> */}
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                        className="focus:outline-none text-[.65rem] text-center p-0.5  -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]"
                       >
-                        {item.rating}
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex   py-14 mx-auto sm:w-3/4">
+              <div className="flex   py-16 mx-auto sm:w-3/4">
                 {teams.defenders.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
@@ -306,7 +307,7 @@ const SaveTeam = () => {
                   >
                     <div className="-mt-[3rem] ">
                       <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-24 w-24 rounded-full mx-auto">
+                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
                           <img
                             className="rounded-full object-cover object-center"
                             src={item.image_path}
@@ -316,13 +317,13 @@ const SaveTeam = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-full mx-auto -mt-1    mb-1">
+                    <div className="w-full mx-auto mb-1">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex text-center"
+                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
                       >
-                        {item.player_name.split(" ", 1)}
-                        <svg
+                        {item.player_name}
+                        {/* <svg
                           viewBox="0 0 53 51"
                           fill="none"
                           className=" h-2 sm:h-4 px-1 mx-auto z-0"
@@ -343,20 +344,20 @@ const SaveTeam = () => {
                             stroke="white"
                             strokeWidth="0.5"
                           />
-                        </svg>
+                        </svg> */}
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                        className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
                       >
-                        {item.rating}
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex   py-12 sm:mx-auto -mx-3 sm:w-3/4">
+              <div className="flex   py-16 sm:mx-auto -mx-3 sm:w-3/4">
                 {teams.midfielders.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
@@ -366,7 +367,7 @@ const SaveTeam = () => {
                   >
                     <div className="-mt-[3rem] ">
                       <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-24 w-24 rounded-full mx-auto">
+                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
                           <img
                             className="rounded-full object-cover object-center"
                             src={item.image_path}
@@ -376,47 +377,47 @@ const SaveTeam = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-full mx-auto -mt-1    mb-1">
+                    <div className="w-full mx-auto mb-1">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex text-center"
+                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
                       >
-                        {item.player_name.split(" ", 1)}
-                        <svg
-                          viewBox="0 0 53 51"
-                          fill="none"
-                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={
-                              item.is_captain
-                                ? "#ff6c37"
-                                : item.is_vice_captain
-                                ? "#fdd663"
-                                : "#03A9F4"
-                            }
-                          />
-                          <path
-                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                            stroke="white"
-                            strokeWidth="0.5"
-                          />
-                        </svg>
+                        {item.player_name}
+                        {/* <svg
+                         viewBox="0 0 53 51"
+                         fill="none"
+                         className=" h-2 sm:h-4 px-1 mx-auto z-0"
+                         xmlns="http://www.w3.org/2000/svg"
+                       >
+                         <path
+                           d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
+                           fill={
+                             item.is_captain
+                               ? "#ff6c37"
+                               : item.is_vice_captain
+                               ? "#fdd663"
+                               : "#03A9F4"
+                           }
+                         />
+                         <path
+                           d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
+                           stroke="white"
+                           strokeWidth="0.5"
+                         />
+                       </svg> */}
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                        className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
                       >
-                        {item.rating}
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex   pt-12 mx-auto sm:w-3/4">
+              <div className="flex   pt-16 mx-auto sm:w-3/4">
                 {teams.forwards.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
@@ -426,7 +427,7 @@ const SaveTeam = () => {
                   >
                     <div className="-mt-[3rem] ">
                       <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-24 w-24 rounded-full mx-auto">
+                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
                           <img
                             className="rounded-full object-cover object-center"
                             src={item.image_path}
@@ -436,46 +437,46 @@ const SaveTeam = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-full mx-auto -mt-1    mb-1">
+                    <div className="w-full mx-auto mb-1">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex text-center"
+                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
                       >
-                        {item.player_name.split(" ", 1)}
-                        <svg
-                          viewBox="0 0 53 51"
-                          fill="none"
-                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={
-                              item.is_captain
-                                ? "#ff6c37"
-                                : item.is_vice_captain
-                                ? "#fdd663"
-                                : "#03A9F4"
-                            }
-                          />
-                          <path
-                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                            stroke="white"
-                            strokeWidth="0.5"
-                          />
-                        </svg>
+                        {item.player_name}
+                        {/* <svg
+                       viewBox="0 0 53 51"
+                       fill="none"
+                       className=" h-2 sm:h-4 px-1 mx-auto z-0"
+                       xmlns="http://www.w3.org/2000/svg"
+                     >
+                       <path
+                         d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
+                         fill={
+                           item.is_captain
+                             ? "#ff6c37"
+                             : item.is_vice_captain
+                             ? "#fdd663"
+                             : "#03A9F4"
+                         }
+                       />
+                       <path
+                         d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
+                         stroke="white"
+                         strokeWidth="0.5"
+                       />
+                     </svg> */}
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                        className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
                       >
-                        {item.rating}
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
-              <hr className="mt-6  rounded-lg border-b border-white mx-4 lg:mx-28" />
+              <hr className="mt-10  rounded-lg border-b border-white mx-4 lg:mx-28" />
               <p className="text-sm text-gray-100 font-arcon font-bold text-center  max-w-lg my-3 tracking-wider px-2 mx-auto lg:px-1 ">
                 Substitutions
               </p>
@@ -490,7 +491,7 @@ const SaveTeam = () => {
                   >
                     <div className="-mt-[3rem] ">
                       <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-24 w-24 rounded-full mx-auto">
+                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
                           <img
                             className="rounded-full object-cover object-center"
                             src={item.image_path}
@@ -500,40 +501,40 @@ const SaveTeam = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-full mx-auto -mt-1    mb-1">
+                    <div className="w-full mx-auto mb-1">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs font-arcon py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#33175A] flex text-center"
+                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
                       >
-                        {item.player_name.split(" ", 1)}
-                        <svg
-                          viewBox="0 0 53 51"
-                          fill="none"
-                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={
-                              item.is_captain
-                                ? "#ff6c37"
-                                : item.is_vice_captain
-                                ? "#fdd663"
-                                : "#03A9F4"
-                            }
-                          />
-                          <path
-                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                            stroke="white"
-                            strokeWidth="0.5"
-                          />
-                        </svg>
+                        {item.player_name}
+                        {/* <svg
+                         viewBox="0 0 53 51"
+                         fill="none"
+                         className=" h-2 sm:h-4 px-1 mx-auto z-0"
+                         xmlns="http://www.w3.org/2000/svg"
+                       >
+                         <path
+                           d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
+                           fill={
+                             item.is_captain
+                               ? "#ff6c37"
+                               : item.is_vice_captain
+                               ? "#fdd663"
+                               : "#03A9F4"
+                           }
+                         />
+                         <path
+                           d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
+                           stroke="white"
+                           strokeWidth="0.5"
+                         />
+                       </svg> */}
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]/100 bg-gradient-to-l from-[#6E4BEC7D]/50 via-[#F2F6FF]/50 to-[#6E4BEC7D]/50"
+                        className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
                       >
-                        {item.rating}
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
@@ -544,109 +545,124 @@ const SaveTeam = () => {
         </div>
       </form>
 
-      
-      {details && (
-      <div className="fixed inset-0 z-[150] overflow-y-auto bg-[#000000]/50 ">
-        <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-          <span className="hidden sm:inline-block sm:h-screen sm:align-middle">
-            &#8203;
-          </span>
+      {detail && (
+        <div className="fixed inset-0 z-[150] overflow-y-auto bg-[#000000]/50 ">
+          <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <span className="hidden sm:inline-block sm:h-screen sm:align-middle">
+              &#8203;
+            </span>
 
-          <div className="relative inline-block  pt-5 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  sm:my-8 w-full sm:max-w-lg sm:p-6 md:p-8 sm:align-middle">
-            <div className="flex items-end justify-end">
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  setDetail(false);
-                }}
-                type="button"
-                className="text-gray-900 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 mx-2 inline-flex items-center "
-                data-modal-toggle="default-modal"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+            <div className="relative inline-block  pt-5 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  sm:my-8 w-full sm:max-w-lg sm:p-6 md:p-8 sm:align-middle">
+              <div className="flex items-end justify-end">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setDetail(false);
+                  }}
+                  type="button"
+                  className="text-gray-900 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 mx-2 inline-flex items-center "
+                  data-modal-toggle="default-modal"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-
-            <div className="flex py-3 px-2  ">
-              <h2 className="text-3xl px-5 font-bold text-[#240155]  leading-5 ">
-                Aaron Ramsdale
-              </h2>
-            </div>
-
-            {/* table */}
-            <section className="py-3">
-              <img
-                src="data:image/jpeg;base64,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"
-                alt=""
-                className="mx-auto w-[7rem] lg:w-[8rem] mt-5 rounded-full"
-              />
-              <div className="flex justify-between items-center mx-auto px-20 w-[25rem] mt-4">
-                <div className="flex gap-1 items-center">
-                  <img src="" alt="size" className="w-screen lg:w-full px-3" />
-                  Arsenal
-                </div>
-
-                <button className="bg-[#F0F0F0] py-1 px-2 rounded-md text-xs">
-                  Goalkeeper
-                </button>
-              </div>
-              <button
-                className="my-7 bg-[#9783E3] text-[#fff] text-center hover:bg-gay-200 font-light text-xs px-4 py-2 sm:py-4  rounded shadow hover:shadow-md outline-none focus:outline-none   w-full ease-linear transition-all duration-150"
-                type="button"
-              >
-                Make Captain
-              </button>
-
-              <div className="flex justify-between items-center mx-auto  w-full mt-4">
-                <h2 className="font-semibold">Upcoming Fixtures</h2>
-
-                <button className="flex gap-x-2 items-center py-1 px-2 rounded-md text-xs">
-                  See all
                   <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M13.2008 5.82902L19.2008 12.0004M19.2008 12.0004L13.2008 18.1719M19.2008 12.0004L4.80078 12.0004"
-                      stroke="#240155"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    ></path>
                   </svg>
                 </button>
               </div>
-              <div className="flex gap-x-3">
-                <div className="text-xs items-center">
-                  <img src="" alt="size" className="w-screen lg:w-full px-3" />
-                  Arsenal
-                </div>
-                <div className="text-xs items-center">
-                  <img src="" alt="size" className="w-screen lg:w-full px-3" />
-                  Arsenal
-                </div>
-                <div className="text-xs items-center">
-                  <img src="" alt="size" className="w-screen lg:w-full px-3" />
-                  Arsenal
-                </div>
+
+              <div className="flex py-3 px-2  ">
+                <h2 className="text-3xl px-5 font-bold text-[#240155]  leading-5 ">
+                  Aaron Ramsdale
+                </h2>
               </div>
-            </section>
+
+              {/* table */}
+              <section className="py-3">
+                <img
+                  src="data:image/jpeg;base64,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"
+                  alt=""
+                  className="mx-auto w-[7rem] lg:w-[8rem] mt-5 rounded-full"
+                />
+                <div className="flex justify-between items-center mx-auto px-20 w-[25rem] mt-4">
+                  <div className="flex gap-1 items-center">
+                    <img
+                      src=""
+                      alt="size"
+                      className="w-screen lg:w-full px-3"
+                    />
+                    Arsenal
+                  </div>
+
+                  <button className="bg-[#F0F0F0] py-1 px-2 rounded-md text-xs">
+                    Goalkeeper
+                  </button>
+                </div>
+                <button
+                  className="my-7 bg-[#9783E3] text-[#fff] text-center hover:bg-gay-200 font-light text-xs px-4 py-2 sm:py-4  rounded shadow hover:shadow-md outline-none focus:outline-none   w-full ease-linear transition-all duration-150"
+                  type="button"
+                >
+                  Make Captain
+                </button>
+
+                <div className="flex justify-between items-center mx-auto  w-full mt-4">
+                  <h2 className="font-semibold">Upcoming Fixtures</h2>
+
+                  <button className="flex gap-x-2 items-center py-1 px-2 rounded-md text-xs">
+                    See all
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.2008 5.82902L19.2008 12.0004M19.2008 12.0004L13.2008 18.1719M19.2008 12.0004L4.80078 12.0004"
+                        stroke="#240155"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div className="flex gap-x-3">
+                  <div className="text-xs items-center">
+                    <img
+                      src=""
+                      alt="size"
+                      className="w-screen lg:w-full px-3"
+                    />
+                    Arsenal
+                  </div>
+                  <div className="text-xs items-center">
+                    <img
+                      src=""
+                      alt="size"
+                      className="w-screen lg:w-full px-3"
+                    />
+                    Arsenal
+                  </div>
+                  <div className="text-xs items-center">
+                    <img
+                      src=""
+                      alt="size"
+                      className="w-screen lg:w-full px-3"
+                    />
+                    Arsenal
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
-      </div>
       )}
     </MainLayout>
   );

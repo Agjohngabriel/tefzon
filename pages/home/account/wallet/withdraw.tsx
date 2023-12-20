@@ -10,6 +10,11 @@ interface Transaction {
   created_at: string;
   amount: number;
 }
+interface BankDetails {
+  name: string;
+  code: string;
+  id: number;
+}
 
 const WalletWithdraw = () => {
   const { data: session }: any = useSession();
@@ -19,6 +24,9 @@ const WalletWithdraw = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [details, setDetails] = useState([]);
   const [transactions, setTransactions] = useState([]);
+  const [banks, setBanks] = useState([]);
+  const [bank, setBank] = useState("Select Bank");
+  const [bankCode, setBankCode] = useState("");
 
   useEffect(() => {
     if (session) {
@@ -63,9 +71,51 @@ const WalletWithdraw = () => {
         setTransactions(TransactionsFromApi.data);
       };
       getTransactions();
+
+      // const fetchBanks = async () => {
+      //   setIsLoading(true);
+      //   const respo = await axios.get(`${process.env.BANK_API_URL}/banks/NG`, {
+      //     headers: {
+      //       Authorization: `Bearer ${process.env.BANK_TOKEN}`,
+      //       "content-type": "application/json",
+      //     },
+      //   });
+      //   const response = await respo.data;
+      //   setIsLoading(false);
+      //   return response;
+      // };
+      // const getBanks = async () => {
+      //   const BanksFromApi = await fetchBanks();
+      //   setBanks(BanksFromApi.data);
+      // };
+      // getBanks();
     }
   }, [session]);
 
+  useEffect(() => {
+    const fetchBanks = async () => {
+      try {
+        // Make a GET request to the Flutterwave API endpoint for bank list
+        const response = await axios.get(
+          "https://api.flutterwave.com/v3/banks/NG",
+          {
+            headers: {
+              Authorization: `Bearer FLWSECK_TEST-SANDBOXDEMOKEY-X`,
+              "content-type": "application/json",
+            },
+          }
+        );
+
+        // Set the retrieved bank data to the state
+        setBanks(response.data.data);
+      } catch (error) {
+        console.error("Error fetching banks:", error);
+      }
+    };
+
+    fetchBanks();
+  }, []);
+  console.log(banks);
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
   }
@@ -178,15 +228,55 @@ const WalletWithdraw = () => {
                   <label className=" font-arcon text-black-150 opacity-60 text-xs mb-2 ml-1">
                     To
                   </label>
-                  <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                  <div className="relative inline-block group  my-2 w-full">
+                    <button
+                      type="button"
+                      // className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-100 py-2.5"
+                      className="flex items-center justify-between w-full px-2 py-3 text-xs font-regular text-gray-400 transition-colors cursor-pointer bg-white border border-gray-100 rounded-md shadow-sm text-left"
+                    >
+                      {bank}
+                      <svg
+                        className="h-5 w-5 flex-none text-gray-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                    {/* <!-- Dropdown menu --> */}
+
+                    <div className=" hidden group-hover:block absolute  z-[100]  font-[Lato] p-2  origin-top-right bg-white rounded-md shadow-xl">
+                      <div className=" h-[12rem] overflow-hidden overflow-y-auto scrollbar-hide">
+                        {banks.map((item: BankDetails) => (
+                          <button
+                            key={item.id}
+                            onClick={() => {
+                              setBank(item.name);
+                              setBankCode(item.code);
+                            }}
+                            className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
+                          >
+                            {item.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {/* <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                     <select className="form-select w-full px-3 py-2 text-sm  font-arcon text-black-150 opacity-100 rounded-md focus:outline-none bg-white focus:border-indigo-500 transition-colors cursor-pointer border border-gray-100">
                       <option value="">Select Bank</option>
                       <option value={details["bank_name" as any]}>
                         {details["bank_name" as any]}
                       </option>
                     </select>
-                  </div>
+                  </div> */}
                 </div>
+
                 <div className="w-full mx-2 flex-1 svelte-1l8159u">
                   <label className="font-arcon text-black-150 opacity-60 text-xs mb-2 ml-1">
                     Account Name
@@ -210,7 +300,11 @@ const WalletWithdraw = () => {
                   </label>
 
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
-                    <input className="px-2 appearance-none outline-none w-full text-sm text-gray-700 py-1" />{" "}
+                    <input
+                      className="px-2 appearance-none outline-none w-full text-sm text-gray-700 py-1"
+                      value={bankCode}
+                      required
+                    />{" "}
                   </div>
                 </div>
                 <div className="w-full mx-2  py-5 flex-1 svelte-1l8159u">
@@ -223,7 +317,7 @@ const WalletWithdraw = () => {
 										transition"
                   >
                     <div className="font-sans text-sm font-semibold px-10">
-                     Submit
+                      Submit
                     </div>
                   </button>
                 </div>
