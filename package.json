@@ -1,5 +1,6 @@
 {
   "name": "tefzon",
+  "proxy": "http://localhost:3000",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +14,7 @@
     "axios": "^0.27.2",
     "flutterwave-react-v3": "^1.3.0",
     "framer-motion": "^7.5.3",
+    "http-proxy-middleware": "^2.0.6",
     "next": "12.1.5",
     "next-auth": "^4.3.4",
     "react": "18.0.0",

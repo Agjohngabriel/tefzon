@@ -47,7 +47,7 @@ const SquadSelection = () => {
     setLoading(1);
     setIsFetching(1);
     const res = await axios.get(
-      `${process.env.SPORTS_URL}/teams/seasons/${seasonId}?api_token=${process.env.SPORTS_APIKEY}`,
+      `${process.env.BACKEND_URL}/teams/seasons/${seasonId}?api_token=${process.env.SPORTS_APIKEY}`,
       {
         headers: {
           Authorization: `Bearer ${session?.data.data.token}`,
