@@ -15,21 +15,23 @@ interface Fixtures {
 }
 interface LiveLeague {
   id: number;
+  league_id: any;
   name: string;
 }
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [leagueId, setLeagueId] = useState("9");
   const [active, setActive] = useState(false);
   const [fixtures, setFixtures] = useState([]);
   const [leagues, setLeagues] = useState([]);
   const { data: session }: any = useSession();
-
+console.log(leagueId)
   useEffect(() => {
     if (session) {
       const fetchAll = async () => {
         setIsLoading(true);
         const res = await axios.get(
-          `${process.env.BACKEND_URL}/get-matches?id=9`
+          `${process.env.BACKEND_URL}/get-matches?id=${leagueId}`
         );
 
         const response = await res.data.data;
@@ -45,7 +47,7 @@ const Index = () => {
 
       getFixtures();
     }
-  }, [session]);
+  }, [leagueId, session]);
 
   useEffect(() => {
     if (session) {
@@ -109,6 +111,7 @@ const Index = () => {
               <div
                 key={item.id}
                 onClick={() => {
+                  // setLeagueId(item.league_id);
                   // setActive(true);
                   // fetchClubs(seasonId);
                 }}
@@ -187,7 +190,7 @@ const Index = () => {
                          duration-200 ease-in-out 
                          transition"
                 >
-                  <div className="flex items-center gap-x-10">
+                  <div className="flex items-center lg:gap-x-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-4 sm:w-6 h-6 mx-1 rtl:-scale-x-100"
@@ -221,7 +224,7 @@ const Index = () => {
                          duration-200 ease-in-out 
                          transition"
                 >
-                  <div className="flex items-center gap-x-10">
+                  <div className="flex items-center lg:gap-x-10">
                     <span className="mx-1 text-xs sm:text-sm">Next</span>
 
                     <svg
@@ -249,10 +252,10 @@ const Index = () => {
               Sunday 21 February 2022
             </p> */}
 
-            <table className="md:px-5 py-3 w-full  text-xs  sm:text-sm mx-auto leading-normal cursor-pointer">
+            <table className="md:px-5 py-3 min-w-full  text-xs  sm:text-sm mx-auto leading-normal cursor-pointer">
               {fixtures.map((item: Fixtures, round_id) => (
                 <tr key={round_id} className="border-b border-gray-300">
-                  <td className="px-5 py-2 text-sm font-medium whitespace-nowrap">
+                  <td className="px-1 lg:px-5 py-2 lg:text-sm font-medium whitespace-nowrap">
                     <div className="flex items-center justify-end ">
                       <div className="mr-1">
                         <p className="text-gray-900 whitespace-no-wrap">
@@ -268,15 +271,15 @@ const Index = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-2 text-sm whitespace-nowrap">
+                  <td className="lg:px-4 py-2 text-sm whitespace-nowrap">
                     <p className="tracking-tight px-2 sm:px-4 text-gray-600 whitespace-no-wrap text-center border  py-2  border-gray-300">
                       {item.result_info === null
                         ? item.starting_at.slice(11, 16)
-                        : item.result_info}
+                        : item.starting_at.slice(11, 16)}
                     </p>
                   </td>
 
-                  <td className="px-4 py-2 text-sm whitespace-nowrap">
+                  <td className="px-1 lg:px-4 py-2 lg:text-sm whitespace-nowrap">
                     <div className="flex items-center  justify-start">
                       <div className="flex-shrink-0 w-5 sm:w-7 h-5 sm:h-7  sm:table-cell mr-1">
                         <img
