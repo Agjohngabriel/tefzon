@@ -26,12 +26,20 @@ interface LiveLeague {
   current_season_id: string;
 }
 
+interface Clubs {
+  id: number;
+  name: string;
+  short_code: string;
+}
+
 const SquadSelection = () => {
   const [dropDown1, setDropDown1] = useState(false);
   const [league, setLeague] = useState("All League");
   const [players, setPlayers] = useState([]);
   const [leagues, setLeagues] = useState([]);
   const [clubs, setClubs] = useState([]);
+  const [club, setClub] = useState("All Clubs");
+  const [clubId, setClubId] = useState("3468");
   const { data: session }: any = useSession();
   const [isFetching, setIsFetching] = useState(0);
   const [message, setMessage] = useState("");
@@ -86,25 +94,25 @@ const SquadSelection = () => {
       };
       getFetchAllLeague();
 
-      // const fetchClubs = async (seasonId: String) => {
-      //   const respol = await axios.get(
-      //     `${process.env.BACKEND_URL}/get/league/teams/${seasonId}`,
-      //     {
-      //       headers: {
-      //         Authorization: `Bearer ${session?.data.data.token}`,
-      //         "content-type": "application/json",
-      //         "Access-Control-Allow-Origin": "*",
-      //       },
-      //     }
-      //   );
-      //   const responses = await respol.data.data;
-      //   return responses;
-      // };
-      // const getFetchClubs = async () => {
-      //   const ClubsFromApi = await fetchClubs(seasonId);
-      //   setClubs(ClubsFromApi);
-      // };
-      // getFetchClubs();
+      const fetchClubs = async (seasonId: String) => {
+        const respol = await axios.get(
+          `${process.env.BACKEND_URL}/get/league/teams/${seasonId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
+        const responses = await respol.data.data;
+        return responses;
+      };
+      const getFetchClubs = async () => {
+        const ClubsFromApi = await fetchClubs(seasonId);
+        setClubs(ClubsFromApi);
+      };
+      getFetchClubs();
     }
   }, [seasonId, session]);
 
@@ -112,7 +120,7 @@ const SquadSelection = () => {
     setLoading(1);
     setIsFetching(1);
     const res = await axios.get(
-      `${process.env.BACKEND_URL}/get/all/players/season/${seasonId}/team/:team_id/players/${id}`,
+      `${process.env.BACKEND_URL}/get/all/players/season/${seasonId}/team/${clubId}/players/${id}`,
       {
         headers: {
           Authorization: `Bearer ${session?.data.data.token}`,
@@ -260,7 +268,7 @@ const SquadSelection = () => {
   const goToSelectCaptain = () => {
     Router.push("/home/account/squad/select_captain");
   };
-  console.log(clubs[0]);
+
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
@@ -625,7 +633,7 @@ const SquadSelection = () => {
                               onClick={() => {
                                 setLeague(item.name);
                                 setSeasonId(item.current_season_id);
-                                // fetchClubs(seasonId);
+                                fetchClubs(seasonId);
                               }}
                               className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
                             >
@@ -645,7 +653,7 @@ const SquadSelection = () => {
                         // className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-100 py-2.5"
                         className="flex items-center justify-between w-full px-2 py-3 text-xs font-regular text-gray-400 transition-colors cursor-pointer bg-white border border-gray-100 rounded-md shadow-sm text-left"
                       >
-                        {clubs}
+                        {club}
                         <svg
                           className="h-5 w-5 flex-none text-gray-400"
                           viewBox="0 0 20 20"
@@ -670,11 +678,11 @@ const SquadSelection = () => {
                           autoComplete="off"
                         />
                         <div className=" h-[12rem] overflow-hidden overflow-y-auto scrollbar-hide">
-                          {clubs.map((item: LiveLeague, i) => (
+                          {clubs.map((item: Clubs, i) => (
                             <button
                               key={item.id}
                               onClick={() => {
-                                // setLeague(item.name);
+                                setClub(item.name);
                                 // fetchClubs(seasonId);
                               }}
                               className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
