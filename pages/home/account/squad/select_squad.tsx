@@ -26,16 +26,24 @@ interface LiveLeague {
   current_season_id: string;
 }
 
+interface Clubs {
+  id: number;
+  name: string;
+  short_code: string;
+}
+
 const SquadSelection = () => {
   const [dropDown1, setDropDown1] = useState(false);
   const [league, setLeague] = useState("All League");
   const [players, setPlayers] = useState([]);
   const [leagues, setLeagues] = useState([]);
   const [clubs, setClubs] = useState([]);
+  const [club, setClub] = useState("All Clubs");
+  const [clubId, setClubId] = useState("3468");
   const { data: session }: any = useSession();
   const [isFetching, setIsFetching] = useState(0);
   const [message, setMessage] = useState("");
-  const [seasonId, setSeasonId] = useState("");
+  const [seasonId, setSeasonId] = useState("21638");
   const [teams, setTeams] = useState([]);
   const [isLoading, setLoading] = useState(0);
   const [error, setError] = useState(false);
@@ -43,31 +51,76 @@ const SquadSelection = () => {
     message: "",
   });
 
-  const fetchClubs = async (seasonId: String) => {
-    setLoading(1);
-    setIsFetching(1);
-    const res = await axios.get(
-      `${process.env.SPORTS_URL}/teams/seasons/${seasonId}?api_token=${process.env.SPORTS_APIKEY}`,
-      {
-        headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
-          "content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    );
-    const response = await res.data.data;
-    console.log(response);
-    setClubs(response);
-    setIsFetching(0);
-    setLoading(0);
-  };
+  useEffect(() => {
+    if (session) {
+      const fetchAll = async () => {
+        const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+          },
+        });
+        const response = await res.data.data;
+        return response.subs;
+      };
+
+      const getFavourites = async () => {
+        const FavouritesFromApi = await fetchAll();
+        setTeams(FavouritesFromApi);
+      };
+      getFavourites();
+    }
+  }, [session]);
+
+  useEffect(() => {
+    if (session) {
+      const fetchAllLeague = async () => {
+        const res = await axios.get(
+          `${process.env.BACKEND_URL}/get/leagues/live`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await res.data;
+        return response.data;
+      };
+
+      const getFetchAllLeague = async () => {
+        const LeaguesFromApi = await fetchAllLeague();
+        setLeagues(LeaguesFromApi);
+      };
+      getFetchAllLeague();
+
+      const fetchClubs = async (seasonId: String) => {
+        const respol = await axios.get(
+          `${process.env.BACKEND_URL}/get/league/teams/${seasonId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
+        const responses = await respol.data.data;
+        return responses;
+      };
+      const getFetchClubs = async () => {
+        const ClubsFromApi = await fetchClubs(seasonId);
+        setClubs(ClubsFromApi);
+      };
+      getFetchClubs();
+    }
+  }, [seasonId, session]);
 
   const fetchByPos = async (id: number) => {
     setLoading(1);
     setIsFetching(1);
     const res = await axios.get(
-      `${process.env.BACKEND_URL}/get/all/players/season/${seasonId}/team/:team_id/players/${id}`,
+      `${process.env.BACKEND_URL}/get/all/players/season/${seasonId}/team/${clubId}/players/${id}`,
       {
         headers: {
           Authorization: `Bearer ${session?.data.data.token}`,
@@ -175,51 +228,6 @@ const SquadSelection = () => {
     }
   };
 
-  useEffect(() => {
-    if (session) {
-      const fetchAll = async () => {
-        const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
-          headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
-            "content-type": "application/json",
-          },
-        });
-        const response = await res.data.data;
-        return response.subs;
-      };
-
-      const getFavourites = async () => {
-        const FavouritesFromApi = await fetchAll();
-        setTeams(FavouritesFromApi);
-      };
-      getFavourites();
-    }
-  }, [session]);
-
-  useEffect(() => {
-    if (session) {
-      const fetchAllLeague = async () => {
-        const res = await axios.get(
-          `${process.env.BACKEND_URL}/get/leagues/live`,
-          {
-            headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
-              "content-type": "application/json",
-            },
-          }
-        );
-        const response = await res.data;
-        return response.data;
-      };
-
-      const getFetchAllLeague = async () => {
-        const LeaguesFromApi = await fetchAllLeague();
-        setLeagues(LeaguesFromApi);
-      };
-      getFetchAllLeague();
-    }
-  }, [session]);
-
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad   `, {
       headers: {
@@ -229,6 +237,26 @@ const SquadSelection = () => {
     });
     const response = await res.data.data;
     return response.subs;
+  };
+
+  const fetchClubs = async (seasonId: String) => {
+    setLoading(1);
+    setIsFetching(1);
+    const res = await axios.get(
+      `${process.env.BACKEND_URL}/get/league/teams/${seasonId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${session?.data.data.token}`,
+          "content-type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    const response = await res.data.data;
+
+    setClubs(response);
+    setIsFetching(0);
+    setLoading(0);
   };
 
   const getFavourites = async () => {
@@ -254,7 +282,6 @@ const SquadSelection = () => {
           <div>
             <button
               onClick={() => {
-                
                 goToSelectCaptain;
               }}
               className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
@@ -342,28 +369,6 @@ const SquadSelection = () => {
                               key={position_id}
                               className="h-10 p-3 mx-auto mt-2  transition duration-500 transform rounded cursor-pointer hover:scale-105"
                             >
-                              {/* <div className="-mt-[4rem] ">
-                                  <svg
-                                    viewBox="0 0 52 51"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="z-0 h-8 mx-auto sm:h-12"
-                                  >
-                                    <path
-                                      d="M6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599L46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60398 6.83159 5.66999Z"
-                                      fill="#276556"
-                                    />
-                                    <path
-                                      d="M10.5718 25.2839H0.286133V22.4819L3.09133 10.34C3.09133 10.34 4.96146 6.60399 6.83159 5.66999C8.70172 4.73599 19.9225 1 19.9225 1C24.4581 3.13173 26.9271 4.60372 33.0134 1L42.3641 4.73599C42.3641 4.73599 45.1693 7.53798 46.1043 8.47198C47.0394 9.40598 48.9095 12.208 49.8446 14.076C50.7796 15.944 51.7147 25.2839 51.7147 25.2839L49.8446 26.2179H41.429L40.4939 22.4819V50.5019H10.5718V25.2839ZM10.5718 25.2839V22.4819"
-                                      stroke="white"
-                                      strokeWidth="0.5"
-                                    />
-                                    <path
-                                      d="M27.0071 19.5599L25.6397 19.5599V24.9746L20.2188 24.9746V26.3404L25.6397 26.3404V31.7551L27.0071 31.7551L27.0071 26.3404H32.4279V24.9746H27.0071L27.0071 19.5599Z"
-                                      fill="white"
-                                    />
-                                  </svg>
-                                </div> */}
                               <div className="mt-[3rem] ">
                                 <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
                                   <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
@@ -628,7 +633,6 @@ const SquadSelection = () => {
                               onClick={() => {
                                 setLeague(item.name);
                                 setSeasonId(item.current_season_id);
-                                const seasonId = item.current_season_id;
                                 fetchClubs(seasonId);
                               }}
                               className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
@@ -649,7 +653,7 @@ const SquadSelection = () => {
                         // className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-100 py-2.5"
                         className="flex items-center justify-between w-full px-2 py-3 text-xs font-regular text-gray-400 transition-colors cursor-pointer bg-white border border-gray-100 rounded-md shadow-sm text-left"
                       >
-                        {clubs}
+                        {club}
                         <svg
                           className="h-5 w-5 flex-none text-gray-400"
                           viewBox="0 0 20 20"
@@ -674,13 +678,12 @@ const SquadSelection = () => {
                           autoComplete="off"
                         />
                         <div className=" h-[12rem] overflow-hidden overflow-y-auto scrollbar-hide">
-                          {clubs.map((item: LiveLeague) => (
+                          {clubs.map((item: Clubs, i) => (
                             <button
                               key={item.id}
                               onClick={() => {
-                                setLeague(item.name);
-                                const seasonId = item.current_season_id;
-                                fetchClubs(seasonId);
+                                setClub(item.name);
+                                // fetchClubs(seasonId);
                               }}
                               className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
                             >
