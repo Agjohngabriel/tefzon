@@ -52,7 +52,7 @@ const JoinPrivate = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -84,7 +84,7 @@ const JoinPrivate = () => {
 
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -114,7 +114,7 @@ const JoinPrivate = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },

@@ -32,7 +32,7 @@ const JoinPublic = () => {
           `${process.env.BACKEND_URL}/public-leagues`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
@@ -58,7 +58,7 @@ const JoinPublic = () => {
 
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },

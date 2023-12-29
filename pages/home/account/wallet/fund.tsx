@@ -46,7 +46,7 @@ const Fund = () => {
           `${process.env.BACKEND_URL}/get-account-details`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
@@ -67,7 +67,7 @@ const Fund = () => {
           `${process.env.BACKEND_URL}/get-transaction-history`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
@@ -97,7 +97,7 @@ const Fund = () => {
     try {
       const res = await axios.post(`${process.env.BACKEND_URL}/pay`, amount, {
         headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
+          Authorization: `Bearer ${session?.user.token}`,
           "content-type": "application/json",
           accept: "application/json",
         },

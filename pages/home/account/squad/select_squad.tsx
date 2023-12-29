@@ -50,7 +50,7 @@ const SquadSelection = () => {
       `${process.env.SPORTS_URL}/teams/seasons/${seasonId}?api_token=${process.env.SPORTS_APIKEY}`,
       {
         headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
+          Authorization: `Bearer ${session?.user.token}`,
           "content-type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
@@ -70,7 +70,7 @@ const SquadSelection = () => {
       `${process.env.BACKEND_URL}/get/all/players/season/${seasonId}/team/:team_id/players/${id}`,
       {
         headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
+          Authorization: `Bearer ${session?.user.token}`,
           "content-type": "application/json",
         },
       }
@@ -89,7 +89,7 @@ const SquadSelection = () => {
       `${process.env.BACKEND_URL}/search/player?query=${name}`,
       {
         headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
+          Authorization: `Bearer ${session?.user.token}`,
           "content-type": "application/json",
         },
       }
@@ -105,7 +105,7 @@ const SquadSelection = () => {
     setLoading(1);
     const res = await axios.get(`${process.env.BACKEND_URL}/reset/team`, {
       headers: {
-        Authorization: `Bearer ${session?.data.data.token}`,
+        Authorization: `Bearer ${session?.user.token}`,
         "content-type": "application/json",
       },
     });
@@ -123,7 +123,7 @@ const SquadSelection = () => {
         `${process.env.BACKEND_URL}/use-autocomplete`,
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -154,7 +154,7 @@ const SquadSelection = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -180,7 +180,7 @@ const SquadSelection = () => {
       const fetchAll = async () => {
         const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
           },
         });
@@ -203,7 +203,7 @@ const SquadSelection = () => {
           `${process.env.BACKEND_URL}/get/leagues/live`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
@@ -223,7 +223,7 @@ const SquadSelection = () => {
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad   `, {
       headers: {
-        Authorization: `Bearer ${session?.data.data.token}`,
+        Authorization: `Bearer ${session?.user.token}`,
         "content-type": "application/json",
       },
     });

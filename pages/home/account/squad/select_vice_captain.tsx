@@ -45,7 +45,7 @@ const SelectVice = () => {
         `${process.env.BACKEND_URL}/select/vice-captain/${id}`,
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -71,7 +71,7 @@ const SelectVice = () => {
       const fetchAll = async () => {
         const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
           },
         });
@@ -91,7 +91,7 @@ const SelectVice = () => {
   const fetchAll = async () => {
     const res = await axios.get(`${process.env.BACKEND_URL}/get/my/squad`, {
       headers: {
-        Authorization: `Bearer ${session?.data.data.token}`,
+        Authorization: `Bearer ${session?.user.token}`,
         "content-type": "application/json",
       },
     });

@@ -20,13 +20,15 @@ export default NextAuth({
       ) {
         if (!credentials) return null;
         try {
-          const user = await client.post("login", {
+          const result = await client.post("login", {
             email: credentials.email,
             password: credentials.password,
           });
-          console.log(user.statusText);
-          if (user) {
-            return user.data;
+          if (result.data["statusCode"] == 200) {
+            return result.data['data'];
+          }
+          if (result.data["statusCode"] == 422) {
+            throw new Error("Authentication failed");
           }
         } catch (e: any) {
           const errorMessage = e.response.data.errors;
@@ -42,13 +44,17 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
+      console.log("sessions", user);
       if (user) {
         token.user = user;
       }
       return token;
     },
     async session({ session, token }) {
-      session.data = token.user;
+      console.log("sessions value", token);
+      // @ts-ignore
+      session.user = token.user;
+      console.log("sessions token", session);
       return session;
     },
   },

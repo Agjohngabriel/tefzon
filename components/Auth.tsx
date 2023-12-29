@@ -27,7 +27,7 @@ export default function Auth(props: { children: ReactNode }) {
       if (session) {
         axios.defaults.headers.common[
           "Authorization"
-        ] = `Bearer ${session?.data.data.token}`;
+        ] = `Bearer ${session?.user.token}`;
       }
     }
 

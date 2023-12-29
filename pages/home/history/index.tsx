@@ -31,7 +31,7 @@ const Index = () => {
           `${process.env.BACKEND_URL}/user/leagues-history`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }

@@ -45,7 +45,7 @@ const Index = () => {
           `${process.env.BACKEND_URL}/get-account-details`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
@@ -66,7 +66,7 @@ const Index = () => {
           `${process.env.BACKEND_URL}/user/profile`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
@@ -141,7 +141,7 @@ const Index = () => {
         updateProfile,
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -177,7 +177,7 @@ const Index = () => {
         updatePassword,
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },

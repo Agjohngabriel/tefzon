@@ -35,7 +35,7 @@ function Statistics() {
           `${process.env.BACKEND_URL}/squad-with-points?id=${leagueId}&user_id=${userId}`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }

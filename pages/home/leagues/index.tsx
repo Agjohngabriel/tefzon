@@ -37,7 +37,7 @@ const Index = () => {
       const fetchAll = async () => {
         const res = await axios.get(`${process.env.BACKEND_URL}/user/leagues`, {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
           },
         });

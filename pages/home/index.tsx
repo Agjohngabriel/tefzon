@@ -53,6 +53,7 @@ const Index = () => {
     }
   }
   useEffect(() => {
+    console.log(`token${session?.user.token}`)
     if (session) {
       const fetchDetails = async () => {
         setIsLoading(true);
@@ -60,7 +61,7 @@ const Index = () => {
           `${process.env.BACKEND_URL}/get-account-details`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
@@ -81,7 +82,7 @@ const Index = () => {
           `${process.env.BACKEND_URL}/user/profile`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }

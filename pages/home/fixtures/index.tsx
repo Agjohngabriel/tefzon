@@ -23,7 +23,7 @@ const Index = () => {
         setIsLoading(true);
         const res = await axios.get(`${process.env.BACKEND_URL}/get-fixtures`, {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
           },
         });

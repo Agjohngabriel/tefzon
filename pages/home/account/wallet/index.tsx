@@ -28,7 +28,7 @@ const Index = () => {
           `${process.env.BACKEND_URL}/get-account-details`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
@@ -49,7 +49,7 @@ const Index = () => {
           `${process.env.BACKEND_URL}/get-transaction-history`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
