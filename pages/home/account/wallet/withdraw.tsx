@@ -100,7 +100,7 @@ const WalletWithdraw = () => {
           `${process.env.BACKEND_URL}/getBanks`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }

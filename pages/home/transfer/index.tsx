@@ -49,7 +49,7 @@ const Index = () => {
       `${process.env.BACKEND_URL}/teams/seasons/${seasonId}?api_token=${process.env.SPORTS_APIKEY}`,
       {
         headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
+          Authorization: `Bearer ${session?.user.token}`,
           "content-type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
@@ -69,7 +69,7 @@ const Index = () => {
       `${process.env.BACKEND_URL}/get/all/players/season/${seasonId}/team/:team_id/players/${id}`,
       {
         headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
+          Authorization: `Bearer ${session?.user.token}`,
           "content-type": "application/json",
         },
       }
@@ -88,7 +88,7 @@ const Index = () => {
       `${process.env.BACKEND_URL}/search/player?query=${name}`,
       {
         headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
+          Authorization: `Bearer ${session?.user.token}`,
           "content-type": "application/json",
         },
       }
@@ -104,7 +104,7 @@ const Index = () => {
     setLoading(1);
     const res = await axios.get(`${process.env.BACKEND_URL}/reset/team`, {
       headers: {
-        Authorization: `Bearer ${session?.data.data.token}`,
+        Authorization: `Bearer ${session?.user.token}`,
         "content-type": "application/json",
       },
     });
@@ -122,7 +122,7 @@ const Index = () => {
         `${process.env.BACKEND_URL}/use-autocomplete`,
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -153,7 +153,7 @@ const Index = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${session?.data.data.token}`,
+            Authorization: `Bearer ${session?.user.token}`,
             "content-type": "application/json",
             accept: "application/json",
           },
@@ -202,7 +202,7 @@ const Index = () => {
           `${process.env.BACKEND_URL}/get/leagues/live`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }

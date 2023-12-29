@@ -6,33 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="288762d0-47da-418a-903c-4d842be7a0bf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/account/auth/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/account/auth/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/auth/[...nextauth].ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/auth/[...nextauth].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/account/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/profile/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/account/squad/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/squad/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/account/squad/select_captain.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/squad/select_captain.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/home/account/squad/select_squad.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/squad/select_squad.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/account/squad/select_vice_captain.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/squad/select_vice_captain.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/account/squad/starting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/squad/starting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/account/wallet/fund.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/wallet/fund.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/account/wallet/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/wallet/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/home/account/wallet/withdraw.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/account/wallet/withdraw.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/home/fixtures/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/fixtures/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/history/details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/history/details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/history/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/history/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/history/statistics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/history/statistics.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/leagues/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/leagues/create.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/leagues/details.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/leagues/details.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/leagues/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/leagues/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/leagues/join_private.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/leagues/join_private.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/leagues/join_public.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/leagues/join_public.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/home/transfer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/transfer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/transfer/make_transfer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/transfer/make_transfer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +70,7 @@
       <updated>1703105784031</updated>
       <workItem from="1703105785511" duration="6091000" />
       <workItem from="1703841321919" duration="3652000" />
-      <workItem from="1703845266208" duration="5906000" />
+      <workItem from="1703845266208" duration="7031000" />
     </task>
     <servers />
   </component>

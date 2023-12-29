@@ -56,7 +56,7 @@ console.log(leagueId)
           `${process.env.BACKEND_URL}/get/leagues/live`,
           {
             headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
+              Authorization: `Bearer ${session?.user.token}`,
               "content-type": "application/json",
             },
           }
