@@ -14,6 +14,10 @@ const Signup = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [regError, setRegError] = useState({});
   const [error, setError] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+
   const MySwal = withReactContent(Swal);
   const router = useRouter();
 
@@ -29,7 +33,22 @@ const Signup = () => {
     setIsSubmitting(true);
     try {
       const user = await client.post("register", formData);
-      if (user) {
+      const response = user.data;
+      if (response.statusCode === 422) {
+        setEmailError(response.data.email[0]);
+        setPhoneError(response.data.phone[0]);
+        setUsernameError(response.data.username[0]);
+        setIsSubmitting(false);
+        MySwal.fire({
+          icon: "error",
+          title: `${response.message}`,
+          html: `            
+            <p>${emailError}</p>,
+          <p>${phoneError}</p>,
+           <p>${usernameError}</p>
+          `,
+        });
+      } else {
         setIsSubmitting(false);
         MySwal.fire({
           title: "Registration was Successful",
@@ -44,18 +63,28 @@ const Signup = () => {
       }
     } catch (e: any) {
       setIsSubmitting(false);
-      const errorMessage = e.response.data.errors;
+      const errorMessage = e.message;
       MySwal.fire({
         title: `${errorMessage}`,
       });
-      console.log(errorMessage);
-
       setError(true);
       setRegError(errorMessage);
       setFormStep(0);
     }
   }
-
+  // if (response.data.statusCode === 200) {
+  //   setIsSubmitting(false);
+  //   MySwal.fire({
+  //     title: "Registration was Successful",
+  //     confirmButtonText: "Proceed to Login",
+  //     showLoaderOnConfirm: true,
+  //   }).then((result) => {
+  //     /* Read more about isConfirmed, isDenied below */
+  //     if (result.isConfirmed) {
+  //       router.push("/account/auth/login");
+  //     }
+  //   });
+  // }
   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
   return (
