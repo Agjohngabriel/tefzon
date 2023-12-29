@@ -37,7 +37,7 @@ const PersonalDetails = (props: {
         <h1 className="w-4/6 text-lg text-center text-gray-700 font-montserrat">
           Personal Details
         </h1>
-        <p className="w-[28rem] text-sm text-center text-gray-500 font-arcon">
+        <p className="sm:w-[28rem] text-sm text-center text-gray-500 font-arcon">
           Please type carefully and fill out the form with Personal details. You
           can't edit these details once you submit the form.
         </p>
@@ -49,7 +49,7 @@ const PersonalDetails = (props: {
             <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
               <input
                 placeholder="Full Name"
-                onInput={(e) =>
+                onChange={(e) =>
                   props.updateFormData({ name: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
@@ -61,14 +61,15 @@ const PersonalDetails = (props: {
 
           <div className="flex-1 w-full mx-auto md:mx-2 ">
             <div
-              className={`bg-white my-2 p-1 flex border ${
-                "email" in props.errors ? "border-red-500" : "border-gray-200"
-              } rounded `}
+              // className={`bg-white my-2 p-1 flex border ${
+              //   "email" in props.errors ? "border-red-500" : "border-gray-200"
+              // } rounded `}
+              className="bg-white my-2 p-1 flex border border-gray-100 rounded"
             >
               <input
                 placeholder="E-mail"
                 type="email"
-                onInput={(e) =>
+                onChange={(e) =>
                   props.updateFormData({ email: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
@@ -76,27 +77,28 @@ const PersonalDetails = (props: {
                 required
               />{" "}
             </div>
-            <span className="text-red-600 opacity-40">
+            {/* <span className="text-red-600 opacity-40">
               {"email" in props.errors
                 ? "The email has already been taken"
                 : ""}
-            </span>
+            </span> */}
           </div>
         </div>
 
         <div className="flex flex-col lg:pt-5 md:flex-row">
           <div className="flex-1 w-full mx-auto md:mx-2 ">
             <div
-              className={`bg-white my-2 p-1 flex border ${
-                "username" in props.errors
-                  ? "border-red-500"
-                  : "border-gray-200"
-              } rounded `}
+              // className={`bg-white my-2 p-1 flex border ${
+              //   "username" in props.errors
+              //     ? "border-red-500"
+              //     : "border-gray-200"
+              // } rounded `}
+              className="bg-white my-2 p-1 flex border border-gray-100 rounded"
             >
               <input
                 placeholder="Username"
                 type="text"
-                onInput={(e) =>
+                onChange={(e) =>
                   props.updateFormData({ username: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
@@ -104,11 +106,11 @@ const PersonalDetails = (props: {
                 required
               />{" "}
             </div>
-            <span className="text-red-600 opacity-40">
+            {/* <span className="text-red-600 opacity-40">
               {"username" in props.errors
                 ? "The username has already been taken"
                 : ""}
-            </span>
+            </span> */}
           </div>
 
           <div className="flex-1 w-full mx-auto md:mx-2 ">
@@ -116,7 +118,7 @@ const PersonalDetails = (props: {
             <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
               <input
                 placeholder="password"
-                onInput={(e) =>
+                onChange={(e) =>
                   props.updateFormData({ password: e.currentTarget.value })
                 }
                 className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
@@ -901,13 +903,13 @@ const PersonalDetails = (props: {
                       </select>
                     </div>
                   </div>
-                  <div className="sm:w-full px-4">
+                  <div className="w-full px-4">
                     <div className="bg-white my-2 p-2 flex border border-gray-200 rounded ">
                       <input
                         placeholder="Enter Phone Number"
                         type="phone"
                         id="ph"
-                        onInput={handlePhoneChange}
+                        onChange={handlePhoneChange}
                         className="w-full p-1 text-sm text-gray-700 outline-none appearance-none"
                         required
                       />
