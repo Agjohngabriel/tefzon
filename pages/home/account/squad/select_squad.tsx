@@ -27,7 +27,7 @@ interface LiveLeague {
 }
 
 interface Clubs {
-  id: number;
+  id: any;
   name: string;
   short_code: string;
 }
@@ -169,6 +169,30 @@ const SquadSelection = () => {
     setLoading(0);
   };
 
+  const confirm = async () => {
+    try {
+      setLoading(1);
+      const res = await axios.post(`${process.env.BACKEND_URL}/squad/confirm`, {
+        headers: {
+          Authorization: `Bearer ${session?.data.data.token}`,
+          "content-type": "application/json",
+        },
+      });
+      const response = await res.data;
+      setMessage(response.message);
+      setError(false);
+      Router.push("/home/account/squad");
+      setLoading(0);
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setMessage("");
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
+
   const autoComplete = async () => {
     try {
       setLoading(1);
@@ -281,9 +305,7 @@ const SquadSelection = () => {
         <div className="items-center flex-grow block mx-7 sm:w-full md:flex md:justify-end md:w-auto">
           <div>
             <button
-              onClick={() => {
-                goToSelectCaptain;
-              }}
+              onClick={() => confirm()}
               className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
                                     bg-[#795DE0] text-gray-200
@@ -291,7 +313,7 @@ const SquadSelection = () => {
                                     transition"
             >
               <span className="text-sm font-montserrat text-black-150">
-                Next
+                Confirm Selection
               </span>
             </button>
           </div>
@@ -683,7 +705,8 @@ const SquadSelection = () => {
                               key={item.id}
                               onClick={() => {
                                 setClub(item.name);
-                                // fetchClubs(seasonId);
+                                setClubId(item.id);
+                                fetchByPos(27);
                               }}
                               className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
                             >
@@ -744,10 +767,10 @@ const SquadSelection = () => {
                           >
                             {item.short_team_name}{" "}
                             <span className="ml-4">
-                              {item.position_id === 1 && "GK"}
-                              {item.position_id === 2 && "DEF"}
-                              {item.position_id === 3 && "MID"}
-                              {item.position_id === 4 && "FWD"}
+                              {item.position_id === 24 && "GK"}
+                              {item.position_id === 25 && "DEF"}
+                              {item.position_id === 26 && "MID"}
+                              {item.position_id === 27 && "FWD"}
                             </span>
                           </p>
                         </div>

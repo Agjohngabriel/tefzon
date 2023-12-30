@@ -93,9 +93,9 @@ const Index = () => {
             </div>
             <div className="bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 rounded-3xl border shadow-2xl p-2 sm:p-10 pb-5 max-w-4xl ">
               <div className="mb-10">
-                <h1 className="font-inter text-sm sm:text-xl font-semibold text-[#3A3A3A] w-4/6 mb-5">
+                {/* <h1 className="font-inter text-sm sm:text-xl font-semibold text-[#3A3A3A] w-4/6 mb-5">
                   Today Oct 19, 2023
-                </h1>
+                </h1> */}
 
                 {leagues.map((item: Team, index) => (
                   <div

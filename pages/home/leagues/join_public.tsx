@@ -146,7 +146,7 @@ const JoinPublic = () => {
               </h1> */}
               <div className=" md:rounded-r-2xl  ">
                 <table className="w-full">
-                  <thead className="w-full bg-gradient-to-r from-[#F0F0F0] bg-[#F0F0F0">
+                  <thead className="w-full bg-gradient-to-r from-[#F0F0F0] bg-[#F0F0F0]">
                     <tr>
                       <th
                         className="p-2 text-left text-sm  text-black-0"
@@ -207,7 +207,6 @@ const JoinPublic = () => {
                           {item.created_at}
                         </td>
                         <td className="p-4 text-center text-sm text-[#222222CC]">
-                          
                           <Link
                             href={{
                               pathname: "/home/leagues/details",

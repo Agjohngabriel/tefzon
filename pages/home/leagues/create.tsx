@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Link from "next/link";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 const CreateLeague = () => {
   const { data: session }: any = useSession();
@@ -21,7 +21,7 @@ const CreateLeague = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const MySwal = withReactContent(Swal);
 
-  const router = useRouter()
+  const router = useRouter();
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     if (isSubmitting) {
@@ -57,7 +57,7 @@ const CreateLeague = () => {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            router.push('/home/leagues')
+            router.push("/home/leagues");
           }
         });
       }
@@ -155,6 +155,7 @@ const CreateLeague = () => {
                           required
                           className="font-inter fill-white form-select w-full px-3 py-2  bg-white  rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
                         >
+                          <option value="">Select Type</option>
                           <option value="0">Public</option>
                           <option value="1">Private</option>
                         </select>
