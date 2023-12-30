@@ -57,9 +57,10 @@ const SaveTeam = () => {
         }
       );
       const response = await res.data;
-      setMessage(response);
+      setMessage(response.message);
+      setDetail(false)
       setError(false);
-      getFavourites();
+    
       setLoading(0);
     } catch (e: any) {
       setLoading(0);
@@ -126,6 +127,36 @@ const SaveTeam = () => {
       setErrorMsg(errorMessage);
     }
   };
+
+  const playerDetails = async (id: number) => {
+    try {
+      setLoading(1);
+      setLoading(1);
+      const respo = await axios.get(
+        `${process.env.BACKEND_URL}/get/player/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+      const response = await respo.data;
+      setLoading(0);
+      setDetails(response);
+      setDetail(true);
+      setActive(!active);
+      console.log(details);
+    } catch (e: any) {
+      setLoading(0);
+      const errorMessage = e.response.data;
+      console.log(errorMessage);
+      setMessage("");
+      setError(true);
+      setErrorMsg(errorMessage);
+    }
+  };
+
   useEffect(() => {
     if (session) {
       const fetchAll = async () => {
@@ -226,23 +257,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={async () => {
-                      setLoading(1);
-                      const respo = await axios.get(
-                        `${process.env.BACKEND_URL}/get/player/${item.player_id}`,
-                        {
-                          headers: {
-                            Authorization: `Bearer ${session?.data.data.token}`,
-                            "content-type": "application/json",
-                          },
-                        }
-                      );
-                      const response = await respo.data;
-                      setLoading(0);
-                      setDetails(response);
-                      setActive(!active);
-                      console.log(details);
-                    }}
+                    onClick={() => playerDetails(item.player_id)}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -302,7 +317,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    // onClick={playerDetails}
+                    onClick={() => playerDetails(item.player_id)}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -362,7 +377,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    // onClick={playerDetails}
+                    onClick={() => playerDetails(item.player_id)}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -384,27 +399,27 @@ const SaveTeam = () => {
                       >
                         {item.player_name}
                         {/* <svg
-                         viewBox="0 0 53 51"
-                         fill="none"
-                         className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                         xmlns="http://www.w3.org/2000/svg"
-                       >
-                         <path
-                           d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                           fill={
-                             item.is_captain
-                               ? "#ff6c37"
-                               : item.is_vice_captain
-                               ? "#fdd663"
-                               : "#03A9F4"
-                           }
-                         />
-                         <path
-                           d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                           stroke="white"
-                           strokeWidth="0.5"
-                         />
-                       </svg> */}
+                          viewBox="0 0 53 51"
+                          fill="none"
+                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
+                            fill={
+                              item.is_captain
+                                ? "#ff6c37"
+                                : item.is_vice_captain
+                                ? "#fdd663"
+                                : "#03A9F4"
+                            }
+                          />
+                          <path
+                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
+                            stroke="white"
+                            strokeWidth="0.5"
+                          />
+                        </svg> */}
                       </p>
                       <p
                         tabIndex={0}
@@ -422,7 +437,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    // onClick={playerDetails}
+                    onClick={() => playerDetails(item.player_id)}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -444,27 +459,27 @@ const SaveTeam = () => {
                       >
                         {item.player_name}
                         {/* <svg
-                       viewBox="0 0 53 51"
-                       fill="none"
-                       className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                       xmlns="http://www.w3.org/2000/svg"
-                     >
-                       <path
-                         d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                         fill={
-                           item.is_captain
-                             ? "#ff6c37"
-                             : item.is_vice_captain
-                             ? "#fdd663"
-                             : "#03A9F4"
-                         }
-                       />
-                       <path
-                         d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                         stroke="white"
-                         strokeWidth="0.5"
-                       />
-                     </svg> */}
+                          viewBox="0 0 53 51"
+                          fill="none"
+                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
+                            fill={
+                              item.is_captain
+                                ? "#ff6c37"
+                                : item.is_vice_captain
+                                ? "#fdd663"
+                                : "#03A9F4"
+                            }
+                          />
+                          <path
+                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
+                            stroke="white"
+                            strokeWidth="0.5"
+                          />
+                        </svg> */}
                       </p>
                       <p
                         tabIndex={0}
@@ -486,7 +501,7 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    // onClick={playerDetails}
+                    onClick={() => playerDetails(item.player_id)}
                     className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
                     <div className="-mt-[3rem] ">
@@ -508,27 +523,27 @@ const SaveTeam = () => {
                       >
                         {item.player_name}
                         {/* <svg
-                         viewBox="0 0 53 51"
-                         fill="none"
-                         className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                         xmlns="http://www.w3.org/2000/svg"
-                       >
-                         <path
-                           d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                           fill={
-                             item.is_captain
-                               ? "#ff6c37"
-                               : item.is_vice_captain
-                               ? "#fdd663"
-                               : "#03A9F4"
-                           }
-                         />
-                         <path
-                           d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                           stroke="white"
-                           strokeWidth="0.5"
-                         />
-                       </svg> */}
+                          viewBox="0 0 53 51"
+                          fill="none"
+                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
+                            fill={
+                              item.is_captain
+                                ? "#ff6c37"
+                                : item.is_vice_captain
+                                ? "#fdd663"
+                                : "#03A9F4"
+                            }
+                          />
+                          <path
+                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
+                            stroke="white"
+                            strokeWidth="0.5"
+                          />
+                        </svg> */}
                       </p>
                       <p
                         tabIndex={0}
@@ -580,39 +595,51 @@ const SaveTeam = () => {
 
               <div className="flex py-3 px-2  ">
                 <h2 className="text-3xl px-5 font-bold text-[#240155]  leading-5 ">
-                  Aaron Ramsdale
+                  {details["name" as any]}
                 </h2>
               </div>
 
               {/* table */}
               <section className="py-3">
                 <img
-                  src="data:image/jpeg;base64,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"
-                  alt=""
+                  src={details["image_path" as any]}
+                  alt={details["name" as any]}
                   className="mx-auto w-[7rem] lg:w-[8rem] mt-5 rounded-full"
                 />
                 <div className="flex justify-between items-center mx-auto px-20 w-[25rem] mt-4">
-                  <div className="flex gap-1 items-center">
+                  {/* <div className="flex gap-1 items-center">
                     <img
                       src=""
                       alt="size"
                       className="w-screen lg:w-full px-3"
                     />
                     Arsenal
-                  </div>
+                  </div> */}
 
                   <button className="bg-[#F0F0F0] py-1 px-2 rounded-md text-xs">
-                    Goalkeeper
+                    {details["position_id" as any] === 24 && (
+                      <span>Goalkeeper</span>
+                    )}
+                    {details["position_id" as any] === 25 && (
+                      <span>Defender</span>
+                    )}
+                    {details["position_id" as any] === 26 && (
+                      <span>Midfielder</span>
+                    )}
+                    {details["position_id" as any] === 27 && (
+                      <span>Forward</span>
+                    )}
                   </button>
                 </div>
                 <button
                   className="my-7 bg-[#9783E3] text-[#fff] text-center hover:bg-gay-200 font-light text-xs px-4 py-2 sm:py-4  rounded shadow hover:shadow-md outline-none focus:outline-none   w-full ease-linear transition-all duration-150"
                   type="button"
+                  onClick={() => selectCap(details["id" as any])}
                 >
                   Make Captain
                 </button>
 
-                <div className="flex justify-between items-center mx-auto  w-full mt-4">
+                {/* <div className="flex justify-between items-center mx-auto  w-full mt-4">
                   <h2 className="font-semibold">Upcoming Fixtures</h2>
 
                   <button className="flex gap-x-2 items-center py-1 px-2 rounded-md text-xs">
@@ -658,7 +685,7 @@ const SaveTeam = () => {
                     />
                     Arsenal
                   </div>
-                </div>
+                </div> */}
               </section>
             </div>
           </div>

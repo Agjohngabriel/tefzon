@@ -25,9 +25,16 @@ export default NextAuth({
             password: credentials.password,
           });
           console.log(user.statusText);
-          if (user) {
+          if (user.data["statusCode"] == 200) {
             return user.data;
           }
+          if (user.data["statusCode"] == 422) {
+            throw new Error("Authentication failed");
+          }
+          // if (user) {
+          //   return user.data;
+          //   console.log(user.data)
+          // }
         } catch (e: any) {
           const errorMessage = e.response.data.errors;
           throw new Error(errorMessage);
