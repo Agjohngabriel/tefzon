@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Router from "next/router";
 import { useState, useEffect } from "react";
+import { Loader } from "../../../components/base/Loader";
 import MainLayout from "../../../components/MainLayout";
 
 interface Team {
@@ -28,6 +29,7 @@ const JoinPublic = () => {
   useEffect(() => {
     if (session) {
       const fetchAll = async () => {
+        setLoading(1);
         const res = await axios.get(
           `${process.env.BACKEND_URL}/public-leagues`,
           {
@@ -44,6 +46,7 @@ const JoinPublic = () => {
 
       const getFavourites = async () => {
         const FavouritesFromApi = await fetchAll();
+        setLoading(0);
         setLeagues(FavouritesFromApi);
       };
       getFavourites();
@@ -84,6 +87,7 @@ const JoinPublic = () => {
 
   return (
     <MainLayout>
+      {isLoading === 1 && <Loader />}
       <div className="py-4">
         <div className="max-w-sm sm:max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/0 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto px-5 sm:px-10 py-5 my-5 items-center justify-center w-auto">
           <button
@@ -119,10 +123,10 @@ const JoinPublic = () => {
           </button>
           <div className="   py-1 px-1 w-full">
             <div className="flex flex-col space-y-4 mb-5">
-              <h1 className=" sm:mt-5 text-xl sm:text-3xl font-bold  w-4/6 ">
+              <h1 className=" sm:mt-5 text-xl sm:text-3xl font-bold  sm:w-4/6 ">
                 Join public league
               </h1>
-              <p className="text-xs text-[#808080]  w-4/6 ">
+              <p className="text-xs text-[#808080]  sm:w-4/6 ">
                 Play in public leagues and compete with other fans at Tefzon
               </p>
               {error === true && (
@@ -140,7 +144,7 @@ const JoinPublic = () => {
             </div>
           </div>
           <div className="flex font-inter">
-            <div className="w-full sm:max-w-4xl ">
+            <div className="w-full sm:max-w-4xl overflow-x-auto  scrollbar-hide">
               {/* <h1 className=" text-[1rem]  text-black-0 w-4/6 tracking-tighter">
                 List of live leagues
               </h1> */}
@@ -213,7 +217,7 @@ const JoinPublic = () => {
                               query: { id: item.id },
                             }}
                           >
-                            <a className="flex-no-shrink border border-[#6E4BEC] px-5 ml-4 py-2  text-sm shadow-sm hover:shadow-lg font-medium tracking-wider  text-[#6E4BEC] rounded-lg">
+                            <a className="flex w-[8rem] border border-[#6E4BEC] px-5 ml-4 py-2  text-sm shadow-sm hover:shadow-lg font-medium tracking-wider  text-[#6E4BEC] rounded-lg">
                               Join League
                             </a>
                           </Link>

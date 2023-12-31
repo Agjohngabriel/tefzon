@@ -20,7 +20,7 @@ function BreadCrumb() {
             Tefzon Fantasy
           </h2>
           {isLoading && <Loader />}
-          <div className="pt-[2.3rem] lg:pt-[4.4rem] w-screen sm:w-[22rem] md:w-full md:mx-0  flex justify-between  overflow-x-auto  scrollbar-hide ">
+          <div className="pt-[2.3rem] lg:pt-[4.4rem] w-[19rem] sm:w-[22rem] md:w-full md:mx-0  flex justify-between  overflow-x-auto  scrollbar-hide ">
             <BreadCrumbButton title="Squad" link="/home/account/squad" />
             <BreadCrumbButton title="Pick Team" link="/home/account/squad/select_squad" />
             <BreadCrumbButton title="Transfer" link="/home/transfer" />

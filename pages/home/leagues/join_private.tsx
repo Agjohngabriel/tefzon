@@ -179,7 +179,7 @@ const JoinPrivate = () => {
           </button>
           <div className="   py-1 px-1 w-full">
             <div className="flex flex-col space-y-4 mb-5">
-              <h1 className="font-montserrat sm:mt-5 text-xl sm:text-3xl font-bold text-black-150 w-4/6 ">
+              <h1 className="font-montserrat sm:mt-5 text-xl sm:text-3xl font-bold text-black-150 md:w-4/6 ">
                 Join private league
               </h1>
               {error === true && (
