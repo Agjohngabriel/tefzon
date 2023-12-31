@@ -180,6 +180,7 @@ const SquadSelection = () => {
             headers: {
               Authorization: `Bearer ${session?.data.data.token}`,
               "content-type": "application/json",
+              accept: "application/json",
             },
           }
         );
