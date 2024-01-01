@@ -1,6 +1,5 @@
 import MainLayout from "../../../../components/MainLayout";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { Loader } from "../../../../components/base/Loader";
@@ -174,19 +173,16 @@ const SquadSelection = () => {
       try {
         setLoading(1);
 
-        const res = await axios.post(
-          `${process.env.BACKEND_URL}/squad/confirm`,
-          {
-            headers: {
-              Authorization: `Bearer ${session?.data.data.token}`,
-              "content-type": "application/json",
-              accept: "application/json",
-            },
-          }
-        );
+        const res = await fetch(`${process.env.BACKEND_URL}/squad/confirm`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.data.data.token}`,
+          },
+        });
 
-        const response = await res.data;
-        setMessage(response.message);
+        const result = await res.json();
+        setMessage(result.message);
         setError(false);
         Router.push("/home/account/squad");
         setLoading(0);
