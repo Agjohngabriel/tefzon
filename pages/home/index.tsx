@@ -3,6 +3,7 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
 import { useEffect, useState } from "react";
+import { Loader } from "../../components/base/Loader";
 import MainLayout from "../../components/MainLayout";
 
 const Index = () => {
@@ -100,6 +101,7 @@ const Index = () => {
 
   return (
     <MainLayout>
+      {isLoading === true && <Loader />}
       <div className="flex items-center justify-center sm:py-10  mx-auto  px-4 py-6  bg-[#E4ECFB] shadow-inner w-auto">
         <div className=" container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 mx-auto   px-4 py-6  w-auto">
           <div className="grid grid-cols-12 gap-0">
@@ -352,7 +354,7 @@ const Index = () => {
 
             <div className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-2 sm:px-6 py-6">
               {/* <!-- Start profile Card --> */}
-              <div className="bg-white rounded-xl p-4 shadow-xl w-[20rem]">
+              <div className="bg-white rounded-xl p-4 shadow-xl sm:w-[20rem]">
                 <div className="flex flex-col justify-center items-center">
                   <div className="w-32 h-32 rounded-full bg-gray-300 border-2 border-white mt-2">
                     <img
@@ -373,9 +375,9 @@ const Index = () => {
                     }}
                   >
                     <div className="absolute inset-0 bg-gray-800 bg-opacity-50"></div>
-                    <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center pt-1">
+                    <div className="relative w-full h-full px-5 sm:px-6 lg:px-4 flex items-center justify-center pt-1">
                       <div>
-                        <h3 className="text-center text-white text-lg">
+                        <h3 className="flex w-[9rem] text-center text-white text-lg">
                           Account Balance:
                         </h3>
                         <h3 className="text-center text-white text-3xl  font-bold">

@@ -226,7 +226,7 @@ const Index = () => {
                           key={index}
                           className="w-full md:w-[40rem] flex flex-col p-2 border border-[#94A3B8] bg-white shadow-md hover:shodow-lg rounded-lg mb-5"
                         >
-                          <div className="flex flex-col sm:flex-row items-center justify-between ">
+                          <div className="flex flex-row items-center justify-between ">
                             <div className="flex justify-between justify-center space-x-3  sm:space-x-4  items-center">
                               <p className="rounded-lg font-[Oswald] text-2xl  p-2  text-[#240155] bg-[#795DE029]">
                                 {item.name.split(" ").map((i) => i.charAt(0))}

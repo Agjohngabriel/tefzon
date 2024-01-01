@@ -124,7 +124,7 @@ const CreateLeague = () => {
             </div>
             <form autoComplete="off" onSubmit={handleSubmit}>
               <div className="flex flex-col  pt-10 space-y-4 max-w-lg mx-2">
-                <h1 className="font-montserrat text-xl sm:text-3xl text-black-150 w-4/6 ">
+                <h1 className="font-montserrat text-xl sm:text-3xl text-black-150 md:w-4/6 ">
                   Create a League
                 </h1>
                 <p className="font-inter text-sm text-[#222222]/60  sm:w-5/6">
@@ -146,7 +146,7 @@ const CreateLeague = () => {
                 <div>
                   <div className="flex flex-col md:flex-row">
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
                         League type
                       </label>
                       <div className="font-inter bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -162,7 +162,7 @@ const CreateLeague = () => {
                       </div>
                     </div>
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
                         Entry Fee (N)
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -178,7 +178,7 @@ const CreateLeague = () => {
 
                   <div className="flex flex-col md:flex-row pt-2">
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
                         League Name
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -191,7 +191,7 @@ const CreateLeague = () => {
                       </div>
                     </div>
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
                         No. of Players
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -206,7 +206,7 @@ const CreateLeague = () => {
                   </div>
                   <div className="flex flex-col md:flex-row pt-2">
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
                         Start Date
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -220,7 +220,7 @@ const CreateLeague = () => {
                       </div>
                     </div>
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
                         End Date
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -237,7 +237,7 @@ const CreateLeague = () => {
 
                   <div className="flex flex-col md:flex-row pt-2">
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
-                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ml-1">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
                         Winning type
                       </label>
                       <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
@@ -293,7 +293,7 @@ const CreateLeague = () => {
 										transition"
                     >
                       <div className="font-inter text-xs font-medium px-10">
-                        {isSubmitting ? "Loading..." : "Create Leauge"}
+                        {isSubmitting ? "Loading..." : "Create League"}
                       </div>
                     </button>
                   </div>

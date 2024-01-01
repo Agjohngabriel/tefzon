@@ -10,7 +10,7 @@ function MainHeader() {
   };
   return (
     <nav className="flex flex-wrap items-center p-3 px-6 py-3 mx-auto bg-green-400 md:px-10 lg:px-20 ">
-      <Link href="/" passHref>
+      <Link href="/home" passHref>
         <motion.a
           initial={{
             x: -500,
@@ -69,13 +69,13 @@ function MainHeader() {
         }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
       >
         <div className="flex flex-col items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
-          <Link href="/home/" passHref>
+          <Link href="/home" passHref>
             <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Home
               <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
-       
+
           <Link href="/home/news" passHref>
             <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               News
@@ -83,7 +83,6 @@ function MainHeader() {
             </a>
           </Link>
 
-          
           <Link href="/home/help" passHref>
             <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Help

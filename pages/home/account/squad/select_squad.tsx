@@ -1,6 +1,5 @@
 import MainLayout from "../../../../components/MainLayout";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { Loader } from "../../../../components/base/Loader";
@@ -170,26 +169,31 @@ const SquadSelection = () => {
   };
 
   const confirm = async () => {
-    try {
-      setLoading(1);
-      const res = await axios.post(`${process.env.BACKEND_URL}/squad/confirm`, {
-        headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
-          "content-type": "application/json",
-        },
-      });
-      const response = await res.data;
-      setMessage(response.message);
-      setError(false);
-      Router.push("/home/account/squad");
-      setLoading(0);
-    } catch (e: any) {
-      setLoading(0);
-      const errorMessage = e.response.data;
-      console.log(errorMessage);
-      setMessage("");
-      setError(true);
-      setErrorMsg(errorMessage);
+    if (session) {
+      try {
+        setLoading(1);
+
+        const res = await fetch(`${process.env.BACKEND_URL}/squad/confirm`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.data.data.token}`,
+          },
+        });
+
+        const result = await res.json();
+        setMessage(result.message);
+        setError(false);
+        Router.push("/home/account/squad");
+        setLoading(0);
+      } catch (e: any) {
+        setLoading(0);
+        const errorMessage = e.response.data;
+        console.log(errorMessage);
+        setMessage("");
+        setError(true);
+        setErrorMsg(errorMessage);
+      }
     }
   };
 
@@ -296,23 +300,23 @@ const SquadSelection = () => {
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
-      <div className="container flex flex-wrap items-center justify-between px-6 pt-10 mx-auto lg:px-20">
+      <div className="container flex lg:flex-wrap items-center justify-between px-3 sm:px-6 pt-10 mx-auto lg:px-20">
         <div className="flex items-center flex-shrink-0 mr-6 text-gray-600">
           <h1 className="text-xl text-center font-oswald sm:text-4xl text-black-0">
             Team Selection
           </h1>
         </div>
-        <div className="items-center flex-grow block mx-7 sm:w-full md:flex md:justify-end md:w-auto">
+        <div className="items-center flex-grow block sm:mx-7 sm:w-full md:flex md:justify-end md:w-auto">
           <div>
             <button
               onClick={() => confirm()}
-              className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
+              className="text-base hover:scale-110 focus:outline-none flex justify-center px-1 sm:px-3 py-2 rounded font-semibold sm:font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
                                     bg-[#795DE0] text-gray-200
                                     duration-200 ease-in-out 
                                     transition"
             >
-              <span className="text-sm font-montserrat text-black-150">
+              <span className="text-xs sm:text-sm font-montserrat text-black-150">
                 Confirm Selection
               </span>
             </button>
@@ -324,12 +328,12 @@ const SquadSelection = () => {
 
       <div className="container max-w-6xl  bg-[#6E4BEC7D]/70 py-4 mb-10  rounded-md shadow-2xl shadow-gray-700/90 px-2 lg:px-2 flex items-center mx-auto justify-between flex-wrap">
         <div className="flex items-center flex-shrink-0 ml-6 text-gray-600">
-          <h1 className="text-xl text-center text-white font-arcon sm:text-2xl">
+          <h1 className="text-xl text-center text-white font-lato sm:text-2xl">
             Players: ({teams.length}/15)
           </h1>
         </div>
         <div className="items-center flex-grow block sm:w-full md:flex md:justify-end md:w-auto">
-          <div>
+          {/* <div>
             <button
               // onClick={autoComplete}
               className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-3   cursor-pointer                                 
@@ -338,17 +342,17 @@ const SquadSelection = () => {
                                  duration-200 ease-in-out 
                                  transition"
             >
-              <div className="font-arcon text-sm text-[#E3EBFA]">
+              <div className="font-lato text-sm text-[#E3EBFA]">
                 Auto Complete
               </div>
             </button>
-          </div>
+          </div> */}
           <div>
             <button
-              // onClick={clear}
-              className="flex justify-center px-6 py-3 ml-5 transition duration-200 ease-in-out cursor-pointer hover:scale-110 focus:outline-none hover:bg-white/20  text-white/50"
+              onClick={clear}
+              className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-3   cursor-pointer "
             >
-              <div className="text-sm text-white font-arcon">Clear Team</div>
+              <div className="text-sm text-white font-lato">Clear Team</div>
             </button>
           </div>
         </div>
@@ -356,12 +360,12 @@ const SquadSelection = () => {
 
       <div className="container">
         {error === true && (
-          <p className="max-w-3xl px-2 py-3 ml-24 -mb-8 text-sm tracking-wider text-center bg-red-800 font-arcon text-black-0 lg:px-1 ">
+          <p className="max-w-3xl px-2 py-3 sm:ml-24 -mb-8 text-sm tracking-wider text-center bg-red-800 font-lato text-black-0 lg:px-1 ">
             {errorMsg.message}
           </p>
         )}
         {message !== "" && (
-          <p className="text-sm font-arcon text-black-0 text-center max-w-3xl -mb-8 py-3 bg-[#6E4BEC7D]/70 ml-24 tracking-wider px-2  lg:px-1 ">
+          <p className="text-sm font-lato text-black-0 text-center max-w-3xl -mb-8 py-3 bg-[#6E4BEC7D]/70 ml-24 tracking-wider px-2  lg:px-1 ">
             {message}
           </p>
         )}
@@ -381,7 +385,7 @@ const SquadSelection = () => {
                 <div className="relative flex flex-col w-full min-w-0 break-words rounded">
                   <div className="flex-auto px-4">
                     <div className="tab-content tab-space">
-                      <div className="flex py-6 mx-32">
+                      <div className="flex py-6 lg:mx-32">
                         {teams
                           .filter(
                             (e: Players) => e.player_position === "GoalKeeper"
@@ -555,7 +559,7 @@ const SquadSelection = () => {
                     <div className="w-full">
                       <div className="relative flex">
                         <input
-                          className="w-full h-10 px-2  mr-3 text-xs bg-white font-arcon focus:outline-none hover:cursor-pointer"
+                          className="w-full h-10 px-2   text-xs bg-white font-lato focus:outline-none hover:cursor-pointer"
                           name="search"
                           // onChange={() => fetchByName(name)}
                           // value={name}
@@ -563,15 +567,15 @@ const SquadSelection = () => {
                           placeholder="Search"
                         />
 
-                        <button
+                        {/* <button
                           className=" hover:scale-110 focus:outline-none flex justify-center px-6 py-2   cursor-pointer                                 
                                 hover:bg-blue-500 
                                 text-[#240155] border border-[#8139E6]
                                  duration-200 ease-in-out 
                                  transition"
                         >
-                          <div className="text-sm font-arcon">Reset</div>
-                        </button>
+                          <div className="text-sm font-lato">Reset</div>
+                        </button> */}
                       </div>
                     </div>
                   </div>
@@ -583,7 +587,7 @@ const SquadSelection = () => {
                       onClick={() => fetchByPos(24)}
                       className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
-                      <div className="text-sm font-arcon">GK</div>
+                      <div className="text-sm font-lato">GK</div>
                     </button>
                   </div>
                   <div className="flex-1 svelte-1l8159u">
@@ -591,7 +595,7 @@ const SquadSelection = () => {
                       onClick={() => fetchByPos(25)}
                       className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
-                      <div className="text-sm font-arcon">DEF</div>
+                      <div className="text-sm font-lato">DEF</div>
                     </button>
                   </div>
 
@@ -600,7 +604,7 @@ const SquadSelection = () => {
                       onClick={() => fetchByPos(26)}
                       className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
-                      <div className="text-sm font-arcon">MID</div>
+                      <div className="text-sm font-lato">MID</div>
                     </button>
                   </div>
 
@@ -609,7 +613,7 @@ const SquadSelection = () => {
                       onClick={() => fetchByPos(27)}
                       className="flex justify-center px-4 py-2 text-base text-gray-900 transition duration-200 ease-in-out bg-white cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500"
                     >
-                      <div className="text-sm font-arcon">FWD</div>
+                      <div className="text-sm font-lato">FWD</div>
                     </button>
                   </div>
                 </div>
@@ -757,7 +761,7 @@ const SquadSelection = () => {
                         <div className="ml-5 border-l border-gray-400 pl-2  w-[8rem] mb-2">
                           <p
                             tabIndex={0}
-                            className="text-xs leading-5 text-white focus:outline-none font-arcon"
+                            className="text-xs leading-5 text-white focus:outline-none font-lato"
                           >
                             {item.display_name}
                           </p>
@@ -779,7 +783,7 @@ const SquadSelection = () => {
                       <div className="flex-auto w-24 py-2 ml-2 text-right border-l ">
                         <p
                           tabIndex={0}
-                          className="px-4 leading-5 text-white focus:outline-none text-md font-arcon"
+                          className="px-4 leading-5 text-white focus:outline-none text-md font-lato"
                         >
                           {item.rating}
                         </p>
