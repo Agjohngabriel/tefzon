@@ -42,7 +42,7 @@ export default function MainFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/" passHref>
+                <Link href="/home/account/squad" passHref>
                   <span
                     className="
                     font-inter
@@ -59,7 +59,7 @@ export default function MainFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/" passHref>
+                <Link href="/home/transfer" passHref>
                   <span
                     className="
                     font-inter
@@ -82,7 +82,7 @@ export default function MainFooter() {
             <ul>
               <li>
                 <a
-                  href="##"
+                  href="/home/leagues"
                   className="font-arcon
                             inline-block
                             text-base text-white
@@ -111,7 +111,7 @@ export default function MainFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/home/statistics" passHref>
+                <Link href="/home/fixtures" passHref>
                   <span
                     className="
                     font-inter
