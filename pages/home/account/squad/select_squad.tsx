@@ -308,18 +308,32 @@ const SquadSelection = () => {
         </div>
         <div className="items-center flex-grow block sm:mx-7 sm:w-full md:flex md:justify-end md:w-auto">
           <div>
-            <button
-              onClick={() => confirm()}
-              className="text-base hover:scale-110 focus:outline-none flex justify-center px-1 sm:px-3 py-2 rounded font-semibold sm:font-bold cursor-pointer                                 
+            {teams.length === 15 ? (
+              <button
+                onClick={() => confirm()}
+                className="text-base hover:scale-110 focus:outline-none flex justify-center px-1 sm:px-3 py-2 rounded font-semibold sm:font-bold cursor-pointer                                 
                                     hover:bg-blue-500 shadow-inner 
                                     bg-[#795DE0] text-gray-200
                                     duration-200 ease-in-out 
                                     transition"
-            >
-              <span className="text-xs sm:text-sm font-montserrat text-black-150">
-                Confirm Selection
-              </span>
-            </button>
+              >
+                <span className="text-xs sm:text-sm font-montserrat text-black-150">
+                  Confirm Selection
+                </span>
+              </button>
+            ) : (
+              <button
+                onClick={() => confirm()}
+                disabled
+                className="text-base  flex justify-center px-1 sm:px-3 py-2 rounded font-semibold sm:font-bold shadow-inner  bg-[#795DE0]/70 text-gray-200
+                                    duration-200 ease-in-out 
+                                    transition"
+              >
+                <span className="text-xs sm:text-sm font-montserrat text-black-150">
+                  Confirm Selection
+                </span>
+              </button>
+            )}
           </div>
         </div>
       </div>

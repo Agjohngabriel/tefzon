@@ -32,7 +32,7 @@ function GuestHeader() {
         </motion.a>
       </Link>
       <button
-        className="inline-flex p-3 ml-auto text-gray-600 border-gray-600 rounded outline-none  hover:bg-green-600 lg:hidden hover:text-violet-500"
+        className="inline-flex p-3 ml-auto text-[#795DE0] border-[#795DE0] rounded outline-none  hover:bg-green-600 lg:hidden hover:text-violet-500"
         onClick={handleClick}
       >
         <svg
@@ -69,44 +69,19 @@ function GuestHeader() {
           active ? "" : "hidden"
         }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
       >
-        <div className="flex flex-col items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
-          <Link href="/home/" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
-              Home
+        <div className="flex gap-x-5 flex-col items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
+          <Link href="/account/auth/login" passHref>
+            <a className="items-center justify-center w-full px-3 py-2 font-medium text-[#795DE0] rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
+              Log in
               <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
-          {/* <Link href="" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
-            Price
-            </a>
-          </Link> */}
-          <Link href="/home/news" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
-              News
+          <Link href="/account/auth/signup" passHref>
+            <a className="items-center justify-center w-full px-5 py-3  font-regular text-white bg-[#795DE0] rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group">
+              Register
               <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
             </a>
           </Link>
-
-          {/* <Link href="/home/scout" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
-              Scout
-              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
-            </a>
-          </Link> */}
-          <Link href="/home/help" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
-              Help
-              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
-            </a>
-          </Link>
-          <Link href="/home/contact" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group">
-              Contact
-              <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
-            </a>
-          </Link>
-         
         </div>
       </motion.div>
     </nav>
