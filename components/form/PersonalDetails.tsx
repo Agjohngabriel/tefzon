@@ -1,24 +1,20 @@
+import Link from "next/link";
 import { useRef, useState } from "react";
 import Button from "../base/Button";
 // import { useFormData } from "../../context";
 
-const PersonalDetails = (props: {
-  formStep: number;
-  nextFormStep: any;
-  updateFormData: any;
-  errors: object;
-}) => {
+const PersonalDetails = (props: { updateFormData: any; errors: object }) => {
   const [passwordType, setPasswordType] = useState("password");
-  const handleDateChange = () => {
-    const day: string = (document.getElementById("day") as HTMLInputElement)
-      .value;
-    const month: string = (document.getElementById("month") as HTMLInputElement)
-      .value;
-    const year: string = (document.getElementById("year") as HTMLInputElement)
-      .value;
-    const date = `${year}-${month}-${day}`;
-    props.updateFormData({ dob: date });
-  };
+  // const handleDateChange = () => {
+  //   const day: string = (document.getElementById("day") as HTMLInputElement)
+  //     .value;
+  //   const month: string = (document.getElementById("month") as HTMLInputElement)
+  //     .value;
+  //   const year: string = (document.getElementById("year") as HTMLInputElement)
+  //     .value;
+  //   const date = `${year}-${month}-${day}`;
+  //   props.updateFormData({ dob: date });
+  // };
   const handlePhoneChange = () => {
     const code: string = (document.getElementById("cd") as HTMLInputElement)
       .value;
@@ -28,38 +24,53 @@ const PersonalDetails = (props: {
     props.updateFormData({ phone: phne });
   };
   return (
-    <div
-      className={`p-5 animate-fade-in-up ${
-        props.formStep === 0 ? "" : "hidden"
-      }`}
-    >
-      <div className="flex flex-col items-center max-w-lg  mx-auto space-y-4">
-        <h1 className="w-4/6 text-lg text-center text-gray-700 font-montserrat">
-          Personal Details
-        </h1>
-        <p className="sm:w-[28rem] text-sm text-center text-gray-500 font-arcon">
-          Please type carefully and fill out the form with Personal details. You
-          can't edit these details once you submit the form.
-        </p>
-      </div>
-
-      <div className=" md:px-10 lg:px-20 py-4 animate-fade-in-down">
-        <div className="flex flex-col md:flex-row">
-          <div className="flex-1 w-full mx-auto md:mx-2 ">
+    <div className={`animate-fade-in-up`}>
+      <div className="py-5 animate-fade-in-down">
+        <div className="flex gap-x-3 flex-col md:flex-row">
+          <div className="flex-1 w-full mx-auto  ">
+            <label className=" text-sm font-semibold text-[#3A3A3A]">
+              Full Name
+            </label>
             <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
               <input
-                placeholder="Full Name"
+                placeholder="Enter full name"
                 onChange={(e) =>
                   props.updateFormData({ name: e.currentTarget.value })
                 }
-                className="w-full p-1 px-2 text-gray-800 outline-none appearance-none"
+                className="w-full py-2 px-2 text-[#94A3B8] text-xs outline-none appearance-none"
                 required
               />{" "}
             </div>
             {/* <span>{props.errors.email}</span> */}
           </div>
+          <div className="flex-1 w-full mx-auto  ">
+            <label className=" text-sm font-semibold text-[#3A3A3A]">
+              User Name
+            </label>
 
-          <div className="flex-1 w-full mx-auto md:mx-2 ">
+            <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
+              <input
+                placeholder="Enter User name"
+                onChange={(e) =>
+                  props.updateFormData({ username: e.currentTarget.value })
+                }
+                className="w-full py-2 px-2 text-[#94A3B8] text-xs outline-none appearance-none"
+                required
+              />{" "}
+            </div>
+            {/* <span className="text-red-600 opacity-40">
+              {"username" in props.errors
+                ? "The username has already been taken"
+                : ""}
+            </span> */}
+          </div>
+        </div>
+
+        <div className="flex gap-x-3 flex-col  md:flex-row">
+          <div className="flex-1 w-full mx-auto  ">
+            <label className=" text-sm font-semibold text-[#3A3A3A]">
+              Email Address
+            </label>
             <div
               // className={`bg-white my-2 p-1 flex border ${
               //   "email" in props.errors ? "border-red-500" : "border-gray-200"
@@ -72,8 +83,7 @@ const PersonalDetails = (props: {
                 onChange={(e) =>
                   props.updateFormData({ email: e.currentTarget.value })
                 }
-                className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
-                autoComplete="email"
+                className="w-full py-2 px-2  text-[#94A3B8] text-xs outline-none appearance-none"
                 required
               />{" "}
             </div>
@@ -83,51 +93,26 @@ const PersonalDetails = (props: {
                 : ""}
             </span> */}
           </div>
-        </div>
 
-        <div className="flex flex-col lg:pt-5 md:flex-row">
-          <div className="flex-1 w-full mx-auto md:mx-2 ">
-            <div
-              // className={`bg-white my-2 p-1 flex border ${
-              //   "username" in props.errors
-              //     ? "border-red-500"
-              //     : "border-gray-200"
-              // } rounded `}
-              className="bg-white my-2 p-1 flex border border-gray-100 rounded"
-            >
-              <input
-                placeholder="Username"
-                type="text"
-                onChange={(e) =>
-                  props.updateFormData({ username: e.currentTarget.value })
-                }
-                className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
-                autoComplete="text"
-                required
-              />{" "}
-            </div>
-            {/* <span className="text-red-600 opacity-40">
-              {"username" in props.errors
-                ? "The username has already been taken"
-                : ""}
-            </span> */}
-          </div>
+          <div className="flex-1 w-full mx-auto  ">
+            <label className=" text-sm font-semibold text-[#3A3A3A]">
+              password
+            </label>
 
-          <div className="flex-1 w-full mx-auto md:mx-2 ">
-            {/* <div className="h-6 mt-3 text-xs font-bold leading-8 text-gray-600 uppercase"> Your Email</div> */}
             <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
               <input
                 placeholder="password"
                 onChange={(e) =>
                   props.updateFormData({ password: e.currentTarget.value })
                 }
-                className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
+                className="w-full py-1 px-2  text-[#94A3B8] text-xs outline-none appearance-none"
                 required
                 type={passwordType}
               />
-              <div className="flex -mr-px">
-                <span className="flex items-center px-3 leading-normal text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none">
+              <div className="flex">
+                <span className="flex items-center px-3 leading-semibold text-[#3A3A3A] whitespace-no-wrap border-0 rounded rounded-l-none">
                   <button
+                    type="button"
                     onClick={() => {
                       if (passwordType === "password") {
                         setPasswordType("text");
@@ -135,12 +120,13 @@ const PersonalDetails = (props: {
                       }
                       setPasswordType("password");
                     }}
-                    type="button"
-                    className="flex justify-center py-1 text-base text-gray-500 transition duration-200 ease-in-out bg-gray-200 rounded-lg shadow-inner cursor-pointer hover:scale-110 focus:outline-none hover:bg-gray-300"
+                    className="flex justify-center py-1 text-base text-gray-500 transition duration-200 ease-in-out rounded cursor-pointer hover:scale-110 focus:outline-none"
                   >
-                    <div className="px-3 font-sans text-sm font-light">
-                      {passwordType === "password" ? "show" : "Hide"}
-                    </div>
+                    {passwordType === "password" ? (
+                      <span className="material-icons">visibility</span>
+                    ) : (
+                      <span className="material-icons">visibility_off</span>
+                    )}
                   </button>
                 </span>
               </div>
@@ -148,158 +134,54 @@ const PersonalDetails = (props: {
           </div>
         </div>
 
-        <div className="flex flex-col lg:pt-1 md:flex-row">
-          <div className="flex-1 w-full md:mx-2 mt-2 ">
-            <label className="ml-1 text-sm font-normal text-gray-600 mb-9">
-              Date of birth <span className="text-[0.5rem]">(optional)</span>
+        <div className="flex gap-x-3 flex-col  md:flex-row">
+          <div className="flex-1 w-full mx-auto  ">
+            <label className=" text-sm font-semibold text-[#3A3A3A]">
+              Date of Birth
             </label>
-            <div className="bg-white ">
-              <div className="items-end -mb-1 sm:flex">
-                <div className="sm:w-1/3">
-                  <div>
-                    <select
-                      onChange={handleDateChange}
-                      id="day"
-                      className="w-full px-3 py-3 mb-1 transition-colors text-gray-400 bg-white border border-gray-200 rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500"
-                    >
-                      <option>Day</option>
-                      <option value="01">01 </option>
-                      <option value="02">02 </option>
-                      <option value="03">03 </option>
-                      <option value="04">04 </option>
-                      <option value="05">05 </option>
-                      <option value="06">06 </option>
-                      <option value="07">07 </option>
-                      <option value="08">08 </option>
-                      <option value="09">09 </option>
-                      <option value="10">10 </option>
-                      <option value="11">11 </option>
-                      <option value="12">12 </option>
-                    </select>
-                  </div>
-                </div>
-                <div className="md:mx-2 lg:px-2 sm:w-1/3">
-                  <div>
-                    <select
-                      onChange={handleDateChange}
-                      id="month"
-                      className="w-full px-3 py-3 mb-1 transition-colors text-gray-400 bg-white border border-gray-200 rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500"
-                    >
-                      <option>Month</option>
-                      <option value="01">January</option>
-                      <option value="02">February</option>
-                      <option value="03">March</option>
-                      <option value="04">April</option>
-                      <option value="05">May</option>
-                      <option value="06">June</option>
-                      <option value="07">July</option>
-                      <option value="08">August</option>
-                      <option value="09">September</option>
-                      <option value="10">October</option>
-                      <option value="11">November</option>
-                      <option value="12">December</option>
-                    </select>
-                  </div>
-                </div>
-                <div className=" sm:w-1/3">
-                  <select
-                    onChange={handleDateChange}
-                    id="year"
-                    className="w-full px-3 py-3 mb-1 transition-colors text-gray-400 bg-white border border-gray-200 rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500"
-                  >
-                    <option>Year</option>
-                    <option value="2003">2003</option>
-                    <option value="2002">2002</option>
-                    <option value="2001">2001</option>
-                    <option value="2000">2000</option>
-                    <option value="1999">1999</option>
-                    <option value="1998">1998</option>
-                    <option value="1997">1997</option>
-                    <option value="1996">1996</option>
-                    <option value="1995">1995</option>
-                    <option value="1994">1994</option>
-                    <option value="1993">1993</option>
-                    <option value="1992">1992</option>
-                    <option value="1991">1991</option>
-                    <option value="1990">1990</option>
-                    <option value="1989">1989</option>
-                    <option value="1988">1988</option>
-                    <option value="1987">1987</option>
-                    <option value="1986">1986</option>
-                    <option value="1985">1985</option>
-                    <option value="1984">1984</option>
-                    <option value="1983">1983</option>
-                    <option value="1982">1982</option>
-                    <option value="1981">1981</option>
-                    <option value="1980">1980</option>
-                    <option value="1999">1979</option>
-                    <option value="1998">1978</option>
-                    <option value="1997">1977</option>
-                    <option value="1996">1976</option>
-                    <option value="1995">1975</option>
-                    <option value="1994">1974</option>
-                    <option value="1993">1973</option>
-                    <option value="1992">1972</option>
-                    <option value="1991">1971</option>
-                    <option value="1990">1970</option>
-                    <option value="1989">1969</option>
-                    <option value="1988">1968</option>
-                    <option value="1987">1967</option>
-                    <option value="1986">1966</option>
-                    <option value="1985">1965</option>
-                    <option value="1984">1964</option>
-                    <option value="1983">1963</option>
-                    <option value="1982">1962</option>
-                    <option value="1981">1961</option>
-                    <option value="1980">1960</option>
-                    <option value="1999">1959</option>
-                    <option value="1998">1958</option>
-                    <option value="1997">1957</option>
-                    <option value="1996">1956</option>
-                    <option value="1995">1955</option>
-                    <option value="1994">1954</option>
-                    <option value="1993">1953</option>
-                    <option value="1992">1952</option>
-                    <option value="1991">1951</option>
-                    <option value="1990">1950</option>
-                    <option value="1989">1949</option>
-                    <option value="1988">1948</option>
-                    <option value="1987">1947</option>
-                    <option value="1986">1946</option>
-                    <option value="1985">1945</option>
-                  </select>
-                </div>
-              </div>
+            <div className="bg-white my-2 p-1 flex border border-gray-100 rounded">
+              <input
+                type="date"
+                onChange={(e) =>
+                  props.updateFormData({ date: e.currentTarget.value })
+                }
+                className="w-full py-2 px-2  text-[#94A3B8] text-xs outline-none appearance-none"
+                required
+              />
+            </div>
+          </div>
+          <div className="flex-1 w-full mx-auto  ">
+            <label className=" text-sm font-semibold text-[#3A3A3A]">
+              Gender
+            </label>
+            <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
+              <select
+                onChange={(e) =>
+                  props.updateFormData({ gender: e.currentTarget.value })
+                }
+                className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select text-gray-400 text-xs focus:outline-none focus:border-indigo-500"
+                required
+              >
+                <option>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:pt-2">
+        <div className="flex gap-x-3 flex-col lg:flex-row ">
           <div className="items-end -mb-1 sm:flex lg:w-1/2">
-            <div className="flex-1 w-full mx-auto md:mx-2 ">
-              <label className="md:mb-2 ml-1 text-sm font-normal text-gray-600"></label>
-              <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
-                <select
-                  onChange={(e) =>
-                    props.updateFormData({ gender: e.currentTarget.value })
-                  }
-                  className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select text-gray-400 focus:outline-none focus:border-indigo-500"
-                  required
-                >
-                  <option>Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-            </div>
-            <div className="flex-1 w-full mx-auto md:mx-2 ">
-              <label className="md:mb-2 ml-1 text-sm font-normal text-gray-600"></label>
+            <div className="flex-1 w-full mx-auto  ">
+              <label className=" text-sm font-semibold text-[#3A3A3A]">
+                Country
+              </label>
               <div className="flex p-1 md:my-2 bg-white border border-gray-200 rounded ">
                 <select
                   onChange={(e) =>
                     props.updateFormData({ country: e.currentTarget.value })
                   }
-                  className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select focus:outline-none focus:border-indigo-500 text-gray-400"
+                  className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select text-gray-400 text-xs focus:outline-none focus:border-indigo-500"
                 >
                   <option>Select Country</option>
                   <option value="Afghanistan">Afghanistan</option>
@@ -632,304 +514,313 @@ const PersonalDetails = (props: {
               </div>
             </div>
           </div>
-          <div className="flex-1 mt-2  ">
-            <div className="flex-1 w-full mx-auto md:mx-2 mt-2 ">
-              <label className="ml-1 text-sm font-normal text-gray-600 mb-9">
+          <div className="flex-1   ">
+            <div className="flex-1 w-full mx-auto  ">
+              <label className=" text-sm font-semibold text-[#3A3A3A]">
                 Phone Number
               </label>
-              <div className="bg-white ">
-                <div className="flex items-end  ">
-                  <div className="sm:w-28 ">
-                    <div>
-                      <select
-                        onChange={handlePhoneChange}
-                        id="cd"
-                        className="form-select bg-white w-full px-1 py-2.5 mb-2 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500  text-gray-400 transition-colors cursor-pointer"
-                        required
-                      >
-                        <option>code </option>
-                        <option value="93">+93</option>
-                        <option value="358">+358</option>
-                        <option value="355">+355</option>
-                        <option value="213">+213</option>
-                        <option value="1684">+1684</option>
-                        <option value="376">+376</option>
-                        <option value="244">+244</option>
-                        <option value="1264"> +1264</option>
-                        <option value="672"> +672</option>
-                        <option value="1268">+1268</option>
-                        <option value="54"> +54</option>
-                        <option value="374"> +374</option>
-                        <option value="297"> +297</option>
-                        <option value="61"> +61</option>
-                        <option value="43"> +43</option>
-                        <option value="994"> +994</option>
-                        <option value="1242"> +1242</option>
-                        <option value="973"> +973</option>
-                        <option value="880"> +880</option>
-                        <option value="1246"> +1246</option>
-                        <option value="375"> +375</option>
-                        <option value="32"> +32</option>
-                        <option value="501"> +501</option>
-                        <option value="229"> +229</option>
-                        <option value="1441"> +1441</option>
-                        <option value="975"> +975</option>
-                        <option value="591"> +591</option>
-                        <option value="599">+599</option>
-                        <option value="387">+387</option>
-                        <option value="267"> +267</option>
-                        <option value="55">+55</option>
-                        <option value="55"> +55</option>
-                        <option value="246">+246</option>
-                        <option value="673"> +673</option>
-                        <option value="359">+359</option>
-                        <option value="226">+226</option>
-                        <option value="257">+257</option>
-                        <option value="855">+855</option>
-                        <option value="237">+237</option>
-                        <option value="1">+1</option>
-                        <option value="238">+238</option>
-                        <option value="1345">+1345</option>
-                        <option value="236">+236</option>
-                        <option value="235">+235</option>
-                        <option value="56">+56</option>
-                        <option value="86">+86</option>
-                        <option value="61">+61</option>
-                        <option value="672"> +672</option>
-                        <option value="57">+57</option>
-                        <option value="269">+269</option>
-                        <option value="242">+242</option>
-                        <option value="242">+242</option>
-                        <option value="682">+682</option>
-                        <option value="506">+506</option>
-                        <option value="225">+225</option>
-                        <option value="385">+385</option>
-                        <option value="53">+53</option>
-                        <option value="599"> +599</option>
-                        <option value="357">+357</option>
-                        <option value="420">+420</option>
-                        <option value="45">+45</option>
-                        <option value="253">+253</option>
-                        <option value="1767">+1767</option>
-                        <option value="1809">+1809</option>
-                        <option value="593">+593</option>
-                        <option value="20">+20</option>
-                        <option value="503">+503</option>
-                        <option value="240"> +240</option>
-                        <option value="291"> +291</option>
-                        <option value="372"> +372</option>
-                        <option value="251"> +251</option>
-                        <option value="500">+500</option>
-                        <option value="298"> +298</option>
-                        <option value="679"> +679</option>
-                        <option value="358"> +358</option>
-                        <option value="33"> +33</option>
-                        <option value="594"> +594</option>
-                        <option value="689"> +689</option>
-                        <option value="262">+262</option>
-                        <option value="241"> +241</option>
-                        <option value="220"> +220</option>
-                        <option value="995"> +995</option>
-                        <option value="49"> +49</option>
-                        <option value="233"> +233</option>
-                        <option value="350"> +350</option>
-                        <option value="30"> +30</option>
-                        <option value="299"> +299</option>
-                        <option value="1473"> +1473</option>
-                        <option value="590"> +590</option>
-                        <option value="1671"> +1671</option>
-                        <option value="502"> +502</option>
-                        <option value="44"> +44</option>
-                        <option value="224"> +224</option>
-                        <option value="245"> +245</option>
-                        <option value="592"> +592</option>
-                        <option value="509"> +509</option>
-                        <option value="0">+0</option>
-                        <option value="39">+39</option>
-                        <option value="504"> +504</option>
-                        <option value="852"> +852</option>
-                        <option value="36"> +36</option>
-                        <option value="354"> +354</option>
-                        <option value="91"> +91</option>
-                        <option value="62"> +62</option>
-                        <option value="98">+98</option>
-                        <option value="964"> +964</option>
-                        <option value="353"> +353</option>
-                        <option value="44">+44</option>
-                        <option value="972"> +972</option>
-                        <option value="39"> +39</option>
-                        <option value="1876"> +1876</option>
-                        <option value="81"> +81</option>
-                        <option value="44"> +44</option>
-                        <option value="962"> +962</option>
-                        <option value="7"> +7</option>
-                        <option value="254"> +254</option>
-                        <option value="686"> +686</option>
-                        <option value="850">+850</option>
-                        <option value="82">+82</option>
-                        <option value="381">+381</option>
-                        <option value="965">+965</option>
-                        <option value="996"> +996</option>
-                        <option value="856">+856</option>
-                        <option value="371"> +371</option>
-                        <option value="961"> +961</option>
-                        <option value="266"> +266</option>
-                        <option value="231"> +231</option>
-                        <option value="218"> +218</option>
-                        <option value="423">+423</option>
-                        <option value="370"> +370</option>
-                        <option value="352"> +352</option>
-                        <option value="853"> +853</option>
-                        <option value="389">+389</option>
-                        <option value="261"> +261</option>
-                        <option value="265"> +265</option>
-                        <option value="60"> +60</option>
-                        <option value="960"> +960</option>
-                        <option value="223"> +223</option>
-                        <option value="356"> +356</option>
-                        <option value="692"> +692</option>
-                        <option value="596"> +596</option>
-                        <option value="222"> +222</option>
-                        <option value="230"> +230</option>
-                        <option value="269"> +269</option>
-                        <option value="52"> +52</option>
-                        <option value="691">+691</option>
-                        <option value="373">+373</option>
-                        <option value="377"> +377</option>
-                        <option value="976"> +976</option>
-                        <option value="382"> +382</option>
-                        <option value="1664"> +1664</option>
-                        <option value="212"> +212</option>
-                        <option value="258"> +258</option>
-                        <option value="95"> +95</option>
-                        <option value="264"> +264</option>
-                        <option value="674"> +674</option>
-                        <option value="977"> +977</option>
-                        <option value="31"> +31</option>
-                        <option value="599">+599</option>
-                        <option value="687">+687</option>
-                        <option value="64"> +64</option>
-                        <option value="505">+505</option>
-                        <option value="227"> +227</option>
-                        <option value="234">+234</option>
-                        <option value="683">+683</option>
-                        <option value="672">+672</option>
-                        <option value="1670">+1670</option>
-                        <option value="47">+47</option>
-                        <option value="968">+968</option>
-                        <option value="92"> +92</option>
-                        <option value="680"> +680</option>
-                        <option value="970">+970</option>
-                        <option value="507"> +507</option>
-                        <option value="675">+675</option>
-                        <option value="595">+595</option>
-                        <option value="51"> +51</option>
-                        <option value="63">+63</option>
-                        <option value="64"> +64</option>
-                        <option value="48"> +48</option>
-                        <option value="351"> +351</option>
-                        <option value="1787"> +1787</option>
-                        <option value="974"> +974</option>
-                        <option value="262"> +262</option>
-                        <option value="40">+40</option>
-                        <option value="70">+70</option>
-                        <option value="250"> +250</option>
-                        <option value="590">+590</option>
-                        <option value="290"> +290</option>
-                        <option value="1869">+1869</option>
-                        <option value="1758"> +1758</option>
-                        <option value="590">+590</option>
-                        <option value="508">+508</option>
-                        <option value="1784">+1784</option>
-                        <option value="684"> +684</option>
-                        <option value="378">+378</option>
-                        <option value="239"> +239</option>
-                        <option value="966"> +966</option>
-                        <option value="221"> +221</option>
-                        <option value="381"> +381</option>
-                        <option value="381">+381</option>
-                        <option value="248"> +248</option>
-                        <option value="232"> +232</option>
-                        <option value="65">+65</option>
-                        <option value="1"> +1</option>
-                        <option value="421"> +421</option>
-                        <option value="386"> +386</option>
-                        <option value="677"> +677</option>
-                        <option value="252"> +252</option>
-                        <option value="27"> +27</option>
-                        <option value="500">+500</option>
-                        <option value="211">+211</option>
-                        <option value="34"> +34</option>
-                        <option value="94"> +94</option>
-                        <option value="249"> +249</option>
-                        <option value="597"> +597</option>
-                        <option value="47">+47</option>
-                        <option value="268"> +268</option>
-                        <option value="46">+46</option>
-                        <option value="41">+41</option>
-                        <option value="963">+963</option>
-                        <option value="886">+886</option>
-                        <option value="992">+992</option>
-                        <option value="255">+255</option>
-                        <option value="66"> +66</option>
-                        <option value="670"> +670</option>
-                        <option value="228"> +228</option>
-                        <option value="690"> +690</option>
-                        <option value="676"> +676</option>
-                        <option value="1868">+1868</option>
-                        <option value="216"> +216</option>
-                        <option value="90"> +90</option>
-                        <option value="7370"> +7370</option>
-                        <option value="1649">+1649</option>
-                        <option value="688"> +688</option>
-                        <option value="256"> +256</option>
-                        <option value="380"> +380</option>
-                        <option value="971">+971</option>
-                        <option value="44"> +44</option>
-                        <option value="1"> +1</option>
+              <div className="flex items-center p-1 my-1 bg-white border border-gray-200 rounded ">
+                <span className="flex items-center px-3 text-[#3A3A3A] whitespace-no-wrap border-0 ">
+                  <select
+                    onChange={handlePhoneChange}
+                    id="cd"
+                    className="form-select bg-white w-[3.5rem] text-xs  py-2.5  border-0 rounded-md focus:outline-none focus:border-indigo-500  text-gray-400 transition-colors cursor-pointer"
+                    required
+                  >
+                    <option value="234">+234</option>
+                    <option value="93">+93</option>
+                    <option value="358">+358</option>
+                    <option value="355">+355</option>
+                    <option value="213">+213</option>
+                    <option value="1684">+1684</option>
+                    <option value="376">+376</option>
+                    <option value="244">+244</option>
+                    <option value="1264"> +1264</option>
+                    <option value="672"> +672</option>
+                    <option value="1268">+1268</option>
+                    <option value="54"> +54</option>
+                    <option value="374"> +374</option>
+                    <option value="297"> +297</option>
+                    <option value="61"> +61</option>
+                    <option value="43"> +43</option>
+                    <option value="994"> +994</option>
+                    <option value="1242"> +1242</option>
+                    <option value="973"> +973</option>
+                    <option value="880"> +880</option>
+                    <option value="1246"> +1246</option>
+                    <option value="375"> +375</option>
+                    <option value="32"> +32</option>
+                    <option value="501"> +501</option>
+                    <option value="229"> +229</option>
+                    <option value="1441"> +1441</option>
+                    <option value="975"> +975</option>
+                    <option value="591"> +591</option>
+                    <option value="599">+599</option>
+                    <option value="387">+387</option>
+                    <option value="267"> +267</option>
+                    <option value="55">+55</option>
+                    <option value="55"> +55</option>
+                    <option value="246">+246</option>
+                    <option value="673"> +673</option>
+                    <option value="359">+359</option>
+                    <option value="226">+226</option>
+                    <option value="257">+257</option>
+                    <option value="855">+855</option>
+                    <option value="237">+237</option>
+                    <option value="1">+1</option>
+                    <option value="238">+238</option>
+                    <option value="1345">+1345</option>
+                    <option value="236">+236</option>
+                    <option value="235">+235</option>
+                    <option value="56">+56</option>
+                    <option value="86">+86</option>
+                    <option value="61">+61</option>
+                    <option value="672"> +672</option>
+                    <option value="57">+57</option>
+                    <option value="269">+269</option>
+                    <option value="242">+242</option>
+                    <option value="242">+242</option>
+                    <option value="682">+682</option>
+                    <option value="506">+506</option>
+                    <option value="225">+225</option>
+                    <option value="385">+385</option>
+                    <option value="53">+53</option>
+                    <option value="599"> +599</option>
+                    <option value="357">+357</option>
+                    <option value="420">+420</option>
+                    <option value="45">+45</option>
+                    <option value="253">+253</option>
+                    <option value="1767">+1767</option>
+                    <option value="1809">+1809</option>
+                    <option value="593">+593</option>
+                    <option value="20">+20</option>
+                    <option value="503">+503</option>
+                    <option value="240"> +240</option>
+                    <option value="291"> +291</option>
+                    <option value="372"> +372</option>
+                    <option value="251"> +251</option>
+                    <option value="500">+500</option>
+                    <option value="298"> +298</option>
+                    <option value="679"> +679</option>
+                    <option value="358"> +358</option>
+                    <option value="33"> +33</option>
+                    <option value="594"> +594</option>
+                    <option value="689"> +689</option>
+                    <option value="262">+262</option>
+                    <option value="241"> +241</option>
+                    <option value="220"> +220</option>
+                    <option value="995"> +995</option>
+                    <option value="49"> +49</option>
+                    <option value="233"> +233</option>
+                    <option value="350"> +350</option>
+                    <option value="30"> +30</option>
+                    <option value="299"> +299</option>
+                    <option value="1473"> +1473</option>
+                    <option value="590"> +590</option>
+                    <option value="1671"> +1671</option>
+                    <option value="502"> +502</option>
+                    <option value="44"> +44</option>
+                    <option value="224"> +224</option>
+                    <option value="245"> +245</option>
+                    <option value="592"> +592</option>
+                    <option value="509"> +509</option>
+                    <option value="0">+0</option>
+                    <option value="39">+39</option>
+                    <option value="504"> +504</option>
+                    <option value="852"> +852</option>
+                    <option value="36"> +36</option>
+                    <option value="354"> +354</option>
+                    <option value="91"> +91</option>
+                    <option value="62"> +62</option>
+                    <option value="98">+98</option>
+                    <option value="964"> +964</option>
+                    <option value="353"> +353</option>
+                    <option value="44">+44</option>
+                    <option value="972"> +972</option>
+                    <option value="39"> +39</option>
+                    <option value="1876"> +1876</option>
+                    <option value="81"> +81</option>
+                    <option value="44"> +44</option>
+                    <option value="962"> +962</option>
+                    <option value="7"> +7</option>
+                    <option value="254"> +254</option>
+                    <option value="686"> +686</option>
+                    <option value="850">+850</option>
+                    <option value="82">+82</option>
+                    <option value="381">+381</option>
+                    <option value="965">+965</option>
+                    <option value="996"> +996</option>
+                    <option value="856">+856</option>
+                    <option value="371"> +371</option>
+                    <option value="961"> +961</option>
+                    <option value="266"> +266</option>
+                    <option value="231"> +231</option>
+                    <option value="218"> +218</option>
+                    <option value="423">+423</option>
+                    <option value="370"> +370</option>
+                    <option value="352"> +352</option>
+                    <option value="853"> +853</option>
+                    <option value="389">+389</option>
+                    <option value="261"> +261</option>
+                    <option value="265"> +265</option>
+                    <option value="60"> +60</option>
+                    <option value="960"> +960</option>
+                    <option value="223"> +223</option>
+                    <option value="356"> +356</option>
+                    <option value="692"> +692</option>
+                    <option value="596"> +596</option>
+                    <option value="222"> +222</option>
+                    <option value="230"> +230</option>
+                    <option value="269"> +269</option>
+                    <option value="52"> +52</option>
+                    <option value="691">+691</option>
+                    <option value="373">+373</option>
+                    <option value="377"> +377</option>
+                    <option value="976"> +976</option>
+                    <option value="382"> +382</option>
+                    <option value="1664"> +1664</option>
+                    <option value="212"> +212</option>
+                    <option value="258"> +258</option>
+                    <option value="95"> +95</option>
+                    <option value="264"> +264</option>
+                    <option value="674"> +674</option>
+                    <option value="977"> +977</option>
+                    <option value="31"> +31</option>
+                    <option value="599">+599</option>
+                    <option value="687">+687</option>
+                    <option value="64"> +64</option>
+                    <option value="505">+505</option>
+                    <option value="227"> +227</option>
+                    <option value="234">+234</option>
+                    <option value="683">+683</option>
+                    <option value="672">+672</option>
+                    <option value="1670">+1670</option>
+                    <option value="47">+47</option>
+                    <option value="968">+968</option>
+                    <option value="92"> +92</option>
+                    <option value="680"> +680</option>
+                    <option value="970">+970</option>
+                    <option value="507"> +507</option>
+                    <option value="675">+675</option>
+                    <option value="595">+595</option>
+                    <option value="51"> +51</option>
+                    <option value="63">+63</option>
+                    <option value="64"> +64</option>
+                    <option value="48"> +48</option>
+                    <option value="351"> +351</option>
+                    <option value="1787"> +1787</option>
+                    <option value="974"> +974</option>
+                    <option value="262"> +262</option>
+                    <option value="40">+40</option>
+                    <option value="70">+70</option>
+                    <option value="250"> +250</option>
+                    <option value="590">+590</option>
+                    <option value="290"> +290</option>
+                    <option value="1869">+1869</option>
+                    <option value="1758"> +1758</option>
+                    <option value="590">+590</option>
+                    <option value="508">+508</option>
+                    <option value="1784">+1784</option>
+                    <option value="684"> +684</option>
+                    <option value="378">+378</option>
+                    <option value="239"> +239</option>
+                    <option value="966"> +966</option>
+                    <option value="221"> +221</option>
+                    <option value="381"> +381</option>
+                    <option value="381">+381</option>
+                    <option value="248"> +248</option>
+                    <option value="232"> +232</option>
+                    <option value="65">+65</option>
+                    <option value="1"> +1</option>
+                    <option value="421"> +421</option>
+                    <option value="386"> +386</option>
+                    <option value="677"> +677</option>
+                    <option value="252"> +252</option>
+                    <option value="27"> +27</option>
+                    <option value="500">+500</option>
+                    <option value="211">+211</option>
+                    <option value="34"> +34</option>
+                    <option value="94"> +94</option>
+                    <option value="249"> +249</option>
+                    <option value="597"> +597</option>
+                    <option value="47">+47</option>
+                    <option value="268"> +268</option>
+                    <option value="46">+46</option>
+                    <option value="41">+41</option>
+                    <option value="963">+963</option>
+                    <option value="886">+886</option>
+                    <option value="992">+992</option>
+                    <option value="255">+255</option>
+                    <option value="66"> +66</option>
+                    <option value="670"> +670</option>
+                    <option value="228"> +228</option>
+                    <option value="690"> +690</option>
+                    <option value="676"> +676</option>
+                    <option value="1868">+1868</option>
+                    <option value="216"> +216</option>
+                    <option value="90"> +90</option>
+                    <option value="7370"> +7370</option>
+                    <option value="1649">+1649</option>
+                    <option value="688"> +688</option>
+                    <option value="256"> +256</option>
+                    <option value="380"> +380</option>
+                    <option value="971">+971</option>
+                    <option value="44"> +44</option>
+                    <option value="1"> +1</option>
 
-                        <option value="598"> +598</option>
-                        <option value="998">+998</option>
-                        <option value="678"> +678</option>
-                        <option value="58">+58</option>
-                        <option value="84">+84</option>
-                        <option value="1284">+1284</option>
-                        <option value="1340">+1340</option>
-                        <option value="681"> +681</option>
-                        <option value="212">+212</option>
-                        <option value="967"> +967</option>
-                        <option value="260"> +260</option>
-                        <option value="263"> +263</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="w-full px-4">
-                    <div className="bg-white my-2 p-2 flex border border-gray-200 rounded ">
-                      <input
-                        placeholder="Enter Phone Number"
-                        type="phone"
-                        id="ph"
-                        onChange={handlePhoneChange}
-                        className="w-full p-1 text-sm text-gray-700 outline-none appearance-none"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
+                    <option value="598"> +598</option>
+                    <option value="998">+998</option>
+                    <option value="678"> +678</option>
+                    <option value="58">+58</option>
+                    <option value="84">+84</option>
+                    <option value="1284">+1284</option>
+                    <option value="1340">+1340</option>
+                    <option value="681"> +681</option>
+                    <option value="212">+212</option>
+                    <option value="967"> +967</option>
+                    <option value="260"> +260</option>
+                    <option value="263"> +263</option>
+                  </select>
+                </span>
+
+                <input
+                  placeholder="Enter Phone Number"
+                  type="phone"
+                  id="ph"
+                  onChange={handlePhoneChange}
+                  className="w-full p-1 text-sm  text-[#94A3B8] text-xs outline-none appearance-none"
+                  required
+                />
               </div>
             </div>
           </div>
         </div>
 
-        {/* <div className="flex justify-center p-2 mt-4"> */}
-        {/* <button
-            className="flex justify-center px-10 py-2 text-base font-bold text-gray-200 transition duration-200 ease-in-out rounded-lg shadow-inner cursor-pointer hover:scale-110 focus:outline-none hover:bg-blue-500 bg-violet-500"
+        <div className="flex items-center  py-5 animate-fade-in-up">
+          <input
+            type="checkbox"
+            className="w-5 h-5 text-black bg-gray-300 border-none rounded-md focus:ring-transparent"
+          />
+          <label
+            htmlFor="Terms"
+            className="font-montserrat block ml-2 text-sm font-normal text-gray-400"
           >
-            <div className="px-10 text-sm font-semibold font-montserrat">
-              Next
-            </div>
-          </button> */}
-        {/* </div> */}
+            I have agreed to the
+            <Link href="/home/terms" passHref>
+              <span className="text-violet-800 cursor-pointer">
+                {" "}
+                terms of service
+              </span>
+            </Link>{" "}
+            and{" "}
+            <Link href="/home/terms" passHref>
+              <span className="text-violet-800 cursor-pointer">
+                {" "}
+                privacy policy.
+              </span>
+            </Link>
+          </label>
+        </div>
       </div>
     </div>
   );
