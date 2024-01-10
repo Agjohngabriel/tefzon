@@ -8,26 +8,29 @@ import Button from "./Button";
 import { useState } from "react";
 import { Loader } from "./Loader";
 function BreadCrumb() {
-  
   const [isLoading, setIsLoading] = useState(false);
   const Router = useRouter();
- 
+
   return (
     <div className="bg-violet-500  lg:pt-[20px] md:pt-[5px] pt-3 justify-between ">
-      <div className="flex pl-2 ">
-        <div className="sm:w-1/10 mt-6  lg:ml-20 sm:mt-16">
+      <div className="flex justify-between px-3 lg:px-20">
+        <div className="sm:w-1/10 mt-6  sm:mt-16">
           <h2 className="text-2xl font-bold leading-tight tracking-tighter text-gray-100 font-oswald sm:text-2xl lg:text-5xl animate-fade-in-up">
             Tefzon Fantasy
           </h2>
           {isLoading && <Loader />}
-          <div className="pt-[2.3rem] lg:pt-[4.4rem] w-[19rem] sm:w-[22rem] md:w-full md:mx-0  flex justify-between  overflow-x-auto  scrollbar-hide ">
-            <BreadCrumbButton title="Squad" link="/home/account/squad" />
-            <BreadCrumbButton title="Pick Team" link="/home/account/squad/select_squad" />
-            <BreadCrumbButton title="Transfer" link="/home/transfer" />
+          <div className="pt-[2.3rem] lg:pt-[4.4rem] w-[19rem] sm:w-[22rem] md:w-full md:mx-0 flex justify-between  overflow-x-auto  scrollbar-hide">
+            <BreadCrumbButton title="Home" link="/home" />{" "}
             <BreadCrumbButton title="Leagues" link="/home/leagues" />
-            <BreadCrumbButton title="Fixtures" link="/home/fixtures" />
-            <BreadCrumbButton title="Wallet" link="/home/account/wallet" />
-            <BreadCrumbButton title="History" link="/home/history" />            
+            <BreadCrumbButton title="Squad" link="/home/account/squad" />
+            {/* <BreadCrumbButton
+              title="Pick Team"
+              link="/home/account/squad/select_squad"
+            /> */}
+            <BreadCrumbButton title="Transfer" link="/home/transfer" />
+            {/* <BreadCrumbButton title="Fixtures" link="/home/fixtures" /> */}
+            {/* <BreadCrumbButton title="Wallet" link="/home/account/wallet" /> */}
+            <BreadCrumbButton title="History" link="/home/history" />
           </div>
         </div>
         <div className="justify-end sm:w-1/10 ">

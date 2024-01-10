@@ -28,7 +28,7 @@ function Details() {
   const [errorMsg, setErrorMsg] = useState({
     message: "",
   });
-  const [isLoading, setLoading] = useState(0);
+
   useEffect(() => {
     if (session) {
       const fetchAll = async () => {

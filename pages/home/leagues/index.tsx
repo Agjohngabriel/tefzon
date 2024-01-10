@@ -255,29 +255,30 @@ const Index = () => {
                                 </div>
                               </div>
                             </div>
-                            <button
-                              // onClick={() =>
-                              //   joinLeague({ id: item.id, code: item.code })
-                              // }
-
-                              className="flex-no-shrink py-2 text-sm  "
+                            <Link
+                              href={{
+                                pathname: "/home/history/details",
+                                query: { id: item.id },
+                              }}
                             >
-                              <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10 17L14.58 11.9992L10 7"
-                                  stroke="#94A3B8"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </button>
+                              <a className="flex-no-shrink py-2 text-sm  ">
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M10 17L14.58 11.9992L10 7"
+                                    stroke="#94A3B8"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
+                              </a>
+                            </Link>
                           </div>
                         </div>
                       ))}
