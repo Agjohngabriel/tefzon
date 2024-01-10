@@ -105,7 +105,7 @@ const Home: NextPage = () => {
               Listen to the songs at tip of your finger, feel the vibes and
               dance. Winning at fantasy football just got easier and better.
             </p>
-            <div className="flex gap-x-3  mt-5 md:mt-10 font-inter">
+            <div className="sm:flex gap-x-3  mt-5 md:mt-10 font-inter">
               <button
                 onClick={goToLogin}
                 type="button"
@@ -256,7 +256,10 @@ const Home: NextPage = () => {
         <div
           className=" bg-cover rounded-lg  text-white p-4 lg:p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden"
           style={{
-            ["background-image" as any]: "url('../img/CTA.png')",
+            backgroundImage: 'url("../img/CTA.png")',
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
           }}
         >
           {/* <!-- LEFT PART --> */}

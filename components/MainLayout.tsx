@@ -9,7 +9,7 @@ export default function MainLayout(props: { children: ReactNode }) {
     <Auth>
       <MainHeader />
       <BreadCrumb />
-      <div className="bg-[#E4ECFB] ">{props.children}</div>
+      <div className="bg-[#E4ECFB] pb-10">{props.children}</div>
       <MainFooter />
     </Auth>
   );
