@@ -25,7 +25,7 @@ const Index = () => {
   const [fixtures, setFixtures] = useState([]);
   const [leagues, setLeagues] = useState([]);
   const { data: session }: any = useSession();
-console.log(leagueId)
+  console.log(leagueId);
   useEffect(() => {
     if (session) {
       const fetchAll = async () => {
@@ -184,29 +184,27 @@ console.log(leagueId)
               <div className="sm:w-full mx-2 flex-1 svelte-1l8159u">
                 <button
                   className="text-base  hover:scale-110 focus:outline-none flex justify-center px-3 lg:px-5 py-2 rounded font-bold cursor-pointer 
-                        
-                        hover:bg-blue-500 
-                        bg-indigo-400 text-gray-200
+                        hover:text-blue-500 text-[#795DE0]
                          duration-200 ease-in-out 
                          transition"
                 >
-                  <div className="flex items-center lg:gap-x-10">
+                  <div className="flex items-center lg:gap-x-2">
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-4 sm:w-6 h-6 mx-1 rtl:-scale-x-100"
+                      width="17"
+                      height="16"
+                      viewBox="0 0 17 16"
                       fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
+                        d="M7.7 11.2L4.5 8.00005L7.7 4.80005M12.5 11.2L9.3 8.00005L12.5 4.80005"
+                        stroke="currentColor"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M7 16l-4-4m0 0l4-4m-4 4h18"
                       />
                     </svg>
 
-                    <span className="mx-1  text-xs sm:text-sm">previous</span>
+                    <span className="mx-1  text-xs sm:text-sm">Prev</span>
                   </div>
                 </button>
               </div>
@@ -219,26 +217,24 @@ console.log(leagueId)
                 <button
                   className="text-base  hover:scale-110 focus:outline-none flex justify-center px-3 lg:px-5 py-2 rounded font-bold cursor-pointer 
                         
-                        hover:bg-blue-500 
-                        bg-indigo-400 text-gray-200
+                  hover:text-blue-500 text-[#795DE0] 
                          duration-200 ease-in-out 
                          transition"
                 >
-                  <div className="flex items-center lg:gap-x-10">
+                  <div className="flex items-center lg:gap-x-2">
                     <span className="mx-1 text-xs sm:text-sm">Next</span>
-
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-4 sm:w-6 h-6 mx-1 rtl:-scale-x-100"
+                      width="17"
+                      height="16"
+                      viewBox="0 0 17 16"
                       fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
+                        d="M9.3 4.79995L12.5 7.99995L9.3 11.2M4.5 4.79995L7.7 7.99995L4.5 11.2"
+                        stroke="currentColor"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
                   </div>
