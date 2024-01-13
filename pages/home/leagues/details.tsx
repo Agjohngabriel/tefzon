@@ -4,13 +4,24 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import Swal from "sweetalert2";
-
+// import FormattedDate from "../../../components/FormattedDate";
 interface Manager {
   name: string;
   userName: string;
   IsOwner: string;
   id: number;
+  date: string;
 }
+import { format, parseISO } from "date-fns";
+
+const FormattedDate = ({ date }: any) => {
+  const formatDate = (dateString: string) => {
+    const parsedDate = parseISO(dateString);
+    return format(parsedDate, "MMM d yyyy | h:mmaaa");
+  };
+
+  return <span>{formatDate(date)}</span>;
+};
 
 function Details() {
   const [modal, setModal] = useState(false);
@@ -108,50 +119,44 @@ function Details() {
       setErrorMsg(errorMessage);
     }
   };
-
+  console.log(details["created_at" as any]);
   return (
     <MainLayout>
-      <div className="py-2">
-        <div className=" container max-w-2xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/0 border-inherit rounded-xl shadow-2xl shadow-indigo-500/50 lg:ml-20 mt-10 mb-20 px-2 sm:px-4 py-6 lg:px-10  w-auto">
-          <button
-            onClick={() => Router.back()}
-            className="flex items-center gap-x-2 bg-[#F0F0F0] text-[#333333] active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ml-5 ease-linear transition-all duration-150"
-            type="button"
+      <div className="p-2 lg:ml-20">
+        <button
+          onClick={() => Router.back()}
+          className="flex items-center gap-x-2 text-[#795DE0] active:bg-pink-600 font-bold text-sm font-montserrat px-4 mb-5 py-2 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
+          type="button"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url(#clip0_432_19217)">
-                <path
-                  d="M-3.35782e-07 12.0028L3.84095 15.8438L3.84095 12.7588L24 12.7588L24 11.2468L3.84095 11.2468L3.84095 8.16179L-3.35782e-07 12.0028Z"
-                  fill="#333333"
+            <g clipPath="url(#clip0_432_19217)">
+              <path
+                d="M-3.35782e-07 12.0028L3.84095 15.8438L3.84095 12.7588L24 12.7588L24 11.2468L3.84095 11.2468L3.84095 8.16179L-3.35782e-07 12.0028Z"
+                fill="CurrentColor"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_432_19217">
+                <rect
+                  width="24"
+                  height="24"
+                  fill="white"
+                  transform="translate(24 24) rotate(180)"
                 />
-              </g>
-              <defs>
-                <clipPath id="clip0_432_19217">
-                  <rect
-                    width="24"
-                    height="24"
-                    fill="white"
-                    transform="translate(24 24) rotate(180)"
-                  />
-                </clipPath>
-              </defs>
-            </svg>
-            Back
-          </button>
-          <div className="  py-2 md:py-5 px-1 w-full">
-            <div className="mb-5 pr-16">
-              <h1 className="font-montserrat px-1 text-xl sm:text-3xl  font-semibold text-[#240155]  ">
-                League Details
-              </h1>
-              <p className="font-inter text-xs px-1    text-[#808080]  w-full">
-                Play in public leagues and compete with other fans at Tefzon
-              </p>
+              </clipPath>
+            </defs>
+          </svg>
+          {details["name" as any]}
+        </button>
+        <div className=" container max-w-2xl bg-[#fff] border-inherit rounded-xl shadow-2xl shadow-indigo-500/50  mt-5 mb-20 px-2 sm:p-6 w-auto">
+          <div className=" w-full">
+            <div className="mb-5 p-6 border rounded-lg">
               {error === true && (
                 <div className="bg-red-800 text-center rounded shadow-md my-3">
                   <h1 className="font-montserrat text-base py-2 text-black-150  ">
@@ -167,56 +172,78 @@ function Details() {
                 </div>
               )}
 
-              <div className="flex justify-between items-center py-3">
-                <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
-                  League Name:
-                </h1>
-                <p className="font-inter text-xs px-1 text-[#808080] ">
-                  {details["name" as any]}
+              <div className="items-center py-3">
+                <p className="font-inter text-xs px-1 text-[#94A3B8] ">
+                  DATE CREATED
                 </p>
+                <h1 className="font-montserrat px-1 text-sm    text-[#3A3A3A]  ">
+                  {details["created_at" as any] === undefined ? (
+                    ""
+                  ) : (
+                    <FormattedDate date={details["created_at" as any]} />
+                  )}
+                </h1>
               </div>
 
-              <div className="flex justify-between items-center py-3">
-                <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
-                  Entry Fee:
-                </h1>
-                <p className="font-inter text-xs px-1 text-[#808080] ">
+              <div className="items-center py-">
+                <p className="font-inter text-xs px-1 text-[#94A3B8] ">
+                  ENTRY FEE:
+                </p>
+                <h1 className="font-montserrat px-1 text-sm    text-[#3A3A3A]  ">
                   ₦ {details["entry_fee" as any]}
-                </p>
-              </div>
-              <div className="flex justify-between items-center py-3">
-                <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
-                  Number of Managers:
                 </h1>
+                <p className="font-inter text-xs px-1 text-[#808080] "></p>
+              </div>
+              <div className="items-center py-3">
                 <p className="font-inter text-xs px-1 text-[#808080] ">
+                  Number of Managers:
+                </p>
+                <h1 className="font-montserrat px-1 text-sm    text-[#3A3A3A]  ">
                   {details["participants" as any]}
-                </p>
-              </div>
-              <div className="flex justify-between items-center py-3">
-                <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
-                  Start Date:
                 </h1>
-                <p className="font-inter text-xs px-1    text-[#808080] ">
-                  {details["start" as any]}
-                </p>
               </div>
-              <div className="flex justify-between items-center py-3">
-                <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
-                  End Date:
-                </h1>
-                <p className="font-inter text-xs px-1    text-[#808080] ">
-                  {details["end" as any]}
-                </p>
-              </div>
-              <div className="flex justify-between items-center py-3">
-                <h1 className="font-montserrat px-1 text-sm   font-semibold text-[#3A3A3A]  ">
+              <div className="items-center py-3">
+                <p className="font-inter text-xs px-1 text-[#808080] ">
                   Prize Distribution:
-                </h1>
-                <p className="font-inter text-xs px-1    text-[#808080] ">
-                  {details["name" as any]}
                 </p>
+                <h1 className="font-montserrat px-1 text-sm    text-[#3A3A3A]  ">
+                  {details["winner_type" as any] === "single" &&
+                    "1 winner (1st - 100%)"}
+                  {details["winner_type" as any] === "double" &&
+                    " 2 winners (1st - 60%, 2nd - 40%)"}
+                  {details["winner_type" as any] === "triple" &&
+                    "3 winners (1st - 60%, 2nd - 30%, 3rd - 10%)"}
+                </h1>
               </div>
+              <div className="flex gap-x-10">
+                <div className=" items-center py-3">
+                  <p className="font-inter text-xs px-1    text-[#808080] ">
+                    START DATE
+                  </p>
+                  <h1 className="font-montserrat px-1 text-sm    text-[#3A3A3A]  ">
+                    {details["start" as any] === undefined ? (
+                      ""
+                    ) : (
+                      <FormattedDate date={details["created_at" as any]} />
+                    )}
+                  </h1>
+                </div>
+                <div className="items-center py-3">
+                  <p className="font-inter text-xs px-1    text-[#808080] ">
+                    END DATE
+                  </p>
+                  <h1 className="font-montserrat px-1 text-sm    text-[#3A3A3A]  ">
+                    {details["end" as any] === undefined ? (
+                      ""
+                    ) : (
+                      <FormattedDate date={details["created_at" as any]} />
+                    )}
+                  </h1>
+                </div>
+              </div>
+            </div>
 
+            <div>
               {details["allow_view_participants" as any] === 0 ? (
                 <button
                   onClick={(e) => {
@@ -238,8 +265,8 @@ function Details() {
                       },
                     });
                   }}
-                  className="my-5 shadow-sm shadow-indigo-500/50 hover:scale-110 focus:outline-none flex  items-center lg:px-32 py-4 rounded  cursor-pointer	hover:bg-[#F8F8F0] 
-										bg-[#F8F8F8] text-[#795DE0]	duration-200 ease-in-out transition"
+                  className="w-full px-5 my-5  focus:outline-none flex justify-between items-center py-4 rounded  cursor-pointer	hover:bg-[#F8F8F0] 
+									border	border-[#F8F8F8] text-[#795DE0]	duration-200 ease-in-out transition"
                 >
                   <div className="font-inter text-xs font-medium ">
                     View managers
@@ -267,8 +294,8 @@ function Details() {
                   //   setModal(true);
                   // }}
                   onClick={() => getManagers()}
-                  className="my-5 shadow-sm shadow-indigo-500/50 hover:scale-110 focus:outline-none flex  items-center lg:px-32 py-4 rounded  cursor-pointer	hover:bg-[#F8F8F0] 
-										bg-[#F8F8F8] text-[#795DE0]	duration-200 ease-in-out transition"
+                  className="w-full px-5 my-5  focus:outline-none flex justify-between items-center py-4 rounded  cursor-pointer	hover:bg-[#F8F8F0] 
+									border	border-[#F8F8F8] text-[#795DE0]	duration-200 ease-in-out transition"
                 >
                   <div className="font-inter text-xs font-medium ">
                     View managers
@@ -293,7 +320,7 @@ function Details() {
 
               <button
                 onClick={() => joinLeague()}
-                className="my-5 shadow-sm shadow-indigo-500/50 hover:scale-110 focus:outline-none flex  justify-center lg:px-36 py-5 rounded  cursor-pointer	hover:bg-blue-500 
+                className="w-full my-5 shadow-sm shadow-indigo-500/50 hover:scale-90 focus:outline-none flex  justify-center lg:px-36 py-5 rounded  cursor-pointer	hover:bg-blue-500 
 										bg-violet-500 text-gray-200	duration-200 ease-in-out transition"
               >
                 <div className="font-inter text-xs font-medium px-1">
@@ -316,9 +343,9 @@ function Details() {
 
             <div className="relative inline-block px-4 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  top-20 md:top-0  sm:my-5 w-full sm:max-w-md sm:p-6  sm:align-middle">
               <div className="flex items-start justify-between ">
-                <div className=" flex justify-between font-semibold py-2">
-                  <p className="text-lg  text-[#3A3A3A] ">
-                    {managers.length} Managers - 1 winner
+                <div className=" flex justify-between  py-2">
+                  <p className="text-2xl font-oswald text-[#240155]">
+                    Managers
                   </p>
                 </div>
                 <button
