@@ -55,9 +55,9 @@ function Statistics() {
   return (
     <MainLayout>
       <div className="px-3 lg:px-20 py-10">
-        <button
+      <button
           onClick={() => Router.back()}
-          className="flex items-center gap-x-2 bg-[#F0F0F0] text-[#333333] active:bg-pink-600 font-bold uppercase text-xs px-5 mb-5 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+          className=" flex items-center gap-x-2 text-[#795DE0] active:bg-pink-600 font-bold text-base font-inter px-4 py-5 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
           type="button"
         >
           <svg
@@ -70,7 +70,7 @@ function Statistics() {
             <g clipPath="url(#clip0_432_19217)">
               <path
                 d="M-3.35782e-07 12.0028L3.84095 15.8438L3.84095 12.7588L24 12.7588L24 11.2468L3.84095 11.2468L3.84095 8.16179L-3.35782e-07 12.0028Z"
-                fill="#333333"
+                fill="CurrentColor"
               />
             </g>
             <defs>
@@ -84,22 +84,18 @@ function Statistics() {
               </clipPath>
             </defs>
           </svg>
-          Back
+          {/* {details["name" as any]} */}
         </button>
-
-        <h2 className="text-base my-5 font-medium font-montserrat leading-tight tracking-tighter text-gray-900  sm:text-xl lg:text-3xl animate-fade-in-up">
-          Points - Gabby
-        </h2>
         <div className="bg-[#F8F8F8] rounded-xl border shadow-2xl shadow-[#766AA480] p-2   sm:px-10 max-w-4xl flex justify-between ">
-          <div className="text-center space-y-1 p-4">
-            <h2 className="text-xs font-light text-[#94A3B8]">Average Point</h2>
+          <div className="text-center space-y-1 p-1">
+          <h2 className="text-xs font-light text-[#94A3B8]">Average Point</h2>
             <h2 className="text-xl font-regular">44</h2>
           </div>
-          <div className="text-center space-y-2 bg-[#795DE0] rounded-xl p-4 text-[#fff]">
-            <h2 className="text-xs font-light">Your Score</h2>
-            <h2 className="text-xl font-medium">78</h2>
+          <div className="text-center space-y-1 p-1 ">
+          <h2 className="text-xs font-light text-[#94A3B8]">Your Score</h2>
+          <h2 className="text-xl font-regular">78</h2>
           </div>
-          <div className="text-center space-y-1 p-4">
+          <div className="text-center space-y-1 p-1">
             <h2 className="text-xs font-light">Highest Point</h2>
             <h2 className="text-xl font-regular">80</h2>
           </div>
@@ -109,14 +105,14 @@ function Statistics() {
           <div
             className="rounded border shadow-xl py-16 px-5 w-full  "
             style={{
-              backgroundImage: 'url("/img/pitch-md.png")',
+              backgroundImage: 'url("/img/pitch.png")',
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center center",
             }}
           >
             <div>
-              <div className="flex justify-center mt-[5rem]  py-16 mx-auto">
+              <div className="flex justify-center mt-[5rem]  py-12 mx-auto">
                 {/* {teams.goalkeepers.map((item: Players, player_id: number) => ( */}
                 <button
                   type="button"
@@ -124,7 +120,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -135,13 +131,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -156,7 +152,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -167,13 +163,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -185,7 +181,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -196,13 +192,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -214,7 +210,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -225,13 +221,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -246,7 +242,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -257,13 +253,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -275,7 +271,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -286,13 +282,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -304,7 +300,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -315,13 +311,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -333,7 +329,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -344,13 +340,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -365,7 +361,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -376,13 +372,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -394,7 +390,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -405,13 +401,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -423,7 +419,7 @@ function Statistics() {
                 >
                   <div className="-my-[1.5rem] mx-auto">
                     <img
-                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                      className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                       src="/img/Vector 11.svg"
                       // alt={item.player_name}
                       // title={item.player_name}
@@ -434,13 +430,13 @@ function Statistics() {
                   <div className="w-full mx-auto ">
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                      className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                     >
                       {/* {item.player_name.split(" ", 1)} */}Peter Cech
                     </p>
                     <p
                       tabIndex={0}
-                      className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                      className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                     >
                       {/* {item.rating} */}5
                     </p>
@@ -460,7 +456,7 @@ function Statistics() {
                   >
                     <div className="-my-[1.5rem] mx-auto">
                       <img
-                        className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                        className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src="/img/Vector 11.svg"
                         // alt={item.player_name}
                         // title={item.player_name}
@@ -471,13 +467,13 @@ function Statistics() {
                     <div className="w-full mx-auto ">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                       >
                         {/* {item.player_name.split(" ", 1)} */}Peter Cech
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                        className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                       >
                         {/* {item.rating} */}5
                       </p>
@@ -492,7 +488,7 @@ function Statistics() {
                   >
                     <div className="-my-[1.5rem] mx-auto">
                       <img
-                        className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                        className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src="/img/Vector 11.svg"
                         // alt={item.player_name}
                         // title={item.player_name}
@@ -503,13 +499,13 @@ function Statistics() {
                     <div className="w-full mx-auto ">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                       >
                         {/* {item.player_name.split(" ", 1)} */}Peter Cech
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                        className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                       >
                         {/* {item.rating} */}5
                       </p>
@@ -524,7 +520,7 @@ function Statistics() {
                   >
                     <div className="-my-[1.5rem] mx-auto">
                       <img
-                        className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                        className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src="/img/Vector 11.svg"
                         // alt={item.player_name}
                         // title={item.player_name}
@@ -535,13 +531,13 @@ function Statistics() {
                     <div className="w-full mx-auto ">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                       >
                         {/* {item.player_name.split(" ", 1)} */}Peter Cech
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                        className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                       >
                         {/* {item.rating} */}5
                       </p>
@@ -556,7 +552,7 @@ function Statistics() {
                   >
                     <div className="-my-[1.5rem] mx-auto">
                       <img
-                        className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3.2rem]"
+                        className="-translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src="/img/Vector 11.svg"
                         // alt={item.player_name}
                         // title={item.player_name}
@@ -567,13 +563,13 @@ function Statistics() {
                     <div className="w-full mx-auto ">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded-t text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                       >
                         {/* {item.player_name.split(" ", 1)} */}Peter Cech
                       </p>
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center rounded-b py-0.5   -mb-6 font-arcon leading-normal  text-gray-100 bg-[#41279E]"
+                        className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]"
                       >
                         {/* {item.rating} */}5
                       </p>
