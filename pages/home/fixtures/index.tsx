@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
-
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import { Loader } from "../../../components/base/Loader";
@@ -81,7 +80,7 @@ const Index = () => {
   return (
     <MainLayout>
       <div className="container">
-        <div className="fsm:ml-5 lg:ml-20">
+        <div className="sm:ml-5 lg:ml-20">
           <button
             onClick={goBack}
             className="flex items-center gap-x-2 text-[#795DE0] active:bg-pink-600 font-bold text-sm font-montserrat px-4 mb-5 py-2 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
