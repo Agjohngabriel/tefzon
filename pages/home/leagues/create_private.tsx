@@ -4,13 +4,13 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import Router from "next/router";
 import { useRouter } from "next/router";
+import Router from "next/router";
 
-const CreateLeague = () => {
+const CreatePrivateLeague = () => {
   const { data: session }: any = useSession();
   const [name, setName] = useState("");
-  const [type, setType] = useState("0");
+  const [type, setType] = useState("1");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [fee, setFee] = useState("");
@@ -20,8 +20,11 @@ const CreateLeague = () => {
   const [error, setError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const MySwal = withReactContent(Swal);
-
+  const [modal, setModal] = useState(false);
+  const [copied, setCopied] = useState(false);
   const router = useRouter();
+  const [code, setCode] = useState("");
+
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     if (isSubmitting) {
@@ -29,7 +32,7 @@ const CreateLeague = () => {
     }
     setIsSubmitting(true);
     try {
-      const user = await axios.post(
+      const response = await axios.post(
         `${process.env.BACKEND_URL}/leagues`,
         {
           name: name,
@@ -49,21 +52,11 @@ const CreateLeague = () => {
           },
         }
       );
-      if (user) {
+      if (response) {
         setIsSubmitting(false);
-        
-        MySwal.fire({
-          title: "League successfully created!",
-          icon: "success",
-          text: `You have successfully created Tefzon classic league as a private league.`,
-          confirmButtonText: "Proceed",
-        }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
-          if (result.isConfirmed) {
-            router.push("/home/leagues");
-          }
-        });
-        router.push("/home/leagues");
+        setModal(true);
+        console.log(response.data.data.code);
+        setCode(response.data.data.code);
       }
     } catch (e: any) {
       setIsSubmitting(false);
@@ -76,6 +69,7 @@ const CreateLeague = () => {
   const goBack = () => {
     Router.push("/home/leagues");
   };
+
   return (
     <MainLayout>
       <div className=" justify-center py-4  mx-auto  px-4  pb-20  bg-[#E4ECFB] shadow-inner w-auto">
@@ -133,7 +127,7 @@ const CreateLeague = () => {
                       <div className="font-inter bg-[#F8F8F8] my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                         <input
                           name="type"
-                          value={"0"}
+                          value={"1"}
                           onInput={(e) => setType(e.currentTarget.value)}
                           required
                           className="p-1 px-2 appearance-none outline-none w-full text-gray-700"
@@ -216,7 +210,7 @@ const CreateLeague = () => {
                           type="date"
                           className="p-1 bg-[#F8F8F8] px-2 border-none appearance-none outline-none w-full text-gray-700"
                           required
-                        />
+                        />{" "}
                         <svg
                           width="16"
                           height="16"
@@ -333,8 +327,96 @@ const CreateLeague = () => {
           </div>
         </div>
       </div>
+      {modal && (
+        <div className="fixed inset-0 z-[150] overflow-y-auto bg-[#000000]/50 ">
+          <div className="flex items-end justify-center sm:min-h-screen md:px-4 pt-4 pb-10 text-center sm:block sm:p-0">
+            <span
+              className="hidden sm:inline-block sm:h-screen sm:align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+
+            <div className="relative inline-block px-5 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  top-20 md:top-0  sm:my-5 w-full sm:max-w-xl sm:p-8  sm:align-middle">
+              <div className="flex items-start justify-between ">
+                <div className=" flex justify-between font-semibold py-2"></div>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setModal(false);
+                    router.push("/home/leagues");
+                  }}
+                  type="button"
+                  className="text-gray-900 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  data-modal-toggle="default-modal"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div>{" "}
+              <div className="mx-auto   py-5 px-2 w-full">
+                <div className="flex flex-col space-y-4 justify-center max-w-2xl mx-auto">
+                  <div className=" ">
+                    <img src="/img/sux.png" alt="soccer" className="mx-auto" />
+                  </div>
+                  <h1 className="font-montserrat text-center text-[#3A3A3A] font-semibold text-xl sm:text-2xl text-black-150   ">
+                    League successfully created!
+                  </h1>
+
+                  {/* <!-- Start Navitem --> */}
+                  <div className="py-4 px-5 md:px-16 flex  items-center bg-[#795DE0] text-white rounded-md justify-between shadow-xl ">
+                    {code}
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(code);
+                        setCopied(true)
+                      }}
+                      className="flex gap-x-2 items-center bg-[#795DE0] text-white rounded-md justify-center  cursor-pointer"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4 13.125L4 7C4 4.79086 5.79086 3 8 3L14.125 3M10 21L16.75 21C17.9926 21 19 19.9926 19 18.75L19 9C19 7.75736 17.9926 6.75 16.75 6.75L10 6.75C8.75736 6.75 7.75 7.75736 7.75 9L7.75 18.75C7.75 19.9926 8.75736 21 10 21Z"
+                          stroke="white"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                      </svg>{" "}
+                      {copied? "Copied" : "Copy"}
+                    </button>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setModal(false);
+                      router.push("/home/leagues");
+                    }}
+                    className="p-4  flex flex-col items-center border border-[#795DE0] text-[#795DE0] rounded-md justify-center shadow-xl cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </MainLayout>
   );
 };
 
-export default CreateLeague;
+export default CreatePrivateLeague;
