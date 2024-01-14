@@ -90,10 +90,10 @@ const JoinPublic = () => {
       {/* {isLoading === 1 && <Loader />} */}
 
       <div className="container font-montserrat lg:max-w-6xl bg-[#fff] border-inherit rounded-b-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20   px-2 py-3  lg:px-20 ">
-        <div className=" flex items-center gap-x-5  w-full">
+        <div className="space-y-1 sm:flex items-center gap-x-5  w-full">
           <button
             onClick={goBack}
-            className="flex items-center gap-x-2 bg-[#F0F0F0] text-[#333333] active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none  ease-linear transition-all duration-150"
+            className="flex items-center gap-x-2 bg-[#F0F0F0] text-[#333333] active:bg-pink-600 font-bold uppercase text-xs  px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none  ease-linear transition-all duration-150"
             type="button"
           >
             <svg
