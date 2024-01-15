@@ -89,7 +89,7 @@ const JoinPublic = () => {
     <MainLayout>
       {/* {isLoading === 1 && <Loader />} */}
 
-      <div className="container font-montserrat lg:max-w-6xl bg-[#fff] border-inherit rounded-b-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20   px-2 py-3  lg:px-20 ">
+      <div className="container font-inter lg:max-w-6xl bg-[#fff] border-inherit rounded-b-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20   px-2 py-3  lg:px-20 ">
         <div className="space-y-1 sm:flex items-center gap-x-5  w-full">
           <button
             onClick={goBack}
@@ -123,7 +123,7 @@ const JoinPublic = () => {
             Back
           </button>
           <div className="flex flex-col  mb-7 w-full">
-            <h1 className=" sm:mt-5 text-xl sm:text-3xl font-bold  sm:w-4/6 ">
+            <h1 className="font-oswald text-xl sm:text-3xl font-bold  sm:w-4/6 ">
               Join public league
             </h1>
             <p className="text-xs text-[#808080]  sm:w-4/6 ">
