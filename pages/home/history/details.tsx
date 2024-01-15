@@ -127,20 +127,20 @@ function Details() {
               <thead className="w-1/2 ">
                 <tr>
                   <th
-                    className="py-2  text-left text-sm font-inter text-gray-900"
+                    className="py-2  text-left text-xs sm:text-sm font-inter text-gray-900"
                     title="position"
                   >
                     Rank
                   </th>
                   <th
-                    className="p-1 text-left w-2/3 text-sm font-inter text-gray-900"
+                    className="p-1 text-left w-2/3 text-xs sm:text-sm font-inter text-gray-900"
                     title="club"
                   >
                     Managers
                   </th>
 
                   <th
-                    className="p-1 text-center text-sm pr-4 font-inter text-black-0"
+                    className="p-1 text-center text-xs sm:text-sm md:pr-4 font-inter text-black-0 "
                     title="points"
                   >
                     Total Points
@@ -151,9 +151,9 @@ function Details() {
                 {managers.map((item: Manager, index) => (
                   <tr
                     key={index}
-                    className=" py-1 cursor-pointer bg-[#F8F8F8] rounded-xl"
+                    className="py-1 cursor-pointer bg-[#F8F8F8] rounded-xl"
                   >
-                    <td className="p-1 text-sm font-normal pl-5">
+                    <td className="p-1 flex items-center text-xs sm:text-sm font-normal pl-3 sm:pl-5">
                       {index + 1}
                       <span className=" align-middle  material-icons text-3xl sm:text-5xl text-green ">
                         arrow_drop_up
@@ -168,7 +168,7 @@ function Details() {
                       >
                         <a
                           tabIndex={0}
-                          className="focus:outline-none text-sm font-inter leading-5 "
+                          className="focus:outline-none text-xs sm:text-sm font-inter leading-5 "
                         >
                           <div className="flex items-center gap-x-2">
                             <p className="rounded-lg font-[Oswald] text-2xl py-1 px-2.5  text-[#240155] bg-[#795DE029]">
@@ -184,7 +184,7 @@ function Details() {
                         </a>
                       </Link>
                     </td>
-                    <td className="p-1 text-center text-sm font-arcon text-black-0">
+                    <td className="p-1 text-center text-xs sm:text-sm font-arcon text-black-0">
                       {item.points}
                     </td>
                   </tr>

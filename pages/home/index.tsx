@@ -27,6 +27,7 @@ interface Team {
   id: number;
   code: number;
   type: string;
+  status: string;
 }
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -162,7 +163,7 @@ const Index = () => {
                           {item.name}
                         </div>
                         <div className="flex gap-x-2 items-center">
-                          <h2 className="font-inter text-xs text-[#94A3B8]">
+                          <h2 className="text-xs text-[#94A3B8] flex gap-x-2">
                             {item.type === (1 as any) ? (
                               <span className="flex items-center gax-x-2">
                                 <svg
@@ -181,8 +182,9 @@ const Index = () => {
                                 Private league
                               </span>
                             ) : (
-                              "Public leagues"
-                            )}
+                              "Public league"
+                            )}{" "}
+                            - {item.status}
                           </h2>
                         </div>
                       </div>
