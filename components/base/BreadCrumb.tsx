@@ -21,16 +21,18 @@ function BreadCrumb() {
           {isLoading && <Loader />}
           <div className="pt-[2.3rem] lg:pt-[4.4rem] w-[19rem] sm:w-[22rem] md:w-full md:mx-0 flex justify-between  overflow-x-auto  scrollbar-hide">
             <BreadCrumbButton title="Home" link="/home" />{" "}
-            <BreadCrumbButton title="Leagues" link="/home/leagues" />
             <BreadCrumbButton title="Squad" link="/home/account/squad" />
+            <BreadCrumbButton title="Leagues" link="/home/leagues" />
+           
             {/* <BreadCrumbButton
               title="Pick Team"
               link="/home/account/squad/select_squad"
             /> */}
-            <BreadCrumbButton title="Transfer" link="/home/transfer" />
+            {/* <BreadCrumbButton title="Transfer" link="/home/transfer" /> */}
             {/* <BreadCrumbButton title="Fixtures" link="/home/fixtures" /> */}
             {/* <BreadCrumbButton title="Wallet" link="/home/account/wallet" /> */}
             <BreadCrumbButton title="History" link="/home/history" />
+            <BreadCrumbButton title="More" link="/home/account/profile" />
           </div>
         </div>
         <div className="justify-end sm:w-1/10 ">

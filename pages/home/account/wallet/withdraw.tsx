@@ -114,7 +114,7 @@ const WalletWithdraw = () => {
     };
 
     fetchBanks();
-  }, []);
+  }, [session?.data.data.token]);
   console.log(banks);
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
