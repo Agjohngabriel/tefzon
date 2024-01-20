@@ -31,6 +31,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [profile, setProfile] = useState([]);
   const [details, setDetails] = useState([]);
+  const [accounts, setAccounts] = useState([]);
 
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -78,6 +79,27 @@ const Index = () => {
         setDetails(DetailsFromApi.data);
       };
       getDetails();
+
+      const fetchAccounts = async () => {
+        setIsLoading(true);
+        const respo = await axios.get(
+          `${process.env.BACKEND_URL}/get/withdrawal-account`,
+          {
+            headers: {
+              Authorization: `Bearer ${session?.data.data.token}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        const response = await respo.data;
+        setIsLoading(false);
+        return response;
+      };
+      const getAccounts = async () => {
+        const AccountsFromApi = await fetchAccounts();
+        setAccounts(AccountsFromApi.data[0]);
+      };
+      getAccounts();
 
       const fetchProfile = async () => {
         setIsLoading(true);
@@ -282,7 +304,11 @@ const Index = () => {
 
   const [banks, setBanks] = useState([]);
   const [bank, setBank] = useState("Select Bank");
-  const [bankCode, setBankCode] = useState("");
+  const [bank_code, setBank_code] = useState("");
+  const [bank_name, setBank_name] = useState("");
+  const [account_name, setAccount_name] = useState("");
+  const [account_number, setAccount_number] = useState("");
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
     const fetchBanks = async () => {
@@ -308,8 +334,49 @@ const Index = () => {
     fetchBanks();
   }, [session?.data.data.token]);
 
+  const addWithdrawalAccount = {
+    is_default: enabled,
+    account_number,
+    account_name,
+    bank_code,
+    bank_name: bank,
+  };
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true);
+
+    try {
+      const res = await axios.post(
+        `${process.env.BACKEND_URL}/create/withdrawal-account`,
+        addWithdrawalAccount,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
+
+      if (res) {
+        setIsSubmitting(false);
+        MySwal.fire({
+          title: `${res.data.message}`,
+        });
+        setWithdrawalModal(false);
+      }
+    } catch (e: any) {
+      setIsSubmitting(false);
+      const errorMessage = e.response.data.errors;
+      MySwal.fire({
+        title: `${errorMessage}`,
+      });
+      console.log(errorMessage);
+      setError(true);
+    }
   }
   return (
     <ProfileLayout>
@@ -1545,7 +1612,7 @@ const Index = () => {
                       src="/img/cardbg.png"
                       alt="cardbg"
                     />
-                    <div className="w-full px-8 absolute top-10">
+                    <div className="w-full px-8 absolute top-8">
                       <div className="flex justify-between">
                         <div className="">
                           <p className="font-arcon text-sm">Tefzone Wallet</p>
@@ -1556,14 +1623,17 @@ const Index = () => {
                           ₦ {details["balance" as any]} .00
                         </p>
                       </div>
-                      <div className="pt-2 pr-6">
+                      <div className="py-2 pr-6">
                         <div className="flex justify-between">
                           <div className="">
                             <p className="font-light text-xs">
-                              {details["account_name" as any]}
+                              {accounts["bank_name" as any]}
+                            </p>
+                            <p className="font-light text-xs">
+                              {accounts["account_name" as any]}
                             </p>
                             <p className="font-medium tracking-wider text-sm">
-                              {details["account_no" as any]}
+                              {accounts["account_number" as any]}
                             </p>
                           </div>
                         </div>
@@ -1791,7 +1861,7 @@ const Index = () => {
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form className="space-y-3">
                 <div className="w-full  flex-1 svelte-1l8159u">
                   <div className="relative inline-block group  my-2 w-full">
                     <button
@@ -1821,7 +1891,7 @@ const Index = () => {
                             key={item.id}
                             onClick={() => {
                               setBank(item.name);
-                              setBankCode(item.code);
+                              setBank_code(item.code);
                             }}
                             className="text-left w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
                           >
@@ -1838,6 +1908,8 @@ const Index = () => {
                     <input
                       className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700"
                       placeholder="Account Name"
+                      value={account_name}
+                      onChange={(e) => setAccount_name(e.currentTarget.value)}
                       required
                     />{" "}
                   </div>
@@ -1846,25 +1918,51 @@ const Index = () => {
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                     <input
                       placeholder="Account number"
+                      value={account_number}
                       required
+                      onChange={(e) => setAccount_number(e.currentTarget.value)}
                       className="p-1 px-2 appearance-none outline-none w-full text-sm text-gray-700"
                     />{" "}
                   </div>
                 </div>
 
-                <div className="w-full flex-1 svelte-1l8159u">
+                <div className="w-full flex-1 svelte-1l8159u hidden">
                   <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                     <input
                       placeholder="Bank Code"
                       className="px-2 appearance-none outline-none w-full text-sm text-gray-700 py-1"
-                      value={bankCode}
+                      value={bank_code}
                       required
                     />{" "}
+                  </div>
+                </div>
+                <div className="flex gap-x-2 items-center pt-2">
+                  <p className="font-inter text-xs text-[#222222]/60 ">
+                    Set as Default
+                  </p>
+                  <div className="relative flex flex-col items-center justify-center overflow-hidden">
+                    <div className="flex">
+                      <label className="inline-flex relative items-center mr-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="sr-only peer"
+                          checked={enabled}
+                          readOnly
+                        />
+                        <div
+                          onClick={() => {
+                            setEnabled(!enabled);
+                          }}
+                          className="w-9 h-5 border border-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:bg-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-gray-300 after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#67D74B]"
+                        ></div>
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <div className="w-full  py-5 flex-1 svelte-1l8159u">
                   <button
                     type="submit"
+                    onClick={handleSubmit}
                     className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center w-full sm:w-full py-2 rounded font-bold cursor-pointer 
                                 
 										hover:bg-blue-500 
