@@ -6,6 +6,16 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import { Loader } from "../../components/base/Loader";
 import MainLayout from "../../components/MainLayout";
+import { format, parseISO } from "date-fns";
+
+const FormattedDate = ({ date }: any) => {
+  const formatDate = (dateString: string) => {
+    const parsedDate = parseISO(dateString);
+    return format(parsedDate, "EEE dd MMMM yyyy | h:mmaaa");
+  };
+
+  return <span>{formatDate(date)}</span>;
+};
 
 interface Fixtures {
   starting_at: any;
@@ -29,6 +39,19 @@ interface Team {
   type: string;
   status: string;
 }
+
+interface DataItem {
+  name: string;
+  starting_at: any;
+  result_info: any;
+  round_id: number;
+  participants: string;
+  visitorTeam: string;
+}
+interface GroupedData {
+  [key: string]: DataItem[];
+}
+
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [leagueId, setLeagueId] = useState("9");
@@ -114,6 +137,24 @@ const Index = () => {
   const goToHistory = () => {
     Router.push("/home/history");
   };
+
+  const data: DataItem[] = fixtures || [];
+
+  // Sorting the array by the "date" property
+  const sortedData = [...data].sort(
+    (a, b) =>
+      new Date(a.starting_at).getTime() - new Date(b.starting_at).getTime()
+  );
+
+  // Grouping data by date
+  const groupedData: GroupedData = sortedData.reduce((acc, item) => {
+    const date = item.starting_at;
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+    acc[date].push(item);
+    return acc;
+  }, {});
 
   return (
     <MainLayout>
@@ -270,15 +311,31 @@ const Index = () => {
               className="block w-full py-2 pr-5 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg  placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
-          <div className="block relative flex items-center mb-5 "></div>
-          <div className="flex overflow-y-auto   whitespace-nowrap scrollbar-hide inset-x-0">
+         
+          <div className="flex overflow-y-auto   whitespace-nowrap scrollbar-hide inset-x-0 mb-5">
             {leagues.map((item: LiveLeague) => (
               <div
                 key={item.id}
                 onClick={() => {
-                  // setLeagueId(item.league_id);
-                  // setActive(true);
-                  // fetchClubs(seasonId);
+                  setLeagueId(item.league_id);
+                  const fetchFix = async () => {
+                    setIsLoading(true);
+                    const res = await axios.get(
+                      `${process.env.BACKEND_URL}/get-matches?id=${leagueId}`
+                    );
+
+                    const response = await res.data.data;
+                    setIsLoading(false);
+                    return response;
+                  };
+
+                  const getFix = async () => {
+                    const FavouritesFromApi = await fetchFix();
+                    console.log(FavouritesFromApi);
+                    setFixtures(FavouritesFromApi);
+                  };
+
+                  getFix();
                 }}
                 className={`${
                   active ? "bg-purple-500 " : ""
@@ -295,7 +352,7 @@ const Index = () => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col  space-y-4 max-w-3xl mx-auto py-1">
+        {/* <div className="flex flex-col  space-y-4 max-w-3xl mx-auto py-1">
           <div className="flex  items-center justify-center mx-auto sm:flex-row py-2 ">
             <div className="sm:w-full mx-2 flex-1 svelte-1l8159u">
               <button
@@ -356,60 +413,66 @@ const Index = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className=" ">
-          {/* <p className="text-xs text-gray-800 font-arcon text-center  py-2 bg-gradient-to-r from-[#D9DADD] via-indigo-200 to-[#D9DADD]  mx-auto tracking-wider mb-3">
-              Sunday 21 February 2022
-            </p> */}
+        {Object.entries(groupedData).map(([date, items]) => (
+          <div key={date}>
+            <p className="text-xs text-gray-800 font-inter text-center  py-2 bg-gradient-to-r from-[#D9DADD] via-indigo-100 to-[#D9DADD]  mx-auto tracking-wider my-3">
+              <FormattedDate date={date} />
+            </p>
 
-          <table className="md:px-5 py-3 min-w-full  text-xs  sm:text-sm mx-auto leading-normal cursor-pointer">
-            {fixtures.slice(0, 5).map((item: Fixtures, round_id) => (
-              <tr key={round_id} className="">
-                <td className="px-1 lg:px-5 py-2 lg:text-sm font-medium whitespace-nowrap">
-                  <div className="flex items-center justify-end ">
-                    <div className="mr-1">
-                      <p className="text-gray-900 whitespace-no-wrap">
+            <table className=" py-3 w-full  text-xs  sm:text-sm mx-auto leading-normal cursor-pointer">
+              {items.map((item: Fixtures, round_id) => (
+                <tr key={round_id} className="mx-auto gap-x-1 w-full">
+                  <td className="lg:px-4 py-2 lg:text-sm font-medium whitespace-nowrap w-[20rem]">
+                    <div className="flex items-center gap-x-1 justify-end ">
+                      <p className="hidden sm:block text-gray-900 whitespace-nowrap text-right">
                         {item.participants[0]["name" as any]}
                       </p>
-                    </div>
-                    <div className="flex-shrink-0 w-5 sm:w-7 h-5 sm:h-7  sm:table-cell">
-                      <img
-                        className="w-full h-full rounded-full"
-                        src={item.participants[0]["image_path" as any]}
-                        alt={item.participants[0]["name" as any]}
-                      />
-                    </div>
-                  </div>
-                </td>
-                <td className="lg:px-4 py-2 text-sm whitespace-nowrap">
-                  <p className="tracking-tight px-2 sm:px-4 text-gray-600 whitespace-no-wrap text-center border  py-2 rounded-md border-gray-300">
-                    {item.result_info === null
-                      ? item.starting_at.slice(11, 16)
-                      : item.starting_at.slice(11, 16)}
-                  </p>
-                </td>
+                      <p className="sm:hidden text-gray-900 whitespace-nowrap text-right">
+                        {item.participants[0]["name" as any].slice(0, 16)}
+                      </p>
 
-                <td className="px-1 lg:px-4 py-2 lg:text-sm whitespace-nowrap">
-                  <div className="flex items-center  justify-start">
-                    <div className="flex-shrink-0 w-5 sm:w-7 h-5 sm:h-7  sm:table-cell mr-1">
-                      <img
-                        className="w-full h-full rounded-full"
-                        src={item.participants[1]["image_path" as any]}
-                        alt={item.participants[1]["name" as any]}
-                      />
+                      <div className="flex-shrink-0 w-5 sm:w-7 h-5 sm:h-7  sm:table-cell">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src={item.participants[0]["image_path" as any]}
+                          alt={item.participants[0]["name" as any]}
+                        />
+                      </div>
                     </div>
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap text-right">
+                  </td>
+                  <td className=" py-2 text-sm whitespace-nowrap w-[5rem]">
+                    <p className="tracking-tight px-2  text-gray-600 whitespace-nowrap text-center border  py-2 rounded-md border-gray-300">
+                      {item.result_info === null
+                        ? item.starting_at.slice(11, 16)
+                        : item.starting_at.slice(11, 16)}
+                    </p>
+                  </td>
+
+                  <td className="lg:px-4 py-2 lg:text-sm font-medium whitespace-nowrap w-[20rem]">
+                    <div className="flex items-center gap-x-1 justify-start">
+                      <div className="flex-shrink-0 w-5 sm:w-7 h-5 sm:h-7  sm:table-cell ">
+                        <img
+                          className="w-full h-full rounded-full"
+                          src={item.participants[1]["image_path" as any]}
+                          alt={item.participants[1]["name" as any]}
+                        />
+                      </div>
+
+                      <p className="hidden sm:block text-gray-900 whitespace-nowrap text-right">
                         {item.participants[1]["name" as any]}
                       </p>
+                      <p className="sm:hidden text-gray-900 whitespace-nowrap text-right">
+                        {item.participants[1]["name" as any].slice(0, 16)}
+                      </p>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </table>
-        </div>
+                  </td>
+                </tr>
+              ))}
+            </table>
+          </div>
+        ))}
       </div>
     </MainLayout>
   );
