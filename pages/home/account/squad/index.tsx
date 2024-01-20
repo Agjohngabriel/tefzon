@@ -1,11 +1,9 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Loader } from "../../../../components/base/Loader";
-import FavouriteLeague from "../../../../components/form/FavouriteLeagues";
 import MainLayout from "../../../../components/MainLayout";
-
+import Router from "next/router";
 interface Players {
   display_name: string;
   image_path: string;
@@ -58,9 +56,9 @@ const SaveTeam = () => {
       );
       const response = await res.data;
       setMessage(response.message);
-      setDetail(false)
+      setDetail(false);
       setError(false);
-    
+
       setLoading(0);
     } catch (e: any) {
       setLoading(0);
@@ -194,362 +192,207 @@ const SaveTeam = () => {
     setTeams(FavouritesFromApi);
   };
   console.log(teams);
+  const goToSelectSqaud = () => {
+    Router.push("/home/account/squad/select_squad");
+  };
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
-      <form className="py-2">
-        <div className="container  mx-auto px-6 pt-10  lg:px-20 flex items-center  justify-between flex-wrap">
-          <div className="flex items-center flex-shrink-0 text-gray-600 mr-6">
-            <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
-              Your Squad
-            </h1>
-          </div>
-          {/* <div className="mx-7 sm:w-full items-center block flex-grow md:flex md:justify-end md:w-auto">
-            <div>
-              <Link href="/home">
-                <a
-                  className="text-base hover:scale-110 focus:outline-none flex justify-center px-3 py-2 rounded font-bold cursor-pointer                                 
-                                    hover:bg-blue-500 shadow-inner 
-                                    bg-[#4AAE75] text-gray-200
-                                    duration-200 ease-in-out 
-                                    transition"
-                >
-                  <span className="font-montserrat text-sm text-black-150">
-                    Save
-                  </span>
-                </a>
-              </Link>
-            </div>
-          </div> */}
+
+      <div className="px-3 lg:px-20 py-10">
+        <div className="bg-[#fff] rounded p-2   sm:px-10 sm:py-7 items-center  flex justify-between ">
+          <h1 className="font-oswald text-xl sm:text-4xl text-black-0  text-center">
+            Your Squad
+          </h1>
+
+          <button
+            onClick={() => goToSelectSqaud()}
+            className="text-base hover:scale-110 focus:outline-none flex justify-center px-1 sm:px-3 py-3 rounded font-semibold sm:font-bold cursor-pointer hover:bg-blue-100  text-[#795DE0] bg-[#E4ECFB] duration-200 ease-in-out transition"
+          >
+            <span className="text-xs sm:text-sm font-montserrat text-black-150">
+              Transfer in / out players
+            </span>
+          </button>
         </div>
 
-        <hr className="my-6 rounded-lg border-b-2 border-violet-500 mx-4 lg:mx-28" />
-
-        <div className="container max-w-6xl bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded-2xl shadow-2xl shadow-indigo-500/50 mx-auto mt-10 mb-20 px-2 py-2 w-auto">
+        <div className="container  bg-gradient-to-br from-[#FFFFFF]/100 via-[#F2F6FF]/50 to-[#E5ECFA]/100 border-inherit rounded shadow-2xl shadow-indigo-500/50  mt-10 mb-20  w-auto">
           <div
-            className="rounded-2xl border shadow-xl py-16 px-5 w-full "
+            className="rounded border shadow-xl pb-16 px-5 w-full  "
             style={{
-              backgroundImage: 'url("/img/pitch-lg.png")',
+              backgroundImage: 'url("/img/pitch.png")',
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center center",
             }}
           >
             {error === true && (
-              <p className="text-sm text-gray-100 font-arcon text-center  max-w-lg mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
-                {errorMsg.message}
+              <p className="text-xs flex lg:flex-row flex-col items-center gap-x-1 justify-center rounded font-arcon text-center  max-w-lg mb-5 py-5 bg-[#FEF8EC] text-red-500 tracking-wider px-2 mx-auto lg:px-1 ">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 8L8 11M8 5.77637V5.75M2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8Z"
+                    stroke="CurrentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span> {errorMsg.message}</span>
               </p>
             )}
             {message !== "" ? (
-              <p className="text-sm text-gray-100 font-arcon text-center  max-w-lg mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
-                {message}
+              <p className="text-xs text-[#DB9816] flex lg:flex-row flex-col items-center gap-x-1 justify-center rounded font-arcon text-center  max-w-lg mb-5 py-5 bg-[#FEF8EC] tracking-wider px-2 mx-auto lg:px-1 ">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 8L8 11M8 5.77637V5.75M2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8Z"
+                    stroke="#DB9816"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>{" "}
+                <span> {message}</span>
               </p>
             ) : (
-              <p className="text-xs text-gray-100 font-arcon text-center  max-w-2xl mb-5 py-5 bg-[#6E4BEC7D]/70 tracking-wider px-2 mx-auto lg:px-1 ">
-                To change your captain use the menu which appears when clicking
-                on the players's shirt
-              </p>
+              <div className="text-xs text-[#DB9816] flex lg:flex-row flex-col items-center gap-x-1 justify-center rounded font-arcon text-center  max-w-2xl mb-5 py-5 bg-[#FEF8EC] tracking-wider px-2 mx-auto lg:px-1 ">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-9"
+                >
+                  <path
+                    d="M8 8L8 11M8 5.77637V5.75M2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8Z"
+                    stroke="#DB9816"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <p>
+                  {" "}
+                  To change your captain use the menu which appears when
+                  clicking on the players's shirt
+                </p>
+              </div>
             )}
-
             <div>
-              <div className="flex mt-[5rem]  py-10 mx-auto">
+              <div className="flex justify-center mt-[5rem]  pb-8 mx-auto">
                 {teams.goalkeepers.map((item: Players, player_id: number) => (
                   <button
-                    key={player_id}
                     type="button"
+                    key={player_id}
                     onClick={() => playerDetails(item.player_id)}
-                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                    className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-mt-[3rem] ">
-                      <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
-                          <img
-                            className="rounded-full object-cover object-center"
-                            src={item.image_path}
-                            alt={item.player_name}
-                            title={item.player_name}
-                          />
-                        </div>
-                      </div>
+                    <div className="-my-[1.5rem] mx-auto">
+                      <img
+                        className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
+                        src={item.image_path}
+                        alt={item.player_name}
+                        title={item.player_name}
+                      />
                     </div>
-                    <div className="w-full mx-auto mb-1">
+                    <div className="w-full mx-auto ">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                       >
-                        {item.player_name}
-                        {/* <svg
-                          viewBox="0 0 53 51"
-                          fill="none"
-                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={
-                              item.is_captain
-                                ? "#ff6c37"
-                                : item.is_vice_captain
-                                ? "#fdd663"
-                                : "#03A9F4"
-                            }
-                          />
-                          <path
-                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                            stroke="white"
-                            strokeWidth="0.5"
-                          />
-                        </svg> */}
-                      </p>
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center p-0.5  -mb-6 font-arcon leading-normal  text-gray-100 bg-[#33175A]"
-                      >
-                        {item.team_short_code}
+                        {item.player_name.split(" ", 1)}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex   py-16 mx-auto sm:w-3/4">
+              <div className="flex py-12 mx-auto sm:w-3/4">
                 {teams.defenders.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
                     type="button"
                     onClick={() => playerDetails(item.player_id)}
-                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                    className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-mt-[3rem] ">
-                      <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
-                          <img
-                            className="rounded-full object-cover object-center"
-                            src={item.image_path}
-                            alt={item.player_name}
-                            title={item.player_name}
-                          />
-                        </div>
-                      </div>
+                    <div className="-my-[1.5rem] mx-auto">
+                      <img
+                        className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
+                        src={item.image_path}
+                        alt={item.player_name}
+                        title={item.player_name}
+                      />
                     </div>
-                    <div className="w-full mx-auto mb-1">
+                    <div className="w-full mx-auto ">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                       >
-                        {item.player_name}
-                        {/* <svg
-                          viewBox="0 0 53 51"
-                          fill="none"
-                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={
-                              item.is_captain
-                                ? "#ff6c37"
-                                : item.is_vice_captain
-                                ? "#fdd663"
-                                : "#03A9F4"
-                            }
-                          />
-                          <path
-                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                            stroke="white"
-                            strokeWidth="0.5"
-                          />
-                        </svg> */}
-                      </p>
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
-                      >
-                        {item.team_short_code}
+                        {item.player_name.split(" ", 1)}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex   py-16 sm:mx-auto -mx-3 sm:w-3/4">
+              <div className="flex  py-12 sm:mx-auto -mx-4 sm:w-3/4">
                 {teams.midfielders.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
                     type="button"
                     onClick={() => playerDetails(item.player_id)}
-                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                    className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-mt-[3rem] ">
-                      <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
-                          <img
-                            className="rounded-full object-cover object-center"
-                            src={item.image_path}
-                            alt={item.player_name}
-                            title={item.player_name}
-                          />
-                        </div>
-                      </div>
+                    <div className="-my-[1.5rem] mx-auto">
+                      <img
+                        className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
+                        src={item.image_path}
+                        alt={item.player_name}
+                        title={item.player_name}
+                      />
                     </div>
-                    <div className="w-full mx-auto mb-1">
+                    <div className="w-full mx-auto ">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                       >
-                        {item.player_name}
-                        {/* <svg
-                          viewBox="0 0 53 51"
-                          fill="none"
-                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={
-                              item.is_captain
-                                ? "#ff6c37"
-                                : item.is_vice_captain
-                                ? "#fdd663"
-                                : "#03A9F4"
-                            }
-                          />
-                          <path
-                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                            stroke="white"
-                            strokeWidth="0.5"
-                          />
-                        </svg> */}
-                      </p>
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
-                      >
-                        {item.team_short_code}
+                        {item.player_name.split(" ", 1)}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex   pt-16 mx-auto sm:w-3/4">
+              <div className="flex pt-12 mx-auto sm:w-3/4">
                 {teams.forwards.map((item: Players, player_id: number) => (
                   <button
                     key={player_id}
                     type="button"
                     onClick={() => playerDetails(item.player_id)}
-                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
+                    className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-mt-[3rem] ">
-                      <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
-                          <img
-                            className="rounded-full object-cover object-center"
-                            src={item.image_path}
-                            alt={item.player_name}
-                            title={item.player_name}
-                          />
-                        </div>
-                      </div>
+                    <div className="-my-[1.5rem] mx-auto">
+                      <img
+                        className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
+                        src={item.image_path}
+                        alt={item.player_name}
+                        title={item.player_name}
+                      />
                     </div>
-                    <div className="w-full mx-auto mb-1">
+                    <div className="w-full mx-auto ">
                       <p
                         tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
                       >
-                        {item.player_name}
-                        {/* <svg
-                          viewBox="0 0 53 51"
-                          fill="none"
-                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={
-                              item.is_captain
-                                ? "#ff6c37"
-                                : item.is_vice_captain
-                                ? "#fdd663"
-                                : "#03A9F4"
-                            }
-                          />
-                          <path
-                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                            stroke="white"
-                            strokeWidth="0.5"
-                          />
-                        </svg> */}
-                      </p>
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
-                      >
-                        {item.team_short_code}
-                      </p>
-                    </div>
-                  </button>
-                ))}
-              </div>
-              <hr className="mt-10  rounded-lg border-b border-white mx-4 lg:mx-28" />
-              <p className="text-sm text-gray-100 font-arcon font-bold text-center  max-w-lg my-3 tracking-wider px-2 mx-auto lg:px-1 ">
-                Substitutions
-              </p>
-              <hr className="mb-6 rounded-lg border-b border-white mx-4 lg:mx-28" />
-              <div className="flex   py-12 sm:mx-auto -mx-3 sm:w-3/4">
-                {teams.subs.map((item: Players, player_id: number) => (
-                  <button
-                    key={player_id}
-                    type="button"
-                    onClick={() => playerDetails(item.player_id)}
-                    className="p-3  rounded mt-2 mx-auto h-10 hover:scale-105 transition transform duration-500 cursor-pointer"
-                  >
-                    <div className="-mt-[3rem] ">
-                      <div className="mt-[1rem] -mb-16 -translate-y-1/2 transform mx-auto">
-                        <div className=" h-[4.6rem] w-[4rem] rounded-full mx-auto">
-                          <img
-                            className="rounded-full object-cover object-center"
-                            src={item.image_path}
-                            alt={item.player_name}
-                            title={item.player_name}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-full mx-auto mb-1">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem] sm:text-xs py-1 mt-4 px-1.5 sm:px-3  tracking-wider rounded text-gray-100 bg-[#6544DE] flex justify-center text-center"
-                      >
-                        {item.player_name}
-                        {/* <svg
-                          viewBox="0 0 53 51"
-                          fill="none"
-                          className=" h-2 sm:h-4 px-1 mx-auto z-0"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334L46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475Z"
-                            fill={
-                              item.is_captain
-                                ? "#ff6c37"
-                                : item.is_vice_captain
-                                ? "#fdd663"
-                                : "#03A9F4"
-                            }
-                          />
-                          <path
-                            d="M11.2572 24.8544H1V22.0601L3.79743 9.9518C3.79743 9.9518 5.66238 6.22616 7.52733 5.29475C9.39228 4.36334 20.582 0.637695 20.582 0.637695C25.105 2.76353 27.5672 4.23143 33.6366 0.637695L42.9614 4.36334C42.9614 4.36334 45.7588 7.15757 46.6913 8.08898C47.6238 9.02039 49.4887 11.8146 50.4212 13.6774C51.3537 15.5403 52.2861 24.8544 52.2861 24.8544L50.4212 25.7858H42.0289L41.0964 22.0601V50.0025H11.2572V24.8544ZM11.2572 24.8544V22.0601"
-                            stroke="white"
-                            strokeWidth="0.5"
-                          />
-                        </svg> */}
-                      </p>
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem] text-center p-1  -mb-6 leading-normal  text-gray-100 bg-[#33175A]"
-                      >
-                        {item.team_short_code}
+                        {item.player_name.split(" ", 1)}
                       </p>
                     </div>
                   </button>
@@ -557,8 +400,46 @@ const SaveTeam = () => {
               </div>
             </div>
           </div>
+
+          <div className="pt-10">
+            <div className="bg-[#605E6333] h-20">
+              <div className="flex justify-between  mt-10 sm:mx-auto mx-3 sm:w-3/4">
+                {teams.subs.map((item: Players, player_id: number) => (
+                  <button
+                    key={player_id}
+                    type="button"
+                    onClick={() => playerDetails(item.player_id)}
+                    className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
+                  >
+                    <div className="-my-[1.5rem] mx-auto">
+                      <img
+                        className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
+                        src={item.image_path}
+                        alt={item.player_name}
+                        title={item.player_name}
+                      />
+                    </div>
+                    <div className="w-full mx-auto ">
+                      <p
+                        tabIndex={0}
+                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
+                      >
+                        {item.player_name.split(" ", 1)}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center justify-between text-base px-3 sm:mx-auto sm:w-[47rem]">
+                <h2 className="text-center font-medium py-1">1 - FWD</h2>
+                <h2 className="text-center font-medium py-1">2 - MID</h2>
+                <h2 className="text-center font-medium py-1">3 - DEF</h2>
+                <h2 className="text-center font-medium py-1">4 - GK</h2>
+              </div>
+            </div>
+          </div>
         </div>
-      </form>
+      </div>
 
       {detail && (
         <div className="fixed inset-0 z-[150] overflow-y-auto bg-[#000000]/50 ">
@@ -567,7 +448,7 @@ const SaveTeam = () => {
               &#8203;
             </span>
 
-            <div className="relative inline-block  pt-5 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  sm:my-8 w-full sm:max-w-lg sm:p-6 md:p-8 sm:align-middle">
+            <div className="relative inline-block  pt-5 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  sm:my-8 w-full sm:max-w-md sm:p-6 md:p-8 sm:align-middle">
               <div className="flex items-end justify-end">
                 <button
                   onClick={(e) => {
@@ -593,28 +474,17 @@ const SaveTeam = () => {
                 </button>
               </div>
 
-              <div className="flex py-3 px-2  ">
-                <h2 className="text-3xl px-5 font-bold text-[#240155]  leading-5 ">
-                  {details["name" as any]}
-                </h2>
-              </div>
-
               {/* table */}
-              <section className="py-3">
+              <section className="px-3">
                 <img
                   src={details["image_path" as any]}
                   alt={details["name" as any]}
-                  className="mx-auto w-[7rem] lg:w-[8rem] mt-5 rounded-full"
+                  className="mx-auto w-[5rem] sm:w-[7rem] rounded-full"
                 />
-                <div className="flex justify-between items-center mx-auto px-20 w-[25rem] mt-4">
-                  {/* <div className="flex gap-1 items-center">
-                    <img
-                      src=""
-                      alt="size"
-                      className="w-screen lg:w-full px-3"
-                    />
-                    Arsenal
-                  </div> */}
+                <div className="flex justify-between items-center mx-auto justify-center mt-3">
+                  <h2 className="text-xs sm:text-sm font-semibold text-[#000] flex leading-5 ">
+                    {details["name" as any]}
+                  </h2>
 
                   <button className="bg-[#F0F0F0] py-1 px-2 rounded-md text-xs">
                     {details["position_id" as any] === 24 && (
@@ -631,12 +501,56 @@ const SaveTeam = () => {
                     )}
                   </button>
                 </div>
+
+                <div className="space-y-2 my-4 border rounded-md p-5">
+                  <button
+                    onClick={() => selectCap(details["id" as any])}
+                    className=" flex  items-center bg-white rounded-md text-[#94A3B8] justify-between cursor-pointer w-full hover:text-[#795DE0]"
+                  >
+                    <p className="text-xs  font-semibold text-left font-inter  text-[#000] ">
+                      Make Captain
+                    </p>
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 2.25C10.0716 2.25 8.18657 2.82183 6.58319 3.89317C4.97982 4.96451 3.73013 6.48726 2.99218 8.26884C2.25422 10.0504 2.06114 12.0108 2.43735 13.9021C2.81355 15.7934 3.74215 17.5307 5.10571 18.8943C6.46928 20.2579 8.20656 21.1865 10.0979 21.5627C11.9892 21.9389 13.9496 21.7458 15.7312 21.0078C17.5127 20.2699 19.0355 19.0202 20.1068 17.4168C21.1782 15.8134 21.75 13.9284 21.75 12C21.7473 9.41498 20.7192 6.93661 18.8913 5.10872C17.0634 3.28084 14.585 2.25273 12 2.25ZM12 20.25C10.3683 20.25 8.77326 19.7661 7.41655 18.8596C6.05984 17.9531 5.00242 16.6646 4.378 15.1571C3.75358 13.6496 3.5902 11.9908 3.90853 10.3905C4.22685 8.79016 5.01259 7.32015 6.16637 6.16637C7.32016 5.01259 8.79017 4.22685 10.3905 3.90852C11.9909 3.59019 13.6497 3.75357 15.1571 4.37799C16.6646 5.00242 17.9531 6.05984 18.8596 7.41655C19.7661 8.77325 20.25 10.3683 20.25 12C20.2475 14.1873 19.3775 16.2843 17.8309 17.8309C16.2843 19.3775 14.1873 20.2475 12 20.25ZM18 12C18 13.1867 17.6481 14.3467 16.9888 15.3334C16.3295 16.3201 15.3925 17.0892 14.2961 17.5433C13.1997 17.9974 11.9933 18.1162 10.8295 17.8847C9.66558 17.6532 8.59648 17.0818 7.75736 16.2426C6.91825 15.4035 6.3468 14.3344 6.11529 13.1705C5.88378 12.0067 6.0026 10.8003 6.45673 9.7039C6.91085 8.60754 7.67989 7.67047 8.66658 7.01118C9.65328 6.35189 10.8133 6 12 6C13.5908 6.00174 15.1159 6.63444 16.2407 7.75928C17.3656 8.88412 17.9983 10.4092 18 12Z"
+                        fill="CurrentColor  "
+                      />
+                    </svg>
+                  </button>
+
+                  <button
+                    onClick={() => selectViceCap(details["id" as any])}
+                    className=" flex  items-center bg-white text-[#94A3B8] rounded-md justify-between cursor-pointer w-full hover:text-[#795DE0]"
+                  >
+                    <p className="text-xs  font-semibold text-left font-inter  text-[#000] ">
+                      Make Vice Captain
+                    </p>
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 2.25C10.0716 2.25 8.18657 2.82183 6.58319 3.89317C4.97982 4.96451 3.73013 6.48726 2.99218 8.26884C2.25422 10.0504 2.06114 12.0108 2.43735 13.9021C2.81355 15.7934 3.74215 17.5307 5.10571 18.8943C6.46928 20.2579 8.20656 21.1865 10.0979 21.5627C11.9892 21.9389 13.9496 21.7458 15.7312 21.0078C17.5127 20.2699 19.0355 19.0202 20.1068 17.4168C21.1782 15.8134 21.75 13.9284 21.75 12C21.7473 9.41498 20.7192 6.93661 18.8913 5.10872C17.0634 3.28084 14.585 2.25273 12 2.25ZM12 20.25C10.3683 20.25 8.77326 19.7661 7.41655 18.8596C6.05984 17.9531 5.00242 16.6646 4.378 15.1571C3.75358 13.6496 3.5902 11.9908 3.90853 10.3905C4.22685 8.79016 5.01259 7.32015 6.16637 6.16637C7.32016 5.01259 8.79017 4.22685 10.3905 3.90852C11.9909 3.59019 13.6497 3.75357 15.1571 4.37799C16.6646 5.00242 17.9531 6.05984 18.8596 7.41655C19.7661 8.77325 20.25 10.3683 20.25 12C20.2475 14.1873 19.3775 16.2843 17.8309 17.8309C16.2843 19.3775 14.1873 20.2475 12 20.25ZM18 12C18 13.1867 17.6481 14.3467 16.9888 15.3334C16.3295 16.3201 15.3925 17.0892 14.2961 17.5433C13.1997 17.9974 11.9933 18.1162 10.8295 17.8847C9.66558 17.6532 8.59648 17.0818 7.75736 16.2426C6.91825 15.4035 6.3468 14.3344 6.11529 13.1705C5.88378 12.0067 6.0026 10.8003 6.45673 9.7039C6.91085 8.60754 7.67989 7.67047 8.66658 7.01118C9.65328 6.35189 10.8133 6 12 6C13.5908 6.00174 15.1159 6.63444 16.2407 7.75928C17.3656 8.88412 17.9983 10.4092 18 12Z"
+                        fill="CurrentColor  "
+                      />
+                    </svg>
+                  </button>
+                </div>
                 <button
-                  className="my-7 bg-[#9783E3] text-[#fff] text-center hover:bg-gay-200 font-light text-xs px-4 py-2 sm:py-4  rounded shadow hover:shadow-md outline-none focus:outline-none   w-full ease-linear transition-all duration-150"
+                  className="mt-3 bg-[#9783E3] text-[#fff] text-center hover:bg-gay-200  text-xs px-4 py-2 sm:py-3  rounded shadow hover:shadow-md outline-none focus:outline-none   w-full ease-linear transition-all duration-150"
                   type="button"
-                  onClick={() => selectCap(details["id" as any])}
+                  onClick={() => remove(details["id" as any])}
                 >
-                  Make Captain
+                  Substitube
                 </button>
 
                 {/* <div className="flex justify-between items-center mx-auto  w-full mt-4">
