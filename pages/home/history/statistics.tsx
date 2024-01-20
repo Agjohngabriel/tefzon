@@ -55,7 +55,7 @@ function Statistics() {
   return (
     <MainLayout>
       <div className="px-3 lg:px-20 py-10">
-      <button
+        <button
           onClick={() => Router.back()}
           className=" flex items-center gap-x-2 text-[#795DE0] active:bg-pink-600 font-bold text-base font-inter px-4 py-5 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
           type="button"
@@ -88,12 +88,12 @@ function Statistics() {
         </button>
         <div className="bg-[#F8F8F8] rounded-xl border shadow-2xl shadow-[#766AA480] p-2   sm:px-10 max-w-4xl flex justify-between ">
           <div className="text-center space-y-1 p-1">
-          <h2 className="text-xs font-light text-[#94A3B8]">Average Point</h2>
+            <h2 className="text-xs font-light text-[#94A3B8]">Average Point</h2>
             <h2 className="text-xl font-regular">44</h2>
           </div>
           <div className="text-center space-y-1 p-1 ">
-          <h2 className="text-xs font-light text-[#94A3B8]">Your Score</h2>
-          <h2 className="text-xl font-regular">78</h2>
+            <h2 className="text-xs font-light text-[#94A3B8]">Your Score</h2>
+            <h2 className="text-xl font-regular">78</h2>
           </div>
           <div className="text-center space-y-1 p-1">
             <h2 className="text-xs font-light">Highest Point</h2>
