@@ -172,6 +172,7 @@ const SaveTeam = () => {
         const FavouritesFromApi = await fetchAll();
         setTeams(FavouritesFromApi);
       };
+
       getFavourites();
     }
   }, [session]);
@@ -186,6 +187,10 @@ const SaveTeam = () => {
     const response = await res.data.data;
     return response;
   };
+
+  if (teams.goalkeepers.length === 0) {
+    Router.push("/home/account/squad/select_squad");
+  }
 
   const getFavourites = async () => {
     const FavouritesFromApi = await fetchAll();
