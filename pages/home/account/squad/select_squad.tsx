@@ -504,7 +504,7 @@ const SquadSelection = () => {
                 </div>
               )}
               <div>
-                <div className="flex justify-center mt-[5rem]  pb-8 mx-auto sm:w-1/4">
+                <div className="flex justify-center mt-[5rem]  py-8 mx-auto sm:w-1/4">
                   {teams
                     .filter((e: Players) => e.player_position === "GoalKeeper")
                     .map((item: Players, position_id) => (
@@ -522,10 +522,10 @@ const SquadSelection = () => {
                           <button
                             type="button"
                             onClick={() => remove(item.player_id)}
-                            className="absolute -right-4 -top-10 bg-white rounded-full p-2 cursor-pointer group"
+                            className="absolute -right-1 -top-10 bg-white rounded-full p-2 cursor-pointer group"
                           >
                             <svg
-                              className="h-6 w-6 group-hover:opacity-50"
+                              className="h-4 w-4 group-hover:opacity-50"
                               width="20"
                               height="20"
                               viewBox="0 0 20 20"
@@ -621,10 +621,10 @@ const SquadSelection = () => {
                           <button
                             type="button"
                             onClick={() => remove(item.player_id)}
-                            className="absolute -right-4 -top-10 bg-white rounded-full p-2 cursor-pointer group"
+                            className="absolute -right-1 -top-10 bg-white rounded-full p-2 cursor-pointer group"
                           >
                             <svg
-                              className="h-6 w-6 group-hover:opacity-50"
+                              className="h-4 w-4 group-hover:opacity-50"
                               width="20"
                               height="20"
                               viewBox="0 0 20 20"
@@ -792,10 +792,10 @@ const SquadSelection = () => {
                           <button
                             type="button"
                             onClick={() => remove(item.player_id)}
-                            className="absolute -right-4 -top-10 bg-white rounded-full p-2 cursor-pointer group"
+                            className="absolute -right-1 -top-10 bg-white rounded-full p-2 cursor-pointer group"
                           >
                             <svg
-                              className="h-6 w-6 group-hover:opacity-50"
+                              className="h-4 w-4 group-hover:opacity-50"
                               width="20"
                               height="20"
                               viewBox="0 0 20 20"
@@ -964,10 +964,10 @@ const SquadSelection = () => {
                           <button
                             type="button"
                             onClick={() => remove(item.player_id)}
-                            className="absolute -right-4 -top-10 bg-white rounded-full p-2 cursor-pointer group"
+                            className="absolute -right-1 -top-10 bg-white rounded-full p-2 cursor-pointer group"
                           >
                             <svg
-                              className="h-6 w-6 group-hover:opacity-50"
+                              className="h-4 w-4 group-hover:opacity-50"
                               width="20"
                               height="20"
                               viewBox="0 0 20 20"

@@ -3,11 +3,7 @@ import Link from "next/link";
 
 export default function MainFooter() {
   return (
-    <footer
-      className="
-    // bg-violet-500 
-    bg-gradient-to-r from-violet-500  via-indigo-600  to-violet-500  pt-16   relative z-10"
-    >
+    <footer className="bg-gradient-to-r from-violet-500  via-indigo-600  to-violet-500  pt-16   relative z-10">
       <div className="flex flex-wrap mx-auto md:mx-5 lg:mx-12">
         <div className="w-full sm:w-3/12 lg:w-3/12 px-4">
           <div className="w-full mb-10">
@@ -290,7 +286,7 @@ export default function MainFooter() {
       </div>
 
       <span className="font-arcon bg-white block text-sm text-gray-700 sm:text-center dark:text-gray-400 py-5 -pb-5 px-5">
-        All Rights Reserved © 2023 Tefzon Fantasy.
+        All Rights Reserved © 2024 Tefzon Fantasy.
       </span>
 
       <div>

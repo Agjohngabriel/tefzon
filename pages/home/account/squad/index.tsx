@@ -25,6 +25,7 @@ const SaveTeam = () => {
   const [openTab, setOpenTab] = useState(1);
   const [detail, setDetail] = useState(false);
   const [message, setMessage] = useState("");
+  const [ids, setIds] = useState();
   const { data: session }: any = useSession();
   const [teams, setTeams] = useState({
     subs: [],
@@ -58,7 +59,7 @@ const SaveTeam = () => {
       setMessage(response.message);
       setDetail(false);
       setError(false);
-
+      getFavourites();
       setLoading(0);
     } catch (e: any) {
       setLoading(0);
@@ -84,7 +85,8 @@ const SaveTeam = () => {
         }
       );
       const response = await res.data;
-      setMessage(response);
+      setMessage(response.message);
+      setDetail(false);
       setError(false);
       getFavourites();
       setLoading(0);
@@ -188,9 +190,19 @@ const SaveTeam = () => {
     return response;
   };
 
-  if (teams.goalkeepers.length === 0) {
-    Router.push("/home/account/squad/select_squad");
-  }
+  useEffect(() => {
+    const delayedLogic = () => {
+      if (teams.goalkeepers.length === 0) {
+        Router.push("/home/account/squad/select_squad");
+      }
+    };
+
+    // Set a timeout for 2000 milliseconds (2 seconds)
+    const timeoutId = setTimeout(delayedLogic, 6000);
+
+    // Clear the timeout if the component is unmounted
+    return () => clearTimeout(timeoutId);
+  }, [teams.goalkeepers.length]);
 
   const getFavourites = async () => {
     const FavouritesFromApi = await fetchAll();
@@ -200,6 +212,8 @@ const SaveTeam = () => {
   const goToSelectSqaud = () => {
     Router.push("/home/account/squad/select_squad");
   };
+
+  const num = 1;
   return (
     <MainLayout>
       {isLoading === 1 && <Loader />}
@@ -297,23 +311,94 @@ const SaveTeam = () => {
                   <button
                     type="button"
                     key={player_id}
-                    onClick={() => playerDetails(item.player_id)}
+                    onClick={() => {
+                      playerDetails(item.player_id);
+                      setIds(item.id as any);
+                    }}
                     className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-my-[1.5rem] mx-auto">
+                    <div className="-my-[1.5rem] mx-auto relative">
                       <img
                         className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src={item.image_path}
                         alt={item.player_name}
                         title={item.player_name}
                       />
+                      <button className="absolute -right-1 -top-8  rounded-full p-2 cursor-pointer group">
+                        {item.is_captain ? (
+                          <svg
+                            className="h-4 w-4 group-hover:opacity-50"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M7.67614 11.6591C6.96023 11.6591 6.34375 11.4901 5.8267 11.152C5.30966 10.8139 4.91193 10.3482 4.63352 9.75497C4.35511 9.16169 4.21591 8.4839 4.21591 7.72159C4.21591 6.94602 4.35843 6.2616 4.64347 5.66832C4.93182 5.07173 5.33286 4.60606 5.84659 4.27131C6.36364 3.93324 6.96686 3.7642 7.65625 3.7642C8.19318 3.7642 8.67708 3.86364 9.10795 4.0625C9.53883 4.26136 9.89181 4.53977 10.1669 4.89773C10.442 5.25568 10.6127 5.6733 10.679 6.15057H9.50568C9.41619 5.80256 9.21733 5.49432 8.90909 5.22585C8.60417 4.95407 8.19318 4.81818 7.67614 4.81818C7.21875 4.81818 6.81771 4.9375 6.47301 5.17614C6.13163 5.41146 5.86482 5.74455 5.67259 6.17543C5.48366 6.60298 5.3892 7.10511 5.3892 7.68182C5.3892 8.27178 5.48201 8.78551 5.66761 9.22301C5.85653 9.66051 6.12169 10.0002 6.46307 10.2422C6.80777 10.4841 7.21212 10.6051 7.67614 10.6051C7.98106 10.6051 8.25781 10.5521 8.50639 10.446C8.75497 10.34 8.96544 10.1875 9.13778 9.98864C9.31013 9.78977 9.43277 9.55114 9.50568 9.27273H10.679C10.6127 9.72348 10.4486 10.1295 10.1868 10.4908C9.92827 10.8487 9.58523 11.1338 9.15767 11.3459C8.73343 11.5547 8.23958 11.6591 7.67614 11.6591Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+
+                        {item.is_vice_captain ? (
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M11.3182 5.36364L8.49432 13H7.30114L4.47727 5.36364H5.75L7.85795 11.4489H7.9375L10.0455 5.36364H11.3182Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+                      </button>
                     </div>
                     <div className="w-full mx-auto ">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
-                      >
+                      <p className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center">
                         {item.player_name.split(" ", 1)}
+                      </p>
+                      <p className="focus:outline-none text-[.55rem] text-center rounded p-0.5 w-[3rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
@@ -325,23 +410,94 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={() => playerDetails(item.player_id)}
+                    onClick={() => {
+                      playerDetails(item.player_id);
+                      setIds(item.id as any);
+                    }}
                     className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-my-[1.5rem] mx-auto">
+                    <div className="-my-[1.5rem] mx-auto relative">
                       <img
                         className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src={item.image_path}
                         alt={item.player_name}
                         title={item.player_name}
                       />
+                      <button className="absolute -right-1 -top-8  rounded-full p-2 cursor-pointer group">
+                        {item.is_captain ? (
+                          <svg
+                            className="h-4 w-4 group-hover:opacity-50"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M7.67614 11.6591C6.96023 11.6591 6.34375 11.4901 5.8267 11.152C5.30966 10.8139 4.91193 10.3482 4.63352 9.75497C4.35511 9.16169 4.21591 8.4839 4.21591 7.72159C4.21591 6.94602 4.35843 6.2616 4.64347 5.66832C4.93182 5.07173 5.33286 4.60606 5.84659 4.27131C6.36364 3.93324 6.96686 3.7642 7.65625 3.7642C8.19318 3.7642 8.67708 3.86364 9.10795 4.0625C9.53883 4.26136 9.89181 4.53977 10.1669 4.89773C10.442 5.25568 10.6127 5.6733 10.679 6.15057H9.50568C9.41619 5.80256 9.21733 5.49432 8.90909 5.22585C8.60417 4.95407 8.19318 4.81818 7.67614 4.81818C7.21875 4.81818 6.81771 4.9375 6.47301 5.17614C6.13163 5.41146 5.86482 5.74455 5.67259 6.17543C5.48366 6.60298 5.3892 7.10511 5.3892 7.68182C5.3892 8.27178 5.48201 8.78551 5.66761 9.22301C5.85653 9.66051 6.12169 10.0002 6.46307 10.2422C6.80777 10.4841 7.21212 10.6051 7.67614 10.6051C7.98106 10.6051 8.25781 10.5521 8.50639 10.446C8.75497 10.34 8.96544 10.1875 9.13778 9.98864C9.31013 9.78977 9.43277 9.55114 9.50568 9.27273H10.679C10.6127 9.72348 10.4486 10.1295 10.1868 10.4908C9.92827 10.8487 9.58523 11.1338 9.15767 11.3459C8.73343 11.5547 8.23958 11.6591 7.67614 11.6591Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+
+                        {item.is_vice_captain ? (
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M11.3182 5.36364L8.49432 13H7.30114L4.47727 5.36364H5.75L7.85795 11.4489H7.9375L10.0455 5.36364H11.3182Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+                      </button>
                     </div>
                     <div className="w-full mx-auto ">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
-                      >
+                      <p className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center">
                         {item.player_name.split(" ", 1)}
+                      </p>
+                      <p className="focus:outline-none text-[.55rem] text-center rounded p-0.5 w-[3rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
@@ -353,23 +509,94 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={() => playerDetails(item.player_id)}
+                    onClick={() => {
+                      playerDetails(item.player_id);
+                      setIds(item.id as any);
+                    }}
                     className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-my-[1.5rem] mx-auto">
+                    <div className="-my-[1.5rem] mx-auto relative">
                       <img
                         className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src={item.image_path}
                         alt={item.player_name}
                         title={item.player_name}
                       />
+                      <button className="absolute -right-1 -top-8  rounded-full p-2 cursor-pointer group">
+                        {item.is_captain ? (
+                          <svg
+                            className="h-4 w-4 group-hover:opacity-50"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M7.67614 11.6591C6.96023 11.6591 6.34375 11.4901 5.8267 11.152C5.30966 10.8139 4.91193 10.3482 4.63352 9.75497C4.35511 9.16169 4.21591 8.4839 4.21591 7.72159C4.21591 6.94602 4.35843 6.2616 4.64347 5.66832C4.93182 5.07173 5.33286 4.60606 5.84659 4.27131C6.36364 3.93324 6.96686 3.7642 7.65625 3.7642C8.19318 3.7642 8.67708 3.86364 9.10795 4.0625C9.53883 4.26136 9.89181 4.53977 10.1669 4.89773C10.442 5.25568 10.6127 5.6733 10.679 6.15057H9.50568C9.41619 5.80256 9.21733 5.49432 8.90909 5.22585C8.60417 4.95407 8.19318 4.81818 7.67614 4.81818C7.21875 4.81818 6.81771 4.9375 6.47301 5.17614C6.13163 5.41146 5.86482 5.74455 5.67259 6.17543C5.48366 6.60298 5.3892 7.10511 5.3892 7.68182C5.3892 8.27178 5.48201 8.78551 5.66761 9.22301C5.85653 9.66051 6.12169 10.0002 6.46307 10.2422C6.80777 10.4841 7.21212 10.6051 7.67614 10.6051C7.98106 10.6051 8.25781 10.5521 8.50639 10.446C8.75497 10.34 8.96544 10.1875 9.13778 9.98864C9.31013 9.78977 9.43277 9.55114 9.50568 9.27273H10.679C10.6127 9.72348 10.4486 10.1295 10.1868 10.4908C9.92827 10.8487 9.58523 11.1338 9.15767 11.3459C8.73343 11.5547 8.23958 11.6591 7.67614 11.6591Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+
+                        {item.is_vice_captain ? (
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M11.3182 5.36364L8.49432 13H7.30114L4.47727 5.36364H5.75L7.85795 11.4489H7.9375L10.0455 5.36364H11.3182Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+                      </button>
                     </div>
                     <div className="w-full mx-auto ">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
-                      >
+                      <p className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center">
                         {item.player_name.split(" ", 1)}
+                      </p>
+                      <p className="focus:outline-none text-[.55rem] text-center rounded p-0.5 w-[3rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
@@ -381,23 +608,94 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={() => playerDetails(item.player_id)}
+                    onClick={() => {
+                      playerDetails(item.player_id);
+                      setIds(item.id as any);
+                    }}
                     className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-my-[1.5rem] mx-auto">
+                    <div className="-my-[1.5rem] mx-auto relative">
                       <img
                         className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src={item.image_path}
                         alt={item.player_name}
                         title={item.player_name}
                       />
+                      <button className="absolute -right-1 -top-8  rounded-full p-2 cursor-pointer group">
+                        {item.is_captain ? (
+                          <svg
+                            className="h-4 w-4 group-hover:opacity-50"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M7.67614 11.6591C6.96023 11.6591 6.34375 11.4901 5.8267 11.152C5.30966 10.8139 4.91193 10.3482 4.63352 9.75497C4.35511 9.16169 4.21591 8.4839 4.21591 7.72159C4.21591 6.94602 4.35843 6.2616 4.64347 5.66832C4.93182 5.07173 5.33286 4.60606 5.84659 4.27131C6.36364 3.93324 6.96686 3.7642 7.65625 3.7642C8.19318 3.7642 8.67708 3.86364 9.10795 4.0625C9.53883 4.26136 9.89181 4.53977 10.1669 4.89773C10.442 5.25568 10.6127 5.6733 10.679 6.15057H9.50568C9.41619 5.80256 9.21733 5.49432 8.90909 5.22585C8.60417 4.95407 8.19318 4.81818 7.67614 4.81818C7.21875 4.81818 6.81771 4.9375 6.47301 5.17614C6.13163 5.41146 5.86482 5.74455 5.67259 6.17543C5.48366 6.60298 5.3892 7.10511 5.3892 7.68182C5.3892 8.27178 5.48201 8.78551 5.66761 9.22301C5.85653 9.66051 6.12169 10.0002 6.46307 10.2422C6.80777 10.4841 7.21212 10.6051 7.67614 10.6051C7.98106 10.6051 8.25781 10.5521 8.50639 10.446C8.75497 10.34 8.96544 10.1875 9.13778 9.98864C9.31013 9.78977 9.43277 9.55114 9.50568 9.27273H10.679C10.6127 9.72348 10.4486 10.1295 10.1868 10.4908C9.92827 10.8487 9.58523 11.1338 9.15767 11.3459C8.73343 11.5547 8.23958 11.6591 7.67614 11.6591Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+
+                        {item.is_vice_captain ? (
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M11.3182 5.36364L8.49432 13H7.30114L4.47727 5.36364H5.75L7.85795 11.4489H7.9375L10.0455 5.36364H11.3182Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+                      </button>
                     </div>
                     <div className="w-full mx-auto ">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
-                      >
+                      <p className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center">
                         {item.player_name.split(" ", 1)}
+                      </p>
+                      <p className="focus:outline-none text-[.55rem] text-center rounded p-0.5 w-[3rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
@@ -413,34 +711,105 @@ const SaveTeam = () => {
                   <button
                     key={player_id}
                     type="button"
-                    onClick={() => playerDetails(item.player_id)}
+                    onClick={() => {
+                      playerDetails(item.player_id);
+                      setIds(item.id as any);
+                    }}
                     className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
                   >
-                    <div className="-my-[1.5rem] mx-auto">
+                    <div className="-my-[1.5rem] mx-auto relative">
                       <img
                         className="rounded-full bg-[#fff] -translate-y-1/2 transform object-cover object-center mx-auto w-[3rem]"
                         src={item.image_path}
                         alt={item.player_name}
                         title={item.player_name}
                       />
+                      <button className="absolute -right-1 -top-8  rounded-full p-2 cursor-pointer group">
+                        {item.is_captain ? (
+                          <svg
+                            className="h-4 w-4 group-hover:opacity-50"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M7.67614 11.6591C6.96023 11.6591 6.34375 11.4901 5.8267 11.152C5.30966 10.8139 4.91193 10.3482 4.63352 9.75497C4.35511 9.16169 4.21591 8.4839 4.21591 7.72159C4.21591 6.94602 4.35843 6.2616 4.64347 5.66832C4.93182 5.07173 5.33286 4.60606 5.84659 4.27131C6.36364 3.93324 6.96686 3.7642 7.65625 3.7642C8.19318 3.7642 8.67708 3.86364 9.10795 4.0625C9.53883 4.26136 9.89181 4.53977 10.1669 4.89773C10.442 5.25568 10.6127 5.6733 10.679 6.15057H9.50568C9.41619 5.80256 9.21733 5.49432 8.90909 5.22585C8.60417 4.95407 8.19318 4.81818 7.67614 4.81818C7.21875 4.81818 6.81771 4.9375 6.47301 5.17614C6.13163 5.41146 5.86482 5.74455 5.67259 6.17543C5.48366 6.60298 5.3892 7.10511 5.3892 7.68182C5.3892 8.27178 5.48201 8.78551 5.66761 9.22301C5.85653 9.66051 6.12169 10.0002 6.46307 10.2422C6.80777 10.4841 7.21212 10.6051 7.67614 10.6051C7.98106 10.6051 8.25781 10.5521 8.50639 10.446C8.75497 10.34 8.96544 10.1875 9.13778 9.98864C9.31013 9.78977 9.43277 9.55114 9.50568 9.27273H10.679C10.6127 9.72348 10.4486 10.1295 10.1868 10.4908C9.92827 10.8487 9.58523 11.1338 9.15767 11.3459C8.73343 11.5547 8.23958 11.6591 7.67614 11.6591Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+
+                        {item.is_vice_captain ? (
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              fill="#795DE0"
+                            />
+                            <rect
+                              x="0.5"
+                              y="0.5"
+                              width="15"
+                              height="15"
+                              rx="7.5"
+                              stroke="#795DE0"
+                            />
+                            <path
+                              d="M11.3182 5.36364L8.49432 13H7.30114L4.47727 5.36364H5.75L7.85795 11.4489H7.9375L10.0455 5.36364H11.3182Z"
+                              fill="white"
+                            />
+                          </svg>
+                        ) : (
+                          " "
+                        )}
+                      </button>
                     </div>
                     <div className="w-full mx-auto ">
-                      <p
-                        tabIndex={0}
-                        className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center"
-                      >
+                      <p className="focus:outline-none text-[.65rem]  font-inter py-1  px-1.5 sm:px-5  tracking-wider rounded text-[#240155] bg-[#D9DADD] mb-1 flex justify-center text-center">
                         {item.player_name.split(" ", 1)}
+                      </p>
+                      <p className="focus:outline-none text-[.55rem] text-center rounded p-0.5 w-[3rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
+                        {item.team_short_code}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
-              <div className="flex items-center justify-between text-base px-3 sm:mx-auto sm:w-[47rem]">
+              {/* <div className="flex items-center justify-between text-sm px-3 mt-8 sm:mx-auto sm:w-[47rem]">
                 <h2 className="text-center font-medium py-1">1 - FWD</h2>
                 <h2 className="text-center font-medium py-1">2 - MID</h2>
                 <h2 className="text-center font-medium py-1">3 - DEF</h2>
                 <h2 className="text-center font-medium py-1">4 - GK</h2>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -509,7 +878,7 @@ const SaveTeam = () => {
 
                 <div className="space-y-2 my-4 border rounded-md p-5">
                   <button
-                    onClick={() => selectCap(details["id" as any])}
+                    onClick={() => selectCap(ids as any)}
                     className=" flex  items-center bg-white rounded-md text-[#94A3B8] justify-between cursor-pointer w-full hover:text-[#795DE0]"
                   >
                     <p className="text-xs  font-semibold text-left font-inter  text-[#000] ">
@@ -530,7 +899,7 @@ const SaveTeam = () => {
                   </button>
 
                   <button
-                    onClick={() => selectViceCap(details["id" as any])}
+                    onClick={() => selectViceCap(ids as any)}
                     className=" flex  items-center bg-white text-[#94A3B8] rounded-md justify-between cursor-pointer w-full hover:text-[#795DE0]"
                   >
                     <p className="text-xs  font-semibold text-left font-inter  text-[#000] ">
@@ -553,7 +922,7 @@ const SaveTeam = () => {
                 <button
                   className="mt-3 bg-[#9783E3] text-[#fff] text-center hover:bg-gay-200  text-xs px-4 py-2 sm:py-3  rounded shadow hover:shadow-md outline-none focus:outline-none   w-full ease-linear transition-all duration-150"
                   type="button"
-                  onClick={() => remove(details["id" as any])}
+                  onClick={() => remove(ids as any)}
                 >
                   Substitube
                 </button>
