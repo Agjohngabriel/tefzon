@@ -5,8 +5,16 @@ import ProfileLayout from "../../../../components/ProfileLayout";
 import Router, { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-interface Manager {
-  date: string;
+interface Profile {
+  name: string;
+  // other properties of the profile
+}
+
+interface Transaction {
+  detail: string;
+  type: string;
+  created_at: string;
+  amount: number;
 }
 
 interface BankDetails {
@@ -25,7 +33,7 @@ const FormattedDate = ({ date }: any) => {
   return <span>{formatDate(date)}</span>;
 };
 
-const Index = () => {
+const Index = (proxi: Profile) => {
   const { data: session }: any = useSession();
   const [openTab, setOpenTab] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -385,7 +393,7 @@ const Index = () => {
           <div className="col-span-3 border-r pr-5">
             <div className="flex gap-x-2 md:gap-x-3 pt-3  text-[#240155]">
               <div className="bg-[#F8F8F8] font-bold font-oswald text-4xl overflow-hidden py-3 px-6 rounded-lg">
-                {profile?.name?.split(" ").map((i) => i.charAt(0))}
+                {proxi?.name?.split(" ").map((i) => i.charAt(0))}
               </div>
               <div className="">
                 <h1 className="font-semibold sm:text-xl ">
@@ -1726,9 +1734,7 @@ const Index = () => {
                                 {details["created_at" as any] === undefined ? (
                                   ""
                                 ) : (
-                                  <FormattedDate
-                                    date={item["created_at" as any]}
-                                  />
+                                  <FormattedDate date={item.created_at} />
                                 )}{" "}
                               </span>
                             </div>
