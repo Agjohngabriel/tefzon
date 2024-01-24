@@ -368,7 +368,7 @@ const SquadSelection = () => {
           <div className="flex justify-between items-center pb-5">
             <button
               onClick={() => Router.back()}
-              className="flex items-center gap-x-2 text-[#795DE0] active:bg-pink-600 font-bold text-base font-inter px-4  rounded outline-none focus:outline-none ease-linear transition-all duration-150"
+              className="flex items-center gap-x-2 text-[#795DE0] active:bg-pink-600 font-bold text-base font-montserrat px-4  rounded outline-none focus:outline-none ease-linear transition-all duration-150"
               type="button"
             >
               <svg
