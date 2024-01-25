@@ -163,7 +163,7 @@ function Details() {
                       <Link
                         href={{
                           pathname: "/home/history/statistics",
-                          query: { id: item.id, leagueId },
+                          query: { id: item.id, leagueId, name:item.userName },
                         }}
                       >
                         <a
