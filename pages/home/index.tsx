@@ -42,7 +42,7 @@ interface Team {
 
 interface DataItem {
   name: string;
-  starting_at: any;
+  starting_at: string;
   result_info: any;
   round_id: number;
   participants: string;
@@ -59,6 +59,7 @@ const Index = () => {
   const [fixtures, setFixtures] = useState([]);
   const [leagues, setLeagues] = useState([]);
   const [league, setLeague] = useState([]);
+  const [color, setColor] = useState("bg-[#240155]/10");
   const { data: session }: any = useSession();
   console.log(leagueId);
   useEffect(() => {
@@ -148,7 +149,7 @@ const Index = () => {
 
   // Grouping data by date
   const groupedData: GroupedData = sortedData.reduce((acc, item) => {
-    const date = item.starting_at;
+    const date = item.starting_at as string; // Adjust the type accordingly
     if (!acc[date]) {
       acc[date] = [];
     }
@@ -311,13 +312,14 @@ const Index = () => {
               className="block w-full py-2 pr-5 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg  placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
-         
+
           <div className="flex overflow-y-auto   whitespace-nowrap scrollbar-hide inset-x-0 mb-5">
             {leagues.map((item: LiveLeague) => (
               <div
                 key={item.id}
                 onClick={() => {
                   setLeagueId(item.league_id);
+                  // setColor("bg-purple-500");
                   const fetchFix = async () => {
                     setIsLoading(true);
                     const res = await axios.get(
@@ -337,9 +339,7 @@ const Index = () => {
 
                   getFix();
                 }}
-                className={`${
-                  active ? "bg-purple-500 " : ""
-                }flex group hover:bg-purple-500 hover:shadow-lg hover-dark-shadow rounded-full mx-1 transition-all	duration-300 cursor-pointer justify-center bg-[#240155]/10`}
+                className={`${color} flex group hover:bg-purple-500 hover:shadow-lg hover-dark-shadow rounded-full mx-1 transition-all	duration-300 cursor-pointer justify-center `}
               >
                 <div className="flex items-center px-4 py-1 w-max">
                   <div className="text-center">
