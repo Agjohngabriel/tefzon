@@ -55,9 +55,9 @@ export default NextAuth({
       return token;
     },
     async session({ session, token }) {
-      session.data = token.user;
       return session;
     },
+    
   },
   secret: "test",
   jwt: {
