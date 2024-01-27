@@ -57,7 +57,7 @@ function MainHeader() {
   return (
     <nav className="flex flex-wrap items-center p-3 px-6 py-3 mx-auto bg-green-400 md:px-10 lg:px-20 ">
       <Link href="/home" passHref>
-        <motion.a
+        <motion.span
           initial={{
             x: -500,
             opacity: 0,
@@ -74,7 +74,7 @@ function MainHeader() {
           className="inline-flex items-center p-2 mr-4 "
         >
           <img src="/brand.png" alt="logo" width="150px" />
-        </motion.a>
+        </motion.span>
       </Link>
 
       <motion.div
@@ -95,7 +95,7 @@ function MainHeader() {
       >
         <div className="flex flex-col items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
           <Link href="/home/account/profile" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
+            <span className="items-center justify-center w-full px-3 py-2 font-medium text-gray-600 rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               <svg
                 width="30"
                 height="30"
@@ -121,7 +121,7 @@ function MainHeader() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </span>
           </Link>
           <div className="relative inline-block group">
             <button

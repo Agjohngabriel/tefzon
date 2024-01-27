@@ -50,7 +50,7 @@ export const FooterSecond = () => {
       </div>
       <div>
         <span className="font-poppins text-[0.60rem]">
-          © 2023 All Simple Rights Reserved
+          © 2024 All Simple Rights Reserved
         </span>
       </div>
     </div>

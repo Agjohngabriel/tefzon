@@ -21,7 +21,8 @@ const ResetSuccess = () => {
                 Password reset
               </h1>
               <p className="font-arcon text-sm text-gray-500 text-center sm:w-5/6 animate-fade-in-up">
-                Your password has been sucessfully reset. Click below to login automatically.
+                Your password has been sucessfully reset. Click below to login
+                automatically.
               </p>
               <Link href="/home/" passHref>
                 <div className="w-full sm:w-auto bg-indigo-500 text-gray-200 shadow-inner rounded hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300 inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 cursor-pointer">
@@ -31,16 +32,12 @@ const ResetSuccess = () => {
                 </div>
               </Link>
 
-              
               <div className="text-center">
                 <Link href="/account/auth/login" passHref>
-                  <a
-                    type="button"
-                    className="flex items-center mx-16  text-sm text-gray-600 hover:text-blue-800 justify-center  "
-                  >
+                  <span className="flex items-center mx-16  text-sm text-gray-600 hover:text-blue-800 justify-center  ">
                     <span className="material-icons  ">arrow_backward</span>
                     <span className="-ml-24 ">Back to Log in</span>
-                  </a>
+                  </span>
                 </Link>
               </div>
             </div>

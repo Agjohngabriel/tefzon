@@ -97,9 +97,9 @@ const Signup = () => {
               </p>
               <div className="">
                 <Link href="/account/auth/login" passHref>
-                  <a className="flex items-center text-[#795DE0] font-inter text-sm justify-start text-bold mx-auto focus:outline-none">
+                  <span className="flex items-center text-[#795DE0] font-inter text-sm justify-start text-bold mx-auto focus:outline-none">
                     Log in
-                  </a>
+                  </span>
                 </Link>
               </div>
             </div>

@@ -6,7 +6,7 @@ import Button from "../components/base/Button";
 import GuestLayout from "../components/GuestLayout";
 import SlashScreen from "../components/SlashScreen";
 import { motion } from "framer-motion";
-import axios from "axios";
+
 
 interface Fixtures {
   time: any;
