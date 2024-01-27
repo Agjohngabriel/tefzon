@@ -21,7 +21,6 @@ interface Players {
   is_captain: boolean;
   is_vice_captain: boolean;
   IsOwner: string;
-  id: number;
   points: number;
 }
 function Statistics() {
@@ -39,6 +38,7 @@ function Statistics() {
     midfielders: [],
     forwards: [],
     defenders: [],
+    totalpoint: ""
   });
   const [managers, setManagers] = useState([]);
   const [error, setError] = useState(false);
@@ -162,7 +162,7 @@ function Statistics() {
                               {item.player_name.split(" ", 1)}
                             </p>
                             <p className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]">
-                              {item.point}
+                              {item.points}
                             </p>
                           </div>
                         </button>
@@ -189,7 +189,7 @@ function Statistics() {
                             {item.player_name.split(" ", 1)}
                           </p>
                           <p className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]">
-                            {item.point}
+                            {item.points}
                           </p>
                         </div>
                       </button>
@@ -216,7 +216,7 @@ function Statistics() {
                               {item.player_name.split(" ", 1)}
                             </p>
                             <p className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]">
-                              {item.point}
+                              {item.points}
                             </p>
                           </div>
                         </button>
@@ -243,7 +243,7 @@ function Statistics() {
                             {item.player_name.split(" ", 1)}
                           </p>
                           <p className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]">
-                            {item.point}
+                            {item.points}
                           </p>
                         </div>
                       </button>
@@ -273,7 +273,7 @@ function Statistics() {
                             {item.player_name.split(" ", 1)}
                           </p>
                           <p className="focus:outline-none text-[.65rem] text-center rounded py-0.5 w-[4rem]  mx-auto  -mb-6 font-arcon leading-normal  text-[#240155] bg-[#fff]">
-                            {item.point}
+                            {item.points}
                           </p>
                         </div>
                       </button>

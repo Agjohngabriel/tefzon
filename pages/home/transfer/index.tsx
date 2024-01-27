@@ -1,6 +1,5 @@
 import MainLayout from "../../../components/MainLayout";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { Loader } from "../../../components/base/Loader";

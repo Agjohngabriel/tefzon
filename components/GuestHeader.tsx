@@ -12,7 +12,7 @@ function GuestHeader() {
   return (
     <nav className="flex flex-wrap items-center p-3 px-6 py-3 mx-auto bg-green-400 md:px-10 lg:px-20 ">
       <Link href="/" passHref>
-        <motion.a
+        <motion.span
           initial={{
             x: -500,
             opacity: 0,
@@ -29,7 +29,7 @@ function GuestHeader() {
           className="inline-flex items-center p-2 mr-4 "
         >
           <img src="/brand.png" alt="logo" width="150px" />
-        </motion.a>
+        </motion.span>
       </Link>
       <button
         className="inline-flex p-3 ml-auto text-[#795DE0] border-[#795DE0] rounded outline-none  hover:bg-green-600 lg:hidden hover:text-violet-500"
@@ -71,16 +71,16 @@ function GuestHeader() {
       >
         <div className="flex gap-x-5 flex-col items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
           <Link href="/account/auth/login" passHref>
-            <a className="items-center justify-center w-full px-3 py-2 font-medium text-[#795DE0] rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
+            <span className="items-center justify-center w-full px-3 py-2 font-medium text-[#795DE0] rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Log in
               <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
-            </a>
+            </span>
           </Link>
           <Link href="/account/auth/signup" passHref>
-            <a className="items-center justify-center w-full px-5 py-3  font-regular text-white bg-[#795DE0] rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group">
+            <span className="items-center justify-center w-full px-5 py-3  font-regular text-white bg-[#795DE0] rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group">
               Register
               <span className="absolute bottom-1 right-0 w-0 h-1 bg-indigo-500  group-hover:w-full group-hover:transition-all rounded-full" />
-            </a>
+            </span>
           </Link>
         </div>
       </motion.div>

@@ -15,7 +15,7 @@ function SlashScreen({}: Props) {
             className="relative animate-up-down h-24"
           />
           <span className="font-poppins  text-[0.70rem]">
-          © 2022 All Simple Rights Reserved
+          © 2024 All Simple Rights Reserved
         </span>
         </div>
       </div>

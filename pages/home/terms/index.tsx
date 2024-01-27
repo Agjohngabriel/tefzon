@@ -1,5 +1,3 @@
-import MainLayout from "../../../components/MainLayout";
-import Router from "next/router";
 import Link from "next/link";
 import Layout from "../../../components/Layouts";
 

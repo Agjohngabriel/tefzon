@@ -170,7 +170,7 @@ const Index = () => {
                               query: { id: item.id },
                             }}
                           >
-                            <a className="flex-no-shrink py-2 text-sm  ">
+                            <span className="flex-no-shrink py-2 text-sm  ">
                               <svg
                                 width="24"
                                 height="24"
@@ -186,7 +186,7 @@ const Index = () => {
                                   strokeLinejoin="round"
                                 />
                               </svg>
-                            </a>
+                            </span>
                           </Link>
                         </div>
                       </div>
@@ -254,7 +254,7 @@ const Index = () => {
                               query: { id: item.id },
                             }}
                           >
-                            <a className="flex-no-shrink py-2 text-sm  ">
+                            <span className="flex-no-shrink py-2 text-sm  ">
                               <svg
                                 width="24"
                                 height="24"
@@ -270,7 +270,7 @@ const Index = () => {
                                   strokeLinejoin="round"
                                 />
                               </svg>
-                            </a>
+                            </span>
                           </Link>
                         </div>
                       </div>

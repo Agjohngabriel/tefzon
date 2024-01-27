@@ -34,20 +34,19 @@ const Email = () => {
 
               <div className="text-center ">
                 <Link href="/account/auth/forgetpassword" passHref>
-                  <a className="inline-block text-xs text-indigo-700 align-baseline hover:text-blue-800">
+                  <span className="inline-block text-xs text-indigo-700 align-baseline hover:text-blue-800">
                     Didn't recieve the email? <span className="font-semibold">Click to resend</span> 
-                  </a>
+                  </span>
                 </Link>
               </div>
               <div className="text-center">
                 <Link href="/account/auth/login" passHref>
-                  <a
-                    type="button"
+                  <span
                     className="flex items-center mx-16  text-sm text-gray-600 hover:text-blue-800 justify-center  "
                   >
                     <span className="material-icons  ">arrow_backward</span>
                     <span className="-ml-24 ">Back to Log in</span>
-                  </a>
+                  </span>
                 </Link>
               </div>
             </div>

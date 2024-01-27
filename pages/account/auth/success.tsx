@@ -23,9 +23,9 @@ const Success = () => {
               <p className="font-arcon text-sm text-gray-500 text-center sm:w-5/6 animate-fade-in-up">
                 Please check the message sent to {" "}
                 <Link href="/account/auth/email" passHref>
-                  <a className="text-xs text-indigo-700 align-baseline hover:text-blue-800">
+                  <span className="text-xs text-indigo-700 align-baseline hover:text-blue-800">
                     kolagk@gmail.com
-                  </a>
+                  </span>
                 </Link>{" "}
                 Confirming the message allow you to complete the process.
               </p>

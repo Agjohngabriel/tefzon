@@ -84,9 +84,9 @@ const Login = () => {
               </p>
               <div className="">
                 <Link href="/account/auth/signup" passHref>
-                  <a className="flex items-center text-[#795DE0] font-inter text-sm justify-start text-bold mx-auto focus:outline-none">
+                  <span className="flex items-center text-[#795DE0] font-inter text-sm justify-start text-bold mx-auto focus:outline-none">
                     Create Account
-                  </a>
+                  </span>
                 </Link>
               </div>
             </div>
@@ -164,9 +164,9 @@ const Login = () => {
             <div className="flex justify-end">
               <div className="w-[12rem]">
                 <Link href="/account/auth/forgetpassword" passHref>
-                  <a className="flex items-center text-[#795DE0] font-inter text-sm justify-end mx-auto px-8 py-4 focus:outline-none">
+                  <span className="flex items-center text-[#795DE0] font-inter text-sm justify-end mx-auto px-8 py-4 focus:outline-none">
                     Forgot Password?
-                  </a>
+                  </span>
                 </Link>
               </div>
             </div>

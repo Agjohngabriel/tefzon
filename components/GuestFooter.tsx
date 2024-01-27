@@ -10,20 +10,20 @@ export default function GuestFooter() {
         {[
           {
             src: "/facebook.png",
-            width: "18",
-            height: "17",
+            width: 18,
+            height: 17,
             alt: "Facebook Logo",
           },
           {
             src: "/twitter.png",
-            width: "18",
-            height: "17",
+            width: 18,
+            height: 17,
             alt: "Twitter Logo",
           },
           {
             src: "/instagram.png",
-            width: "18",
-            height: "17",
+            width: 18,
+            height: 17,
             alt: "Instagram Icon",
           },
         ].map((item) => (
@@ -39,7 +39,7 @@ export default function GuestFooter() {
       </div>
       <div>
         <span className="font-poppins text-[0.70rem]">
-          © 2023 All Simple Rights Reserved
+          © 2024 All Simple Rights Reserved
         </span>
       </div>
     </div>

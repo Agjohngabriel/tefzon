@@ -1,12 +1,13 @@
 import axios from "axios";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import { Loader } from "../../components/base/Loader";
 import MainLayout from "../../components/MainLayout";
 import { format, parseISO } from "date-fns";
+import Link from "next/link";
 
 const FormattedDate = ({ date }: any) => {
   const formatDate = (dateString: string) => {
@@ -210,7 +211,7 @@ const Index = () => {
                   className="w-full flex flex-col p-1 border border-[#94A3B8] bg-white shadow-md hover:shodow-lg rounded-lg mb-5"
                 >
                   <div className="flex flex-row items-center justify-between ">
-                    <div className="flex justify-between justify-center space-x-3  sm:space-x-4  items-center">
+                    <div className="flex justify-center space-x-3  sm:space-x-4  items-center">
                       <p className="rounded-lg font-[Oswald] text-2xl  py-1 px-4  text-[#240155] bg-[#795DE029]">
                         {item.name.split(" ").map((i) => i.charAt(0))}
                       </p>
@@ -252,22 +253,24 @@ const Index = () => {
                         query: { id: item.id },
                       }}
                     >
-                      <a className="flex-no-shrink py-2 text-sm  ">
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M10 17L14.58 11.9992L10 7"
-                            stroke="#94A3B8"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                      <a>
+                        <span className="flex-no-shrink py-2 text-sm">
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10 17L14.58 11.9992L10 7"
+                              stroke="#94A3B8"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
                       </a>
                     </Link>
                   </div>
@@ -302,7 +305,7 @@ const Index = () => {
             </button>
           </div>
 
-          <div className="block relative flex items-center mb-5 ">
+          <div className="relative flex items-center mb-5 ">
             <span className="absolute">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
