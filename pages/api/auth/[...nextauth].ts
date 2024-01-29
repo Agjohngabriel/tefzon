@@ -54,10 +54,18 @@ export default NextAuth({
       }
       return token;
     },
-    async session({ session, token }) {
-      return session;
-    },
-    
+  //   async session({ session, token }) {
+  // // session.data = token.user;
+  //     return session;
+  //   },
+  async session({ session, token, user }) {
+    session.user = {
+      data: token.user, // Assign token.user to the 'data' property
+      // ... other properties if needed
+    };
+    return session;
+  }
+  
   },
   secret: "test",
   jwt: {
