@@ -103,7 +103,7 @@ const Index = () => {
   );
 
   // Grouping data by date
-  const groupedData: GroupedData = sortedData.reduce((acc: Record<string, Item[]>, item) => {
+  const groupedData: GroupedData = sortedData.reduce((acc: Record<string, DataItem[]>, item) => {
     const date = item.starting_at;
     if (!acc[date]) {
       acc[date] = [];
