@@ -94,23 +94,31 @@ const Index = () => {
     Router.push("/home");
   };
 
-  const data: DataItem[] = fixtures || [];
 
-  // Sorting the array by the "date" property
-  const sortedData = [...data].sort(
-    (a, b) =>
-      new Date(a.starting_at).getTime() - new Date(b.starting_at).getTime()
-  );
+ const data: DataItem[] = fixtures || [];
 
-  // Grouping data by date
-  const groupedData: GroupedData = sortedData.reduce((acc: Record<string, DataItem[]>, item) => {
-    const date = item.starting_at;
-    if (!acc[date]) {
-      acc[date] = [];
-    }
-    acc[date].push(item);
-    return acc;
-  }, {});
+ // Sorting the array by the "date" property
+ const sortedData = [...data].sort(
+   (a, b) =>
+     new Date(a.starting_at).getTime() - new Date(b.starting_at).getTime()
+ );
+
+
+ interface GroupedData {
+   [key: string]: any[]; // Adjust 'any' to the actual type of the array elements
+ }
+
+ const groupedData: GroupedData = sortedData.reduce(
+   (acc: GroupedData, item) => {
+     const date = item.starting_at as string; // Adjust the type accordingly
+     if (!acc[date]) {
+       acc[date] = [];
+     }
+     acc[date].push(item);
+     return acc;
+   },
+   {}
+ )
 
   return (
     <MainLayout>

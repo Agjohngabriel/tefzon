@@ -87,7 +87,6 @@ const Index = (proxi: Profile) => {
         setDetails(DetailsFromApi.data);
       };
       getDetails();
-
       const fetchAccounts = async () => {
         setIsLoading(true);
         const respo = await axios.get(
