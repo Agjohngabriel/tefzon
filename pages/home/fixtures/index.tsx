@@ -94,6 +94,7 @@ const Index = () => {
     Router.push("/home");
   };
 
+
  const data: DataItem[] = fixtures || [];
 
  // Sorting the array by the "date" property
@@ -102,14 +103,6 @@ const Index = () => {
      new Date(a.starting_at).getTime() - new Date(b.starting_at).getTime()
  );
 
- // const groupedData: GroupedData = sortedData.reduce((acc, item) => {
- //   const date = item.starting_at;
- //   if (!acc[date]) {
- //     acc[date] = [];
- //   }
- //   acc[date].push(item);
- //   return acc;
- // }, {});
 
  interface GroupedData {
    [key: string]: any[]; // Adjust 'any' to the actual type of the array elements
@@ -125,7 +118,7 @@ const Index = () => {
      return acc;
    },
    {}
- );
+ )
 
   return (
     <MainLayout>
