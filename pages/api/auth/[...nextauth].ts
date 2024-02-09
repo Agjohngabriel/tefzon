@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { client } from "../../../libs/axiosClient";
 import GoogleProvider from "next-auth/providers/google";
-import axios from "axios";
+import { Session } from "next-auth";
 
 export default NextAuth({
   providers: [
@@ -31,10 +31,6 @@ export default NextAuth({
           if (user.data["statusCode"] == 422) {
             throw new Error("Authentication failed");
           }
-          // if (user) {
-          //   return user.data;
-          //   console.log(user.data)
-          // }
         } catch (e: any) {
           const errorMessage = e.response.data.errors;
           throw new Error(errorMessage);
@@ -54,18 +50,20 @@ export default NextAuth({
       }
       return token;
     },
-  //   async session({ session, token }) {
-  // // session.data = token.user;
-  //     return session;
-  //   },
-  async session({ session, token, user }) {
-    session.user = {
-      data: token.user, // Assign token.user to the 'data' property
-      // ... other properties if needed
-    };
-    return session;
-  }
-  
+    async session({ session, token }) {
+      const sessionWithUser = session as Session & { data: any };
+      if (!sessionWithUser.data && token?.user) {
+        sessionWithUser.data = token.user;
+      }
+      return sessionWithUser;
+    },
+
+    // async session({ session, token }) 
+    //    if (session) {
+    //      session.data = token.user;
+    //    }
+    //   return session;
+    // },
   },
   secret: "test",
   jwt: {
