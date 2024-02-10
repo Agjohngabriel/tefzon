@@ -40,7 +40,6 @@ const Index = (proxi: Profile) => {
   const [profile, setProfile] = useState([]);
   const [details, setDetails] = useState([]);
   const [accounts, setAccounts] = useState([]);
-
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -104,7 +103,8 @@ const Index = (proxi: Profile) => {
       };
       const getAccounts = async () => {
         const AccountsFromApi = await fetchAccounts();
-        setAccounts(AccountsFromApi.data[0]);
+        if (AccountsFromApi.data.length !== 0)
+          setAccounts(AccountsFromApi.data[0]);
       };
       getAccounts();
 
@@ -312,7 +312,7 @@ const Index = (proxi: Profile) => {
   const [banks, setBanks] = useState([]);
   const [bank, setBank] = useState("Select Bank");
   const [bank_code, setBank_code] = useState("");
-  const [bank_name, setBank_name] = useState("");
+
   const [account_name, setAccount_name] = useState("");
   const [account_number, setAccount_number] = useState("");
   const [enabled, setEnabled] = useState(false);
