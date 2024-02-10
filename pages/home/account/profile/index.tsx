@@ -388,11 +388,13 @@ const Index = (proxi: Profile) => {
   return (
     <ProfileLayout>
       <div className="container font-montserrat lg:max-w-6xl  bg-[#fff] border-inherit rounded-b-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20 sm:px-5  px-2 py-3 lg:py-5 ">
-        <div className="grid grid-cols-12 gap-2">
-          <div className="col-span-3 border-r pr-5">
+        <div className="md:grid grid-cols-12 gap-2">
+          <div className="col-span-3 border-r md:pr-5">
             <div className="flex gap-x-2 md:gap-x-3 pt-3  text-[#240155]">
-              <div className="bg-[#F8F8F8] font-bold font-oswald text-4xl overflow-hidden py-3 px-6 rounded-lg">
-                {proxi?.name?.split(" ").map((i) => i.charAt(0))}
+              <div className="bg-[#F8F8F8] font-bold text-4xl w-[4rem] overflow-hidden py-3 px-5 rounded-lg">
+                <h2 className="truncate max-w-[1.5rem]">
+                  {profile["name" as any]}
+                </h2>
               </div>
               <div className="">
                 <h1 className="font-semibold sm:text-xl ">
@@ -599,7 +601,7 @@ const Index = (proxi: Profile) => {
                   openTab === 1 ? "block animate-fade-in-up" : "hidden"
                 }
               >
-                <div className="rounded-3xl px-2  py-5 max-w-3xl ">
+                <div className="rounded-3xl md:px-2  py-5 max-w-3xl ">
                   <h2 className=" text-lg font-bold text-[#3A3A3A]">
                     Personal Info
                   </h2>
@@ -1170,7 +1172,7 @@ const Index = (proxi: Profile) => {
                               </div>
                             </div>
                           </div>
-                          <div className="flex-1   ">
+                          <div className="flex-1  mt-3 md:mt-0 ">
                             <div className="flex-1 w-full mx-auto  ">
                               <label className=" text-sm font-semibold text-[#3A3A3A]">
                                 Phone Number
