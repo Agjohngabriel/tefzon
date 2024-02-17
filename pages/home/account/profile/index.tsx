@@ -389,7 +389,7 @@ const Index = (proxi: Profile) => {
     <ProfileLayout>
       <div className="container font-montserrat lg:max-w-6xl  bg-[#fff] border-inherit rounded-b-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20 sm:px-5  px-2 py-3 lg:py-5 ">
         <div className="md:grid grid-cols-12 gap-2">
-          <div className="col-span-3 border-r md:pr-5">
+          <div className="col-span-3 md:border-r md:pr-5">
             <div className="flex gap-x-2 md:gap-x-3 pt-3  text-[#240155]">
               <div className="bg-[#F8F8F8] font-bold text-4xl w-[4rem] overflow-hidden py-3 px-5 rounded-lg">
                 <h2 className="truncate max-w-[1.5rem]">
@@ -1482,6 +1482,9 @@ const Index = (proxi: Profile) => {
                   >
                     <div className=" space-y-5">
                       <div className="flex-1 w-full mx-auto ">
+                        <label className=" text-sm font-semibold text-[#3A3A3A]">
+                          Current Password
+                        </label>
                         <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
                           <input
                             value={current_password}
@@ -1521,7 +1524,10 @@ const Index = (proxi: Profile) => {
                         </div>
                       </div>
                       <div className="flex-1 w-full mx-auto  ">
-                        <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
+                        <label className=" text-sm font-semibold text-[#3A3A3A]">
+                          New Password
+                        </label>
+                        <div className="flex p-1 my-1 bg-white border border-gray-200 rounded ">
                           <input
                             value={new_password}
                             onChange={(e) => setNew_password(e.target.value)}
@@ -1558,6 +1564,10 @@ const Index = (proxi: Profile) => {
                         </div>
                       </div>
                       <div className="flex-1 w-full mx-auto ">
+                        {" "}
+                        <label className=" text-sm font-semibold text-[#3A3A3A]">
+                          Confirm Password
+                        </label>
                         <div className="flex p-1 my-2 bg-white border border-gray-200 rounded ">
                           <input
                             value={new_password_confirmation}
@@ -1765,7 +1775,7 @@ const Index = (proxi: Profile) => {
               &#8203;
             </span>
 
-            <div className="relative inline-block px-4 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  top-20 md:top-0  sm:my-5 w-full sm:max-w-md sm:p-6  sm:align-middle">
+            <div className="relative inline-block px-4 py-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  top-20 md:top-0  sm:my-5 w-full sm:max-w-md sm:p-6  sm:align-middle">
               <div className="flex items-start justify-between ">
                 <div className=" flex justify-between font-semibold py-2">
                   <p className="text-xs  text-gray-900 ">Amount</p>
@@ -1808,18 +1818,18 @@ const Index = (proxi: Profile) => {
                   </div>
                 </div>
 
-                <div className="w-full mx-2  py-5 flex-1 svelte-1l8159u">
+                <div className="w-full   py-5 flex-1 svelte-1l8159u">
                   <button
                     type="submit"
-                    className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none flex justify-center sm:w-full py-2 rounded font-bold cursor-pointer 
+                    className="text-base shadow-xl shadow-indigo-500/50 hover:scale-110 focus:outline-none  w-full py-2 rounded font-bold cursor-pointer 
                                 opacity-50
 										hover:bg-blue-500 
 										bg-[#6E4BEC] text-gray-200
 										duration-200 ease-in-out 
 										transition"
                   >
-                    <div className="font-montserrat text-sm px-20 lg:px-10">
-                      Proceed to Paystack
+                    <div className="font-montserrat text-sm px-16 lg:px-10 ">
+                      Proceed to Flutterwave
                     </div>
                   </button>
                 </div>

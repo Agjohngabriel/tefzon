@@ -569,7 +569,7 @@ const SquadSelection = () => {
                         />
                       </div>
                       <div className="w-full mx-auto ">
-                        <p className="focus:outline-none text-[.35rem] sm:text-[.50rem] text-center rounded p-0.5 sm:w-[4rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
+                        <p className="focus:outline-none text-[.35rem] sm:text-[.45rem] text-center rounded p-0.5 sm:w-[4rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
                           Add GoalKeeper
                         </p>
                       </div>
@@ -593,7 +593,7 @@ const SquadSelection = () => {
                         />
                       </div>
                       <div className="w-full mx-auto ">
-                        <p className="focus:outline-none text-[.35rem] sm:text-[.50rem] text-center rounded p-0.5 sm:w-[4rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
+                        <p className="focus:outline-none text-[.35rem] sm:text-[.45rem] text-center rounded p-0.5 sm:w-[4rem]  mx-auto  -mb-6  leading-normal  text-[#240155] bg-[#fff]">
                           Add GoalKeeper
                         </p>
                       </div>
@@ -1073,7 +1073,7 @@ const SquadSelection = () => {
       </div>
       <div className={openTab === 2 ? "block animate-fade-in-up" : "hidden"}>
         <div className="px-3 lg:px-20 py-4 sm:py-10">
-          <div className="flex justify-between items-center ">
+          <div className="md:flex justify-between items-center ">
             <button
               onClick={() => setOpenTab(1)}
               className="flex items-center gap-x-2 text-[#795DE0] active:bg-pink-600 font-bold text-base font-inter px-4  rounded outline-none focus:outline-none ease-linear transition-all duration-150"
@@ -1105,7 +1105,7 @@ const SquadSelection = () => {
               </svg>
               Add Player
             </button>
-            <div className="block relative flex items-center  ">
+            <div className="block relative flex items-center my-1 ">
               <span className="absolute">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

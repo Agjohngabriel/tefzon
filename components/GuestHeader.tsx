@@ -69,7 +69,7 @@ function GuestHeader() {
           active ? "" : "hidden"
         }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
       >
-        <div className="flex gap-x-5 flex-col items-start w-full lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto lg:items-center lg:h-auto">
+        <div className="flex gap-x-5  items-center w-full lg:inline-flex  lg:ml-auto lg:w-auto py-3 lg:h-auto">
           <Link href="/account/auth/login" passHref>
             <span className="items-center justify-center w-full px-3 py-2 font-medium text-[#795DE0] rounded lg:inline-flex lg:w-auto under hover:text-indigo-500 relative group ">
               Log in

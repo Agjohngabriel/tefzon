@@ -13,7 +13,7 @@ export const BreadCrumbButton = ({ title, link }: ButtonProps) => {
         <div
           className={`font-Montserrat
            text-xs md:text-sm  px-1 w-[6rem] py-2 md:py-3 mx-1 text-center  leading-none rounded-t 
-          cursor-pointer ${
+          cursor-pointer  ${
             Router.pathname.endsWith(`${link}`)
               ? "bg-white text-black-150"
               : "bg-green text-white"
