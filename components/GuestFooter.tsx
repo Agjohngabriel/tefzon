@@ -6,7 +6,7 @@ export default function GuestFooter() {
       <div>
         <h1 className="font-montserrat">No Room for Racism</h1>
       </div>
-      <div className="flex flex-row mx-16 my-5 sm:my-1 sm:mx-24 items-center">
+      <div className="flex flex-row mx-12 my-5 sm:my-1 sm:mx-24 items-center">
         {[
           {
             src: "/facebook.png",

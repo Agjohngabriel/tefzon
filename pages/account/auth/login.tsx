@@ -73,18 +73,18 @@ const Login = () => {
           backgroundPosition: "center center",
         }}
       >
-        <div className="w-[40rem] bg-white rounded-xl shadow-2xl shadow-indigo-500/50   px-5 sm:p-10 ">
+        <div className="w-[40rem] bg-white rounded-xl shadow-2xl shadow-indigo-500/50 py-4  px-5 sm:p-10 ">
           <div className="my-2 w-full flex justify-between">
-            <h1 className=" text-sm lg:text-xl font-oswald font-semibold text-left text-[#240155]">
+            <h1 className="text-[13px] sm:text-sm lg:text-xl font-oswald font-semibold text-left text-[#240155]">
               Welcome to Tefzon Fantasy
             </h1>
             <div>
-              <p className=" text-xs text-center text-gray-500 ">
+              <p className="text-[10px] sm:text-xs text-left text-gray-500 ">
                 Don’t have an account yet?
               </p>
               <div className="">
                 <Link href="/account/auth/signup" passHref>
-                  <span className="flex items-center text-[#795DE0] font-inter text-sm justify-start text-bold mx-auto focus:outline-none">
+                  <span className="flex items-center text-[#795DE0] font-inter text-xs sm:text-sm justify-start text-bold mx-auto focus:outline-none">
                     Create Account
                   </span>
                 </Link>

@@ -105,11 +105,11 @@ const Home: NextPage = () => {
               Listen to the songs at tip of your finger, feel the vibes and
               dance. Winning at fantasy football just got easier and better.
             </p>
-            <div className="sm:flex gap-x-3  mt-5 md:mt-10 font-inter">
+            <div className="flex gap-x-3 items-center  mt-5 md:mt-10 font-inter">
               <button
                 onClick={goToLogin}
                 type="button"
-                className="bg-white border border-[#795DE0] font-semibold flex items-center py-2 ml-4 text-[#795DE0] rounded md:px-8 sm:ml-0 sm:px-6 focus:outline-none "
+                className="bg-white border border-[#795DE0] font-semibold flex items-center py-2.5  text-[#795DE0] rounded md:px-8 sm:ml-0 px-6 focus:outline-none "
               >
                 Log in
               </button>
@@ -119,7 +119,7 @@ const Home: NextPage = () => {
                 bgcolor="bg-primary-200"
                 color="text-white"
                 opacity="opacity-100"
-                width="md:w-36"
+                width="w-32 md:w-36"
               />
             </div>
           </div>
@@ -137,7 +137,7 @@ const Home: NextPage = () => {
 
       {/* Section */}
       <div className="bg-[#E4ECFB]/20  py-2 my-20 md:py-10 sm:px-10 lg:px-20 mx-auto font-inter">
-        <div className="grid grid-cols-12 gap-x-10 mt-3 lg:mt-5">
+        <div className="lg:grid grid-cols-12 gap-x-10 mt-3 lg:mt-5 p-2">
           <div className="col-span-4">
             <img src="../img/icon1.svg" className="py-2" alt="" />
             <h1 className="text-sm font-bold  lg:text-base">
@@ -274,11 +274,11 @@ const Home: NextPage = () => {
                 with other managers in a mini league and earn money as well.
               </p>
 
-              <div className="get-app flex space-x-5 justify-center md:justify-start">
+              <div className="get-app flex space-x-3 sm:space-x-5 justify-center md:justify-start">
                 <button className="google bg-white shadow-md px-3 py-2 rounded-lg flex items-center space-x-1">
                   <div className="image">
                     <svg
-                      className="w-10 h-6"
+                      className="w-5 sm:w-10 h-6"
                       xmlns="http://www.w3.org/2000/svg"
                       width="436.057"
                       height="469.847"
@@ -311,7 +311,7 @@ const Home: NextPage = () => {
                     >
                       Download on
                     </p>
-                    <p className="text-xs font-semibold text-[#795DE0]">
+                    <p className="text-[10px] sm:text-xs font-semibold text-[#795DE0]">
                       Google Playstore
                     </p>
                   </div>
@@ -319,7 +319,7 @@ const Home: NextPage = () => {
                 <button className="apple bg-white shadow-md px-3 py-2 rounded-lg flex items-center space-x-1">
                   <div className="logo">
                     <svg
-                      className="w-10 h-6"
+                      className="w-5 sm:w-10 h-6"
                       xmlns="http://www.w3.org/2000/svg"
                       width="419.955"
                       height="512"
@@ -338,7 +338,7 @@ const Home: NextPage = () => {
                     >
                       Download on
                     </p>
-                    <p className=" text-xs font-semibold text-[#795DE0]">
+                    <p className="text-[10px] sm:text-xs font-semibold text-[#795DE0]">
                       Apple Store
                     </p>
                   </div>

@@ -52,15 +52,20 @@ const CreatePrivateLeague = () => {
           },
         }
       );
-      if (response) {
+      if (response.data.data !== null) {
         setIsSubmitting(false);
         setModal(true);
         console.log(response.data.data.code);
         setCode(response.data.data.code);
+      } else {
+        setIsSubmitting(false);
+        MySwal.fire({
+          title: `${response.data.message}`,
+        });
       }
     } catch (e: any) {
       setIsSubmitting(false);
-      const errorMessage = e.response.data;
+      const errorMessage = e.data;
       console.log(errorMessage);
       setError(errorMessage);
     }
@@ -379,7 +384,7 @@ const CreatePrivateLeague = () => {
                     <button
                       onClick={() => {
                         navigator.clipboard.writeText(code);
-                        setCopied(true)
+                        setCopied(true);
                       }}
                       className="flex gap-x-2 items-center bg-[#795DE0] text-white rounded-md justify-center  cursor-pointer"
                     >
@@ -397,7 +402,7 @@ const CreatePrivateLeague = () => {
                           strokeLinecap="round"
                         />
                       </svg>{" "}
-                      {copied? "Copied" : "Copy"}
+                      {copied ? "Copied" : "Copy"}
                     </button>
                   </div>
                   <button
