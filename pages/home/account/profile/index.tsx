@@ -285,13 +285,17 @@ const Index = (proxi: Profile) => {
     setIsSubmitting(true);
 
     try {
-      const res = await axios.post(`${process.env.BACKEND_URL}/pay`, amount, {
-        headers: {
-          Authorization: `Bearer ${session?.data.data.token}`,
-          "content-type": "application/json",
-          accept: "application/json",
-        },
-      });
+      const res = await axios.post(
+        `${process.env.BACKEND_URL}/pay`,
+        { amount },
+        {
+          headers: {
+            Authorization: `Bearer ${session?.data.data.token}`,
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
 
       setIsSubmitting(false);
       console.log(res.data.status);
@@ -385,6 +389,15 @@ const Index = (proxi: Profile) => {
       setError(true);
     }
   }
+
+  // Calculate the maximum date
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const eighteenYearsAgo = currentYear - 18;
+  const maximumDate = new Date(eighteenYearsAgo, 0, 1); // January 1st, 18 years ago
+
+  // Format the maximum date as yyyy-mm-dd
+  const maxDateFormatted = maximumDate.toISOString().split("T")[0];
   return (
     <ProfileLayout>
       <div className="container font-montserrat lg:max-w-6xl  bg-[#fff] border-inherit rounded-b-xl shadow-lg shadow-indigo-500/50 sm:ml-5 lg:ml-20 sm:px-5  px-2 py-3 lg:py-5 ">
@@ -713,6 +726,7 @@ const Index = (proxi: Profile) => {
                                 type="date"
                                 value={dob}
                                 onChange={(e) => setDob(e.target.value)}
+                                max={maxDateFormatted}
                                 className="w-full py-2 px-2  text-[#94A3B8] text-xs outline-none appearance-none"
                                 required
                               />
@@ -728,7 +742,7 @@ const Index = (proxi: Profile) => {
                                 className="w-full px-3 py-2 transition-colors bg-white rounded-md cursor-pointer form-select text-gray-400 text-xs focus:outline-none focus:border-indigo-500"
                                 required
                               >
-                                <option>{gender}</option>
+                                <option value={gender}>{gender}</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                               </select>
@@ -1810,7 +1824,7 @@ const Index = (proxi: Profile) => {
                     <span className="text-black-150 font-arcon pl-2">(₦)</span>
                     <input
                       value={amount}
-                      onInput={(e) => setAmount(e.currentTarget.value)}
+                      onChange={(e) => setAmount(e.currentTarget.value)}
                       required
                       placeholder="Amount"
                       className="px-2 appearance-none outline-none w-full text-sm text-gray-700 py-1"

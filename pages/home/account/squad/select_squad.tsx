@@ -338,6 +338,7 @@ const SquadSelection = () => {
         className=" rounded mt-2 mx-auto  hover:scale-105 transition transform duration-500 cursor-pointer"
       ></div>
     ));
+
   const midfielders = teams
     .filter((e: Players) => e.player_position === "Midfielder")
     .map((item: Players, position_id) => (
@@ -359,6 +360,22 @@ const SquadSelection = () => {
   const defendersLength = defenders.length;
   const midfieldersLength = midfielders.length;
   const forwardersLength = forwarders.length;
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Assuming `leagues` is your array of data fetched/mapped from API
+
+  // Filter the data based on the search query
+  const filteredLeagues = leagues.filter((item: Clubs) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const [clubQuery, setClubQuery] = useState("");
+
+   const filteredClubs = clubs.filter((item: Clubs) =>
+     item.name.toLowerCase().includes(clubQuery.toLowerCase())
+   );
+
 
   return (
     <MainLayout>
@@ -1105,7 +1122,7 @@ const SquadSelection = () => {
               </svg>
               Add Player
             </button>
-            <div className="block relative flex items-center my ">
+            <div className="relative flex items-center">
               <span className="absolute">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -1184,9 +1201,11 @@ const SquadSelection = () => {
                     type="text"
                     placeholder="Search items"
                     autoComplete="off"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                   />
                   <div className=" h-[12rem] overflow-hidden overflow-y-auto scrollbar-hide">
-                    {leagues.map((item: LiveLeague) => (
+                    {filteredLeagues.map((item: LiveLeague) => (
                       <button
                         key={item.id}
                         onClick={() => {
@@ -1243,9 +1262,11 @@ const SquadSelection = () => {
                     type="text"
                     placeholder="Search items"
                     autoComplete="off"
+                    value={clubQuery}
+                    onChange={(e) => setClubQuery(e.target.value)}
                   />
                   <div className=" h-[12rem] overflow-hidden overflow-y-auto scrollbar-hide">
-                    {clubs.map((item: Clubs, i) => (
+                    {filteredClubs.map((item: Clubs) => (
                       <button
                         key={item.id}
                         onClick={() => {

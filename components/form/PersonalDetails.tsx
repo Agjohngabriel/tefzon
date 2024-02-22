@@ -23,6 +23,15 @@ const PersonalDetails = (props: { updateFormData: any; errors: object }) => {
     const phne = `${code}${ph}`;
     props.updateFormData({ phone: phne });
   };
+
+  // Calculate the maximum date
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const eighteenYearsAgo = currentYear - 18;
+  const maximumDate = new Date(eighteenYearsAgo, 0, 1); // January 1st, 18 years ago
+
+  // Format the maximum date as yyyy-mm-dd
+  const maxDateFormatted = maximumDate.toISOString().split("T")[0];
   return (
     <div className={`animate-fade-in-up`}>
       <div className="py-5 animate-fade-in-down">
@@ -145,6 +154,7 @@ const PersonalDetails = (props: { updateFormData: any; errors: object }) => {
                 onChange={(e) =>
                   props.updateFormData({ date: e.currentTarget.value })
                 }
+                max={maxDateFormatted}
                 className="w-full py-2 px-2  text-[#94A3B8] text-xs outline-none appearance-none"
                 required
               />
