@@ -56,12 +56,7 @@ const CreateLeague = () => {
           title: "League successfully created!",
           icon: "success",
           text: `You have successfully created Tefzon classic league as a private league.`,
-          confirmButtonText: "Proceed",
-        }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
-          if (result.isConfirmed) {
-            router.push("/home/leagues");
-          }
+          timer: 2000,
         });
         router.push("/home/leagues");
       }
