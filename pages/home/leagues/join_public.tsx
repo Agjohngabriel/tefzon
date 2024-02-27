@@ -143,58 +143,74 @@ const JoinPublic = () => {
             )}
           </div>
         </div>
+        {leagues.length === 0 ? (
+          <div className="mx-auto   py-5 px-2 w-full">
+            <div className="flex flex-col space-y-4 justify-center max-w-2xl mx-auto">
+              <div className=" ">
+                <img
+                  src="/img/league.png"
+                  alt="soccer"
+                  className="mx-auto animate-up-down"
+                />
+              </div>
+              <h1 className="font-oswald text-center text-[#3A3A3A] text-2xl sm:text-3xl text-black-150   ">
+                No league Availiable
+              </h1>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2 ">
+            {leagues.map((item: Team, index) => (
+              <div
+                key={index}
+                className="w-full flex flex-col p-1 border border-[#94A3B8] bg-white shadow-md hover:shodow-lg rounded-lg mb-5"
+              >
+                <div className="flex flex-row items-center justify-between ">
+                  <div className="flex justify-between justify-center space-x-3  sm:space-x-4  items-center">
+                    <p className="rounded-lg font-[Oswald] text-2xl  py-1 px-4  text-[#240155] bg-[#795DE029]">
+                      {item.name.split(" ").map((i) => i.charAt(0))}
+                    </p>
 
-        <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2 ">
-          {leagues.map((item: Team, index) => (
-            <div
-              key={index}
-              className="w-full flex flex-col p-1 border border-[#94A3B8] bg-white shadow-md hover:shodow-lg rounded-lg mb-5"
-            >
-              <div className="flex flex-row items-center justify-between ">
-                <div className="flex justify-between justify-center space-x-3  sm:space-x-4  items-center">
-                  <p className="rounded-lg font-[Oswald] text-2xl  py-1 px-4  text-[#240155] bg-[#795DE029]">
-                    {item.name.split(" ").map((i) => i.charAt(0))}
-                  </p>
-
-                  <div className="flex flex-col">
-                    <div className="text-[#3A3A3A] font-normal leading-none">
-                      {item.name}
-                    </div>
-                    <div className="flex gap-x-2 items-center">
-                      <h2 className="font-inter text-xs text-[#94A3B8]">
-                        {item.entry_fee !== "0" ? "Free" : item.entry_fee}
-                      </h2>
+                    <div className="flex flex-col">
+                      <div className="text-[#3A3A3A] font-normal leading-none">
+                        {item.name}
+                      </div>
+                      <div className="flex gap-x-2 items-center">
+                        <h2 className="font-inter text-xs text-[#94A3B8]">
+                          {item.entry_fee !== "0" ? "Free" : item.entry_fee}
+                        </h2>
+                      </div>
                     </div>
                   </div>
+                  <Link
+                    href={{
+                      pathname: "/home/leagues/details",
+                      query: { id: item.id },
+                    }}
+                  >
+                    <a className="flex-no-shrink py-2 text-sm  ">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10 17L14.58 11.9992L10 7"
+                          stroke="#94A3B8"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </a>
+                  </Link>
                 </div>
-                <Link
-                  href={{
-                    pathname: "/home/leagues/details",
-                    query: { id: item.id },
-                  }}
-                >
-                  <a className="flex-no-shrink py-2 text-sm  ">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10 17L14.58 11.9992L10 7"
-                        stroke="#94A3B8"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
-                </Link>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </MainLayout>
   );
