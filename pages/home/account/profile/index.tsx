@@ -57,6 +57,7 @@ const Index = (proxi: Profile) => {
     setName(profile["name" as any]);
     setUserName(profile["username" as any]);
     setEmail(profile["email" as any]);
+    setDob(profile["dob" as any]);
     setPhone(profile["phone" as any]);
     setCountry(profile["country" as any]);
     setGender(profile["gender" as any]);
@@ -1591,6 +1592,7 @@ const Index = (proxi: Profile) => {
                             className="w-full p-1 px-2 text-gray-700 outline-none appearance-none"
                             required
                             type={passwordType}
+                           
                           />
                           <div className="flex -mr-px">
                             <span className="flex items-center px-3 leading-normal text-gray-600 whitespace-no-wrap bg-white border-0 rounded rounded-l-none">
@@ -1866,7 +1868,7 @@ const Index = (proxi: Profile) => {
             <div className="relative inline-block px-4 pb-4 overflow-hidden text-center align-bottom transition-all transform bg-white rounded-2xl shadow-xl  top-20 md:top-0  sm:my-5 w-full sm:max-w-md sm:p-6  sm:align-middle">
               <div className="flex items-start justify-between ">
                 <div className=" flex justify-between font-semibold py-2">
-                  <p className="text-xs  text-gray-900 ">Withdraw Fund</p>
+                  <p className="text-xs  text-gray-900 ">Add Withdrawal Account</p>
                 </div>
                 <button
                   onClick={(e) => {

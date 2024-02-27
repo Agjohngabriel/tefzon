@@ -49,17 +49,22 @@ const CreateLeague = () => {
           },
         }
       );
-      if (user) {
-        setIsSubmitting(false);
-        
-        MySwal.fire({
-          title: "League successfully created!",
-          icon: "success",
-          text: `You have successfully created Tefzon classic league as a private league.`,
-          timer: 2000,
-        });
-        router.push("/home/leagues");
-      }
+      
+       if (user.data.data !== null) {
+         setIsSubmitting(false);
+         MySwal.fire({
+           title: "League successfully created!",
+           icon: "success",
+           text: `You have successfully created Tefzon classic league as a private league.`,
+           timer: 2000,
+         });
+         router.push("/home/leagues");
+       } else {
+         setIsSubmitting(false);
+         MySwal.fire({
+           title: `${user.data.message}`,
+         });
+       }
     } catch (e: any) {
       setIsSubmitting(false);
       const errorMessage = e.response.data;
