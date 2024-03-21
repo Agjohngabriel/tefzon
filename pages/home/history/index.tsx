@@ -101,10 +101,6 @@ const Index = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
-                {/* <h1 className="font-inter text-sm sm:text-xl font-semibold text-[#3A3A3A] w-4/6 mb-5">
-                  Today Oct 19, 2023
-                </h1> */}
-
                 {leagues.map((item: Team, index) => (
                   <div
                     key={index}

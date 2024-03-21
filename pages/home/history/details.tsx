@@ -166,8 +166,7 @@ function Details() {
                           query: { id: item.id, leagueId, name:item.userName },
                         }}
                       >
-                        <a
-                          tabIndex={0}
+                        <span
                           className="focus:outline-none text-xs sm:text-sm font-inter leading-5 "
                         >
                           <div className="flex items-center gap-x-2">
@@ -181,7 +180,7 @@ function Details() {
                               <div> {item.name} </div>
                             </div>
                           </div>
-                        </a>
+                        </span>
                       </Link>
                     </td>
                     <td className="p-1 text-center text-xs sm:text-sm font-arcon text-black-0">

@@ -251,7 +251,7 @@ const Home: NextPage = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="container mx-auto px-2 lg:px-12"
+        className="container mx-auto px-2 "
       >
         <div
           className=" bg-cover rounded-lg  text-white p-4 lg:p-8 my-12 flex flex-col md:flex-row space-between items-center justify-between relative overflow-hidden"

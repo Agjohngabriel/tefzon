@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const FooterSecond = () => {
   return (
@@ -49,6 +50,22 @@ export const FooterSecond = () => {
         </div>
       </div>
       <div>
+        <li>
+          <Link href="/home/terms" passHref>
+            <span
+              className="
+                    font-inter
+                            inline-block
+                            text-base text-white
+                            hover:text-primary
+                            leading-loose
+                            mb-2 
+                            cursor-pointer"
+            >
+              Terms of Use
+            </span>
+          </Link>
+        </li>
         <span className="font-poppins text-[0.60rem]">
           © 2024 All Simple Rights Reserved
         </span>
