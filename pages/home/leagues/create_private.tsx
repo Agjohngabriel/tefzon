@@ -13,6 +13,8 @@ const CreatePrivateLeague = () => {
   const [type, setType] = useState("1");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [fee, setFee] = useState("");
   const [winner, setWinner] = useState("single");
   const [enabled, setEnabled] = useState(false);
@@ -24,6 +26,8 @@ const CreatePrivateLeague = () => {
   const [copied, setCopied] = useState(false);
   const router = useRouter();
   const [code, setCode] = useState("");
+  const endDateTime = end + "T" + endTime;
+  const startDateTime = start + "T" + startTime;
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -38,11 +42,12 @@ const CreatePrivateLeague = () => {
           name: name,
           participants: pat,
           type: type,
-          start: start,
-          end: end,
+          start: startDateTime,
+          end: endDateTime,
           entry_fee: fee,
           winner_type: winner,
           allow_view_participants: enabled,
+          useSquad: true,
         },
         {
           headers: {
@@ -216,7 +221,7 @@ const CreatePrivateLeague = () => {
                           className="p-1 bg-[#F8F8F8] px-2 border-none appearance-none outline-none w-full text-gray-700"
                           required
                         />{" "}
-                        <svg
+                        {/* <svg
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"
@@ -230,7 +235,7 @@ const CreatePrivateLeague = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
-                        </svg>
+                        </svg> */}
                       </div>
                     </div>
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
@@ -245,7 +250,7 @@ const CreatePrivateLeague = () => {
                           className="p-1 px-2 border-none bg-[#F8F8F8] appearance-none outline-none w-full text-gray-700"
                           required
                         />{" "}
-                        <svg
+                        {/* <svg
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"
@@ -259,11 +264,40 @@ const CreatePrivateLeague = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
-                        </svg>
+                        </svg> */}
                       </div>
                     </div>
                   </div>
-
+                  <div className="flex flex-col md:flex-row pt-2">
+                    <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
+                        Start Time
+                      </label>
+                      <div className="bg-[#F8F8F8] my-1 p-1 flex items-center border border-gray-200 rounded svelte-1l8159u">
+                        <input
+                          onInput={(e) => setStartTime(e.currentTarget.value)}
+                          name="startTime"
+                          type="time"
+                          className="p-1 bg-[#F8F8F8] px-2 border-none appearance-none outline-none w-full text-gray-700"
+                          required
+                        />{" "}
+                      </div>
+                    </div>
+                    <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
+                        End Time
+                      </label>
+                      <div className="bg-[#F8F8F8] my-1 p-1 flex items-center border border-gray-200 rounded svelte-1l8159u">
+                        <input
+                          onInput={(e) => setEndTime(e.currentTarget.value)}
+                          name="endTime"
+                          type="time"
+                          className="p-1 px-2 border-none bg-[#F8F8F8] appearance-none outline-none w-full text-gray-700"
+                          required
+                        />{" "}
+                      </div>
+                    </div>
+                  </div>
                   <div className="flex flex-col md:flex-row pt-2">
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
                       <label className="font-inter text-[#222222]/60 text-sm mb-2 ">

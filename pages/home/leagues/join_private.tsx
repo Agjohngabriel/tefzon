@@ -80,9 +80,12 @@ const JoinPrivate = () => {
     try {
       setLoading(1);
       const res = await axios.get(
-        `${process.env.BACKEND_URL}/join/public/league/${league["id" as any]}`,
-
+        `${process.env.BACKEND_URL}/join/public/league`,
         {
+          params: {
+            id: league["id" as any],
+            useSquad: true,
+          },
           headers: {
             Authorization: `Bearer ${session?.data.data.token}`,
             "content-type": "application/json",

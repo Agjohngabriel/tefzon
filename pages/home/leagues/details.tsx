@@ -66,9 +66,13 @@ function Details() {
     try {
       setLoading(1);
       const res = await axios.get(
-        `${process.env.BACKEND_URL}/join/public/league/${leaugeId}`,
+        `${process.env.BACKEND_URL}/join/public/league`,
 
         {
+          params: {
+            id: leaugeId,
+            useSquad: true,
+          },
           headers: {
             Authorization: `Bearer ${session?.data.data.token}`,
             "content-type": "application/json",
@@ -154,7 +158,7 @@ function Details() {
           </svg>
           {details["name" as any]}
         </button>
-        <div className=" container max-w-2xl bg-[#fff] border-inherit rounded-xl shadow-2xl shadow-indigo-500/50  mt-5 mb-20 px-2 sm:p-6 w-auto">
+        <div className=" container max-w-2xl bg-[#fff] border-inherit rounded-xl shadow-2xl shadow-indigo-500/50  mt-5 mb-20 p-2 sm:p-6 w-auto">
           <div className=" w-full">
             <div className="mb-5 p-6 border rounded-lg">
               {error === true && (
@@ -224,7 +228,7 @@ function Details() {
                     {details["start" as any] === undefined ? (
                       ""
                     ) : (
-                      <FormattedDate date={details["created_at" as any]} />
+                      <FormattedDate date={details["start" as any]} />
                     )}
                   </h1>
                 </div>
@@ -236,7 +240,7 @@ function Details() {
                     {details["end" as any] === undefined ? (
                       ""
                     ) : (
-                      <FormattedDate date={details["created_at" as any]} />
+                      <FormattedDate date={details["end" as any]} />
                     )}
                   </h1>
                 </div>
@@ -289,10 +293,6 @@ function Details() {
                 </button>
               ) : (
                 <button
-                  // onClick={(e) => {
-                  //   e.preventDefault();
-                  //   setModal(true);
-                  // }}
                   onClick={() => getManagers()}
                   className="w-full px-5 my-5  focus:outline-none flex justify-between items-center py-4 rounded  cursor-pointer	hover:bg-[#F8F8F0] 
 									border	border-[#F8F8F8] text-[#795DE0]	duration-200 ease-in-out transition"

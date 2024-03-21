@@ -13,6 +13,8 @@ const CreateLeague = () => {
   const [type, setType] = useState("0");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [fee, setFee] = useState("");
   const [winner, setWinner] = useState("single");
   const [enabled, setEnabled] = useState(false);
@@ -20,7 +22,8 @@ const CreateLeague = () => {
   const [error, setError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const MySwal = withReactContent(Swal);
-
+  const endDateTime = end + "T" + endTime;
+  const startDateTime = start + "T" + startTime;
   const router = useRouter();
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -40,6 +43,7 @@ const CreateLeague = () => {
           entry_fee: fee,
           winner_type: winner,
           allow_view_participants: enabled,
+          useSquad: true,
         },
         {
           headers: {
@@ -49,22 +53,22 @@ const CreateLeague = () => {
           },
         }
       );
-      
-       if (user.data.data !== null) {
-         setIsSubmitting(false);
-         MySwal.fire({
-           title: "League successfully created!",
-           icon: "success",
-           text: `You have successfully created Tefzon classic league as a private league.`,
-           timer: 2000,
-         });
-         router.push("/home/leagues");
-       } else {
-         setIsSubmitting(false);
-         MySwal.fire({
-           title: `${user.data.message}`,
-         });
-       }
+
+      if (user.data.data !== null) {
+        setIsSubmitting(false);
+        MySwal.fire({
+          title: "League successfully created!",
+          icon: "success",
+          text: `You have successfully created Tefzon classic league as a private league.`,
+          timer: 2000,
+        });
+        router.push("/home/leagues");
+      } else {
+        setIsSubmitting(false);
+        MySwal.fire({
+          title: `${user.data.message}`,
+        });
+      }
     } catch (e: any) {
       setIsSubmitting(false);
       const errorMessage = e.response.data;
@@ -217,21 +221,7 @@ const CreateLeague = () => {
                           className="p-1 bg-[#F8F8F8] px-2 border-none appearance-none outline-none w-full text-gray-700"
                           required
                         />
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="mr-2"
-                        >
-                          <path
-                            d="M4.34247 5H11.5996M3.84723 1V2.20015M11.9996 1V2.2M14.3996 5.2L14.3996 12.0001C14.3996 13.6569 13.0565 15.0001 11.3996 15.0001H4.59961C2.94276 15.0001 1.59961 13.6569 1.59961 12.0001V5.2C1.59961 3.54315 2.94276 2.2 4.59961 2.2H11.3996C13.0565 2.2 14.3996 3.54314 14.3996 5.2Z"
-                            stroke="#795DE0"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                       
                       </div>
                     </div>
                     <div className="w-full mx-2 flex-1 svelte-1l8159u">
@@ -246,21 +236,38 @@ const CreateLeague = () => {
                           className="p-1 px-2 border-none bg-[#F8F8F8] appearance-none outline-none w-full text-gray-700"
                           required
                         />{" "}
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="mr-2"
-                        >
-                          <path
-                            d="M4.34247 5H11.5996M3.84723 1V2.20015M11.9996 1V2.2M14.3996 5.2L14.3996 12.0001C14.3996 13.6569 13.0565 15.0001 11.3996 15.0001H4.59961C2.94276 15.0001 1.59961 13.6569 1.59961 12.0001V5.2C1.59961 3.54315 2.94276 2.2 4.59961 2.2H11.3996C13.0565 2.2 14.3996 3.54314 14.3996 5.2Z"
-                            stroke="#795DE0"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col md:flex-row pt-2">
+                    <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
+                        Start Time
+                      </label>
+                      <div className="bg-[#F8F8F8] my-1 p-1 flex items-center border border-gray-200 rounded svelte-1l8159u">
+                        <input
+                          onInput={(e) => setStartTime(e.currentTarget.value)}
+                          name="startTime"
+                          type="time"
+                          className="p-1 bg-[#F8F8F8] px-2 border-none appearance-none outline-none w-full text-gray-700"
+                          required
+                        />{" "}
+                      </div>
+                    </div>
+                    <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                      <label className="font-inter text-[#222222]/60 text-sm mb-2 ">
+                        End Time
+                      </label>
+                      <div className="bg-[#F8F8F8] my-1 p-1 flex items-center border border-gray-200 rounded svelte-1l8159u">
+                        <input
+                          onInput={(e) => setEndTime(e.currentTarget.value)}
+                          name="endTime"
+                          type="time"
+                          className="p-1 px-2 border-none bg-[#F8F8F8] appearance-none outline-none w-full text-gray-700"
+                          required
+                        />{" "}
                       </div>
                     </div>
                   </div>

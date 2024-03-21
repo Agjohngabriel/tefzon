@@ -254,7 +254,7 @@ const Index = () => {
                               query: { id: item.id },
                             }}
                           >
-                            <span className="flex-no-shrink py-2 text-sm  ">
+                            <span className="flex-no-shrink py-2 text-sm ">
                               <svg
                                 width="24"
                                 height="24"
